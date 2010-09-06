@@ -1,0 +1,3 @@
+This documentation combines a user guide with technical documentation about the program itself.
+
+Visit the readme[link:README_rdoc.html] first.
