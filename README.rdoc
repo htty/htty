@@ -24,7 +24,7 @@ It couldn't be much easier.
 
  $ gem install htty
 
-You'll need Ruby and RubyGems. It's known to work well under OS X against Ruby v1.8.7 and v1.9.2 under OS X.
+You'll need Ruby and RubyGems. It's known to work well under OS X against Ruby v1.8.7 and v1.9.2.
 
 = Features
 
