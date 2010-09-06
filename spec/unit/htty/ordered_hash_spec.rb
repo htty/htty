@@ -1,5 +1,5 @@
 require 'spec'
-require File.expand_path("#{File.dirname __FILE__}/../../../app/htty/ordered_hash")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/ordered_hash")
 
 describe HTTY::OrderedHash do
   describe 'that is empty' do

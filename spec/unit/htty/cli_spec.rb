@@ -1,6 +1,6 @@
 require 'spec'
-require File.expand_path("#{File.dirname __FILE__}/../../../app/htty/cli")
-require File.expand_path("#{File.dirname __FILE__}/../../../app/htty/request")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/cli")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
 
 describe HTTY::CLI do
   describe 'with empty arguments' do

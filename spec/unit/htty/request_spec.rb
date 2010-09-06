@@ -1,6 +1,6 @@
 require 'spec'
-require File.expand_path("#{File.dirname __FILE__}/../../../app/htty/request")
-require File.expand_path("#{File.dirname __FILE__}/../../../app/htty/response")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
 
 shared_examples_for 'an empty request' do
   it 'should have only the default headers' do

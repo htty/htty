@@ -17,7 +17,7 @@ namespace :doc do
     rdoc.rdoc_files.include(*%w(about.rdoc
                                 README.rdoc
                                 MIT-LICENSE.rdoc
-                                app/**/*.rb))
+                                lib/**/*.rb))
   end
 end
 
