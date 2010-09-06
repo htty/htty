@@ -51,7 +51,7 @@ Here are a few annotated _htty_ session transcripts to get you started.
 
 This simple example shows how to explore read-only web services with _htty_.
 
-link:../doc_bin/esvapi1.png
+http://htty.github.com/images/esvapi1.png
 
 You can point _htty_ at a complete or partial web URL. If you don't supply a URL, \http://0.0.0.0/ (port 80) will be used. You can vary the protocol scheme, userinfo, host, port, path, query string, and fragment as you wish.
 
@@ -61,17 +61,17 @@ The +get+ command is one of seven HTTP request methods supported. A concise summ
 
 You can follow redirects using the +follow+ command.
 
-link:../doc_bin/esvapi2.png
+http://htty.github.com/images/esvapi2.png
 
 You can tweak segments of the address at will. Here we are navigating the site's path hierarchy, which you can do with relative as well as absolute pathspecs.
 
-link:../doc_bin/esvapi3.png
+http://htty.github.com/images/esvapi3.png
 
 Here we add query-string parameters. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).
 
 The +headers-response+ and +body-response+ commands reveal the details of a response.
 
-link:../doc_bin/esvapi4.png
+http://htty.github.com/images/esvapi4.png
 
 There was some cruft in the web service's response (a horizontal line, a passage reference, verse numbers, a copyright stamp, and line breaks). We eliminate it by using API options provided by the web service we're talking to.
 
@@ -83,15 +83,15 @@ Exit your session at any time by typing +quit+.
 
 The next example demonstrates _htty_'s cookies features, as well as how to review and revisit past requests.
 
-link:../doc_bin/google1.png
+http://htty.github.com/images/google1.png
 
 Notice that when cookies are offered in a response, a bold asterisk (it looks like a cookie) appears in the response summary. The same cookie symbol appears next to the _Set-Cookie_ header when you display response headers.
 
-link:../doc_bin/google2.png
+http://htty.github.com/images/google2.png
 
 The +cookies-use+ command copies cookies out of the response into the next request. The cookie symbol appears next to the _Cookie_ header when you display request headers.
 
-link:../doc_bin/google3.png
+http://htty.github.com/images/google3.png
 
 An abbreviated history is available through the +history+ command. Information about requests in the history includes request method, URL, number of headers (and a cookie symbol, if cookies were sent), and the size of the body. Information about responses in the history includes response code, number of headers (and a cookie symbol, if cookies were received), and the size of the body.
 
@@ -123,7 +123,7 @@ Assume that we have the following Sinatra application listening on Sinatra's def
 
 This application expects _GET_ and _POST_ requests and responds in various contrived ways.
 
-link:../doc_bin/sinatra1.png
+http://htty.github.com/images/sinatra1.png
 
 Here you can see a request body being specified. Type +body-set+ to enter body data, and terminate it by typing Return three times consecutively.
 
@@ -134,7 +134,7 @@ Also note how different response codes are rendered:
 * Response codes between 400 and 499 appear white on red to indicate failure
 * Response codes between 500 and 599 appear flashing black on yellow to indicate a server error
 
-link:../doc_bin/sinatra2.png
+http://htty.github.com/images/sinatra2.png
 
 As with the abbreviated history demonstrated earlier, verbose history shows a numbered list of requests and the responses they elicited. All information exchanged between client and server is shown.
 
@@ -142,7 +142,7 @@ As with the abbreviated history demonstrated earlier, verbose history shows a nu
 
 You can learn how to use _htty_ commands from within _htty_.
 
-link:../doc_bin/help.png
+http://htty.github.com/images/help.png
 
 The +help+ command takes an optional argument of the abbreviated or full name of a command.
 
