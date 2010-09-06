@@ -11,7 +11,7 @@ spec = Gem::Specification.new do |s|
   s.has_rdoc     = true
 
   s.executables << 'htty'
-  s.requirements << 'Ruby v1.9.2 or later'
+  s.requirements << 'Ruby v1.8.7 or later'
   s.extra_rdoc_files = %w(README.rdoc MIT-LICENSE.rdoc)
   s.rdoc_options << '--title'  << 'htty, the HTTP TTY' <<
                     '--main'   << 'README.rdoc'        <<
