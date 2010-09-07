@@ -196,4 +196,4 @@ The author, Nils&nbsp;Jonsson[mailto:htty@nilsjonsson.com], owes a debt of inspi
 
 = License
 
-Released under the MIT&nbsp;License[link:MIT-LICENSE_rdoc.html].
+Released under the MIT&nbsp;License[http://htty.github.com/MIT-LICENSE_rdoc.html].
