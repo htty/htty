@@ -21,50 +21,50 @@ describe HTTY::Request do
     describe 'an invalid IPv4 address having' do
       describe 'consecutive dots' do
         it 'should raise URI::InvalidURIError' do
-          lambda {
+          expect {
             HTTY::Request.new '1.2.3..4'
-          }.should raise_error(URI::InvalidURIError)
+          }.to raise_error(URI::InvalidURIError)
         end
       end
 
       describe 'no dots' do
         it 'should raise URI::InvalidURIError' do
-          lambda {
+          expect {
             HTTY::Request.new '1234'
-          }.should raise_error(URI::InvalidURIError)
+          }.to raise_error(URI::InvalidURIError)
         end
       end
 
       describe 'too few dotted decimals' do
         it 'should raise URI::InvalidURIError' do
-          lambda {
+          expect {
             HTTY::Request.new '1.2.3'
-          }.should raise_error(URI::InvalidURIError)
+          }.to raise_error(URI::InvalidURIError)
         end
       end
 
       describe 'too many dotted decimals' do
         it 'should raise URI::InvalidURIError' do
-          lambda {
+          expect {
             HTTY::Request.new '1.2.3.4.5'
-          }.should raise_error(URI::InvalidURIError)
+          }.to raise_error(URI::InvalidURIError)
         end
       end
 
       describe 'a dotted decimal out of range' do
         it 'should raise URI::InvalidURIError' do
-          lambda {
+          expect {
             HTTY::Request.new '1.2.3.1000'
-          }.should raise_error(URI::InvalidURIError)
+          }.to raise_error(URI::InvalidURIError)
         end
       end
     end
 
     describe 'an invalid hostname having a leading hyphen' do
       it 'should raise URI::InvalidURIError' do
-        lambda {
+        expect {
           HTTY::Request.new '-google.com'
-        }.should raise_error(URI::InvalidURIError)
+        }.to raise_error(URI::InvalidURIError)
       end
     end
   end
