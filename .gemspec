@@ -6,7 +6,7 @@ spec = Gem::Specification.new do |s|
                    'servers. It is something of a cross between curl and the ' +
                    'Lynx browser.'
   s.files        = %w(README.rdoc MIT-LICENSE.rdoc VERSION) +
-                   Dir['app/**/*.rb']                       +
+                   Dir['lib/**/*.rb']                       +
                    Dir['spec/**/*']
   s.has_rdoc     = true
 
