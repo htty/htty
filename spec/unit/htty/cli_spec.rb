@@ -12,9 +12,10 @@ describe HTTY::CLI do
 
   describe 'with an address argument' do
     it 'should have a session with a URI corresponding to the address' do
-      cli = HTTY::CLI.new(%w(http://njonsson@github.com/njonsson/htty))
-      cli.session.requests.should == [HTTY::Request.new('http://'             +
+      cli = HTTY::CLI.new(%w(https://njonsson@github.com/njonsson/htty))
+      cli.session.requests.should == [HTTY::Request.new('https://'            +
                                                         'njonsson@github.com' +
+                                                        ':443'                +
                                                         '/njonsson/htty')]
     end
   end

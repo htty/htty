@@ -65,9 +65,6 @@ class HTTY::Request < HTTY::Payload
     authority               = build_authority(components)
     path_query_and_fragment = build_path_query_and_fragment(components)
     path_query_and_fragment ||= '/' if authority
-    unless scheme == 'http://'
-      raise ArgumentError, "#{scheme.inspect} is not yet supported"
-    end
     URI.parse([scheme, authority, path_query_and_fragment].join)
   end
 

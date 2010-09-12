@@ -156,6 +156,18 @@ describe HTTY::Request do
       it_should_behave_like 'an empty request'
     end
 
+    describe 'the HTTPS scheme, userinfo, and a hostname' do
+      before :each do
+        @request = HTTY::Request.new('https://njonsson@github.com')
+      end
+
+      it 'should have an HTTPS URI for host with that userinfo' do
+        @request.uri.should == URI.parse('https://njonsson@github.com:443/')
+      end
+
+      it_should_behave_like 'an empty request'
+    end
+
     describe 'a hostname and the root path' do
       before :each do
         @request = HTTY::Request.new('github.com/')
@@ -163,6 +175,18 @@ describe HTTY::Request do
 
       it 'should have an HTTP URI for the root of that host' do
         @request.uri.should == URI.parse('http://github.com:80/')
+      end
+
+      it_should_behave_like 'an empty request'
+    end
+
+    describe 'a hostname, port 443, and the root path' do
+      before :each do
+        @request = HTTY::Request.new('github.com:443/')
+      end
+
+      it 'should have an HTTPS URI for the root of that host' do
+        @request.uri.should == URI.parse('https://github.com:443/')
       end
 
       it_should_behave_like 'an empty request'
@@ -249,10 +273,10 @@ describe HTTY::Request do
       it_should_behave_like 'an empty request'
     end
 
-    describe 'the HTTP scheme, userinfo, a hostname, a port, a path, a query ' +
-             'string, and a fragment' do
+    describe 'the HTTPS scheme, userinfo, a hostname, a port, a path, a ' +
+             'query string, and a fragment' do
       before :each do
-        @request = HTTY::Request.new('http://njonsson@github.com:123' +
+        @request = HTTY::Request.new('https://njonsson@github.com:123' +
                                      '/search/deep?q=http&lang=en#content')
       end
 
@@ -262,11 +286,11 @@ describe HTTY::Request do
         end
 
         describe '-- and is untouched --' do
-          it 'should have an HTTP URI for that query string and that '    +
+          it 'should have an HTTPS URI for that query string and that '   +
              'fragment of that path on that host on that port with that ' +
              'userinfo' do
-            @request.uri.should == URI.parse('http://njonsson@github.com:123' +
-                                             '/search/deep?q=http&lang=en'    +
+            @request.uri.should == URI.parse('https://njonsson@github.com:123' +
+                                             '/search/deep?q=http&lang=en'     +
                                              '#content')
           end
 
@@ -309,10 +333,25 @@ describe HTTY::Request do
         describe '-- when sent #scheme_set with' do
           describe 'the same scheme --' do
             before :each do
-              @request.scheme_set 'http'
+              @request.scheme_set 'https'
             end
 
             it 'should have an unchanged URI' do
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
+                                               ':123'                        +
+                                               '/search/deep?q=http&lang=en' +
+                                               '#content')
+            end
+
+            it_should_behave_like 'an empty request'
+          end
+
+          describe 'a different scheme --' do
+            before :each do
+              @request.scheme_set 'http'
+            end
+
+            it 'should have the same URI, with the changed scheme' do
               @request.uri.should == URI.parse('http://njonsson@github.com'  +
                                                ':123'                        +
                                                '/search/deep?q=http&lang=en' +
@@ -330,7 +369,7 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=http&lang=en' +
                                                '#content')
@@ -345,7 +384,7 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, with the changed userinfo' do
-              @request.uri.should == URI.parse('http://nils@github.com:123'  +
+              @request.uri.should == URI.parse('https://nils@github.com:123' +
                                                '/search/deep?q=http&lang=en' +
                                                '#content')
             end
@@ -360,7 +399,7 @@ describe HTTY::Request do
           end
 
           it 'should have the same URI, without userinfo' do
-            @request.uri.should == URI.parse('http://github.com:123'       +
+            @request.uri.should == URI.parse('https://github.com:123'      +
                                              '/search/deep?q=http&lang=en' +
                                              '#content')
           end
@@ -375,7 +414,7 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=http&lang=en' +
                                                '#content')
@@ -390,7 +429,7 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, with the changed scheme' do
-              @request.uri.should == URI.parse('http://'                      +
+              @request.uri.should == URI.parse('https://'                     +
                                                'njonsson@gist.github.com:123' +
                                                '/search/deep?q=http&lang=en'  +
                                                '#content')
@@ -407,7 +446,7 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=http&lang=en' +
                                                '#content')
@@ -422,7 +461,7 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, with the changed scheme' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':8888'                       +
                                                '/search/deep?q=http&lang=en' +
                                                '#content')
@@ -439,7 +478,7 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, descending to the expected path' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep/foo'            +
                                                '?q=http&lang=en#content')
@@ -454,7 +493,7 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, ascending to the expected path' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search?q=http&lang=en#content')
             end
@@ -468,7 +507,7 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, changing to the expected path' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/foo/bar?q=http&lang=en'     +
                                                '#content')
@@ -485,7 +524,7 @@ describe HTTY::Request do
             end
 
             it 'should have a URI including the new query parameter' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep'                +
                                                '?q=http&lang=en&foo=bar'     +
@@ -501,7 +540,7 @@ describe HTTY::Request do
             end
 
             it 'should have a URI with the new value of the query parameter' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=ruby&lang=en' +
                                                '#content')
@@ -517,7 +556,7 @@ describe HTTY::Request do
 
             it 'should have a URI with the new value of the second query ' +
                'parameter' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=http&lang=fr' +
                                                '#content')
@@ -534,7 +573,7 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=http&lang=en' +
                                                '#content')
@@ -549,7 +588,7 @@ describe HTTY::Request do
             end
 
             it 'should have a URI missing the first query parameter' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?lang=en#content')
             end
@@ -563,7 +602,7 @@ describe HTTY::Request do
             end
 
             it 'should have a URI missing the second query parameter' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=http#content')
             end
@@ -578,7 +617,7 @@ describe HTTY::Request do
           end
 
           it 'should have a URI having no query string' do
-            @request.uri.should == URI.parse('http://njonsson@github.com:123' +
+            @request.uri.should == URI.parse('https://njonsson@github.com:123' +
                                              '/search/deep#content')
           end
 
@@ -592,7 +631,7 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=http&lang=en' +
                                                '#content')
@@ -607,7 +646,7 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, with the changed fragment' do
-              @request.uri.should == URI.parse('http://njonsson@github.com'  +
+              @request.uri.should == URI.parse('https://njonsson@github.com' +
                                                ':123'                        +
                                                '/search/deep?q=http&lang=en' +
                                                '#details')
@@ -623,7 +662,7 @@ describe HTTY::Request do
           end
 
           it 'should have the same URI, without fragment' do
-            @request.uri.should == URI.parse('http://njonsson@github.com:123' +
+            @request.uri.should == URI.parse('https://njonsson@github.com:123' +
                                              '/search/deep?q=http&lang=en')
           end
 
@@ -636,8 +675,8 @@ describe HTTY::Request do
           end
 
           it 'should have an unchanged URI' do
-            @request.uri.should == URI.parse('http://njonsson@github.com:123' +
-                                             '/search/deep?q=http&lang=en'    +
+            @request.uri.should == URI.parse('https://njonsson@github.com:123' +
+                                             '/search/deep?q=http&lang=en'     +
                                              '#content')
           end
 
@@ -688,8 +727,8 @@ describe HTTY::Request do
           end
 
           it 'should have an unchanged URI' do
-            @request.uri.should == URI.parse('http://njonsson@github.com:123' +
-                                             '/search/deep?q=http&lang=en'    +
+            @request.uri.should == URI.parse('https://njonsson@github.com:123' +
+                                             '/search/deep?q=http&lang=en'     +
                                              '#content')
           end
 
@@ -855,8 +894,8 @@ describe HTTY::Request do
           end
 
           it 'should have an unchanged URI' do
-            @request.uri.should == URI.parse('http://njonsson@github.com:123' +
-                                             '/search/deep?q=http&lang=en'    +
+            @request.uri.should == URI.parse('https://njonsson@github.com:123' +
+                                             '/search/deep?q=http&lang=en'     +
                                              '#content')
           end
 
@@ -900,8 +939,8 @@ describe HTTY::Request do
         end
 
         it 'should not affect the URI' do
-          @request.uri.should == URI.parse('http://njonsson@github.com:123' +
-                                           '/search/deep?q=http&lang=en'    +
+          @request.uri.should == URI.parse('https://njonsson@github.com:123' +
+                                           '/search/deep?q=http&lang=en'     +
                                            '#content')
         end
 
@@ -956,10 +995,10 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'userinfo' do
-            @new_request.uri.should == URI.parse('http://nils@github.com' +
-                                                 ':123'                   +
-                                                 '/search/deep'           +
-                                                 '?q=http&lang=en'        +
+            @new_request.uri.should == URI.parse('https://nils@github.com' +
+                                                 ':123'                    +
+                                                 '/search/deep'            +
+                                                 '?q=http&lang=en'         +
                                                  '#content')
           end
 
@@ -974,7 +1013,7 @@ describe HTTY::Request do
           end
 
           it 'should return a request with the same URI not having userinfo' do
-            @new_request.uri.should == URI.parse('http://github.com:123'       +
+            @new_request.uri.should == URI.parse('https://github.com:123'      +
                                                  '/search/deep?q=http&lang=en' +
                                                  '#content')
           end
@@ -991,7 +1030,7 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'host' do
-            @new_request.uri.should == URI.parse('http://'                     +
+            @new_request.uri.should == URI.parse('https://'                    +
                                                  'njonsson@gist.github.com'    +
                                                  ':123'                        +
                                                  '/search/deep?q=http&lang=en' +
@@ -1010,7 +1049,7 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'port' do
-            @new_request.uri.should == URI.parse('http://njonsson@github.com'  +
+            @new_request.uri.should == URI.parse('https://njonsson@github.com' +
                                                  ':8888'                       +
                                                  '/search/deep?q=http&lang=en' +
                                                  '#content')
@@ -1028,7 +1067,7 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'path' do
-            @new_request.uri.should == URI.parse('http://njonsson@github.com'  +
+            @new_request.uri.should == URI.parse('https://njonsson@github.com' +
                                                  ':123'                        +
                                                  '/search/deep/foo'            +
                                                  '?q=http&lang=en#content')
@@ -1046,7 +1085,7 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the new query ' +
              'parameter' do
-            @new_request.uri.should == URI.parse('http://njonsson@github.com'  +
+            @new_request.uri.should == URI.parse('https://njonsson@github.com' +
                                                  ':123'                        +
                                                  '/search/deep'                +
                                                  '?q=http&lang=en&foo=bar'     +
@@ -1066,7 +1105,7 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI missing the first ' +
              'query parameter' do
-            @new_request.uri.should == URI.parse('http://njonsson@github.com'  +
+            @new_request.uri.should == URI.parse('https://njonsson@github.com' +
                                                  ':123'                        +
                                                  '/search/deep?lang=en#content')
           end
@@ -1083,7 +1122,7 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having no query ' +
              'string' do
-            @new_request.uri.should == URI.parse('http://'                 +
+            @new_request.uri.should == URI.parse('https://'                +
                                                  'njonsson@github.com:123' +
                                                  '/search/deep#content')
           end
@@ -1100,7 +1139,7 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'fragment' do
-            @new_request.uri.should == URI.parse('http://njonsson@github.com'  +
+            @new_request.uri.should == URI.parse('https://njonsson@github.com' +
                                                  ':123'                        +
                                                  '/search/deep?q=http&lang=en' +
                                                  '#details')
@@ -1117,7 +1156,7 @@ describe HTTY::Request do
           end
 
           it 'should return a request with the same URI missing the fragment' do
-            @new_request.uri.should == URI.parse('http://'                 +
+            @new_request.uri.should == URI.parse('https://'                +
                                                  'njonsson@github.com:123' +
                                                  '/search/deep?q=http&lang=en')
           end
@@ -1133,7 +1172,7 @@ describe HTTY::Request do
           end
 
           it 'should return a request with an unchanged URI' do
-            @new_request.uri.should == URI.parse('http://'                     +
+            @new_request.uri.should == URI.parse('https://'                    +
                                                  'njonsson@github.com:123'     +
                                                  '/search/deep?q=http&lang=en' +
                                                  '#content')
@@ -1184,7 +1223,7 @@ describe HTTY::Request do
           end
 
           it 'should return a request with an unchanged URI' do
-            @new_request.uri.should == URI.parse('http://'                     +
+            @new_request.uri.should == URI.parse('https://'                    +
                                                  'njonsson@github.com:123'     +
                                                  '/search/deep?q=http&lang=en' +
                                                  '#content')
