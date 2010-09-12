@@ -43,7 +43,10 @@ class HTTY::CLI::Commands::BodySet < HTTY::CLI::Command
       lines            = []
       empty_line_count = 0
       while empty_line_count < 2 do
-        lines << $stdin.gets.chomp
+        if (input = $stdin.gets).nil?
+          break
+        end
+        lines << input.chomp
         empty_line_count = lines.last.empty? ? (empty_line_count + 1) : 0
       end
       request.body_set lines.join("\n").gsub(/[\r\n]+$/, '')

@@ -64,7 +64,10 @@ private
     command_line = ''
     while command_line.empty? do
       print strong(session.requests.last.uri) + normal('> ')
-      command_line = $stdin.gets.chomp.strip
+      if (command_line = $stdin.gets).nil?
+        raise Interrupt
+      end
+      command_line.chomp!.strip!
     end
     HTTY::CLI::Commands.build_for command_line, :session => session
   end
