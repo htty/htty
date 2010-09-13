@@ -161,10 +161,6 @@ The +help+ command takes an optional argument of the abbreviated or full name of
 
 Here are some features that are coming down the pike.
 
-== HTTP Secure URLs
-
-The HTTPS code is broken right now. Pardon the dust.
-
 == Commands for streamlining web form submission
 
 These features will make _htty_ better at screen-scraping.
