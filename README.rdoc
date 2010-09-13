@@ -205,6 +205,11 @@ You can also get help in the \#htty channel on Freenode[http://webchat.freenode.
 
 The author, Nils&nbsp;Jonsson[mailto:htty@nilsjonsson.com], owes a debt of inspiration to the http-console[http://github.com/cloudhead/http-console] project.
 
+Thanks to contributors:
+
+* Bo Frederiksen (bofrede[http://github.com/bofrede]) for work on the CLI
+* Robert Pitts (rbxbx[http://github.com/rbxbx]) for work on RSpec specs
+
 = License
 
 Released under the MIT&nbsp;License[http://htty.github.com/MIT-LICENSE_rdoc.html].
