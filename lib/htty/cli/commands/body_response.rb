@@ -49,9 +49,41 @@ class HTTY::CLI::Commands::BodyResponse < HTTY::CLI::Command
       raise HTTY::NoResponseError
     end
     unless (body = response.body).to_s.empty?
-      puts body
+      if arguments.include?('open')
+        open(body)
+      else
+        puts body
+      end
     end
     self
   end
 
+  private
+
+  def open(body)
+    require 'launchy'
+    page = render(body)
+    Launchy::Browser.run "file://#{page.path}"
+    page.close
+  rescue LoadError
+    warn 'Sorry, you need to install launchy to open pages: `gem install launchy`'
+  end
+
+  def render(body)
+    TempHTML.new("htty-#{Time.new.strftime("%Y%m%d%H%M%S")}.html").tap do |file|
+      file.write(body) and file.rewind
+    end
+  end
+
+end
+
+# Tempfile won't let you set a meaningful extension.
+require 'tempfile'
+class TempHTML < Tempfile
+  def make_tmpname(basename, n)
+    # force tempfile to use basename's extension
+    extension = File::extname(basename)
+    # force hyphens instead of periods in name
+    sprintf('%s%d-%d%s', File::basename(basename, extension), $$, n, extension)
+  end
 end
