@@ -106,13 +106,17 @@ module HTTY::CLI::Display
     end
   end
 
+  def show_prompt(request)
+    print format_request_uri(request.uri) + normal('> ')
+  end
+
   def show_request(request)
     method = format(" #{request.request_method.to_s.upcase} ", :inverse)
     print "#{method} "
     cookies_asterisk = request.cookies.empty? ? '' : strong('*')
     body_length = request.body.to_s.length
     body_size   = body_length.zero? ? 'empty' : "#{body_length}-character"
-    puts [request.uri,
+    puts [format_request_uri(request.uri),
           pluralize('header', request.headers.length) + cookies_asterisk,
           "#{body_size} body"].join(' -- ')
   end
@@ -161,6 +165,17 @@ module HTTY::CLI::Display
   end
 
 private
+
+  def format_request_uri(uri)
+    if uri.userinfo
+      userinfo_with_at = "#{uri.userinfo}@"
+      before_userinfo, after_userinfo = uri.to_s.split(userinfo_with_at, 2)
+      return strong(before_userinfo)  +
+             normal(userinfo_with_at) +
+             strong(after_userinfo)
+    end
+    return strong(uri)
+  end
 
   def pluralize(word, number)
     case number

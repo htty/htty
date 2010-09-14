@@ -63,7 +63,7 @@ private
   def prompt_for_command
     command_line = ''
     while command_line.empty? do
-      print strong(session.requests.last.uri) + normal('> ')
+      show_prompt session.requests.last
       if (command_line = $stdin.gets).nil?
         raise Interrupt
       end

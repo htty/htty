@@ -16,6 +16,21 @@ shared_examples_for 'an empty request' do
   end
 end
 
+shared_examples_for 'an empty, authenticated request' do
+  it 'should the expected Authorization header plus the default headers' do
+    @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                ['Authorization', 'Basic bmpvbnNzb24=']]
+  end
+
+  it 'should have no body' do
+    @request.body.should be_nil
+  end
+
+  it 'should have no response' do
+    @request.response.should be_nil
+  end
+end
+
 describe HTTY::Request do
   describe 'initializing with' do
     describe 'an invalid IPv4 address having' do
@@ -165,7 +180,7 @@ describe HTTY::Request do
         @request.uri.should == URI.parse('https://njonsson@github.com:443/')
       end
 
-      it_should_behave_like 'an empty request'
+      it_should_behave_like 'an empty, authenticated request'
     end
 
     describe 'a hostname and the root path' do
@@ -294,7 +309,7 @@ describe HTTY::Request do
                                              '#content')
           end
 
-          it_should_behave_like 'an empty request'
+          it_should_behave_like 'an empty, authenticated request'
         end
 
         describe '-- when sent #address with an address consisting of' do
@@ -314,7 +329,19 @@ describe HTTY::Request do
                                                '#flames')
             end
 
-            it_should_behave_like 'an empty request'
+            it 'should the expected Authorization header plus the default ' +
+               'headers' do
+              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                          ['Authorization', 'Basic c3RldmU=']]
+            end
+
+            it 'should have no body' do
+              @request.body.should be_nil
+            end
+
+            it 'should have no response' do
+              @request.response.should be_nil
+            end
           end
 
           describe 'a different hostname --' do
@@ -343,7 +370,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'a different scheme --' do
@@ -358,7 +385,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
         end
 
@@ -375,7 +402,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'different userinfo --' do
@@ -389,7 +416,19 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it 'should the expected Authorization header plus the default ' +
+               'headers' do
+              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                          ['Authorization', 'Basic bmlscw==']]
+            end
+
+            it 'should have no body' do
+              @request.body.should be_nil
+            end
+
+            it 'should have no response' do
+              @request.response.should be_nil
+            end
           end
         end
 
@@ -420,7 +459,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'a different host --' do
@@ -435,7 +474,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
         end
 
@@ -452,7 +491,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'a different port --' do
@@ -467,7 +506,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
         end
 
@@ -484,7 +523,7 @@ describe HTTY::Request do
                                                '?q=http&lang=en#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'a parent reference --' do
@@ -498,7 +537,7 @@ describe HTTY::Request do
                                                '/search?q=http&lang=en#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'an absolute reference --' do
@@ -513,7 +552,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
         end
 
@@ -531,7 +570,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'with a new value for the first query parameter --' do
@@ -546,7 +585,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'with a new value for the second query parameter --' do
@@ -562,7 +601,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
         end
 
@@ -579,7 +618,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'with the first query parameter --' do
@@ -593,7 +632,7 @@ describe HTTY::Request do
                                                '/search/deep?lang=en#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'with the second query parameter --' do
@@ -607,7 +646,7 @@ describe HTTY::Request do
                                                '/search/deep?q=http#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
         end
 
@@ -621,7 +660,7 @@ describe HTTY::Request do
                                              '/search/deep#content')
           end
 
-          it_should_behave_like 'an empty request'
+          it_should_behave_like 'an empty, authenticated request'
         end
 
         describe '-- when sent #fragment_set with' do
@@ -637,7 +676,7 @@ describe HTTY::Request do
                                                '#content')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
 
           describe 'different fragment --' do
@@ -652,7 +691,7 @@ describe HTTY::Request do
                                                '#details')
             end
 
-            it_should_behave_like 'an empty request'
+            it_should_behave_like 'an empty, authenticated request'
           end
         end
 
@@ -666,7 +705,7 @@ describe HTTY::Request do
                                              '/search/deep?q=http&lang=en')
           end
 
-          it_should_behave_like 'an empty request'
+          it_should_behave_like 'an empty, authenticated request'
         end
 
         describe '-- when sent #header_set with a new header' do
@@ -682,8 +721,10 @@ describe HTTY::Request do
 
           describe '--' do
             it 'should have the header, plus the default headers' do
-              @request.headers.should == [%w(User-Agent htty/1.0.0),
-                                          %w(foo        bar)]
+              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                          ['Authorization', 'Basic ' +
+                                                            'bmpvbnNzb24='],
+                                          ['foo',           'bar']]
             end
           end
 
@@ -694,7 +735,9 @@ describe HTTY::Request do
               end
 
               it 'should have only the default headers' do
-                @request.headers.should == [%w(User-Agent htty/1.0.0)]
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic ' +
+                                                              'bmpvbnNzb24=']]
               end
             end
 
@@ -704,8 +747,10 @@ describe HTTY::Request do
               end
 
               it 'should have the header, plus the default headers' do
-                @request.headers.should == [%w(User-Agent htty/1.0.0),
-                                            %w(foo        bar)]
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic ' +
+                                                              'bmpvbnNzb24='],
+                                            ['foo',           'bar']]
               end
             end
           end
@@ -738,8 +783,10 @@ describe HTTY::Request do
             end
 
             it 'should have the cookie header, plus the default headers' do
-              @request.headers.should == [%w(User-Agent htty/1.0.0),
-                                          %w(Cookie     foo=bar)]
+              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                          ['Authorization', 'Basic ' +
+                                                            'bmpvbnNzb24='],
+                                          ['Cookie',        'foo=bar']]
             end
           end
 
@@ -755,8 +802,11 @@ describe HTTY::Request do
 
               it 'should have the new cookie header, plus the default ' +
                  'headers' do
-                @request.headers.should == [['User-Agent', 'htty/1.0.0'],
-                                            ['Cookie',     'foo=bar; foo=qux']]
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic ' +
+                                                              'bmpvbnNzb24='],
+                                            ['Cookie',        'foo=bar; ' +
+                                                              'foo=qux']]
               end
             end
 
@@ -771,8 +821,11 @@ describe HTTY::Request do
 
               it 'should have the new cookie header, plus the default ' +
                  'headers' do
-                @request.headers.should == [['User-Agent', 'htty/1.0.0'],
-                                            ['Cookie',     'foo=bar; baz=qux']]
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic ' +
+                                                              'bmpvbnNzb24='],
+                                            ['Cookie',        'foo=bar; ' +
+                                                              'baz=qux']]
               end
             end
 
@@ -787,8 +840,10 @@ describe HTTY::Request do
 
               it 'should have the new cookie header, plus the default ' +
                  'headers' do
-                @request.headers.should == [['User-Agent', 'htty/1.0.0'],
-                                            ['Cookie',     'foo=bar; baz']]
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic ' +
+                                                              'bmpvbnNzb24='],
+                                            ['Cookie',        'foo=bar; baz']]
               end
             end
           end
@@ -804,7 +859,9 @@ describe HTTY::Request do
               end
 
               it 'should have only the default headers' do
-                @request.headers.should == [%w(User-Agent htty/1.0.0)]
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic ' +
+                                                              'bmpvbnNzb24=']]
               end
             end
 
@@ -818,8 +875,10 @@ describe HTTY::Request do
               end
 
               it 'should have the cookie header, plus the default headers' do
-                @request.headers.should == [%w(User-Agent htty/1.0.0),
-                                            %w(Cookie     foo=bar)]
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic ' +
+                                                              'bmpvbnNzb24='],
+                                            ['Cookie',        'foo=bar']]
               end
             end
           end
@@ -834,7 +893,9 @@ describe HTTY::Request do
             end
 
             it 'should have only the default headers' do
-              @request.headers.should == [%w(User-Agent htty/1.0.0)]
+              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                          ['Authorization', 'Basic ' +
+                                                            'bmpvbnNzb24=']]
             end
           end
 
@@ -882,8 +943,10 @@ describe HTTY::Request do
             end
 
             it 'should have the cookie header, plus the default headers' do
-              @request.headers.should == [%w(User-Agent htty/1.0.0),
-                                          %w(Cookie     foo=bar=baz=qux)]
+              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                          ['Authorization', 'Basic ' +
+                                                            'bmpvbnNzb24='],
+                                          ['Cookie',        'foo=bar=baz=qux']]
             end
           end
         end
@@ -905,14 +968,20 @@ describe HTTY::Request do
             end
 
             it 'should have only the default headers' do
-              @request.headers.should == [%w(User-Agent htty/1.0.0)]
+              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                          ['Authorization', 'Basic ' +
+                                                            'bmpvbnNzb24=']]
             end
 
             it "should have the expected 'Content-Length' header, plus the " +
                "'User-Agent' header if we do not exclude the "               +
                "'Content-Length' header" do
-              @request.headers(true).should == [%w(User-Agent     htty/1.0.0),
-                                                %w(Content-Length 3)]
+              @request.headers(true).should == [['User-Agent',     'htty/' +
+                                                                   '1.0.0'],
+                                                ['Authorization',  'Basic '   +
+                                                                   'bmpvbnNz' +
+                                                                   'b24='],
+                                                ['Content-Length', '3']]
             end
           end
 
@@ -926,7 +995,9 @@ describe HTTY::Request do
             end
 
             it 'should have only the default headers' do
-              @request.headers.should == [%w(User-Agent htty/1.0.0)]
+              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                          ['Authorization', 'Basic ' +
+                                                            'bmpvbnNzb24=']]
             end
           end
         end
@@ -945,7 +1016,9 @@ describe HTTY::Request do
         end
 
         it 'should not affect the headers' do
-          @request.headers.should == [%w(User-Agent htty/1.0.0)]
+          @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                      ['Authorization', 'Basic ' +
+                                                        'bmpvbnNzb24=']]
         end
 
         it 'should not affect the body' do
@@ -1185,8 +1258,10 @@ describe HTTY::Request do
           describe '--' do
             it 'should return a request with the header, plus the default ' +
                'headers' do
-              @new_request.headers.should == [%w(User-Agent htty/1.0.0),
-                                              %w(foo        bar)]
+              @new_request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                              ['Authorization', 'Basic ' +
+                                                                'bmpvbnNzb24='],
+                                              ['foo',           'bar']]
             end
 
             it 'should return a request without a response' do
@@ -1201,7 +1276,10 @@ describe HTTY::Request do
               end
 
               it 'should return a request with only the default headers' do
-                @new_request.headers.should == [%w(User-Agent htty/1.0.0)]
+                @new_request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                                ['Authorization', 'Basic '     +
+                                                                  'bmpvbnNzb2' +
+                                                                  '4=']]
               end
             end
           end
@@ -1239,14 +1317,20 @@ describe HTTY::Request do
             end
 
             it 'should return a request with only the default headers' do
-              @new_request.headers.should == [%w(User-Agent htty/1.0.0)]
+              @new_request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                              ['Authorization', 'Basic '     +
+                                                                'bmpvbnNzb2' +
+                                                                '4=']]
             end
 
             it "should return a request with the expected 'Content-Length' " +
                "header, plus the 'User-Agent' header if we do not exclude "  +
                "the 'Content-Length' header" do
-              @new_request.headers(true).should == [['User-Agent',     'htty/' +
-                                                                       '1.0.0'],
+              @new_request.headers(true).should == [['User-Agent',    'htty/' +
+                                                                      '1.0.0'],
+                                                    ['Authorization', 'Basic ' +
+                                                                      'bmpvbn' +
+                                                                      'Nzb24='],
                                                     ['Content-Length', '3']]
             end
 
@@ -1265,7 +1349,10 @@ describe HTTY::Request do
             end
 
             it 'should return a request with only the default headers' do
-              @new_request.headers.should == [%w(User-Agent htty/1.0.0)]
+              @new_request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                              ['Authorization', 'Basic '     +
+                                                                'bmpvbnNzb2' +
+                                                                '4=']]
             end
           end
         end

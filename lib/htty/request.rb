@@ -1,5 +1,6 @@
 # Defines HTTY::Request.
 
+require 'base64'
 require 'pathname'
 require 'uri'
 require File.expand_path("#{File.dirname __FILE__}/../htty")
@@ -107,10 +108,13 @@ class HTTY::Request < HTTY::Payload
 
 protected
 
-  def self.clear_cookies_if_host_changes(request)
+  def self.set_up_cookies_and_authentication(request)
     previous_host = request.uri.host
     yield
     request.cookies_remove_all unless request.uri.host == previous_host
+
+    request.send :establish_basic_authentication
+
     request
   end
 
@@ -130,6 +134,7 @@ public
   def initialize(address)
     super({:headers => [['User-Agent', "htty/#{HTTY::VERSION}"]]})
     @uri = self.class.parse_uri(address)
+    establish_basic_authentication
     establish_content_length
   end
 
@@ -154,12 +159,12 @@ public
     uri = self.class.parse_uri(address)
     if response
       dup = dup_without_response
-      return self.class.clear_cookies_if_host_changes(dup) do
+      return self.class.send(:set_up_cookies_and_authentication, dup) do
         dup.uri = uri
       end
     end
 
-    self.class.clear_cookies_if_host_changes self do
+    self.class.send(:set_up_cookies_and_authentication, self) do
       @uri = uri
     end
   end
@@ -426,8 +431,9 @@ protected
     request
   end
 
-  def establish_content_length
-    header_set 'Content-Length', body.to_s.length
+  def establish_basic_authentication
+    value = uri.userinfo ? "Basic #{Base64.encode64(uri.userinfo).chomp}" : nil
+    header_set 'Authorization', value
   end
 
   def path_query_and_fragment
@@ -442,7 +448,7 @@ protected
     components = URI::HTTP::COMPONENT.inject({}) do |result, c|
       result.merge c => uri.send(c)
     end
-    self.class.clear_cookies_if_host_changes self do
+    self.class.send(:set_up_cookies_and_authentication, self) do
       @uri = self.class.build_uri(components.merge(changed_components))
     end
   end
@@ -457,6 +463,10 @@ private
     self.class.build_authority :userinfo => uri.userinfo,
                                :host     => uri.host,
                                :port     => uri.port
+  end
+
+  def establish_content_length
+    header_set 'Content-Length', body.to_s.length
   end
 
   def request!(method)
