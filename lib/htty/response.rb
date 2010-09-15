@@ -1,5 +1,3 @@
-# Defines HTTY::Response.
-
 require File.expand_path("#{File.dirname __FILE__}/cookies_util")
 require File.expand_path("#{File.dirname __FILE__}/payload")
 

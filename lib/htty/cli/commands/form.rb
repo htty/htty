@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::Form.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 
 module HTTY; end

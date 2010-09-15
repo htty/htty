@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::BodyRequest.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/body_response")
 require File.expand_path("#{File.dirname __FILE__}/body_set")

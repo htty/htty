@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::HistoryVerbose.
-
 require File.expand_path("#{File.dirname __FILE__}/../../request")
 require File.expand_path("#{File.dirname __FILE__}/../../response")
 require File.expand_path("#{File.dirname __FILE__}/../command")

@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::HeaderSet.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/headers_set")
 

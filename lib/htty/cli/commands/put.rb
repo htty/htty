@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::Put.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/http_put")
 

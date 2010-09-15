@@ -1,5 +1,3 @@
-# Defines HTTY::Request.
-
 require 'base64'
 require 'pathname'
 require 'uri'
@@ -138,7 +136,8 @@ public
     establish_content_length
   end
 
-  def initialize_copy(source) #:nodoc:
+  # @private
+  def initialize_copy(source)
     super
     @response = @response.dup if @response
     @uri      = @uri.dup

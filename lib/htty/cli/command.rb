@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Command.
-
 require 'abbrev'
 require 'shellwords'
 require File.expand_path("#{File.dirname __FILE__}/display")

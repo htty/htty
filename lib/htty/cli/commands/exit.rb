@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::Exit.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/quit")
 

@@ -1,5 +1,3 @@
-# Loads constants defined within HTTY::CLI::Commands.
-
 module HTTY; end
 
 class HTTY::CLI; end

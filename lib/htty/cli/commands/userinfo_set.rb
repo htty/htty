@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::UserinfoSet.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../url_escaping")
 require File.expand_path("#{File.dirname __FILE__}/address")

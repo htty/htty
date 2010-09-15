@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::CookieClearingCommand.
-
 require File.expand_path("#{File.dirname __FILE__}/display")
 
 module HTTY; end

@@ -1,5 +1,3 @@
-# Defines HTTY::NoLocationHeaderError.
-
 module HTTY; end
 
 # Indicates that the _Location_ header was missing from HTTY::Request#response.

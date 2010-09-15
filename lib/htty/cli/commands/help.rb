@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::Help.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../commands")
 require File.expand_path("#{File.dirname __FILE__}/../display")

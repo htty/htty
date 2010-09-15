@@ -1,5 +1,3 @@
-# Defines HTTY::Payload.
-
 require File.expand_path("#{File.dirname __FILE__}/ordered_hash")
 
 module HTTY; end
@@ -39,7 +37,8 @@ protected
     end
   end
 
-  def initialize_copy(source) #:nodoc:
+  # @private
+  def initialize_copy(source)
     super
     @body    = @body.dup if @body
     @headers = @headers.dup

@@ -1,5 +1,3 @@
-# Defines HTTY::CookiesUtil.
-
 module HTTY; end
 
 # Provides support for marshaling HTTP cookies to and from strings.

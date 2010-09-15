@@ -1,5 +1,3 @@
-# Defines HTTY::NoSetCookieHeaderError.
-
 module HTTY; end
 
 # Indicates that the _Set-Cookie_ header was missing from

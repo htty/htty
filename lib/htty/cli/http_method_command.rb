@@ -1,10 +1,6 @@
-# Defines HTTY::CLI::HTTPMethodCommand.
-
 require File.expand_path("#{File.dirname __FILE__}/../request")
 require File.expand_path("#{File.dirname __FILE__}/display")
 require File.expand_path("#{File.dirname __FILE__}/commands/cookies_use")
-# This 'require' statement leads to an unresolvable circular dependency.
-# require File.expand_path("#{File.dirname __FILE__}/commands/follow")
 
 module HTTY; end
 

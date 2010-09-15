@@ -5,17 +5,13 @@ spec = Gem::Specification.new do |s|
   s.description  = 'htty is a console application for interacting with HTTP '  +
                    'servers. It is something of a cross between curl and the ' +
                    'Lynx browser.'
-  s.files        = %w(README.rdoc MIT-LICENSE.rdoc VERSION) +
-                   Dir['lib/**/*.rb']                       +
+  s.files        = %w(README.markdown MIT-LICENSE.markdown VERSION) +
+                   Dir['lib/**/*.rb']                               +
                    Dir['spec/**/*']
   s.has_rdoc     = true
 
   s.executables << 'htty'
   s.requirements << 'Ruby v1.8.7 or later'
-  s.extra_rdoc_files = %w(README.rdoc MIT-LICENSE.rdoc)
-  s.rdoc_options << '--title'  << 'htty, the HTTP TTY' <<
-                    '--main'   << 'README.rdoc'        <<
-                    '--output' << 'doc'
 
   s.author   = 'Nils Jonsson'
   s.email    = 'htty@nilsjonsson.com'

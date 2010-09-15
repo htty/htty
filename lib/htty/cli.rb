@@ -1,5 +1,3 @@
-# Defines HTTY::CLI and loads constants defined within HTTY::CLI.
-
 require 'readline'
 require File.expand_path("#{File.dirname __FILE__}/cli/commands")
 require File.expand_path("#{File.dirname __FILE__}/cli/commands/help")

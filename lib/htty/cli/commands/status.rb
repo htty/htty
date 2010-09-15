@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::Status.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../display")
 require File.expand_path("#{File.dirname __FILE__}/body_response")

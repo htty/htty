@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::HeadersClear.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/headers_unset_all")
 

@@ -1,25 +1,11 @@
 require 'spec/rake/spectask'
-require 'rake/rdoctask'
+require 'yard'
 
 tasks_in_spec_namespace = []
 
 task :default => :spec
 
-desc 'Build the RDOC HTML Files'
-task :doc => 'doc:rebuild'
-
-namespace :doc do
-  Rake::RDocTask.new :build do |rdoc|
-    rdoc.title         = 'htty, the HTTP TTY'
-    rdoc.main          = 'about.rdoc'
-    rdoc.inline_source = false # Because RDoc no longer accepts this option.
-    rdoc.rdoc_dir      = 'doc'
-    rdoc.rdoc_files.include(*%w(about.rdoc
-                                README.rdoc
-                                MIT-LICENSE.rdoc
-                                lib/**/*.rb))
-  end
-end
+YARD::Rake::YardocTask.new :doc
 
 namespace :spec do |n|
   def define_spec_task(name)

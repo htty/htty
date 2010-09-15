@@ -1,5 +1,3 @@
-# Loads constants defined within HTTY.
-
 # Contains the implementation of _htty_.
 module HTTY
 

@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::UrlEscaping.
-
 require 'uri'
 require File.expand_path("#{File.dirname __FILE__}/display")
 

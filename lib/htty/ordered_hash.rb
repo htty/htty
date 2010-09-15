@@ -1,5 +1,3 @@
-# Defines HTTY::OrderedHash.
-
 module HTTY; end
 
 # Represents a Hash that preserves the insertion order of values. This class
@@ -17,7 +15,8 @@ class HTTY::OrderedHash
     end
   end
 
-  def initialize_copy(source) #:nodoc:
+  # @private
+  def initialize_copy(source)
     super
     @inner_hash = @inner_hash.dup
     @inner_keys = @inner_keys.dup

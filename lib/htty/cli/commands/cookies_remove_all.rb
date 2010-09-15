@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::CookiesRemoveAll.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/cookies")
 require File.expand_path("#{File.dirname __FILE__}/cookies_add")

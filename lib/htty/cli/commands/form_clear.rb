@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::FormClear.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/form_remove_all")
 

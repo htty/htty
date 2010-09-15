@@ -1,5 +1,3 @@
-# Defines HTTY::NoResponseError.
-
 module HTTY; end
 
 # Indicates that HTTY::Request#response was missing.

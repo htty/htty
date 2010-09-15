@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::HeadersResponse.
-
 require File.expand_path("#{File.dirname __FILE__}/../../response")
 require File.expand_path("#{File.dirname __FILE__}/../../no_response_error")
 require File.expand_path("#{File.dirname __FILE__}/../command")

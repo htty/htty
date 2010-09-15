@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::Follow.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../cookie_clearing_command")
 require File.expand_path("#{File.dirname __FILE__}/address")

@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::HeadersRequest.
-
 require File.expand_path("#{File.dirname __FILE__}/../../request")
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../display")

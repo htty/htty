@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Display.
-
 module HTTY; end
 
 class HTTY::CLI; end

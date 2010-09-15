@@ -1,5 +1,3 @@
-# Defines HTTY::CLI::Commands::UserinfoUnset.
-
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/address")
 require File.expand_path("#{File.dirname __FILE__}/userinfo_set")
