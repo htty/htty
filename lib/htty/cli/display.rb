@@ -74,6 +74,10 @@ module HTTY::CLI::Display
     # format string, :foreground_dark_default
   end
 
+  def prompt(request)
+    format_request_uri(request.uri) + normal('> ')
+  end
+
   def say(message, style=:normal)
     puts send(style, notice(message))
   end
@@ -104,10 +108,6 @@ module HTTY::CLI::Display
       puts "#{name.rjust margin - asterisk.to_s.length}:#{strong asterisk} " +
            value
     end
-  end
-
-  def show_prompt(request)
-    print format_request_uri(request.uri) + normal('> ')
   end
 
   def show_request(request)
