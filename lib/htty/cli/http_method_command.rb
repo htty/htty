@@ -27,8 +27,8 @@ module HTTY::CLI::HTTPMethodCommand
     add_request_if_has_response do |request|
       request = request.send("#{method}!", *arguments)
       unless body? || request.body.to_s.empty?
-        puts notice("The body of your #{method.upcase} request is not being " +
-                    'sent')
+        puts notice("The body of your #{method.to_s.upcase} request is not " +
+                    'being sent')
       end
       notify_if_cookies
       notify_if_follow
