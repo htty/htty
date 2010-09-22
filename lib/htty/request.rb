@@ -413,7 +413,8 @@ public
   end
 
   # Establishes a new #uri with the specified _userinfo_.
-  def userinfo_set(userinfo)
+  def userinfo_set(username, password=nil)
+    userinfo = [username, password].compact.join(':')
     rebuild_uri :userinfo => userinfo
   end
 
@@ -432,7 +433,9 @@ protected
   end
 
   def establish_basic_authentication
-    value = uri.userinfo ? "Basic #{Base64.encode64(uri.userinfo).chomp}" : nil
+    value = uri.userinfo                                                 ?
+            "Basic #{Base64.encode64(URI.unescape(uri.userinfo)).chomp}" :
+            nil
     header_set 'Authorization', value
   end
 

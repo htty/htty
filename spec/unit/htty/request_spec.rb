@@ -405,29 +405,57 @@ describe HTTY::Request do
             it_should_behave_like 'an empty, authenticated request'
           end
 
-          describe 'different userinfo --' do
-            before :each do
-              @request.userinfo_set 'nils'
+          describe 'different userinfo' do
+            describe "that does not contain '@' --" do
+              before :each do
+                @request.userinfo_set 'nils'
+              end
+
+              it 'should have the same URI, with the changed userinfo' do
+                @request.uri.should == URI.parse('https://nils@github.com:123' +
+                                                 '/search/deep?q=http&lang=en' +
+                                                 '#content')
+              end
+
+              it 'should the expected Authorization header plus the default ' +
+                 'headers' do
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic bmlscw==']]
+              end
+
+              it 'should have no body' do
+                @request.body.should be_nil
+              end
+
+              it 'should have no response' do
+                @request.response.should be_nil
+              end
             end
 
-            it 'should have the same URI, with the changed userinfo' do
-              @request.uri.should == URI.parse('https://nils@github.com:123' +
-                                               '/search/deep?q=http&lang=en' +
-                                               '#content')
-            end
+            describe "that contains an escaped '@' --" do
+              before :each do
+                @request.userinfo_set 'n%45'
+              end
 
-            it 'should the expected Authorization header plus the default ' +
-               'headers' do
-              @request.headers.should == [['User-Agent',    'htty/1.0.0'],
-                                          ['Authorization', 'Basic bmlscw==']]
-            end
+              it 'should have the same URI, with the changed userinfo' do
+                @request.uri.should == URI.parse('https://n%45@github.com:123' +
+                                                 '/search/deep?q=http&lang=en' +
+                                                 '#content')
+              end
 
-            it 'should have no body' do
-              @request.body.should be_nil
-            end
+              it 'should the expected Authorization header plus the default ' +
+                 'headers' do
+                @request.headers.should == [['User-Agent',    'htty/1.0.0'],
+                                            ['Authorization', 'Basic bkU=']]
+              end
 
-            it 'should have no response' do
-              @request.response.should be_nil
+              it 'should have no body' do
+                @request.body.should be_nil
+              end
+
+              it 'should have no response' do
+                @request.response.should be_nil
+              end
             end
           end
         end

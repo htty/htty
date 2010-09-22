@@ -25,7 +25,7 @@ class HTTY::CLI::Commands::UserinfoSet < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _userinfo-set_
   # command.
   def self.command_line_arguments
-    'userinfo'
+    'username [password]'
   end
 
   # Returns the help text for the _userinfo-set_ command.
@@ -49,7 +49,20 @@ class HTTY::CLI::Commands::UserinfoSet < HTTY::CLI::Command
   # Performs the _userinfo-set_ command.
   def perform
     add_request_if_has_response do |request|
-      request.userinfo_set(*escape_or_warn_of_escape_sequences(arguments))
+      arguments = self.arguments
+      if (arguments.length == 1) && (arguments.first.scan(':').length == 1)
+        arguments = arguments.first.split(':')
+      end
+      arguments = escape_mercantile(escape_or_warn_of_escape_sequences(arguments))
+      request.userinfo_set(*arguments)
+    end
+  end
+
+private
+
+  def escape_mercantile(arguments)
+    arguments.collect do |a|
+      a.gsub '@', '%40'
     end
   end
 
