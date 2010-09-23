@@ -42,7 +42,7 @@ You'll need Ruby and RubyGems. It's known to work well under OS X against Ruby v
 * Intuitive commands and command aliases
 * Support for familiar HTTP methods _GET_, _POST_, _PUT_, and _DELETE_, as well as _HEAD_, _OPTIONS_ and _TRACE_
 * Support for HTTP Secure connections and HTTP Basic Authentication
-* Automatic URL-encoding of query-string parameters and URL fragments
+* Automatic URL-encoding of userinfo, query-string parameters, and URL fragments
 * Transcripts, both verbose and summary
 * Dead-simple cookie handling and redirect following
 * Built-in help
@@ -176,9 +176,9 @@ Using any of the forthcoming +form+ commands will clear any non-form content in 
 
 You will also be able to pop open a browser window containing request and response bodies.
 
-== Shiny _curses_ goodness
+== Shiny autocomplete goodness
 
-We'll have command history using the arrow keys, command autocompletion, and Tab key navigation of forms.
+We'll have command command autocompletion, and possibly Tab key navigation of forms.
 
 == Custom command aliases and shell emulation of _http-console_
 
@@ -188,9 +188,9 @@ _http-console_ has a nice command-line. We should have an _http-console_ skin fo
 
 = Contributing
 
-Your patches are welcome, and you will receive attribution here for good stuff.
+Report defects and feature requests at github.com/htty/htty/issues[http://github.com/htty/htty/issues].
 
-Fork the official _htty_ repository located at http://github.com/htty/htty and send a pull request to htty[http://github.com/htty].
+Your patches are welcome, and you will receive attribution here for good stuff. Fork the official _htty_ repository located at http://github.com/htty/htty and send a pull request.
 
 = News and information
 
