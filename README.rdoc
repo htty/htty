@@ -205,7 +205,7 @@ The author, Nils&nbsp;Jonsson[mailto:htty@nilsjonsson.com], owes a debt of inspi
 Thanks to contributors:
 
 * Bo Frederiksen (bofrede[http://github.com/bofrede]) for work on the CLI
-* Robert Pitts (rbxbx[http://github.com/rbxbx]) for work on RSpec specs
+* Robert Pitts (rbxbx[http://github.com/rbxbx]) for work on the CLI and on RSpec specs
 
 = License
 
