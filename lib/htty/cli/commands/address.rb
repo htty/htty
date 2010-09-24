@@ -1,5 +1,4 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../cookie_clearing_command")
 require File.expand_path("#{File.dirname __FILE__}/port_set")
 require File.expand_path("#{File.dirname __FILE__}/scheme_set")
 
@@ -11,8 +10,6 @@ module HTTY::CLI::Commands; end
 
 # Encapsulates the _address_ command.
 class HTTY::CLI::Commands::Address < HTTY::CLI::Command
-
-  include HTTY::CLI::CookieClearingCommand
 
   # Returns the name of a category under which help for the _address_ command
   # should appear.
@@ -73,7 +70,7 @@ class HTTY::CLI::Commands::Address < HTTY::CLI::Command
   # Performs the _address_ command.
   def perform
     add_request_if_has_response do |request|
-      notify_if_cookies_cleared request do
+      self.class.notify_if_cookies_cleared request do
         request.address(*arguments)
       end
     end

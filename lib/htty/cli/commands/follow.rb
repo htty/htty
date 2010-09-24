@@ -1,5 +1,4 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../cookie_clearing_command")
 require File.expand_path("#{File.dirname __FILE__}/address")
 require File.expand_path("#{File.dirname __FILE__}/http_get")
 
@@ -11,8 +10,6 @@ module HTTY::CLI::Commands; end
 
 # Encapsulates the _follow_ command.
 class HTTY::CLI::Commands::Follow < HTTY::CLI::Command
-
-  include HTTY::CLI::CookieClearingCommand
 
   # Returns the name of a category under which help for the _follow_ command
   # should appear.
@@ -45,7 +42,7 @@ class HTTY::CLI::Commands::Follow < HTTY::CLI::Command
     end
 
     add_request_if_has_response do |request|
-      notify_if_cookies_cleared request do
+      self.class.notify_if_cookies_cleared request do
         request.follow session.last_response
       end
     end

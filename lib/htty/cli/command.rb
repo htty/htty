@@ -122,6 +122,25 @@ class HTTY::CLI::Command
     Array(alias_for)
   end
 
+protected
+
+  # Displays a notice if cookies are cleared on the specified _request_ in the
+  # course of the block.
+  def self.notify_if_cookies_cleared(request)
+    had_cookies = cookies?(request)
+    yield
+    puts notice('Cookies cleared') if had_cookies && !cookies?(request)
+    request
+  end
+
+private
+
+  def self.cookies?(request)
+    !request.cookies.empty?
+  end
+
+public
+
   # Returns the arguments provided to the command.
   attr_reader :arguments
 

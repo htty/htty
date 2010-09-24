@@ -50,7 +50,9 @@ class HTTY::CLI::Commands::QuerySet < HTTY::CLI::Command
   # Performs the _query-set_ command.
   def perform
     add_request_if_has_response do |request|
-      request.query_set(*escape_or_warn_of_escape_sequences(arguments))
+      self.class.notify_if_cookies_cleared request do
+        request.query_set(*escape_or_warn_of_escape_sequences(arguments))
+      end
     end
   end
 

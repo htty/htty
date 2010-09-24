@@ -1,5 +1,4 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../cookie_clearing_command")
 require File.expand_path("#{File.dirname __FILE__}/address")
 
 module HTTY; end
@@ -10,8 +9,6 @@ module HTTY::CLI::Commands; end
 
 # Encapsulates the _host-set_ command.
 class HTTY::CLI::Commands::HostSet < HTTY::CLI::Command
-
-  include HTTY::CLI::CookieClearingCommand
 
   # Returns the name of a category under which help for the _host-set_ command
   # should appear.
@@ -48,7 +45,7 @@ class HTTY::CLI::Commands::HostSet < HTTY::CLI::Command
   # Performs the _host-set_ command.
   def perform
     add_request_if_has_response do |request|
-      notify_if_cookies_cleared request do
+      self.class.notify_if_cookies_cleared request do
         request.host_set(*arguments)
       end
     end

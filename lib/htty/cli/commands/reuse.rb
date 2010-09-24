@@ -67,6 +67,9 @@ class HTTY::CLI::Commands::Reuse < HTTY::CLI::Command
     add_request_if_has_response do
       requests[index - 1].send :dup_without_response
     end
+
+    puts notice("Using a copy of request ##{index}")
+    self
   end
 
 end

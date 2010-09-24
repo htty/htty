@@ -1,4 +1,5 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
+require File.expand_path("#{File.dirname __FILE__}/../display")
 require File.expand_path("#{File.dirname __FILE__}/cookies")
 require File.expand_path("#{File.dirname __FILE__}/cookies_add")
 require File.expand_path("#{File.dirname __FILE__}/cookies_remove")
@@ -13,6 +14,8 @@ module HTTY::CLI::Commands; end
 
 # Encapsulates the _cookies-use_ command.
 class HTTY::CLI::Commands::CookiesUse < HTTY::CLI::Command
+
+  include HTTY::CLI::Display
 
   # Returns the name of a category under which help for the _cookies-use_
   # command should appear.
@@ -48,7 +51,11 @@ class HTTY::CLI::Commands::CookiesUse < HTTY::CLI::Command
     end
 
     add_request_if_has_response do |request|
-      request.cookies_use session.last_response
+      changed_request = request.cookies_use(session.last_response)
+      phrase = pluralize('cookie', changed_request.cookies.length)
+      phrase = phrase[0..0].upcase + phrase[1..-1]
+      puts notice("#{phrase} now in use")
+      changed_request
     end
   end
 

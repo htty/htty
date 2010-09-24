@@ -72,6 +72,17 @@ module HTTY::CLI::Display
     # format string, :foreground_dark_default
   end
 
+  def pluralize(word, number)
+    case number
+      when 0
+        "no #{word}s"
+      when 1
+        "1 #{word}"
+      else
+        "#{number} #{word}s"
+    end
+  end
+
   def prompt(request)
     format_request_uri(request.uri) + normal('> ')
   end
@@ -181,17 +192,6 @@ private
              strong(after_userinfo)
     end
     return strong(uri)
-  end
-
-  def pluralize(word, number)
-    case number
-      when 0
-        "no #{word}s"
-      when 1
-        "1 #{word}"
-      else
-        "#{number} #{word}s"
-    end
   end
 
   def sentence_case(text)

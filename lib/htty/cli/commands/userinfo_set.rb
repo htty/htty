@@ -52,7 +52,9 @@ class HTTY::CLI::Commands::UserinfoSet < HTTY::CLI::Command
         arguments = arguments.first.split(':')
       end
       arguments = escape_mercantile(escape_or_warn_of_escape_sequences(arguments))
-      request.userinfo_set(*arguments)
+      self.class.notify_if_cookies_cleared request do
+        request.userinfo_set(*arguments)
+      end
     end
   end
 

@@ -50,7 +50,9 @@ class HTTY::CLI::Commands::FragmentSet < HTTY::CLI::Command
       clean_arguments = arguments.collect do |a|
         a.gsub(/^#/, '')
       end
-      request.fragment_set(*escape_or_warn_of_escape_sequences(clean_arguments))
+      self.class.notify_if_cookies_cleared request do
+        request.fragment_set(*escape_or_warn_of_escape_sequences(clean_arguments))
+      end
     end
   end
 

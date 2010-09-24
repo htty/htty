@@ -60,7 +60,9 @@ class HTTY::CLI::Commands::SchemeSet < HTTY::CLI::Command
   # Performs the _scheme-set_ command.
   def perform
     add_request_if_has_response do |request|
-      request.scheme_set(*arguments)
+      self.class.notify_if_cookies_cleared request do
+        request.scheme_set(*arguments)
+      end
     end
   end
 

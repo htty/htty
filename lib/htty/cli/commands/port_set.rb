@@ -46,7 +46,9 @@ class HTTY::CLI::Commands::PortSet < HTTY::CLI::Command
   # Performs the _port-set_ command.
   def perform
     add_request_if_has_response do |request|
-      request.port_set(*arguments)
+      self.class.notify_if_cookies_cleared request do
+        request.port_set(*arguments)
+      end
     end
   end
 

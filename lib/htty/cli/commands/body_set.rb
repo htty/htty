@@ -1,4 +1,5 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
+require File.expand_path("#{File.dirname __FILE__}/../display")
 require File.expand_path("#{File.dirname __FILE__}/body_request")
 require File.expand_path("#{File.dirname __FILE__}/body_unset")
 
@@ -10,6 +11,8 @@ module HTTY::CLI::Commands; end
 
 # Encapsulates the _body-set_ command.
 class HTTY::CLI::Commands::BodySet < HTTY::CLI::Command
+
+  include HTTY::CLI::Display
 
   # Returns the name of a category under which help for the _body-set_ command
   # should appear.
@@ -38,6 +41,7 @@ class HTTY::CLI::Commands::BodySet < HTTY::CLI::Command
   # Performs the _body-set_ command.
   def perform
     add_request_if_has_response do |request|
+      puts notice('Hit Return three times to signify the end of the body')
       lines            = []
       empty_line_count = 0
       while empty_line_count < 2 do
