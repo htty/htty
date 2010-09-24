@@ -1,3 +1,4 @@
+require File.expand_path("#{File.dirname __FILE__}/../../response")
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../display")
 require File.expand_path("#{File.dirname __FILE__}/cookies")
@@ -31,7 +32,8 @@ class HTTY::CLI::Commands::CookiesUse < HTTY::CLI::Command
   # Returns the extended help text for the _cookies-use_ command.
   def self.help_extended
     'Sets the cookies of the request to the cookies offered in the response ' +
-    "(the 'Set-Cookie' header). Does not communicate with the endpoint."
+    "(the '#{HTTY::Response::COOKIES_HEADER_NAME}' header). Does not "        +
+    'communicate with the host.'
   end
 
   # Returns related command classes for the _cookies-use_ command.

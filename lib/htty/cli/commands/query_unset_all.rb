@@ -26,7 +26,7 @@ class HTTY::CLI::Commands::QueryUnsetAll < HTTY::CLI::Command
   # Returns the extended help text for the _query-unset-all_ command.
   def self.help_extended
     'Clears the query string used for the request. Does not communicate with ' +
-    "the endpoint.\n"                                                          +
+    "the host.\n"                                                              +
     "\n"                                                                       +
     'The console prompt shows the address for the current request.'
   end

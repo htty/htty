@@ -32,7 +32,7 @@ class HTTY::CLI::Commands::HeadersSet < HTTY::CLI::Command
   # Returns the extended help text for the _headers-set_ command.
   def self.help_extended
     'Sets a header used for the request. Does not communicate with the '  +
-    "endpoint.\n"                                                         +
+    "host.\n"                                                             +
     "\n"                                                                  +
     'Headers must have unique names. When you set a header that already ' +
     'exists, its value will be changed.'

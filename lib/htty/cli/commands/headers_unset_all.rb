@@ -26,7 +26,7 @@ class HTTY::CLI::Commands::HeadersUnsetAll < HTTY::CLI::Command
   # Returns the extended help text for the _headers-unset-all_ command.
   def self.help_extended
     'Removes all headers used for the request. Does not communicate with the ' +
-    'endpoint.'
+    'host.'
   end
 
   # Returns related command classes for the _headers-unset-all_ command.

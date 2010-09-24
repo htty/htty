@@ -12,8 +12,8 @@ module HTTY::CLI::HTTPMethodCommand
 
   include HTTY::CLI::Display
 
-  # Returns the name of a category under which help for the _http-get_ command
-  # should appear.
+  # Returns the name of a category under which help for the command should
+  # appear.
   def self.category
     'Issuing Requests'
   end

@@ -32,7 +32,9 @@ class HTTY::CLI::Commands::PathSet < HTTY::CLI::Command
   # Returns the extended help text for the _path-set_ command.
   def self.help_extended
     'Changes the path used for the request. Does not communicate with the ' +
-    "endpoint.\n"                                                           +
+    "host.\n"                                                               +
+    "\n"                                                                    +
+    "The path will be URL-encoded if necessary.\n"                          +
     "\n"                                                                    +
     'The console prompt shows the address for the current request.'
   end

@@ -1,3 +1,4 @@
+require File.expand_path("#{File.dirname __FILE__}/../../request")
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../url_escaping")
 require File.expand_path("#{File.dirname __FILE__}/address")
@@ -33,10 +34,18 @@ class HTTY::CLI::Commands::UserinfoSet < HTTY::CLI::Command
 
   # Returns the extended help text for the _userinfo-set_ command.
   def self.help_extended
-    'Sets the userinfo used for the request. Does not communicate with the ' +
-    "endpoint.\n"                                                            +
-    "\n"                                                                     +
-    'The console prompt shows the address for the current request.'
+    'Sets the userinfo used for the request. Does not communicate with the '   +
+    "host.\n"                                                                  +
+    "\n"                                                                       +
+    "Userinfo will be URL-encoded if necessary.\n"                             +
+    "\n"                                                                       +
+    'When userinfo is set, a corresponding '                                   +
+    "'#{HTTY::Request::AUTHORIZATION_HEADER_NAME}' header is set "             +
+    "automatically.\n"                                                         +
+    "\n"                                                                       +
+    'The console prompt shows the address for the current request. Userinfo '  +
+    'appears in normal type while the rest of the address appears in bold to ' +
+    'indicate that userinfo is sent to the host in the form of a header.'
   end
 
   # Returns related command classes for the _userinfo-set_ command.

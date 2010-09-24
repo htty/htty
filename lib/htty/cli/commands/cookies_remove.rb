@@ -33,7 +33,7 @@ class HTTY::CLI::Commands::CookiesRemove < HTTY::CLI::Command
   # Returns the extended help text for the _cookies-remove_ command.
   def self.help_extended
     'Removes a cookie used for the request. Does not communicate with the ' +
-    "endpoint.\n"                                                           +
+    "host.\n"                                                               +
     "\n"                                                                    +
     'Cookies are not required to have unique names. You can add multiple '  +
     'cookies with the same name, and they will be removed in '              +

@@ -265,7 +265,7 @@ public
     raise HTTY::NoResponseError unless response
 
     location_header = response.headers.detect do |name, value|
-      name == 'Location'
+      name == HTTY::Response::LOCATION_HEADER_NAME
     end
     unless location_header && location_header.last
       raise HTTY::NoLocationHeaderError

@@ -30,7 +30,7 @@ class HTTY::CLI::Commands::PortSet < HTTY::CLI::Command
   # Returns the extended help text for the _port-set_ command.
   def self.help_extended
     'Changes the TCP port used for the request. Does not communicate with '  +
-    "the endpoint.\n"                                                        +
+    "the host.\n"                                                            +
     "\n"                                                                     +
     "The port you supply must be an integer between 0 and 65,535. Changing " +
     "the port has no effect on the scheme, and vice versa.\n"                +

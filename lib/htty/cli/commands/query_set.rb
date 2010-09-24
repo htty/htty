@@ -29,14 +29,17 @@ class HTTY::CLI::Commands::QuerySet < HTTY::CLI::Command
 
   # Returns the help text for the _query-set_ command.
   def self.help
-    "Sets a query string parameter in the request's address"
+    "Sets a query-string parameter in the request's address"
   end
 
   # Returns the extended help text for the _query-set_ command.
   def self.help_extended
-    'Sets a query string parameter used for the request. Does not ' +
-    "communicate with the endpoint.\n"                              +
-    "\n"                                                            +
+    'Sets a query-string parameter used for the request. Does not '            +
+    "communicate with the host.\n"                                             +
+    "\n"                                                                       +
+    'The name and value of the query-string parameter will be URL-encoded if ' +
+    "necessary.\n"                                                             +
+    "\n"                                                                       +
     'The console prompt shows the address for the current request.'
   end
 

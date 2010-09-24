@@ -34,7 +34,7 @@ class HTTY::CLI::Commands::Reuse < HTTY::CLI::Command
   def self.help_extended
     'Copies the properties of a previous request to be used for the request, ' +
     'using the request index number shown in history. Does not communicate '   +
-    "with the endpoint.\n"                                                     +
+    "with the host.\n"                                                         +
     "\n"                                                                       +
     'The argument is an index number that appears when you type '              +
     "#{strong HTTY::CLI::Commands::History.command_line}."

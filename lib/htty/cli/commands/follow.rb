@@ -1,3 +1,4 @@
+require File.expand_path("#{File.dirname __FILE__}/../../response")
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/address")
 require File.expand_path("#{File.dirname __FILE__}/http_get")
@@ -20,13 +21,14 @@ class HTTY::CLI::Commands::Follow < HTTY::CLI::Command
   # Returns the help text for the _follow_ command.
   def self.help
     "Changes the address of the request to the value of the response's " +
-    "'Location' header"
+    "'#{HTTY::Response::LOCATION_HEADER_NAME}' header"
   end
 
   # Returns the extended help text for the _follow_ command.
   def self.help_extended
-    "Changes the address of the request to the value of the response's " +
-    "'Location' header. Does not communicate with the endpoint."
+    "Changes the address of the request to the value of the response's "      +
+    "'#{HTTY::Response::LOCATION_HEADER_NAME}' header. Does not communicate " +
+    'with the host.'
   end
 
   # Returns related command classes for the _follow_ command.

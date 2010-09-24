@@ -39,7 +39,10 @@ class HTTY::CLI::Commands::HeadersResponse < HTTY::CLI::Command
   # Returns the extended help text for the _headers-response_ command.
   def self.help_extended
     'Displays the headers received in the response. Does not communicate ' +
-    'with the endpoint.'
+    "with the host.\n"                                                     +
+    "\n"                                                                   +
+    "A '#{HTTY::Response::COOKIES_HEADER_NAME}' request header is marked " +
+    'with a bold asterisk (it looks like a cookie).'
   end
 
   # Returns related command classes for the _headers-response_ command.

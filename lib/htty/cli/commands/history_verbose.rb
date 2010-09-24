@@ -30,7 +30,7 @@ class HTTY::CLI::Commands::HistoryVerbose < HTTY::CLI::Command
   # Returns the extended help text for the _history_ command.
   def self.help_extended
     'Displays the details of previous request-response activity in this ' +
-    "session. Does not communicate with the endpoint.\n"                  +
+    "session. Does not communicate with the host.\n"                      +
     "\n"                                                                  +
     'All headers and body content of each request-response pair are shown.'
   end

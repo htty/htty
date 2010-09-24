@@ -32,11 +32,16 @@ class HTTY::CLI::Commands::HeadersRequest < HTTY::CLI::Command
 
   # Returns the extended help text for the _headers-request_ command.
   def self.help_extended
-    'Displays the headers used for the request. Does not communicate with '  +
-    "the endpoint.\n"                                                        +
-    "\n"                                                                     +
-    'Headers must have unique names. When you set a header that already '    +
-    'exists, its value will be changed.'
+    'Displays the headers used for the request. Does not communicate with '    +
+    "the host.\n"                                                              +
+    "\n"                                                                       +
+    'Headers must have unique names. When you set a header that already '      +
+    "exists, its value will be changed.\n"                                     +
+    "\n"                                                                       +
+    "A '#{HTTY::Request::COOKIES_HEADER_NAME}' request header is marked with " +
+    'a bold asterisk (it looks like a cookie). Similarly, an '                 +
+    "'#{HTTY::Request::AUTHORIZATION_HEADER_NAME}' request header is marked "  +
+    "with a bold mercantile symbol ('@')."
   end
 
   # Returns related command classes for the _headers-request_ command.

@@ -29,7 +29,7 @@ class HTTY::CLI::Commands::HostSet < HTTY::CLI::Command
   # Returns the extended help text for the _host-set_ command.
   def self.help_extended
     'Changes the host used for the request. Does not communicate with the '  +
-    "endpoint.\n"                                                            +
+    "host.\n"                                                                +
     "\n"                                                                     +
     "The host you supply can be either a hostname (e.g., 'github.com') or "  +
     "an IP address (e.g., '127.0.0.1').\n"                                   +

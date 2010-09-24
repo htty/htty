@@ -23,6 +23,12 @@ class HTTY::CLI::Commands::Help < HTTY::CLI::Command
     'Displays this help table, or help on the specified command'
   end
 
+  # Returns the extended help text for the _help_ command.
+  def self.help_extended
+    'Displays a table containing available commands and a brief description ' +
+    'of each, or detailed help on the specified command.'
+  end
+
   # Performs the _help_ command.
   def perform
     return display_help if arguments.empty?

@@ -30,7 +30,7 @@ class HTTY::CLI::Commands::SchemeSet < HTTY::CLI::Command
   # Returns the extended help text for the _scheme-set_ command.
   def self.help_extended
     'Changes the scheme, or protocol identifier, used for the request. Does ' +
-    "not communicate with the endpoint.\n"                                    +
+    "not communicate with the host.\n"                                        +
     "\n"                                                                      +
     "The scheme you supply must be either 'http' or 'https'. Changing the "   +
     "scheme has no effect on the port, and vice versa.\n"                     +

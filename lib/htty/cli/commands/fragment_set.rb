@@ -33,7 +33,9 @@ class HTTY::CLI::Commands::FragmentSet < HTTY::CLI::Command
   # Returns the extended help text for the _fragment-set_ command.
   def self.help_extended
     'Sets the page fragment used for the request. Does not communicate with ' +
-    "the endpoint.\n"                                                         +
+    "the host.\n"                                                             +
+    "\n"                                                                      +
+    "The page fragment will be URL-encoded if necessary.\n"                   +
     "\n"                                                                      +
     'The console prompt shows the address for the current request.'
   end

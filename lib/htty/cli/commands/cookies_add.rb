@@ -33,7 +33,7 @@ class HTTY::CLI::Commands::CookiesAdd < HTTY::CLI::Command
   # Returns the extended help text for the _cookies-add_ command.
   def self.help_extended
     'Adds a cookie used for the request. Does not communicate with the '   +
-    "endpoint.\n"                                                          +
+    "host.\n"                                                              +
     "\n"                                                                   +
     'Cookies are not required to have unique names. You can add multiple ' +
     'cookies with the same name, and they will be removed in '             +

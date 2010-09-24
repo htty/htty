@@ -27,7 +27,7 @@ class HTTY::CLI::Commands::CookiesRemoveAll < HTTY::CLI::Command
   # Returns the extended help text for the _cookies-remove-all_ command.
   def self.help_extended
     'Removes all cookies used for the request. Does not communicate with the ' +
-    'endpoint.'
+    'host.'
   end
 
   # Returns related command classes for the _cookies-remove-all_ command.

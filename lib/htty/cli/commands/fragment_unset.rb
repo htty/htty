@@ -25,7 +25,7 @@ class HTTY::CLI::Commands::FragmentUnset < HTTY::CLI::Command
   # Returns the extended help text for the _fragment-unset_ command.
   def self.help_extended
     'Removes the page fragment used for the request. Does not communicate ' +
-    "with the endpoint.\n"                                                  +
+    "with the host.\n"                                                      +
     "\n"                                                                    +
     'The console prompt shows the address for the current request.'
   end

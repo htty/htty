@@ -27,7 +27,7 @@ class HTTY::CLI::Commands::BodyRequest < HTTY::CLI::Command
   # Returns the extended help text for the _body-request_ command.
   def self.help_extended
     'Displays the body content used for the request. Does not communicate ' +
-    'with the endpoint.'
+    'with the host.'
   end
 
   # Returns related command classes for the _body-request_ command.

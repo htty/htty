@@ -1,6 +1,11 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
+require File.expand_path("#{File.dirname __FILE__}/fragment_set")
+require File.expand_path("#{File.dirname __FILE__}/host_set")
+require File.expand_path("#{File.dirname __FILE__}/path_set")
 require File.expand_path("#{File.dirname __FILE__}/port_set")
+require File.expand_path("#{File.dirname __FILE__}/query_set")
 require File.expand_path("#{File.dirname __FILE__}/scheme_set")
+require File.expand_path("#{File.dirname __FILE__}/userinfo_set")
 
 module HTTY; end
 
@@ -30,7 +35,7 @@ class HTTY::CLI::Commands::Address < HTTY::CLI::Command
   # Returns the extended help text for the _address_ command.
   def self.help_extended
     'Changes the address used for the request. Does not communicate with the ' +
-    "endpoint.\n"                                                              +
+    "host.\n"                                                                  +
     "\n"                                                                       +
     'The URL you supply can be partial. At a minimum, you must specify a '     +
     'host. The optional and required elements of an address are illustrated '  +
@@ -57,14 +62,20 @@ class HTTY::CLI::Commands::Address < HTTY::CLI::Command
     'If (4) is omitted, port 80 is used, except if (1) is specified as '       +
     "HTTPS, in which case port 443 is used.\n"                                 +
     "\n"                                                                       +
-    "If (5) is omitted, the root path (i.e., \"/\") is used.\n"                +
+    "If (5) is omitted, the root path (i.e., '/') is used.\n"                  +
     "\n"                                                                       +
     'The console prompt shows the address for the current request.'
   end
 
   # Returns related command classes for the _address_ command.
   def self.see_also_commands
-    [HTTY::CLI::Commands::SchemeSet, HTTY::CLI::Commands::PortSet]
+    [HTTY::CLI::Commands::SchemeSet,
+     HTTY::CLI::Commands::UserinfoSet,
+     HTTY::CLI::Commands::HostSet,
+     HTTY::CLI::Commands::PortSet,
+     HTTY::CLI::Commands::PathSet,
+     HTTY::CLI::Commands::QuerySet,
+     HTTY::CLI::Commands::FragmentSet]
   end
 
   # Performs the _address_ command.

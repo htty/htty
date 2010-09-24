@@ -25,7 +25,7 @@ class HTTY::CLI::Commands::BodyUnset < HTTY::CLI::Command
   # Returns the extended help text for the _body-unset_ command.
   def self.help_extended
     'Clears the body content used for the request. Does not communicate with ' +
-    'the endpoint.'
+    'the host.'
   end
 
   # Returns related command classes for the _body-unset_ command.

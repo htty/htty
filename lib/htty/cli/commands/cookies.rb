@@ -1,4 +1,6 @@
+require File.expand_path("#{File.dirname __FILE__}/../../request")
 require File.expand_path("#{File.dirname __FILE__}/../command")
+require File.expand_path("#{File.dirname __FILE__}/../display")
 require File.expand_path("#{File.dirname __FILE__}/cookies_add")
 require File.expand_path("#{File.dirname __FILE__}/cookies_remove")
 require File.expand_path("#{File.dirname __FILE__}/cookies_remove_all")
@@ -15,6 +17,8 @@ module HTTY::CLI::Commands; end
 # Encapsulates the _cookies_ command.
 class HTTY::CLI::Commands::Cookies < HTTY::CLI::Command
 
+  include HTTY::CLI::Display
+
   # Returns the name of a category under which help for the _cookies_ command
   # should appear.
   def self.category
@@ -29,10 +33,12 @@ class HTTY::CLI::Commands::Cookies < HTTY::CLI::Command
   # Returns the extended help text for the _cookies_ command.
   def self.help_extended
     'Displays the cookies used for the request. Does not communicate with '   +
-    "the endpoint.\n"                                                         +
+    "the host.\n"                                                             +
     "\n"                                                                      +
-    "This command displays cookies extracted from the request's 'Cookie' "    +
-    "header, which is nevertheless shown when you type 'headers-request'.\n"  +
+    "This command displays cookies extracted from the request's "             +
+    "'#{HTTY::Request::COOKIES_HEADER_NAME}' header, which is nevertheless "  +
+    'shown when you type '                                                    +
+    "#{strong HTTY::CLI::Commands::HeadersRequest.command_line}.\n"           +
     "\n"                                                                      +
     'Cookies are not required to have unique names. You can add multiple '    +
     'cookies with the same name, and they will be removed in '                +

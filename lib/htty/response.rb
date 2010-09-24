@@ -6,7 +6,8 @@ module HTTY; end
 # Encapsulates an HTTP(S) response.
 class HTTY::Response < HTTY::Payload
 
-  COOKIES_HEADER_NAME = 'Set-Cookie'
+  COOKIES_HEADER_NAME  = 'Set-Cookie'
+  LOCATION_HEADER_NAME = 'Location'
 
   # Returns the HTTP status associated with the response.
   attr_reader :status

@@ -25,7 +25,7 @@ class HTTY::CLI::Commands::UserinfoUnset < HTTY::CLI::Command
   # Returns the extended help text for the _userinfo-unset_ command.
   def self.help_extended
     'Removes the userinfo used for the request. Does not communicate with ' +
-    "the endpoint.\n"                                                       +
+    "the host.\n"                                                           +
     "\n"                                                                    +
     'The console prompt shows the address for the current request.'
   end

@@ -29,13 +29,16 @@ class HTTY::CLI::Commands::QueryUnset < HTTY::CLI::Command
 
   # Returns the help text for the _query-unset_ command.
   def self.help
-    "Removes a query string parameter from the request's address"
+    "Removes a query-string parameter from the request's address"
   end
 
   # Returns the extended help text for the _query-unset_ command.
   def self.help_extended
-    'Removes a query string parameter used for the request. Does not ' +
-    "communicate with the endpoint.\n"                                 +
+    'Removes a query-string parameter used for the request. Does not ' +
+    "communicate with the host.\n"                                     +
+    "\n"                                                               +
+    'The name of the query-string parameter will be URL-encoded if '   +
+    "necessary.\n"                                                     +
     "\n"                                                               +
     'The console prompt shows the address for the current request.'
   end

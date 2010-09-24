@@ -28,7 +28,7 @@ class HTTY::CLI::Commands::BodySet < HTTY::CLI::Command
   # Returns the extended help text for the _body-set_ command.
   def self.help_extended
     'Sets the body content used for the request. Does not communicate with ' +
-    "the endpoint.\n"                                                        +
+    "the host.\n"                                                            +
     "\n"                                                                     +
     'Hit Return three times in a row to signify the end of the body.'
   end

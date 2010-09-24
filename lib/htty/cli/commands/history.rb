@@ -27,11 +27,11 @@ class HTTY::CLI::Commands::History < HTTY::CLI::Command
 
   # Returns the extended help text for the _history_ command.
   def self.help_extended
-    'Displays previous request-response activity in this session. Does not '   +
-    "communicate with the endpoint.\n"                                         +
-    "\n"                                                                       +
-    'Only a summary of each request-response pair is shown; headers and body ' +
-    'content are omitted.'
+    'Displays previous request-response activity in this session. Does not '  +
+    "communicate with the host.\n"                                            +
+    "\n"                                                                      +
+    'Only a summary of each request-response pair is shown; the contents of ' +
+    'headers and bodies are hidden.'
   end
 
   # Returns related command classes for the _history_ command.
