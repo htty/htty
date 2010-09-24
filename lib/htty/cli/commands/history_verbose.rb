@@ -56,7 +56,9 @@ class HTTY::CLI::Commands::HistoryVerbose < HTTY::CLI::Command
       show_request request
 
       puts unless request.headers.empty?
-      show_headers request.headers, HTTY::Request::COOKIES_HEADER_NAME
+      show_headers request.headers,
+                   :show_asterisk_next_to => HTTY::Request::COOKIES_HEADER_NAME,
+                   :show_mercantile_next_to => HTTY::Request::AUTHORIZATION_HEADER_NAME
 
       unless request.body.to_s.empty?
         puts
@@ -67,7 +69,8 @@ class HTTY::CLI::Commands::HistoryVerbose < HTTY::CLI::Command
       show_response request.response
 
       puts unless request.response.headers.empty?
-      show_headers request.response.headers, HTTY::Response::COOKIES_HEADER_NAME
+      show_headers request.response.headers,
+                   :show_asterisk_next_to => HTTY::Response::COOKIES_HEADER_NAME
 
       unless request.response.body.to_s.empty?
         puts

@@ -61,7 +61,9 @@ class HTTY::CLI::Commands::HeadersRequest < HTTY::CLI::Command
               else
                 request.headers
               end
-    show_headers headers, HTTY::Request::COOKIES_HEADER_NAME
+    show_headers headers,
+                 :show_asterisk_next_to => HTTY::Request::COOKIES_HEADER_NAME,
+                 :show_mercantile_next_to => HTTY::Request::AUTHORIZATION_HEADER_NAME
     self
   end
 

@@ -93,18 +93,26 @@ module HTTY::CLI::Display
          strong('HTTP TTY') + normal('. Heck To The Yeah!')
   end
 
-  def show_headers(headers, show_asterisk_next_to=nil)
-    asterisk_symbol = nil
+  def show_headers(headers, options={})
+    show_asterisk_next_to   = options[:show_asterisk_next_to]
+    show_mercantile_next_to = options[:show_mercantile_next_to]
+
+    asterisk_symbol, mercantile_symbol = nil, nil
     margin = headers.inject 0 do |result, header|
       header_name = header.first
-      asterisk_symbol ||= (header_name == show_asterisk_next_to) ? '*' : nil
-      asterisk = (header_name == show_asterisk_next_to) ? asterisk_symbol : ''
-      [(header_name.length + asterisk.length), result].max
+      asterisk_symbol   ||= (header_name == show_asterisk_next_to)   ? '*' : nil
+      mercantile_symbol ||= (header_name == show_mercantile_next_to) ? '@' : nil
+      asterisk   = (header_name == show_asterisk_next_to)   ? asterisk_symbol   : ''
+      mercantile = (header_name == show_mercantile_next_to) ? mercantile_symbol : ''
+      [(header_name.length + [asterisk.length, mercantile.length].max),
+       result].max
     end
     headers.each do |name, value|
-      asterisk = (name == show_asterisk_next_to) ? asterisk_symbol : nil
-      puts "#{name.rjust margin - asterisk.to_s.length}:#{strong asterisk} " +
-           value
+      asterisk   = (name == show_asterisk_next_to)   ? asterisk_symbol   : nil
+      mercantile = (name == show_mercantile_next_to) ? mercantile_symbol : nil
+      justified_name = name.rjust margin -
+                       [asterisk.to_s.length, mercantile.to_s.length].max
+      puts "#{justified_name}:#{strong(asterisk || mercantile)} " + value
     end
   end
 

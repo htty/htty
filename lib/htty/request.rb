@@ -15,7 +15,8 @@ module HTTY; end
 # Encapsulates an HTTP(S) request.
 class HTTY::Request < HTTY::Payload
 
-  COOKIES_HEADER_NAME = 'Cookie'
+  AUTHORIZATION_HEADER_NAME = 'Authorization'
+  COOKIES_HEADER_NAME       = 'Cookie'
 
   METHODS_SENDING_BODY = [:post, :put]
 
@@ -435,7 +436,7 @@ protected
     value = uri.userinfo                                                 ?
             "Basic #{Base64.encode64(URI.unescape(uri.userinfo)).chomp}" :
             nil
-    header_set 'Authorization', value
+    header_set AUTHORIZATION_HEADER_NAME, value
   end
 
   def path_query_and_fragment
