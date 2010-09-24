@@ -1,4 +1,5 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
+require File.expand_path("#{File.dirname __FILE__}/../url_escaping")
 require File.expand_path("#{File.dirname __FILE__}/address")
 require File.expand_path("#{File.dirname __FILE__}/query_set")
 require File.expand_path("#{File.dirname __FILE__}/query_unset_all")
@@ -11,6 +12,8 @@ module HTTY::CLI::Commands; end
 
 # Encapsulates the _query-unset_ command.
 class HTTY::CLI::Commands::QueryUnset < HTTY::CLI::Command
+
+  include HTTY::CLI::UrlEscaping
 
   # Returns the name of a category under which help for the _query-unset_
   # command should appear.
@@ -47,7 +50,7 @@ class HTTY::CLI::Commands::QueryUnset < HTTY::CLI::Command
   # Performs the _query-unset_ command.
   def perform
     add_request_if_has_response do |request|
-      request.query_unset(*arguments)
+      request.query_unset(*escape_or_warn_of_escape_sequences(arguments))
     end
   end
 
