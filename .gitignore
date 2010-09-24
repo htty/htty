@@ -2,3 +2,4 @@
 .yardoc/
 doc/
 vendor/
+.rvmrc
