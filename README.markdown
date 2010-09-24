@@ -46,8 +46,9 @@ Features
 * Intuitive commands and command aliases
 * Support for familiar HTTP methods _GET_, _POST_, _PUT_, and _DELETE_, as well as _HEAD_, _OPTIONS_ and _TRACE_
 * Support for HTTP Secure connections and HTTP Basic Authentication
-* Automatic URL-encoding of userinfo, query-string parameters, and URL fragments
+* Automatic URL-encoding of userinfo, paths, query-string parameters, and page fragments
 * Transcripts, both verbose and summary
+* Scripting via _stdin_
 * Dead-simple cookie handling and redirect following
 * Built-in help
 
@@ -67,7 +68,7 @@ Here are a few annotated _htty_ session transcripts to get you started.
 Querying a web service
 ----------------------
 
-This simple example shows how to explore read-only web services with _htty_.
+This simple example shows how to explore a read-only web service with _htty_.
 
 ![ESV Bible Web Service example #1](http://htty.github.com/images/esvapi1.png)
 
@@ -77,7 +78,7 @@ The _htty_ shell prompt shows the address of the current request.
 
 The `get` command is one of seven HTTP request methods supported. A concise summary of the response is shown when you issue a request.
 
-You can follow redirects using the `follow` command.
+You can follow redirects using the `follow` command. No request is made until you type a request command such as `get` or `post`.
 
 ![ESV Bible Web Service example #2](http://htty.github.com/images/esvapi2.png)
 
@@ -100,9 +101,11 @@ Exit your session at any time by typing `quit`.
 Working with cookies
 --------------------
 
-The next example demonstrates _htty_’s cookies features, as well as how to review and revisit past requests.
+The next example demonstrates _htty_’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.
 
 ![Google example #1](http://htty.github.com/images/google1.png)
+
+The _https://_ scheme and port 443 imply each other, just as the _http://_ scheme and port 80 imply each other. If you omit the scheme or the port, it will default to the appropriate value.
 
 Notice that when cookies are offered in a response, a bold asterisk (it looks like a cookie) appears in the response summary. The same cookie symbol appears next to the _Set-Cookie_ header when you display response headers.
 
@@ -121,6 +124,8 @@ The `reuse` command makes a copy of the headers and body of an earlier request f
 Understanding complex HTTP conversations at a glance using history
 ------------------------------------------------------------------
 
+Now we’ll look at _htty_’s HTTP Basic Authentication support and learn how to display unabbreviated transcripts of _htty_ sessions.
+
 Assume that we have the following Sinatra application listening on Sinatra’s default port, 4567.
 
     require 'sinatra'
@@ -129,15 +134,15 @@ Assume that we have the following Sinatra application listening on Sinatra’s d
       [200, [['Set-Cookie', 'foo=bar; baz']], 'Hello World!']
     end
 
-    get '/huh' do
+    put '/huh' do
       [404, 'What?']
     end
 
-    get '/hurl' do
+    delete '/hurl' do
       [500, 'Barf!']
     end
 
-    post '/give-it-to-me' do
+    post '/submit-novel' do
       redirect '/all-good'
     end
 
@@ -145,9 +150,13 @@ This application expects _GET_ and _POST_ requests and responds in various contr
 
 ![Sinatra application example #1](http://htty.github.com/images/sinatra1.png)
 
-Here you can see a request body being specified. Type `body-set` to enter body data, and terminate it by typing Return three times consecutively.
+When you change the userinfo portion of the address, or the entire address, the appropriate HTTP Basic Authentication header is created for you automatically. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).
 
-Also note how different response codes are rendered:
+When userinfo is supplied in a request, a bold mercantile symbol (_@_) appears next to the resulting _Authorization_ header when you display request headers (see below).
+
+Type `body-set` to enter body data, and terminate it by typing Return three times consecutively. The body will only be sent for _POST_ and _PUT_ requests. The appropriate _Content-Length_ header is created for you automatically (see below).
+
+Different response codes are rendered with colors that suggest their meaning:
 
 * Response codes between 200 and 299 appear <span style="background-color: green; color: black; font-weight: bold; padding: 0 0.25em 0 0.25em;">black on green</span> to indicate success
 * Response codes between 300 and 399 appear <span style="background-color: blue; color: white; font-weight: bold; padding: 0 0.25em 0 0.25em;">white on blue</span> to indicate redirection
@@ -226,4 +235,4 @@ Thanks to contributors:
 License
 =======
 
-Released under the [MIT License](http://htty.github.com/file.MIT-LICENSE.html).
+Released under the [MIT License](file.MIT-LICENSE.html).
