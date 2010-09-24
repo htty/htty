@@ -29,7 +29,12 @@ class HTTY::CLI::Command
     if (match = (command_line_regexp.match(command_line)))
       all_attributes = attributes
       if (arguments = match.captures[0])
-        return new(attributes.merge(:arguments => arguments.strip.shellsplit))
+        begin
+          split_arguments = arguments.strip.shellsplit
+        rescue ArgumentError
+          return :unclosed_quote
+        end
+        return new(attributes.merge(:arguments => split_arguments))
       end
       return new(attributes)
     end

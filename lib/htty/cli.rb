@@ -38,6 +38,10 @@ class HTTY::CLI
                         strong(HTTY::CLI::Commands::Help.command_line))
             next
           end
+          if command == :unclosed_quote
+            $stderr.puts notice('Unclosed quoted expression -- try again')
+            next
+          end
           if ARGV.include?('--debug')
             command.perform
           else
