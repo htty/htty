@@ -11,6 +11,13 @@ spec = Gem::Specification.new do |s|
   s.has_rdoc     = true
 
   s.executables << 'htty'
+
+  s.add_dependency 'bluecloth', '>= 2.0.7'
+  s.add_dependency 'yard',      '>= 0.6.1'
+
+  s.add_development_dependency 'rake',  '>= 0.8.7'
+  s.add_development_dependency 'rspec', '>= 1.3.0'
+
   s.requirements << 'Ruby v1.8.7 or later'
 
   s.author   = 'Nils Jonsson'
