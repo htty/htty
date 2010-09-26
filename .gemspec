@@ -26,4 +26,6 @@ spec = Gem::Specification.new do |s|
   s.author   = 'Nils Jonsson'
   s.email    = 'htty@nilsjonsson.com'
   s.homepage = 'http://htty.github.com'
+
+  s.rubyforge_project = 'htty'
 end
