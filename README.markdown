@@ -29,6 +29,8 @@
 
 [htty](http://htty.github.com) is a console application for interacting with HTTP servers. It’s something of a cross between _curl_ and the Lynx browser.
 
+See what’s changed lately by reading the [project history](file.History.html).
+
 Installation
 ============
 

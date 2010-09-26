@@ -1,1 +1,1 @@
---file MIT-LICENSE.markdown --no-private --protected --title "htty, the HTTP TTY"
+--file MIT-LICENSE.markdown --file History.markdown --no-private --protected --title "htty, the HTTP TTY"
