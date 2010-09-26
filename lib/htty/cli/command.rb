@@ -128,9 +128,9 @@ protected
   # course of the block.
   def self.notify_if_cookies_cleared(request)
     had_cookies = cookies?(request)
-    yield
-    puts notice('Cookies cleared') if had_cookies && !cookies?(request)
-    request
+    changed_request = yield
+    puts notice('Cookies cleared') if had_cookies && !cookies?(changed_request)
+    changed_request
   end
 
 private
