@@ -55,9 +55,9 @@ private
                            nil]
     HTTY::CLI::Commands.select do |c|
       # Filter out commands not yet implemented.
-      c.instance_methods(false).collect(&:to_sym).include?(:perform) ||
+      c.instance_methods.collect(&:to_sym).include?(:perform) ||
       (c.alias_for &&
-       c.alias_for.instance_methods(false).collect(&:to_sym).include?(:perform))
+       c.alias_for.instance_methods.collect(&:to_sym).include?(:perform))
     end.group_by(&:category).sort_by do |category, commands|
       # Group commands by category and give the categories a custom order.
       categories_in_order.index category
