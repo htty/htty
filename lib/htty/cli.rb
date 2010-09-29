@@ -70,10 +70,21 @@ private
       if (command_line = Readline.readline(prompt, true)).nil?
         raise Interrupt
       end
+      if whitespace?(command_line) || repeat?(command_line)
+        Readline::HISTORY.pop
+      end
       command_line.chomp!
       command_line.strip!
     end
     HTTY::CLI::Commands.build_for command_line, :session => session
+  end
+
+  def repeat?(command_line)
+    command_line == Readline::HISTORY.to_a[-2]
+  end
+
+  def whitespace?(command_line)
+    command_line.strip.empty?
   end
 
 end
