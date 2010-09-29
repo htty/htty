@@ -10,13 +10,23 @@ class HTTY::CLI; end
 # subclasses.
 module HTTY::CLI::HTTPMethodCommand
 
-  include HTTY::CLI::Display
+  # Class methods for modules that include HTTY::CLI::HTTPMethodCommand.
+  module ClassMethods
 
-  # Returns the name of a category under which help for the command should
-  # appear.
-  def self.category
-    'Issuing Requests'
+    # Returns the name of a category under which help for the command should
+    # appear.
+    def category
+      'Issuing Requests'
+    end
+
   end
+
+  # Extends _other_module_ with ClassMethods.
+  def self.included(other_module)
+    other_module.extend ClassMethods
+  end
+
+  include HTTY::CLI::Display
 
   # Performs the command.
   def perform
