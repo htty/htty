@@ -29,7 +29,7 @@
 
 [htty](http://htty.github.com) is a console application for interacting with HTTP servers. It’s something of a cross between _curl_ and the Lynx browser.
 
-See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html).
+See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html). [![Flattr this](http://api.flattr.com/button/button-compact-static-100x17.png)](http://flattr.com/thing/68277/htty-the-HTTP-TTY "Flattr this")
 
 Installation
 ============
@@ -222,7 +222,7 @@ Stay in touch with the _htty_ project by following [@get_htty](http://twitter.co
 
 You can also get help in the [#htty channel on Freenode](http://webchat.freenode.net/?channels=htty).
 
-Credits
+Credits [![Flattr this](http://api.flattr.com/button/button-compact-static-100x17.png)](http://flattr.com/thing/68277/htty-the-HTTP-TTY "Flattr this")
 =======
 
 The author, [Nils Jonsson](mailto:htty@nilsjonsson.com), owes a debt of inspiration to the [_http-console_](http://github.com/cloudhead/http-console) project.
