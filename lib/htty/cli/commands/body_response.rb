@@ -48,7 +48,7 @@ class HTTY::CLI::Commands::BodyResponse < HTTY::CLI::Command
     unless (response = session.last_response)
       raise HTTY::NoResponseError
     end
-    unless (body = response.body).strip.empty?
+    unless (body = response.body).to_s.empty?
       puts body
     end
     self
