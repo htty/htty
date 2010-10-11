@@ -1,3 +1,4 @@
+require 'readline'
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../display")
 require File.expand_path("#{File.dirname __FILE__}/body_request")
@@ -45,7 +46,7 @@ class HTTY::CLI::Commands::BodySet < HTTY::CLI::Command
       lines            = []
       empty_line_count = 0
       while empty_line_count < 2 do
-        if (input = $stdin.gets).nil?
+        if (input = Readline.readline).nil?
           break
         end
         lines << input.chomp
