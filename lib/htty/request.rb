@@ -376,25 +376,22 @@ public
 
   # Establishes a new #uri, with the specified _value_ for the query-string
   # parameter specified by _name_.
-  def query_set(name, value)
-    query     = uri.query ? "&#{uri.query}&" : ''
-    parameter = Regexp.new("&#{Regexp.escape name}=.+?&")
-    if query =~ parameter
-      new_query = value.nil? ?
-                  query.gsub(parameter, '&') :
-                  query.gsub(parameter, "&#{name}=#{value}&")
-    else
-      new_query = value.nil? ? query : "#{query}#{name}=#{value}"
-    end
-    new_query = new_query.gsub(/^&/, '').gsub(/&$/, '')
-    new_query = nil if (new_query == '')
+  def query_set(name, value=nil)
+    entries = current_query_entries
+    add_or_replace_field(entries, name, value)
+    new_query = entries.empty? ? nil : entries.join('&')
     rebuild_uri :query => new_query
   end
 
   # Establishes a new #uri, without the query-string parameter specified by
   # _name_.
   def query_unset(name)
-    query_set name, nil
+    return unless uri.query
+    entries = current_query_entries
+    entries.delete_if do |entry|
+      entry =~ field_matcher(name)
+    end
+    rebuild_uri :query => entries.join('&')
   end
 
   # Establishes a new #uri without a query string.
@@ -462,14 +459,38 @@ protected
 
 private
 
+  def add_or_replace_field(chunks, name, value)
+    new_entry = name + (value.nil? ? '' : "=#{value}")
+    has_matched = false
+    chunks.each do |chunk|
+      if chunk =~ field_matcher(name)
+        if has_matched
+          chunks.delete chunk
+        else
+          chunks[chunks.index(chunk)] = new_entry
+          has_matched = true
+        end
+      end
+    end
+    chunks << new_entry unless has_matched
+  end
+
   def authority
     self.class.build_authority :userinfo => uri.userinfo,
                                :host     => uri.host,
                                :port     => uri.port
   end
 
+  def current_query_entries
+    uri.query ? uri.query.split('&') : []
+  end
+
   def establish_content_length
     header_set 'Content-Length', body.to_s.length
+  end
+
+  def field_matcher(name)
+    Regexp.new "^#{Regexp.escape name}=?.*"
   end
 
   def request!(method)
