@@ -54,9 +54,10 @@ describe HTTY::CLI::Commands::QuerySet do
     end
 
     it 'should play nice with nested fields' do
-      @session.requests.last.uri.query = 'test[my][]=true'
-      query_set = create_query_set_and_perform('test[my][]', 'false')
-      query_set.session.requests.last.uri.query.should == 'test[my][]=false'
+      @session.requests.last.uri.query = 'test[my][]=1'
+      query_set = create_query_set_and_perform('test[my][]', '2')
+      query_set = create_query_set_and_perform('test', '3')
+      query_set.session.requests.last.uri.query.should == 'test[my][]=2&test=3'
     end
   end
 

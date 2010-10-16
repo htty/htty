@@ -490,7 +490,8 @@ private
   end
 
   def field_matcher(name)
-    Regexp.new "^#{Regexp.escape name}=?.*"
+    escaped = Regexp.escape(name)
+    Regexp.new "^(#{escaped}|#{escaped}=.*)$"
   end
 
   def request!(method)
