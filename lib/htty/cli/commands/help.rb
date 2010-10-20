@@ -52,6 +52,7 @@ private
                            'Building Requests',
                            'Issuing Requests',
                            'Inspecting Responses',
+                           'Preferences',
                            nil]
     HTTY::CLI::Commands.select do |c|
       # Filter out commands not yet implemented.
