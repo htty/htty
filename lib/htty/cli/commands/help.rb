@@ -60,7 +60,7 @@ private
        c.alias_for.instance_methods.collect(&:to_sym).include?(:perform))
     end.group_by(&:category).sort_by do |category, commands|
       # Group commands by category and give the categories a custom order.
-      categories_in_order.index category
+      categories_in_order.index(category) || 0
     end.each do |category, commands|
       category ||= 'Miscellaneous'
       puts
