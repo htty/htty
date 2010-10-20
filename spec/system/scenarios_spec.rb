@@ -14,7 +14,8 @@ Dir.glob "#{all_dir}/**/*/" do |this_dir|
       content
     end
 
-    define_method :run_and_capture do |options={}|
+    define_method :run_and_capture do |*args|
+      options = args.first || {}
       stdin_filename = "#{this_dir}/stdin"
       htty_filename = "#{File.dirname __FILE__}/../../bin/htty"
       stderr_target = options[:combine_stdout_and_stderr] ?
