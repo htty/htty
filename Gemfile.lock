@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    bluecloth (2.0.7)
+    bluecloth (2.0.9)
     rake (0.8.7)
     rspec (1.3.0)
     yard (0.6.1)
