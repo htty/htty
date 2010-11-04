@@ -10,7 +10,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bluecloth (= 2.0.7)
-  rake (= 0.8.7)
-  rspec (= 1.3.0)
-  yard (= 0.6.1)
+  bluecloth
+  rake
+  rspec
+  yard
