@@ -6,4 +6,5 @@ gem 'yard'
 group :spec do
   gem 'rake'
   gem 'rspec'
+  gem 'ruby-debug'
 end

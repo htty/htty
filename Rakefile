@@ -10,7 +10,8 @@ YARD::Rake::YardocTask.new :doc
 namespace :spec do |n|
   def define_spec_task(name)
     RSpec::Core::RakeTask.new name do |t|
-      t.rspec_opts = %w(--backtrace --color)
+      # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
+      t.rspec_opts = %w(--color -d)
       t.pattern    = "spec/#{name}/**/*_spec.rb"
     end
   end
