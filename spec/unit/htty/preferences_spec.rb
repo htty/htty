@@ -1,4 +1,4 @@
-require 'spec'
+require 'rspec'
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/preferences")
 
 describe HTTY::Preferences do

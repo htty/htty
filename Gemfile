@@ -5,5 +5,5 @@ gem 'yard'
 
 group :spec do
   gem 'rake'
-  gem 'rspec', :require => 'spec'
+  gem 'rspec'
 end

@@ -1,4 +1,4 @@
-require 'spec'
+require 'rspec'
 require 'pathname'
 
 all_dir = Pathname.new("#{File.dirname __FILE__}/scenarios")
