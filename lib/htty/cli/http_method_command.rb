@@ -32,6 +32,11 @@ module HTTY::CLI::HTTPMethodCommand
   # Performs the command.
   def perform
     add_request_if_has_response do |request|
+      unless body? || request.body.to_s.empty?
+        puts notice("The body of your #{method.to_s.upcase} request is not " +
+                    'being sent')
+      end
+
       begin
         request = request.send("#{method}!", *arguments)
       rescue OpenSSL::SSL::SSLError => e
@@ -40,12 +45,10 @@ module HTTY::CLI::HTTPMethodCommand
                     ' to ignore SSL warnings and complete the request')
         raise e
       end
-      unless body? || request.body.to_s.empty?
-        puts notice("The body of your #{method.to_s.upcase} request is not " +
-                    'being sent')
-      end
+
       notify_if_cookies
       notify_if_follow
+
       request
     end
     show_response session.last_response
