@@ -1,6 +1,7 @@
 require File.expand_path("#{File.dirname __FILE__}/../request")
 require File.expand_path("#{File.dirname __FILE__}/display")
 require File.expand_path("#{File.dirname __FILE__}/commands/cookies_use")
+require File.expand_path("#{File.dirname __FILE__}/commands/ssl_verification_off")
 
 module HTTY; end
 
@@ -31,7 +32,14 @@ module HTTY::CLI::HTTPMethodCommand
   # Performs the command.
   def perform
     add_request_if_has_response do |request|
-      request = request.send("#{method}!", *arguments)
+      begin
+        request = request.send("#{method}!", *arguments)
+      rescue OpenSSL::SSL::SSLError => e
+        puts notice('Type '                                                      +
+                    strong(HTTY::CLI::Commands::SslVerificationOff.command_line) +
+                    ' to ignore SSL warnings and complete the request')
+        raise e
+      end
       unless body? || request.body.to_s.empty?
         puts notice("The body of your #{method.to_s.upcase} request is not " +
                     'being sent')
