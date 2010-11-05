@@ -1,12 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'bluecloth'
-gem 'yard'
+gem 'rake'
 
-group :spec do
+group :development do
   gem 'autotest'
   gem 'autotest-fsevent'
-  gem 'rake'
-  gem 'rspec'
   gem 'ruby-debug'
+end
+
+group :doc do
+  gem 'bluecloth'
+  gem 'yard'
+end
+
+group :spec do
+  gem 'rspec'
 end
