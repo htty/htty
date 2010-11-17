@@ -1,3 +1,5 @@
+require 'json'
+
 require File.expand_path("#{File.dirname __FILE__}/../../no_response_error")
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/body_request")
@@ -49,7 +51,11 @@ class HTTY::CLI::Commands::BodyResponse < HTTY::CLI::Command
       raise HTTY::NoResponseError
     end
     unless (body = response.body).to_s.empty?
-      puts body
+      if response.headers.select{|i| i[0] == "Content-Type" && i[1].match("application/json")}.length > 0
+        puts JSON.pretty_generate(JSON.parse(body))
+      else
+        puts body
+      end
     end
     self
   end
