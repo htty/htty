@@ -1,5 +1,6 @@
 require 'rspec'
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli")
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_remove")
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
 
 describe HTTY::CLI::Commands::QueryRemove do
   before :each do

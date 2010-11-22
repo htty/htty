@@ -1,5 +1,6 @@
 require 'rspec'
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli")
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_add")
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
 
 describe HTTY::CLI::Commands::QueryAdd do
   before :each do
