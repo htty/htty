@@ -22,7 +22,7 @@ class HTTY::CLI::Commands::Reuse < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _reuse_ command.
   def self.command_line_arguments
-    'index'
+    'INDEX'
   end
 
   # Returns the help text for the _reuse_ command.

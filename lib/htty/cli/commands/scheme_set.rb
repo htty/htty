@@ -19,7 +19,7 @@ class HTTY::CLI::Commands::SchemeSet < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _scheme-set_ command.
   def self.command_line_arguments
-    'scheme'
+    'SCHEME'
   end
 
   # Returns the help text for the _scheme-set_ command.

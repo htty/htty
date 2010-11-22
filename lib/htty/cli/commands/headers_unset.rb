@@ -21,7 +21,7 @@ class HTTY::CLI::Commands::HeadersUnset < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _headers-unset_
   # command.
   def self.command_line_arguments
-    'name'
+    'NAME'
   end
 
   # Returns the help text for the _headers-unset_ command.

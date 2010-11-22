@@ -18,7 +18,7 @@ class HTTY::CLI::Commands::HostSet < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _host-set_ command.
   def self.command_line_arguments
-    'host'
+    'HOST'
   end
 
   # Returns the help text for the _host-set_ command.

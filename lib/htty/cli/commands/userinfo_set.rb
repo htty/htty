@@ -24,7 +24,7 @@ class HTTY::CLI::Commands::UserinfoSet < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _userinfo-set_
   # command.
   def self.command_line_arguments
-    'username [password]'
+    'USERNAME [PASSWORD]'
   end
 
   # Returns the help text for the _userinfo-set_ command.

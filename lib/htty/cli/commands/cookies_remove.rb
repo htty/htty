@@ -22,7 +22,7 @@ class HTTY::CLI::Commands::CookiesRemove < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _cookies-remove_
   # command.
   def self.command_line_arguments
-    'name'
+    'NAME'
   end
 
   # Returns the help text for the _cookies-remove_ command.

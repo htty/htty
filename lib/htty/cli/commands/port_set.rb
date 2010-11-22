@@ -19,7 +19,7 @@ class HTTY::CLI::Commands::PortSet < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _port-set_ command.
   def self.command_line_arguments
-    'port'
+    'PORT'
   end
 
   # Returns the help text for the _port-set_ command.

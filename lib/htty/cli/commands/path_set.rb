@@ -21,7 +21,7 @@ class HTTY::CLI::Commands::PathSet < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _path-set_ command.
   def self.command_line_arguments
-    'path'
+    'PATH'
   end
 
   # Returns the help text for the _path-set_ command.

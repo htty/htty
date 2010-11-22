@@ -27,7 +27,7 @@ class HTTY::CLI::Commands::QueryRemove < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _query-remove_
   # command.
   def self.command_line_arguments
-    'name [value]'
+    'NAME [VALUE]'
   end
 
   # Returns the help text for the _query-remove_ command.

@@ -26,7 +26,7 @@ class HTTY::CLI::Commands::QueryUnset < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _query-unset_
   # command.
   def self.command_line_arguments
-    'name'
+    'NAME'
   end
 
   # Returns the help text for the _query-unset_ command.

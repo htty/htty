@@ -21,7 +21,7 @@ class HTTY::CLI::Commands::HeadersSet < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _headers-set_
   # command.
   def self.command_line_arguments
-    'name value'
+    'NAME VALUE'
   end
 
   # Returns the help text for the _headers-set_ command.

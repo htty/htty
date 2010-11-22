@@ -26,7 +26,7 @@ class HTTY::CLI::Commands::QuerySet < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _query-set_ command.
   def self.command_line_arguments
-    'name [value [name [value ...]]]'
+    'NAME [VALUE [NAME [VALUE ...]]]'
   end
 
   # Returns the help text for the _query-set_ command.
