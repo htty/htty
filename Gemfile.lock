@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    autotest (4.4.2)
+    autotest (4.4.5)
     autotest-fsevent (0.2.3)
       sys-uname
     bluecloth (2.0.9)
