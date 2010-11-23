@@ -3,8 +3,12 @@ require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/c
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
 
 describe HTTY::CLI::Commands::QuerySet do
-  before :all do
-    @session = HTTY::Session.new('')
+  let :klass do
+    subject.class
+  end
+
+  let :session do
+    HTTY::Session.new ''
   end
 
   describe 'with one argument' do
@@ -37,25 +41,25 @@ describe HTTY::CLI::Commands::QuerySet do
 
   describe 'with duplicate keys' do
     it 'should replace existing key' do
-      @session.requests.last.uri.query = 'test=true'
+      session.requests.last.uri.query = 'test=true'
       query_set = create_query_set_and_perform('test', 'false')
       query_set.session.requests.last.uri.query.should == 'test=false'
     end
 
     it 'should maintain field location' do
-      @session.requests.last.uri.query = 'test=true&more=true'
+      session.requests.last.uri.query = 'test=true&more=true'
       query_set = create_query_set_and_perform('test', 'false')
       query_set.session.requests.last.uri.query.should == 'test=false&more=true'
     end
 
     it 'should replace multiple instances with one' do
-      @session.requests.last.uri.query = 'test=true&more=true&test=true'
+      session.requests.last.uri.query = 'test=true&more=true&test=true'
       query_set = create_query_set_and_perform('test', 'false')
       query_set.session.requests.last.uri.query.should == 'test=false&more=true'
     end
 
     it 'should play nice with nested fields' do
-      @session.requests.last.uri.query = 'test[my][]=1'
+      session.requests.last.uri.query = 'test[my][]=1'
       query_set = create_query_set_and_perform('test[my][]', '2')
       query_set = create_query_set_and_perform('test', '3')
       query_set.session.requests.last.uri.query.should == 'test[my][]=2&test=3'
@@ -63,7 +67,7 @@ describe HTTY::CLI::Commands::QuerySet do
   end
 
   def create_query_set_and_perform(*arguments)
-    query_set = HTTY::CLI::Commands::QuerySet.new(:session => @session,
+    query_set = HTTY::CLI::Commands::QuerySet.new(:session => session,
                                                   :arguments => arguments)
     query_set.perform
     query_set
