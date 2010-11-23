@@ -26,7 +26,7 @@ class HTTY::CLI::Commands::QueryUnset < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _query-unset_
   # command.
   def self.command_line_arguments
-    'NAME'
+    'NAME [VALUE]'
   end
 
   # Returns the help text for the _query-unset_ command.
@@ -63,7 +63,9 @@ class HTTY::CLI::Commands::QueryUnset < HTTY::CLI::Command
   def perform
     add_request_if_has_response do |request|
       self.class.notify_if_cookies_cleared request do
-        request.query_unset(*escape_or_warn_of_escape_sequences(arguments))
+        unset_method = (arguments.length == 2) ? :query_remove : :query_unset
+        request.send(unset_method,
+                     *escape_or_warn_of_escape_sequences(arguments))
       end
     end
   end
