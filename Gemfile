@@ -5,7 +5,8 @@ gem 'rake'
 group :development do
   gem 'autotest'
   gem 'autotest-fsevent'
-  gem (RUBY_VERSION =~ /^1.9/) ? 'ruby-debug19' : 'ruby-debug'
+  gem 'ruby-debug',   :platforms => 'ruby_18'
+  gem 'ruby-debug19', :platforms => 'ruby_19'
 end
 
 group :doc do

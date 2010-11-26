@@ -25,13 +25,8 @@ else
   def define_spec_task(name, as_subdirectory=true)
     RSpec::Core::RakeTask.new name do |t|
       t.rspec_opts = ['--color']
-      begin
-        require 'ruby-debug'
-      rescue LoadError
-      else
-        # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
-        t.rspec_opts << '-d'
-      end
+      # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
+      t.rspec_opts << '-d'
 
       directory = as_subdirectory ? "spec/#{name}" : 'spec'
       t.pattern = "#{directory}/**/*_spec.rb"
