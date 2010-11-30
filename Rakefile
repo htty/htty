@@ -12,6 +12,28 @@ else
   YARD::Rake::YardocTask.new :doc
 end
 
+namespace :lib do
+  desc "Check the source for missing 'require' statements. Set the 'VERBOSE' " +
+       'environment variable to "t[rue]" to display the name of each file as ' +
+       'it is loaded.'
+  task :find_missing_requires do
+    def verbose?
+      ENV['VERBOSE'].to_s =~ /^T/i
+    end
+
+    Dir.glob 'lib/**/*.rb' do |f|
+      if verbose?
+        puts "* #{f}"
+      else
+        print "\x1b[1;32m.\x1b[0m"
+      end
+      command = "/usr/bin/env ruby -e 'require File.expand_path(#{f.inspect})'"
+      break unless system(command)
+    end
+    puts unless verbose?
+  end
+end
+
 begin
   require 'rspec/core/rake_task'
 rescue LoadError
