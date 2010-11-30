@@ -41,6 +41,12 @@ class HTTY::CLI::Command
     nil
   end
 
+  # Returns a list of options for the current command and _command_line_. The 
+  # default is to return +nil+ for no options.
+  def completion_options_for_arguments
+    nil
+  end
+
   # Returns true of false depending on if the given command_line can auto
   # complete into this command
   def self.can_auto_complete_for(command_line)

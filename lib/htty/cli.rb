@@ -90,12 +90,34 @@ private
 
   def register_completion_proc
     Readline.completion_proc = proc do |input|
-      auto_complete_list = HTTY::CLI::Commands.select do |c|
-        c.can_auto_complete_for(input)
+      if Readline.respond_to?("line_buffer")
+        if !Readline.line_buffer.include? " " or Readline.line_buffer[0..4] == "help "
+          command_auto_complete(input)
+        else # Try to auto-complete parameters for a command
+          completion_values = []
+          HTTY::CLI::Commands.each do |c|
+            command_name = c.raw_name
+            if Readline.line_buffer[0..command_name.length-1] == command_name
+              command_line = Readline.line_buffer.chomp.strip
+              command_instance = HTTY::CLI::Commands.build_for command_line, :session => session
+              completion_values = command_instance.completion_options_for_arguments
+              break
+            end
+          end
+          completion_values
+        end
+      else
+        command_auto_complete(input)
       end
-      auto_complete_list.collect do |c|
-        c.raw_name
-      end
+    end
+  end
+
+  def command_auto_complete(input)
+    auto_complete_list = HTTY::CLI::Commands.select do |c|
+      c.can_auto_complete_for(input)
+    end
+    auto_complete_list.collect do |c|
+      c.raw_name
     end
   end
 
