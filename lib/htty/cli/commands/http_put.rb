@@ -1,5 +1,8 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../http_method_command")
+require File.expand_path("#{File.dirname __FILE__}/http_get")
+require File.expand_path("#{File.dirname __FILE__}/http_post")
+require File.expand_path("#{File.dirname __FILE__}/http_delete")
 
 module HTTY; end
 
