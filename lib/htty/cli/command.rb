@@ -41,6 +41,17 @@ class HTTY::CLI::Command
     nil
   end
 
+  # Returns true of false depending on if the given command_line can auto
+  # complete into this command
+  def self.can_auto_complete_for(command_line)
+    command_name = command_line_for_class_name(name)
+    command_name[0, command_line.length] == command_line
+  end
+
+  def self.raw_name
+    command_line_for_class_name(name)
+  end
+
   # Returns the name of a category under which help for the command should
   # appear.
   def self.category

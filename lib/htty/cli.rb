@@ -23,6 +23,7 @@ class HTTY::CLI
       end
       HTTY::Session.new(everything_but_options.first)
     end
+    register_completion_proc
   end
 
   # Takes over stdin, stdout, and stderr to expose #session to command-line
@@ -85,6 +86,17 @@ private
 
   def whitespace?(command_line)
     command_line.strip.empty?
+  end
+
+  def register_completion_proc
+    Readline.completion_proc = proc do |input|
+      auto_complete_list = HTTY::CLI::Commands.select do |c|
+        c.can_auto_complete_for(input)
+      end
+      auto_complete_list.collect do |c|
+        c.raw_name
+      end
+    end
   end
 
 end
