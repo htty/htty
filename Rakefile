@@ -56,11 +56,10 @@ else
   end
 
   namespace :spec do |n|
-    desc 'Run unit specs'
-    define_spec_task :unit
-
-    desc 'Run system specs'
-    define_spec_task :system
+    %w(unit integration system).each do |type_of_spec|
+      desc "Run #{type_of_spec} specs"
+      define_spec_task type_of_spec
+    end
   end
 
   desc 'Run all specs'

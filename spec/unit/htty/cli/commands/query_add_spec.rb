@@ -7,15 +7,11 @@ require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/c
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset_all")
 
 describe HTTY::CLI::Commands::QueryAdd do
-  let :klass do
-    subject.class
-  end
-
-  let :session do
-    HTTY::Session.new nil
-  end
-
   describe 'class' do
+    let :klass do
+      subject.class
+    end
+
     it 'should be an alias_for the expected command' do
       klass.alias_for.should == nil
     end
@@ -80,46 +76,6 @@ The console prompt shows the address for the current request.
       it 'should correctly handle a command line with a bad command' do
         built = klass.build_for('x qux', :session => :another_session)
         built.should == nil
-      end
-    end
-  end
-
-  describe 'instance' do
-    def instance(*arguments)
-      klass.new :session => session, :arguments => arguments
-    end
-
-    describe 'with key argument only' do
-      describe 'without key already present' do
-        it 'should add key' do
-          instance('test').perform
-          session.requests.last.uri.query.should == 'test'
-        end
-      end
-
-      describe 'with key already present' do
-        it 'should add key' do
-          session.requests.last.uri.query = 'test=true'
-          instance('test').perform
-          session.requests.last.uri.query.should == 'test=true&test'
-        end
-      end
-    end
-
-    describe 'with key and value arguments' do
-      describe 'without key already present' do
-        it 'should add key and value' do
-          instance('test', 'true').perform
-          session.requests.last.uri.query.should == 'test=true'
-        end
-      end
-
-      describe 'with key already present' do
-        it 'should add key and value' do
-          session.requests.last.uri.query = 'test=true'
-          instance('test', 'false').perform
-          session.requests.last.uri.query.should == 'test=true&test=false'
-        end
       end
     end
   end

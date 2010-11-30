@@ -4,15 +4,11 @@ require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/c
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification_on")
 
 describe HTTY::CLI::Commands::SslVerification do
-  let :klass do
-    subject.class
-  end
-
-  let :session do
-    HTTY::Session.new nil
-  end
-
   describe 'class' do
+    let :klass do
+      subject.class
+    end
+
     it 'should be an alias_for the expected command' do
       klass.alias_for.should == nil
     end
