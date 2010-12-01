@@ -5,6 +5,7 @@ spec = Gem::Specification.new do |s|
   s.description  = 'htty is a console application for interacting with HTTP ' +
                    'servers. It is something of a cross between cURL and a '  +
                    'browser.'
+  s.license      = 'MIT'
   s.files        = %w(README.markdown
                       History.markdown
                       MIT-LICENSE.markdown
