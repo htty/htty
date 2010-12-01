@@ -159,8 +159,8 @@ Type `body-set` to enter body data, and terminate it by typing Return three time
 Different response codes are rendered with colors that suggest their meaning:
 
 * Response codes between 200 and 299 appear <span style="background-color: green; color: black; font-weight: bold; padding: 0 0.25em 0 0.25em;">black on green</span> to indicate success
-* Response codes between 300 and 399 appear <span style="background-color: blue; color: white; font-weight: bold; padding: 0 0.25em 0 0.25em;">white on blue</span> to indicate redirection
-* Response codes between 400 and 499 appear <span style="background-color: red; color: white; font-weight: bold; padding: 0 0.25em 0 0.25em;">white on red</span> to indicate failure
+* Response codes between 300 and 399 appear <span style="background-color: darkblue; color: white; font-weight: bold; padding: 0 0.25em 0 0.25em;">white on blue</span> to indicate redirection
+* Response codes between 400 and 499 appear <span style="background-color: darkred; color: white; font-weight: bold; padding: 0 0.25em 0 0.25em;">white on red</span> to indicate failure
 * Response codes between 500 and 599 appear <span style="background-color: yellow; color: black; font-weight: bold; padding: 0 0.25em 0 0.25em; text-decoration: blink;">flashing black on yellow</span> to indicate a server error
 
 ![Sinatra application example #2](http://htty.github.com/images/sinatra2.png)
