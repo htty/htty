@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    htty (1.2.0)
+    htty (1.2.1)
 
 GEM
   remote: http://rubygems.org/
