@@ -43,7 +43,7 @@ You’ll need Ruby and RubyGems. It’s known to work well under OS X against Ru
 Features
 ========
 
-* Intuitive commands and command aliases
+* Intuitive, Tab-completed commands and command aliases
 * Support for familiar HTTP methods _GET_, _POST_, _PUT_, and _DELETE_, as well as _HEAD_, _OPTIONS_ and _TRACE_
 * Support for HTTP Secure connections and HTTP Basic Authentication
 * Automatic URL-encoding of userinfo, paths, query-string parameters, and page fragments
@@ -195,11 +195,6 @@ Using any of the forthcoming `form` commands will clear any non-form content in 
 * `form-remove-all` — remove all URL-encoded form parameters from the request
 
 You will also be able to pop open a browser window containing request and response bodies.
-
-Shiny autocomplete goodness
----------------------------
-
-We’ll have command command autocompletion, and possibly also Tab key navigation of forms.
 
 Custom command aliases and shell emulation of _http-console_
 ------------------------------------------------------------
