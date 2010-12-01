@@ -1,6 +1,12 @@
 Version history for the _htty_ project
 ======================================
 
+v1.2.1, Wed 12/01/2010
+---------------------
+
+* Made Ruby v1.8.7 or later a requirement for gem installation
+* Upgraded dependencies
+
 v1.2.0, Wed 12/01/2010
 ---------------------
 
