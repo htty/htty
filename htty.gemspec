@@ -21,7 +21,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'yard'
 
-  s.requirements << 'Ruby v1.8.7 or later'
+  s.required_ruby_version = '>= 1.8.7'
 
   s.author   = 'Nils Jonsson'
   s.email    = 'htty@nilsjonsson.com'
