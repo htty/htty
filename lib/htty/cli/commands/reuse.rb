@@ -64,7 +64,7 @@ class HTTY::CLI::Commands::Reuse < HTTY::CLI::Command
             "index must be between 1 and #{requests_with_responses.length}"
     end
 
-    add_request_if_has_response do
+    add_request_if_new do
       requests[index - 1].send :dup_without_response
     end
 

@@ -200,15 +200,13 @@ public
 
 protected
 
-  # Yields the last request in #session. If that request already has a response,
-  # then it adds the result of the +yield+ to the requests of #session.
-  def add_request_if_has_response
+  # Yields the last request in #session. If the block returns a different
+  # request, it is added to the requests of #session.
+  def add_request_if_new
     requests     = session.requests
     last_request = requests.last
-    if last_request.response
-      requests << yield(last_request)
-    else
-      requests[requests.length - 1] = yield(last_request)
+    unless (new_request = yield(last_request)).equal?(last_request)
+      requests << new_request
     end
     self
   end

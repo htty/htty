@@ -50,7 +50,7 @@ class HTTY::CLI::Commands::CookiesRemove < HTTY::CLI::Command
 
   # Performs the _cookies-remove_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       request.cookie_remove(*arguments)
     end
   end
