@@ -222,15 +222,15 @@ Credits [![Flattr this](http://api.flattr.com/button/button-compact-static-100x1
 
 The author, [Nils Jonsson](mailto:htty@nilsjonsson.com), owes a debt of inspiration to the [_http-console_](http://github.com/cloudhead/http-console) project.
 
-Thanks to [contributors](https://github.com/htty/htty/contributors "htty contributors at GitHub") (in alphabetical order):
+Thanks to [contributors](http://github.com/htty/htty/contributors "htty contributors at GitHub") (in alphabetical order):
 
-* Rob Dawson (ephox-rob/[rojotek](https://github.com/rojotek "rojotek at GitHub"))
-* Bo Frederiksen ([bofrede](https://github.com/bofrede "bofrede at GitHub"))
-* Johannes Gorset ([jgorset](https://github.com/jgorset "jgorset at GitHub"))
-* Carson McDonald ([carsonmcdonald](https://github.com/carsonmcdonald "carsonmcdonald at GitHub"))
-* Sam Nguyen ([dtjm](https://github.com/dtjm "dtjm at GitHub"))
-* Robert Pitts ([rbxbx](https://github.com/rbxbx "rbxbx at GitHub"))
-* Matt Sanders ([mattsa](https://github.com/mattsa "mattsa at GitHub"))
+* Rob Dawson (ephox-rob/[rojotek](http://github.com/rojotek "rojotek at GitHub"))
+* Bo Frederiksen ([bofrede](http://github.com/bofrede "bofrede at GitHub"))
+* Johannes Gorset ([jgorset](http://github.com/jgorset "jgorset at GitHub"))
+* Carson McDonald ([carsonmcdonald](http://github.com/carsonmcdonald "carsonmcdonald at GitHub"))
+* Sam Nguyen ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
+* Robert Pitts ([rbxbx](http://github.com/rbxbx "rbxbx at GitHub"))
+* Matt Sanders ([mattsa](http://github.com/mattsa "mattsa at GitHub"))
 
 License
 =======
