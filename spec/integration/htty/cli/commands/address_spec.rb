@@ -48,7 +48,7 @@ describe HTTY::CLI::Commands::Address do
       create_instance 'ftp://myftpsite.info'
     end
 
-    xit 'should raise the expected error when performed' do
+    it 'should raise the expected error when performed' do
       lambda {
         instance.perform
       }.should raise_error(ArgumentError,
