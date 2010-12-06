@@ -6,9 +6,11 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.4.1)
     archive-tar-minitar (0.5.2)
-    autotest (4.4.5)
-    autotest-fsevent (0.2.3)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
+    autotest-fsevent (0.2.4)
       sys-uname
     bluecloth (2.0.9)
     columnize (0.3.2)
