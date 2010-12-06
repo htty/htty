@@ -49,11 +49,11 @@ describe HTTY::CLI::Commands::Address do
     end
 
     it 'should raise the expected error when performed' do
-      lambda {
+      expect do
         instance.perform
-      }.should raise_error(ArgumentError,
-                           'only "http://" and "https://" addresses are ' +
-                           'supported')
+      end.to raise_error(ArgumentError,
+                         'only "http://" and "https://" addresses are ' +
+                         'supported')
     end
   end
 
@@ -63,9 +63,9 @@ describe HTTY::CLI::Commands::Address do
     end
 
     it 'should raise the expected error when performed' do
-      lambda {
+      expect do
         instance.perform
-      }.should raise_error(ArgumentError, 'wrong number of arguments (0 for 1)')
+      end.to raise_error(ArgumentError, 'wrong number of arguments (0 for 1)')
     end
   end
 end

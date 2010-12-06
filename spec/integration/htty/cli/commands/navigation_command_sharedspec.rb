@@ -7,8 +7,6 @@ shared_examples_for 'a navigation command' do
   end
 
   it 'should add a new request to the session when sent #perform' do
-    lambda {
-      instance.perform
-    }.should change(session.requests, :length).by(1)
+    expect { instance.perform }.to change(session.requests, :length).by(1)
   end
 end
