@@ -75,6 +75,15 @@ describe HTTY::Request do
         expect { klass.new '-google.com' }.to raise_error(URI::InvalidURIError)
       end
     end
+
+    describe 'a valid FTP address' do
+      it 'should raise URI::InvalidURIError' do
+        expect do
+          klass.new 'ftp://myftpsite.info'
+        end.to raise_error(ArgumentError,
+                           'only http:// and https:// schemes are supported')
+      end
+    end
   end
 
   describe 'with a nil address' do
