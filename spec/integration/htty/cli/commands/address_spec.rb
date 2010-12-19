@@ -52,8 +52,7 @@ describe HTTY::CLI::Commands::Address do
       expect do
         instance.perform
       end.to raise_error(ArgumentError,
-                         'only "http://" and "https://" addresses are ' +
-                         'supported')
+                         'only http:// and https:// schemes are supported')
     end
   end
 
