@@ -3,10 +3,6 @@ require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/sessi
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_clear")
 
 describe HTTY::CLI::Commands::BodyClear do
-  before :each do
-    session.requests.last.body_set 'foo'
-  end
-
   let :klass do
     subject.class
   end
@@ -19,9 +15,5 @@ describe HTTY::CLI::Commands::BodyClear do
     klass.new :session => session
   end
 
-  it "should clear the current request's body" do
-    session.requests.last.body.should_not == nil
-    instance.perform
-    session.requests.last.body.should == nil
-  end
+  it_should_behave_like "the 'body-unset' command"
 end

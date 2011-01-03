@@ -1,4 +1,5 @@
 require 'rspec'
+require File.expand_path("#{File.dirname __FILE__}/navigation_command_sharedspec")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_add")
 
@@ -15,6 +16,8 @@ describe HTTY::CLI::Commands::QueryAdd do
     klass.new :session => session, :arguments => arguments
   end
 
+  it_should_behave_like 'a navigation command'
+
   describe 'with key argument only' do
     describe 'without key already present' do
       it 'should add key' do
@@ -24,8 +27,11 @@ describe HTTY::CLI::Commands::QueryAdd do
     end
 
     describe 'with key already present' do
-      it 'should add key' do
+      before :each do
         session.requests.last.uri.query = 'test=true'
+      end
+
+      it 'should add key' do
         instance('test').perform
         session.requests.last.uri.query.should == 'test=true&test'
       end
@@ -41,8 +47,11 @@ describe HTTY::CLI::Commands::QueryAdd do
     end
 
     describe 'with key already present' do
-      it 'should add key and value' do
+      before :each do
         session.requests.last.uri.query = 'test=true'
+      end
+
+      it 'should add key and value' do
         instance('test', 'false').perform
         session.requests.last.uri.query.should == 'test=true&test=false'
       end
