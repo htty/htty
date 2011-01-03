@@ -43,7 +43,7 @@ GEM
     ruby_core_source (0.1.4)
       archive-tar-minitar (>= 0.5.2)
     sys-uname (0.8.5)
-    yard (0.6.3)
+    yard (0.6.4)
 
 PLATFORMS
   ruby
