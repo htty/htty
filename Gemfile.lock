@@ -7,6 +7,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.4.2)
+    addressable (2.2.2)
     archive-tar-minitar (0.5.2)
     aruba (0.2.7)
       background_process
@@ -19,6 +20,7 @@ GEM
     bluecloth (2.0.9)
     builder (3.0.0)
     columnize (0.3.2)
+    crack (0.1.8)
     cucumber (0.10.0)
       builder (>= 2.1.2)
       diff-lcs (~> 1.1.2)
@@ -58,6 +60,9 @@ GEM
       archive-tar-minitar (>= 0.5.2)
     sys-uname (0.8.5)
     term-ansicolor (1.0.5)
+    webmock (1.6.1)
+      addressable (>= 2.2.2)
+      crack (>= 0.1.7)
     yard (0.6.4)
 
 PLATFORMS
@@ -73,4 +78,5 @@ DEPENDENCIES
   rspec
   ruby-debug
   ruby-debug19
+  webmock
   yard
