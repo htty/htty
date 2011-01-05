@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gemspec
 
 group :development do
+  gem 'aruba'
   gem 'autotest'
   gem 'autotest-fsevent'
   gem 'ruby-debug',   :platforms => 'ruby_18'
