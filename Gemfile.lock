@@ -6,12 +6,7 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.4.2)
     archive-tar-minitar (0.5.2)
-    autotest (4.4.6)
-      ZenTest (>= 4.4.1)
-    autotest-fsevent (0.2.4)
-      sys-uname
     bluecloth (2.0.9)
     columnize (0.3.2)
     diff-lcs (1.1.2)
@@ -42,15 +37,12 @@ GEM
       ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.4)
       archive-tar-minitar (>= 0.5.2)
-    sys-uname (0.8.5)
     yard (0.6.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  autotest
-  autotest-fsevent
   bluecloth
   htty!
   rake
