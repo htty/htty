@@ -1,6 +1,8 @@
 .bundle/
+.rvmrc
 .yardoc/
+*.gem
 Gemfile.lock
 doc/
+pkg/*
 spec/system/scenarios/**/actual_*
-.rvmrc

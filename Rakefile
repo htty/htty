@@ -1,15 +1,20 @@
+require 'bundler'
+Bundler::GemHelper.install_tasks
+
 yard, rspec = false, false
 
-begin
-  require 'yard'
-rescue LoadError
-  desc '(Not available -- install YARD)'
-  task :doc do
-    STDERR.puts '*** Install YARD in order to build documentation'
+namespace :build do
+  begin
+    require 'yard'
+  rescue LoadError
+    desc '(Not available -- install YARD)'
+    task :doc do
+      STDERR.puts '*** Install YARD in order to build documentation'
+    end
+  else
+    yard = true
+    YARD::Rake::YardocTask.new :doc
   end
-else
-  yard = true
-  YARD::Rake::YardocTask.new :doc
 end
 
 namespace :lib do
