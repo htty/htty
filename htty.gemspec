@@ -16,10 +16,10 @@ spec = Gem::Specification.new do |s|
 
   s.executables << 'htty'
 
-  s.add_development_dependency 'bluecloth'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'yard'
+  s.add_development_dependency 'bluecloth', '~> 2.0'
+  s.add_development_dependency 'rake',      '~> 0.8'
+  s.add_development_dependency 'rspec',     '~> 2.0'
+  s.add_development_dependency 'yard',      '~> 0.2'
 
   s.required_ruby_version = '>= 1.8.7'
 

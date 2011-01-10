@@ -1,5 +1,6 @@
 .bundle/
 .yardoc/
+Gemfile.lock
 doc/
 spec/system/scenarios/**/actual_*
 .rvmrc
