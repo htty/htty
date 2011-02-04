@@ -6,7 +6,9 @@ spec = Gem::Specification.new do |s|
                    'servers. It is something of a cross between cURL and a '  +
                    'browser.'
   s.license      = 'MIT'
-  s.files        = %w(README.markdown
+  s.files        = %w(.gemtest
+                      Rakefile
+                      README.markdown
                       History.markdown
                       MIT-LICENSE.markdown
                       VERSION) +

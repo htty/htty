@@ -75,3 +75,6 @@ else
   task '' => :spec
   task :default => :spec
 end
+
+# Support the 'gem test' command.
+task :test => :spec
