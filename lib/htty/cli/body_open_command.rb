@@ -87,7 +87,7 @@ private
       end
       return 'html'
     end
-    type.extensions.first
+    types.extensions.first
   end
 
 end
