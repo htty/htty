@@ -1,6 +1,14 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.3.0"></a>v1.3.0, Fri 2/25/2011
+-------------------------------------------
+
+* Added the `body-request-open` and `body-response-open` commands for viewing body content in an external program \[with help from [rbxbx](http://github.com/rbxbx "rbxbx at GitHub")\]
+* Added validation of the URL scheme
+* Added support for the [rubygems-test](http://rubygems.org/gems/rubygems-test) gem for compatibility testing in the field
+* Refined dependencies
+
 <a name="v1.2.1"></a>v1.2.1, Wed 12/01/2010
 -------------------------------------------
 
