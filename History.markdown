@@ -1,6 +1,11 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.3.1"></a>v1.3.1, Fri 2/25/2011
+-------------------------------------------
+
+* Fixed a bug in the `body-request-open` and `body-response-open` commands
+
 <a name="v1.3.0"></a>v1.3.0, Fri 2/25/2011
 -------------------------------------------
 
