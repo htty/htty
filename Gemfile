@@ -8,5 +8,6 @@ group :development do
   gem 'autotest-fsevent'
   gem 'ruby-debug',   :platforms => 'ruby_18'
   gem 'ruby-debug19', :platforms => 'ruby_19'
+  gem 'vcr'
   gem 'webmock'
 end

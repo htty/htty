@@ -60,6 +60,7 @@ GEM
       archive-tar-minitar (>= 0.5.2)
     sys-uname (0.8.5)
     term-ansicolor (1.0.5)
+    vcr (1.6.0)
     webmock (1.6.1)
       addressable (>= 2.2.2)
       crack (>= 0.1.7)
@@ -78,5 +79,6 @@ DEPENDENCIES
   rspec
   ruby-debug
   ruby-debug19
+  vcr
   webmock
   yard
