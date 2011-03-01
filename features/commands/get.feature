@@ -12,5 +12,5 @@ Feature: Get
     Then the output should match:
 
     """
-    200.* OK -- 9 headers -- 17478-character body
+    200.+? OK -- \d+ headers? -- \d+-character body
     """
