@@ -35,6 +35,22 @@ namespace :lib do
 end
 
 begin
+  require 'cucumber'
+  require 'cucumber/rake/task'
+rescue LoadError
+  desc '(Not available -- install Cucumber)'
+  task :features do
+    STDERR.puts '*** Install Cucumber in order to test features'
+  end
+else
+  cucumber = true
+
+  desc 'Test features'
+  Cucumber::Rake::Task.new :features do |t|
+  end
+end
+
+begin
   require 'rspec/core/rake_task'
 rescue LoadError
   desc '(Not available -- install RSpec)'
@@ -66,12 +82,16 @@ else
   define_spec_task :spec, false
 end
 
-if yard && !rspec
+if yard && !cucumber && !rspec
   desc 'Generate YARD documentation'
   task '' => :doc
   task :default => :doc
-else
-  desc 'Run all specs'
-  task '' => :spec
-  task :default => :spec
+elsif cucumber && !rspec
+  desc 'Test features'
+  task '' => :features
+  task :default => :features
+elsif rspec
+  desc 'Run all specs and test features'
+  task '' => [:spec, :features]
+  task :default => [:spec, :features]
 end
