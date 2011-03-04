@@ -1,6 +1,11 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.3.2"></a>v1.3.2, Fri 3/04/2011
+-------------------------------------------
+
+* Fixed configuration issues related to [rubygems-test](http://rubygems.org/gems/rubygems-test) gem support
+
 <a name="v1.3.1"></a>v1.3.1, Fri 2/25/2011
 -------------------------------------------
 
