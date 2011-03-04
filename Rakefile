@@ -77,5 +77,6 @@ else
   task :default => :spec
 
   # Support the 'gem test' command.
+  desc ''
   define_spec_task :test, :debug => false, :skip_bundler => true
 end
