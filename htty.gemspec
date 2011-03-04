@@ -19,10 +19,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'mime-types', '~> 1.0'
 
-  s.add_development_dependency 'bluecloth', '~> 2.0'
-  s.add_development_dependency 'rake',      '~> 0.8'
-  s.add_development_dependency 'rspec',     '~> 2.0'
-  s.add_development_dependency 'yard',      '~> 0.2'
+  s.add_development_dependency 'rake',  '~> 0.8'
+  s.add_development_dependency 'rspec', '~> 2.0'
 
   s.rubyforge_project = 'htty'
   s.has_rdoc          = true

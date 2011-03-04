@@ -1,4 +1,9 @@
-require 'mime/types'
+begin
+  require 'mime/types'
+rescue LoadError
+  require 'rubygems'
+  retry
+end
 require File.expand_path("#{File.dirname __FILE__}/../platform")
 require File.expand_path("#{File.dirname __FILE__}/../tempfile_preserving_extname")
 require File.expand_path("#{File.dirname __FILE__}/display")
