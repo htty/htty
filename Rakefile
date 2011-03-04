@@ -9,9 +9,9 @@ namespace :build do
   begin
     require 'yard'
   rescue LoadError
-    desc '(Not available -- install YARD)'
+    desc "(Not available -- try 'gem install yard')"
     task :doc do
-      STDERR.puts '*** Install YARD in order to build documentation'
+      STDERR.puts "*** 'gem install yard' in order to build documentation"
     end
   else
     YARD::Rake::YardocTask.new :doc
@@ -43,9 +43,9 @@ end
 begin
   require 'rspec/core/rake_task'
 rescue LoadError
-  desc '(Not available -- install RSpec)'
+  desc "(Not available -- try 'gem install rspec')"
   task :spec do
-    STDERR.puts '*** Install RSpec in order to run specs'
+    STDERR.puts "*** 'gem install rspec' in order to run specs"
   end
 else
   def define_spec_task(name, options={})
