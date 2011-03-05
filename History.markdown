@@ -1,6 +1,11 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.3.3"></a>v1.3.3, Sat 3/05/2011
+-------------------------------------------
+
+* Fixed a bug in the `query-add` and `query-set` commands
+
 <a name="v1.3.2"></a>v1.3.2, Fri 3/04/2011
 -------------------------------------------
 
