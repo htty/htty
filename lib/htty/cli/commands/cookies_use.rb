@@ -53,11 +53,11 @@ class HTTY::CLI::Commands::CookiesUse < HTTY::CLI::Command
     end
 
     add_request_if_new do |request|
-      changed_request = request.cookies_use(session.last_response)
-      phrase = pluralize('cookie', changed_request.cookies.length)
+      request = request.cookies_use(session.last_response)
+      phrase = pluralize('cookie', request.cookies.length)
       phrase = phrase[0..0].upcase + phrase[1..-1]
       puts notice("#{phrase} now in use")
-      changed_request
+      request
     end
   end
 
