@@ -1,4 +1,3 @@
-require 'mime/types'
 module HTTY; end
 
 class HTTY::CLI; end
@@ -57,7 +56,7 @@ module HTTY::Multipart
 
     def to_multipart
      mime_type = MIME::Types.type_for(@f.path)[0] || MIME::Types["application/octet-stream"][0]
-     @m ||= "Content-Disposition: form-data; name=\"#{@name}\"; filename=\"#{File.basename(@f)}\"\r\nContent-Type: #{mime_type}\r\n\r\n#{@f.read}\r\n"
+     @m ||= "Content-Disposition: form-data; name=\"#{@name}\"; filename=\"#{File.basename(@f.path)}\"\r\nContent-Type: #{mime_type}\r\n\r\n#{@f.read}\r\n"
     end
 
   end
