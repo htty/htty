@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'mime-types', '~> 1.0'
 
-  s.add_development_dependency 'rake',  '~> 0.8'
+  s.add_development_dependency 'rake',  '~> 0.9'
   s.add_development_dependency 'rspec', '~> 2.0'
 
   s.rubyforge_project = 'htty'
