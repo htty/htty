@@ -228,9 +228,9 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 * Bo Frederiksen ([bofrede](http://github.com/bofrede "bofrede at GitHub"))
 * Johannes Gorset ([jgorset](http://github.com/jgorset "jgorset at GitHub"))
 * Carson McDonald ([carsonmcdonald](http://github.com/carsonmcdonald "carsonmcdonald at GitHub"))
-* Sam Nguyen ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
+* Sam X ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
 * Robert Pitts ([rbxbx](http://github.com/rbxbx "rbxbx at GitHub"))
-* Matt Sanders ([mattsa](http://github.com/mattsa "mattsa at GitHub"))
+* Matt Sanders ([nextmat](http://github.com/nextmat "nextmat at GitHub"))
 
 <a name="license"></a>License
 =============================
