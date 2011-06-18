@@ -27,7 +27,7 @@
                  |____|     |____|    / ______|
                                       \/
 
-[htty](http://htty.github.com) is a console application for interacting with HTTP servers. It’s something of a cross between [cURL](http://curl.haxx.se) and a browser.
+[htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
 See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html). [![Flattr this](http://api.flattr.com/button/button-compact-static-100x17.png)](http://flattr.com/thing/68277/htty-the-HTTP-TTY "Flattr this")
 

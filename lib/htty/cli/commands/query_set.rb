@@ -64,7 +64,7 @@ class HTTY::CLI::Commands::QuerySet < HTTY::CLI::Command
       self.class.notify_if_cookies_cleared request do
         escaped_arguments = escape_or_warn_of_escape_sequences(arguments)
         escaped_arguments.each_slice 2 do |name, value|
-          request.query_set name, value
+          request = request.query_set(name, value)
         end
         request
       end

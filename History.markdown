@@ -1,6 +1,29 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.3.3"></a>v1.3.3, Sat 3/05/2011
+-------------------------------------------
+
+* Fixed a bug in the `query-add` and `query-set` commands
+
+<a name="v1.3.2"></a>v1.3.2, Fri 3/04/2011
+-------------------------------------------
+
+* Fixed configuration issues related to [rubygems-test](http://rubygems.org/gems/rubygems-test) gem support
+
+<a name="v1.3.1"></a>v1.3.1, Fri 2/25/2011
+-------------------------------------------
+
+* Fixed a bug in the `body-request-open` and `body-response-open` commands
+
+<a name="v1.3.0"></a>v1.3.0, Fri 2/25/2011
+-------------------------------------------
+
+* Added the `body-request-open` and `body-response-open` commands for viewing body content in an external program \[with help from [rbxbx](http://github.com/rbxbx "rbxbx at GitHub")\]
+* Added validation of the URL scheme
+* Added support for the [rubygems-test](http://rubygems.org/gems/rubygems-test) gem for compatibility testing in the field
+* Refined dependencies
+
 <a name="v1.2.1"></a>v1.2.1, Wed 12/01/2010
 -------------------------------------------
 

@@ -1,14 +1,13 @@
-yard, rspec = false, false
+require 'bundler'
+require 'cucumber'
+require 'cucumber/rake/task'
+require 'rspec/core/rake_task'
+require 'ruby-debug'
+require 'yard'
 
-begin
-  require 'yard'
-rescue LoadError
-  desc '(Not available -- install YARD)'
-  task :doc do
-    STDERR.puts '*** Install YARD in order to build documentation'
-  end
-else
-  yard = true
+Bundler::GemHelper.install_tasks
+
+namespace :build do
   YARD::Rake::YardocTask.new :doc
 end
 
@@ -34,64 +33,44 @@ namespace :lib do
   end
 end
 
-begin
-  require 'cucumber'
-  require 'cucumber/rake/task'
-rescue LoadError
-  desc '(Not available -- install Cucumber)'
-  task :features do
-    STDERR.puts '*** Install Cucumber in order to test features'
-  end
-else
-  cucumber = true
+Cucumber::Rake::Task.new :features, 'Test features'
 
-  desc 'Test features'
-  Cucumber::Rake::Task.new :features do |t|
-  end
-end
-
-begin
-  require 'rspec/core/rake_task'
-rescue LoadError
-  desc '(Not available -- install RSpec)'
-  task :spec do
-    STDERR.puts '*** Install RSpec in order to run specs'
-  end
-else
-  rspec = true
-
-  def define_spec_task(name, as_subdirectory=true)
-    RSpec::Core::RakeTask.new name do |t|
-      t.rspec_opts = ['--color']
+def define_spec_task(name, options={})
+  RSpec::Core::RakeTask.new name do |t|
+    t.rspec_opts = ['--color']
+    t.skip_bundler = options[:skip_bundler]
+    unless options[:debug] == false
       # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
       t.rspec_opts << '-d'
-
-      directory = as_subdirectory ? "spec/#{name}" : 'spec'
-      t.pattern = "#{directory}/**/*_spec.rb"
     end
-  end
 
-  namespace :spec do |n|
-    %w(unit integration system).each do |type_of_spec|
-      desc "Run #{type_of_spec} specs"
-      define_spec_task type_of_spec
-    end
+    directory = options[:as_subdirectory] ? "spec/#{name}" : 'spec'
+    t.pattern = "#{directory}/**/*_spec.rb"
   end
-
-  desc 'Run all specs'
-  define_spec_task :spec, false
 end
 
-if yard && !cucumber && !rspec
-  desc 'Generate YARD documentation'
-  task '' => :doc
-  task :default => :doc
-elsif cucumber && !rspec
-  desc 'Test features'
-  task '' => :features
-  task :default => :features
-elsif rspec
-  desc 'Run all specs and test features'
-  task '' => [:spec, :features]
-  task :default => [:spec, :features]
+namespace :spec do |n|
+  %w(unit integration system).each do |type_of_spec|
+    desc "Run #{type_of_spec} specs"
+    define_spec_task type_of_spec, :as_subdirectory => true
+  end
 end
+
+desc 'Run all specs'
+define_spec_task :spec
+
+desc 'Run all specs and test features'
+task ''       => [:spec, :features]
+task :default => [:spec, :features]
+
+# Support the 'gem test' command.
+namespace :test do
+  desc ''
+  define_spec_task :specs, :debug => false, :skip_bundler => true
+
+  Cucumber::Rake::Task.new :features, '' do |t|
+    t.bundler = false
+    t.cucumber_opts = '--backtrace'
+  end
+end
+task :test => %w(test:specs test:features)
