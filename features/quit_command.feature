@@ -13,10 +13,28 @@ Feature: `quit` command
       *** Happy Trails To You!
       """
 
+  Scenario: quit htty using a command abbreviation
+
+    When I run "htty" interactively
+    And I type "qui"
+    Then the output should contain:
+      """
+      *** Happy Trails To You!
+      """
+
   Scenario: quit htty using a command alias
 
     When I run "htty" interactively
     And I type "exit"
+    Then the output should contain:
+      """
+      *** Happy Trails To You!
+      """
+
+  Scenario: quit htty using an abbreviated command alias
+
+    When I run "htty" interactively
+    And I type "e"
     Then the output should contain:
       """
       *** Happy Trails To You!
