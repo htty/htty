@@ -1,21 +1,22 @@
-Feature: Quit
+Feature: `quit` command
 
-  In order to exit htty
-  As an end user
-  I want to quit
+  In order to conclude a session
+  As an end user of htty
+  I want to issue a command to quit
 
-  Scenario: 'quit'
+  Scenario: quit htty using a command
+
     When I run "htty" interactively
-    When I type "quit"
+    And I type "quit"
     Then the output should contain:
       """
       *** Happy Trails To You!
       """
 
-  Scenario: 'exit' aliases 'quit'
+  Scenario: quit htty using a command alias
 
     When I run "htty" interactively
-    When I type "exit"
+    And I type "exit"
     Then the output should contain:
       """
       *** Happy Trails To You!
