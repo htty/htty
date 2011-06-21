@@ -101,7 +101,7 @@ Exit your session at any time by typing `quit`.
 <a name="cookies-example"></a>Working with cookies
 --------------------------------------------------
 
-The next example demonstrates _htty_’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.
+The next example demonstrates <i>htty</i>’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.
 
 ![Google example #1](http://htty.github.com/images/google1.png)
 
@@ -124,7 +124,7 @@ The `reuse` command makes a copy of the headers and body of an earlier request f
 <a name="history-example"></a>Understanding complex HTTP conversations at a glance using history
 ------------------------------------------------------------------------------------------------
 
-Now we’ll look at _htty_’s HTTP Basic Authentication support and learn how to display unabbreviated transcripts of _htty_ sessions.
+Now we’ll look at <i>htty</i>’s HTTP Basic Authentication support and learn how to display unabbreviated transcripts of _htty_ sessions.
 
 Assume that we have the following Sinatra application listening on Sinatra’s default port, 4567.
 
@@ -228,9 +228,9 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 * Bo Frederiksen ([bofrede](http://github.com/bofrede "bofrede at GitHub"))
 * Johannes Gorset ([jgorset](http://github.com/jgorset "jgorset at GitHub"))
 * Carson McDonald ([carsonmcdonald](http://github.com/carsonmcdonald "carsonmcdonald at GitHub"))
-* Sam Nguyen ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
+* Sam X ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
 * Robert Pitts ([rbxbx](http://github.com/rbxbx "rbxbx at GitHub"))
-* Matt Sanders ([mattsa](http://github.com/mattsa "mattsa at GitHub"))
+* Matt Sanders ([nextmat](http://github.com/nextmat "nextmat at GitHub"))
 
 <a name="license"></a>License
 =============================

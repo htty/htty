@@ -34,12 +34,12 @@ Version history for the _htty_ project
 -------------------------------------------
 
 * Added support for Tab-key completion of user input [[carsonmcdonald](http://github.com/carsonmcdonald "carsonmcdonald at GitHub")]
-* Enhanced the `query-unset` command to accept an optional _value_ argument [[mattsa](http://github.com/mattsa "mattsa at GitHub")]
+* Enhanced the `query-unset` command to accept an optional _value_ argument [[nextmat](http://github.com/nextmat "nextmat at GitHub")]
 
 <a name="v1.1.6"></a>v1.1.6, Mon 11/22/2010
 -------------------------------------------
 
-* Added the `query-add` and `query-remove` commands [[mattsa](http://github.com/mattsa "mattsa at GitHub")]:
+* Added the `query-add` and `query-remove` commands [[nextmat](http://github.com/nextmat "nextmat at GitHub")]:
 * Added context-sensitive help in connection with server certificate verification
 * Upgraded various dependencies
 
@@ -47,13 +47,13 @@ Version history for the _htty_ project
 -------------------------------------------
 
 * Added the `ssl-verification*` commands for controlling the verification of server certificates [[dtjm](http://github.com/dtjm "dtjm at GitHub")]
-* Fixed a bug in the `query-set` command [[mattsa](http://github.com/mattsa "mattsa at GitHub")]
+* Fixed a bug in the `query-set` command [[nextmat](http://github.com/nextmat "nextmat at GitHub")]
 * Fixed a Ruby < v1.9 compatibility problem
 
 <a name="v1.1.4"></a>v1.1.4, Sat 10/16/2010
 -------------------------------------------
 
-* Enhanced the `query-set` command [[mattsa](http://github.com/mattsa "mattsa at GitHub")] to:
+* Enhanced the `query-set` command [[nextmat](http://github.com/nextmat "nextmat at GitHub")] to:
   - Accept an arbitrary number of arguments
   - Support valueless keys
   - Support duplicate keys
