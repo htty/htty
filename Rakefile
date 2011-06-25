@@ -50,7 +50,7 @@ def define_spec_task(name, options={})
 end
 
 namespace :spec do |n|
-  %w(unit integration system).each do |type_of_spec|
+  %w(unit integration).each do |type_of_spec|
     desc "Run #{type_of_spec} specs"
     define_spec_task type_of_spec, :as_subdirectory => true
   end
