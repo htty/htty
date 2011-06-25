@@ -6,40 +6,28 @@ Feature: `http-get` command
 
   Scenario: issue a simple GET request using a command
 
-    When I run "htty htty.github.com" interactively
-    And I type "get"
+    Given an htty session with htty.github.com
+    When I type "get"
     And I type "quit"
-    Then the output should match:
-      """
-      200.+? OK -- \d+ headers? -- \d+-character body
-      """
+    Then I should see the 200 OK output
 
   Scenario: issue a simple GET request using a command abbreviation
 
-    When I run "htty htty.github.com" interactively
-    And I type "http-g"
+    Given an htty session with htty.github.com
+    When I type "http-g"
     And I type "quit"
-    Then the output should match:
-      """
-      200.+? OK -- \d+ headers? -- \d+-character body
-      """
+    Then I should see the 200 OK output
 
 Scenario: issue a simple GET request using a command alias
 
-    When I run "htty htty.github.com" interactively
-    And I type "get"
+    Given an htty session with htty.github.com
+    When I type "get"
     And I type "quit"
-    Then the output should match:
-      """
-      200.+? OK -- \d+ headers? -- \d+-character body
-      """
+    Then I should see the 200 OK output
 
 Scenario: issue a simple GET request using an abbreviated command alias
 
-    When I run "htty htty.github.com" interactively
-    And I type "g"
+    Given an htty session with htty.github.com
+    When I type "g"
     And I type "quit"
-    Then the output should match:
-      """
-      200.+? OK -- \d+ headers? -- \d+-character body
-      """
+    Then I should see the 200 OK output

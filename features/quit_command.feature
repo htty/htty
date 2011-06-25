@@ -6,36 +6,24 @@ Feature: `quit` command
 
   Scenario: quit htty using a command
 
-    When I run "htty" interactively
-    And I type "quit"
-    Then the output should contain:
-      """
-      *** Happy Trails To You!
-      """
+    Given an htty session
+    When I type "quit"
+    Then I should see the goodbye output
 
   Scenario: quit htty using a command abbreviation
 
-    When I run "htty" interactively
-    And I type "qui"
-    Then the output should contain:
-      """
-      *** Happy Trails To You!
-      """
+    Given an htty session
+    When I type "qui"
+    Then I should see the goodbye output
 
   Scenario: quit htty using a command alias
 
-    When I run "htty" interactively
-    And I type "exit"
-    Then the output should contain:
-      """
-      *** Happy Trails To You!
-      """
+    Given an htty session
+    When I type "exit"
+    Then I should see the goodbye output
 
   Scenario: quit htty using an abbreviated command alias
 
-    When I run "htty" interactively
-    And I type "e"
-    Then the output should contain:
-      """
-      *** Happy Trails To You!
-      """
+    Given an htty session
+    When I type "e"
+    Then I should see the goodbye output
