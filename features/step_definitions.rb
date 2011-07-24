@@ -2,8 +2,8 @@ Given 'an htty session' do
   Given 'I run "htty" interactively'
 end
 
-Given /^an htty session with (\S+)$/ do |url|
-  When %Q{I run "htty #{url}" interactively}
+Given /^an htty session with (.+)$/ do |address|
+  Given %Q{I run "htty #{address}" interactively}
 end
 
 Then 'I should see the 200 OK output' do

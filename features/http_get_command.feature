@@ -8,7 +8,7 @@ Feature: `http-get` command
   Scenario: issue a simple GET request using a command
 
     Given an htty session with htty.github.com
-    When I type "get"
+    When I type "http-get"
     And I type "quit"
     Then I should see the 200 OK output
 
