@@ -27,7 +27,7 @@
                  |____|     |____|    / ______|
                                       \/
 
-[<img align="right" src="https://secure.travis-ci.org/htty/htty.png" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
+[<img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
 See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html).
 
