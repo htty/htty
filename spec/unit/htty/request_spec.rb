@@ -1,7 +1,7 @@
 require 'rspec'
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/version")
 
 shared_examples_for 'an empty request' do
   it 'should have only the default headers' do
@@ -73,6 +73,15 @@ describe HTTY::Request do
     describe 'an invalid hostname having a leading hyphen' do
       it 'should raise URI::InvalidURIError' do
         expect { klass.new '-google.com' }.to raise_error(URI::InvalidURIError)
+      end
+    end
+
+    describe 'a valid FTP address' do
+      it 'should raise URI::InvalidURIError' do
+        expect do
+          klass.new 'ftp://myftpsite.info'
+        end.to raise_error(ArgumentError,
+                           'only http:// and https:// schemes are supported')
       end
     end
   end

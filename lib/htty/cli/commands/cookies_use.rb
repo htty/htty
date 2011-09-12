@@ -52,12 +52,12 @@ class HTTY::CLI::Commands::CookiesUse < HTTY::CLI::Command
             "wrong number of arguments (#{arguments.length} for 0)"
     end
 
-    add_request_if_has_response do |request|
-      changed_request = request.cookies_use(session.last_response)
-      phrase = pluralize('cookie', changed_request.cookies.length)
+    add_request_if_new do |request|
+      request = request.cookies_use(session.last_response)
+      phrase = pluralize('cookie', request.cookies.length)
       phrase = phrase[0..0].upcase + phrase[1..-1]
       puts notice("#{phrase} now in use")
-      changed_request
+      request
     end
   end
 

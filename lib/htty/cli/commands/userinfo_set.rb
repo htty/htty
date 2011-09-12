@@ -55,7 +55,7 @@ class HTTY::CLI::Commands::UserinfoSet < HTTY::CLI::Command
 
   # Performs the _userinfo-set_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       arguments = self.arguments
       if (arguments.length == 1) && (arguments.first.scan(':').length == 1)
         arguments = arguments.first.split(':')

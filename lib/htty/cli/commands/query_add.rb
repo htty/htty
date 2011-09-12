@@ -60,11 +60,11 @@ class HTTY::CLI::Commands::QueryAdd < HTTY::CLI::Command
 
   # Performs the _query-add_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       self.class.notify_if_cookies_cleared request do
         escaped_arguments = escape_or_warn_of_escape_sequences(arguments)
         escaped_arguments.each_slice 2 do |name, value|
-          request.query_add name, value
+          request = request.query_add(name, value)
         end
         request
       end

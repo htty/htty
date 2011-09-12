@@ -33,7 +33,7 @@ module HTTY::CLI::HTTPMethodCommand
 
   # Performs the command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       unless body? || request.body.to_s.empty?
         puts notice("The body of your #{method.to_s.upcase} request is not " +
                     'being sent')

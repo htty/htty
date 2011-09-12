@@ -43,7 +43,7 @@ class HTTY::CLI::Commands::HeadersUnset < HTTY::CLI::Command
 
   # Performs the _headers-unset_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       request.header_unset(*arguments)
     end
   end

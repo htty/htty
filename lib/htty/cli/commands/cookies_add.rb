@@ -52,7 +52,7 @@ class HTTY::CLI::Commands::CookiesAdd < HTTY::CLI::Command
 
   # Performs the _cookies-add_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       request.cookie_add(*arguments)
     end
   end

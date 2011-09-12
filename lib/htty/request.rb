@@ -1,7 +1,7 @@
 require 'base64'
 require 'pathname'
 require 'uri'
-require File.expand_path("#{File.dirname __FILE__}/../htty")
+require File.expand_path("#{File.dirname __FILE__}/../htty/version")
 require File.expand_path("#{File.dirname __FILE__}/cookies_util")
 require File.expand_path("#{File.dirname __FILE__}/no_location_header_error")
 require File.expand_path("#{File.dirname __FILE__}/no_response_error")
@@ -62,6 +62,10 @@ class HTTY::Request < HTTY::Payload
   # * <tt>:fragment</tt>
   def self.build_uri(components)
     scheme                  = (components[:scheme] || 'http') + '://'
+    unless %w(http:// https://).include?(scheme)
+      raise ArgumentError, 'only http:// and https:// schemes are supported'
+    end
+
     authority               = build_authority(components)
     path_query_and_fragment = build_path_query_and_fragment(components)
     path_query_and_fragment ||= '/' if authority

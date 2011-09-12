@@ -1,30 +1,34 @@
-spec = Gem::Specification.new do |s|
-  s.name         = 'htty'
-  s.version      = File.read('VERSION').chomp
-  s.summary      = 'The HTTP TTY'
-  s.description  = 'htty is a console application for interacting with HTTP '  +
-                   'servers. It is something of a cross between curl and the ' +
-                   'Lynx browser.'
-  s.files        = %w(README.markdown
-                      History.markdown
-                      MIT-LICENSE.markdown
-                      VERSION) +
-                   Dir['lib/**/*.rb']   +
-                   Dir['spec/**/*']
-  s.has_rdoc     = true
+# -*- encoding: utf-8 -*-
+$:.push File.expand_path('../lib', __FILE__)
+require 'htty/version'
 
-  s.executables << 'htty'
+Gem::Specification.new do |s|
+  s.name        = 'htty'
+  s.version     = HTTY::VERSION
+  s.platform    = Gem::Platform::RUBY
+  s.authors     = ['Nils Jonsson']
+  s.email       = ['htty@nilsjonsson.com']
+  s.homepage    = 'http://htty.github.com'
+  s.summary     = 'The HTTP TTY'
+  s.description = 'htty is a console application for interacting with web '   +
+                  "servers. It's a fun way to explore web APIs and to learn " +
+                  'the ins and outs of HTTP.'
+  s.license     = 'MIT'
 
-  s.add_development_dependency 'bluecloth'
+  s.required_ruby_version = '>= 1.8.7'
+
+  s.add_dependency 'mime-types'
+
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'yard'
-
-  s.requirements << 'Ruby v1.8.7 or later'
-
-  s.author   = 'Nils Jonsson'
-  s.email    = 'htty@nilsjonsson.com'
-  s.homepage = 'http://htty.github.com'
+  s.add_development_dependency 'rspec', '~> 2.0'
 
   s.rubyforge_project = 'htty'
+  s.has_rdoc          = true
+
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.executables   = `git ls-files -- bin/*`.split("\n").map do |f|
+                      File.basename f
+                    end
+  s.require_paths = %w(lib)
 end

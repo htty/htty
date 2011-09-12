@@ -101,6 +101,13 @@ class HTTY::CLI::Command
     nil
   end
 
+  # Returns +true+ if the specified _command_line_ can be autocompleted to the
+  # command.
+  def self.complete_for?(command_line)
+    command_name = command_line_for_class_name(name)
+    command_name[0...command_line.length] == command_line
+  end
+
   # Returns the help text for the command.
   def self.help
     return "Alias for #{strong alias_for.command_line}" if alias_for
@@ -111,6 +118,12 @@ class HTTY::CLI::Command
   def self.help_extended
     return "(Extended help for #{command_line} is not available.)" unless help
     "#{help}."
+  end
+
+  # Returns the full name of the command as it appears on the command line,
+  # without abbreviations.
+  def self.raw_name
+    command_line_for_class_name name
   end
 
   # Returns related command classes for the command.
@@ -204,15 +217,13 @@ public
 
 protected
 
-  # Yields the last request in #session. If that request already has a response,
-  # then it adds the result of the +yield+ to the requests of #session.
-  def add_request_if_has_response
+  # Yields the last request in #session. If the block returns a different
+  # request, it is added to the requests of #session.
+  def add_request_if_new
     requests     = session.requests
     last_request = requests.last
-    if last_request.response
-      requests << yield(last_request)
-    else
-      requests[requests.length - 1] = yield(last_request)
+    unless (new_request = yield(last_request)).equal?(last_request)
+      requests << new_request
     end
     self
   end

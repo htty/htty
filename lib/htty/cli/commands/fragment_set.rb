@@ -48,7 +48,7 @@ class HTTY::CLI::Commands::FragmentSet < HTTY::CLI::Command
 
   # Performs the _fragment-set_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       clean_arguments = arguments.collect do |a|
         a.gsub(/^#/, '')
       end

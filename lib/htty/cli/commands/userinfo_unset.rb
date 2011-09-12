@@ -37,7 +37,7 @@ class HTTY::CLI::Commands::UserinfoUnset < HTTY::CLI::Command
 
   # Performs the _userinfo-unset_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       self.class.notify_if_cookies_cleared request do
         request.userinfo_unset(*arguments)
       end

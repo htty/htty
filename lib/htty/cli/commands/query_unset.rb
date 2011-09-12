@@ -61,7 +61,7 @@ class HTTY::CLI::Commands::QueryUnset < HTTY::CLI::Command
 
   # Performs the _query-unset_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       self.class.notify_if_cookies_cleared request do
         unset_method = (arguments.length == 2) ? :query_remove : :query_unset
         request.send(unset_method,
