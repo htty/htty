@@ -17,9 +17,9 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.8.7'
 
-  s.add_dependency 'mime-types', '~> 1.0'
+  s.add_dependency 'mime-types'
 
-  s.add_development_dependency 'rake',  '~> 0.8'
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec', '~> 2.0'
 
   s.rubyforge_project = 'htty'

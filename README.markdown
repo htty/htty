@@ -27,9 +27,9 @@
                  |____|     |____|    / ______|
                                       \/
 
-[htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
+[<img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
-See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html). [![Flattr this](http://api.flattr.com/button/button-compact-static-100x17.png)](http://flattr.com/thing/68277/htty-the-HTTP-TTY "Flattr this")
+See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html).
 
 <a name="installation"></a>Installation
 =======================================
@@ -101,7 +101,7 @@ Exit your session at any time by typing `quit`.
 <a name="cookies-example"></a>Working with cookies
 --------------------------------------------------
 
-The next example demonstrates _htty_’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.
+The next example demonstrates <i>htty</i>’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.
 
 ![Google example #1](http://htty.github.com/images/google1.png)
 
@@ -124,7 +124,7 @@ The `reuse` command makes a copy of the headers and body of an earlier request f
 <a name="history-example"></a>Understanding complex HTTP conversations at a glance using history
 ------------------------------------------------------------------------------------------------
 
-Now we’ll look at _htty_’s HTTP Basic Authentication support and learn how to display unabbreviated transcripts of _htty_ sessions.
+Now we’ll look at <i>htty</i>’s HTTP Basic Authentication support and learn how to display unabbreviated transcripts of _htty_ sessions.
 
 Assume that we have the following Sinatra application listening on Sinatra’s default port, 4567.
 
@@ -217,7 +217,7 @@ Stay in touch with the _htty_ project by following [@get_htty](http://twitter.co
 
 You can also get help in the [#htty channel on Freenode](http://webchat.freenode.net/?channels=htty).
 
-<a name="credits"></a>Credits [![Flattr this](http://api.flattr.com/button/button-compact-static-100x17.png)](http://flattr.com/thing/68277/htty-the-HTTP-TTY "Flattr this")
+<a name="credits"></a>Credits
 =============================
 
 The author, [Nils Jonsson](mailto:htty@nilsjonsson.com), owes a debt of inspiration to the [_http-console_](http://github.com/cloudhead/http-console) project.
@@ -228,9 +228,9 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 * Bo Frederiksen ([bofrede](http://github.com/bofrede "bofrede at GitHub"))
 * Johannes Gorset ([jgorset](http://github.com/jgorset "jgorset at GitHub"))
 * Carson McDonald ([carsonmcdonald](http://github.com/carsonmcdonald "carsonmcdonald at GitHub"))
-* Sam Nguyen ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
+* Sam X ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
 * Robert Pitts ([rbxbx](http://github.com/rbxbx "rbxbx at GitHub"))
-* Matt Sanders ([mattsa](http://github.com/mattsa "mattsa at GitHub"))
+* Matt Sanders ([nextmat](http://github.com/nextmat "nextmat at GitHub"))
 
 <a name="license"></a>License
 =============================
