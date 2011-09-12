@@ -1,12 +1,15 @@
 require 'bundler'
 require 'rspec/core/rake_task'
-require 'ruby-debug'
-require 'yard'
 
 Bundler::GemHelper.install_tasks
 
-namespace :build do
-  YARD::Rake::YardocTask.new :doc
+begin
+  require 'yard'
+rescue LoadError
+else
+  namespace :build do
+    YARD::Rake::YardocTask.new :doc
+  end
 end
 
 namespace :lib do
@@ -36,8 +39,13 @@ def define_spec_task(name, options={})
     t.rspec_opts = ['--color']
     t.skip_bundler = options[:skip_bundler]
     unless options[:debug] == false
-      # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
-      t.rspec_opts << '-d'
+      begin
+        require 'ruby-debug'
+      rescue LoadError
+      else
+        # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
+        t.rspec_opts << '-d'
+      end
     end
 
     directory = options[:as_subdirectory] ? "spec/#{name}" : 'spec'
