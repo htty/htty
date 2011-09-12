@@ -1,6 +1,7 @@
 require 'rspec'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_request")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_response")
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_response_open")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_response")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/status")
 
@@ -41,7 +42,8 @@ describe HTTY::CLI::Commands::BodyResponse do
     end
 
     it 'should have the expected see_also_commands' do
-      klass.see_also_commands.should == [HTTY::CLI::Commands::HeadersResponse,
+      klass.see_also_commands.should == [HTTY::CLI::Commands::BodyResponseOpen,
+                                         HTTY::CLI::Commands::HeadersResponse,
                                          HTTY::CLI::Commands::Status,
                                          HTTY::CLI::Commands::BodyRequest]
     end

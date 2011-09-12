@@ -1,6 +1,29 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.3.3"></a>v1.3.3, Sat 3/05/2011
+-------------------------------------------
+
+* Fixed a bug in the `query-add` and `query-set` commands
+
+<a name="v1.3.2"></a>v1.3.2, Fri 3/04/2011
+-------------------------------------------
+
+* Fixed configuration issues related to [rubygems-test](http://rubygems.org/gems/rubygems-test) gem support
+
+<a name="v1.3.1"></a>v1.3.1, Fri 2/25/2011
+-------------------------------------------
+
+* Fixed a bug in the `body-request-open` and `body-response-open` commands
+
+<a name="v1.3.0"></a>v1.3.0, Fri 2/25/2011
+-------------------------------------------
+
+* Added the `body-request-open` and `body-response-open` commands for viewing body content in an external program \[with help from [rbxbx](http://github.com/rbxbx "rbxbx at GitHub")\]
+* Added validation of the URL scheme
+* Added support for the [rubygems-test](http://rubygems.org/gems/rubygems-test) gem for compatibility testing in the field
+* Refined dependencies
+
 <a name="v1.2.1"></a>v1.2.1, Wed 12/01/2010
 -------------------------------------------
 
@@ -11,12 +34,12 @@ Version history for the _htty_ project
 -------------------------------------------
 
 * Added support for Tab-key completion of user input [[carsonmcdonald](http://github.com/carsonmcdonald "carsonmcdonald at GitHub")]
-* Enhanced the `query-unset` command to accept an optional _value_ argument [[mattsa](http://github.com/mattsa "mattsa at GitHub")]
+* Enhanced the `query-unset` command to accept an optional _value_ argument [[nextmat](http://github.com/nextmat "nextmat at GitHub")]
 
 <a name="v1.1.6"></a>v1.1.6, Mon 11/22/2010
 -------------------------------------------
 
-* Added the `query-add` and `query-remove` commands [[mattsa](http://github.com/mattsa "mattsa at GitHub")]:
+* Added the `query-add` and `query-remove` commands [[nextmat](http://github.com/nextmat "nextmat at GitHub")]:
 * Added context-sensitive help in connection with server certificate verification
 * Upgraded various dependencies
 
@@ -24,13 +47,13 @@ Version history for the _htty_ project
 -------------------------------------------
 
 * Added the `ssl-verification*` commands for controlling the verification of server certificates [[dtjm](http://github.com/dtjm "dtjm at GitHub")]
-* Fixed a bug in the `query-set` command [[mattsa](http://github.com/mattsa "mattsa at GitHub")]
+* Fixed a bug in the `query-set` command [[nextmat](http://github.com/nextmat "nextmat at GitHub")]
 * Fixed a Ruby < v1.9 compatibility problem
 
 <a name="v1.1.4"></a>v1.1.4, Sat 10/16/2010
 -------------------------------------------
 
-* Enhanced the `query-set` command [[mattsa](http://github.com/mattsa "mattsa at GitHub")] to:
+* Enhanced the `query-set` command [[nextmat](http://github.com/nextmat "nextmat at GitHub")] to:
   - Accept an arbitrary number of arguments
   - Support valueless keys
   - Support duplicate keys

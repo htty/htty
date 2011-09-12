@@ -1,5 +1,5 @@
 require 'rspec'
-require File.expand_path("#{File.dirname __FILE__}/../../lib/htty")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/version")
 
 describe HTTY do
   it 'should have a version constant of the expected format' do

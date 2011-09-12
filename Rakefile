@@ -1,15 +1,15 @@
-yard, rspec = false, false
+require 'bundler'
+require 'rspec/core/rake_task'
+
+Bundler::GemHelper.install_tasks
 
 begin
   require 'yard'
 rescue LoadError
-  desc '(Not available -- install YARD)'
-  task :doc do
-    STDERR.puts '*** Install YARD in order to build documentation'
-  end
 else
-  yard = true
-  YARD::Rake::YardocTask.new :doc
+  namespace :build do
+    YARD::Rake::YardocTask.new :doc
+  end
 end
 
 namespace :lib do
@@ -34,44 +34,39 @@ namespace :lib do
   end
 end
 
-begin
-  require 'rspec/core/rake_task'
-rescue LoadError
-  desc '(Not available -- install RSpec)'
-  task :spec do
-    STDERR.puts '*** Install RSpec in order to run specs'
-  end
-else
-  rspec = true
-
-  def define_spec_task(name, as_subdirectory=true)
-    RSpec::Core::RakeTask.new name do |t|
-      t.rspec_opts = ['--color']
-      # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
-      t.rspec_opts << '-d'
-
-      directory = as_subdirectory ? "spec/#{name}" : 'spec'
-      t.pattern = "#{directory}/**/*_spec.rb"
+def define_spec_task(name, options={})
+  RSpec::Core::RakeTask.new name do |t|
+    t.rspec_opts = ['--color']
+    t.skip_bundler = options[:skip_bundler]
+    unless options[:debug] == false
+      begin
+        require 'ruby-debug'
+      rescue LoadError
+      else
+        # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
+        t.rspec_opts << '-d'
+      end
     end
-  end
 
-  namespace :spec do |n|
-    %w(unit integration system).each do |type_of_spec|
-      desc "Run #{type_of_spec} specs"
-      define_spec_task type_of_spec
-    end
+    directory = options[:as_subdirectory] ? "spec/#{name}" : 'spec'
+    t.pattern = "#{directory}/**/*_spec.rb"
   end
-
-  desc 'Run all specs'
-  define_spec_task :spec, false
 end
 
-if yard && !rspec
-  desc 'Generate YARD documentation'
-  task '' => :doc
-  task :default => :doc
-else
-  desc 'Run all specs'
-  task '' => :spec
-  task :default => :spec
+namespace :spec do |n|
+  %w(unit integration).each do |type_of_spec|
+    desc "Run #{type_of_spec} specs"
+    define_spec_task type_of_spec, :as_subdirectory => true
+  end
 end
+
+desc 'Run all specs'
+define_spec_task :spec
+
+desc 'Run all specs'
+task ''       => :spec
+task :default => :spec
+
+# Support the 'gem test' command.
+desc ''
+define_spec_task :test, :debug => false, :skip_bundler => true

@@ -1,7 +1,7 @@
 require 'base64'
 require 'pathname'
 require 'uri'
-require File.expand_path("#{File.dirname __FILE__}/../htty")
+require File.expand_path("#{File.dirname __FILE__}/../htty/version")
 require File.expand_path("#{File.dirname __FILE__}/cookies_util")
 require File.expand_path("#{File.dirname __FILE__}/no_location_header_error")
 require File.expand_path("#{File.dirname __FILE__}/no_response_error")

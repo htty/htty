@@ -1,4 +1,5 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
+require File.expand_path("#{File.dirname __FILE__}/body_request_open")
 require File.expand_path("#{File.dirname __FILE__}/body_response")
 require File.expand_path("#{File.dirname __FILE__}/body_set")
 require File.expand_path("#{File.dirname __FILE__}/body_unset")
@@ -32,7 +33,8 @@ class HTTY::CLI::Commands::BodyRequest < HTTY::CLI::Command
 
   # Returns related command classes for the _body-request_ command.
   def self.see_also_commands
-    [HTTY::CLI::Commands::BodySet,
+    [HTTY::CLI::Commands::BodyRequestOpen,
+     HTTY::CLI::Commands::BodySet,
      HTTY::CLI::Commands::BodyUnset,
      HTTY::CLI::Commands::HeadersRequest,
      HTTY::CLI::Commands::BodyResponse]
