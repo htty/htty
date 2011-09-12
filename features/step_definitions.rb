@@ -12,6 +12,7 @@ def hack_htty_to_use_vcr_cassette(name)
   shebang ||= 0
   vcr_config = File.expand_path("#{File.dirname __FILE__}/support/vcr")
   source_lines.insert(shebang + 1, '',
+                                   "require 'rubygems'",
                                    "require #{vcr_config.inspect}",
                                    "VCR.insert_cassette #{name.inspect}",
                                    'begin',
