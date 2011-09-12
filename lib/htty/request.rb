@@ -1,7 +1,7 @@
 require 'base64'
 require 'pathname'
 require 'uri'
-require File.expand_path("#{File.dirname __FILE__}/../htty")
+require File.expand_path("#{File.dirname __FILE__}/../htty/version")
 require File.expand_path("#{File.dirname __FILE__}/cookies_util")
 require File.expand_path("#{File.dirname __FILE__}/no_location_header_error")
 require File.expand_path("#{File.dirname __FILE__}/no_response_error")
@@ -62,6 +62,10 @@ class HTTY::Request < HTTY::Payload
   # * <tt>:fragment</tt>
   def self.build_uri(components)
     scheme                  = (components[:scheme] || 'http') + '://'
+    unless %w(http:// https://).include?(scheme)
+      raise ArgumentError, 'only http:// and https:// schemes are supported'
+    end
+
     authority               = build_authority(components)
     path_query_and_fragment = build_path_query_and_fragment(components)
     path_query_and_fragment ||= '/' if authority
@@ -374,8 +378,37 @@ public
     request! :put
   end
 
-  # Establishes a new #uri, with the specified _value_ for the query-string
-  # parameter specified by _name_.
+  # Establishes a new #uri with an additional query-string parameter specified
+  # by _name_ and _value_. The _value_ is optional.
+  def query_add(name, value=nil)
+    entries = current_query_entries
+    entries << name + (value.nil? ? '' : "=#{value}")
+    new_query = entries.empty? ? nil : entries.join('&')
+    rebuild_uri :query => new_query
+  end
+
+  # Establishes a new #uri, removing the last query-string parameter specified
+  # by _name_ and _value_. The _value_ is optional.
+  #
+  # If there is more than one query-string parameter named _name_, those
+  # parameters matching both _name_ and _value_ (if specified) are removed.
+  def query_remove(name, value=nil)
+    return unless uri.query
+    entries = current_query_entries
+    entries.reverse.each do |entry|
+      if entry =~ field_matcher(name, value)
+        entries.delete(entry)
+        break
+      end
+    end
+    rebuild_uri :query => entries.join('&')
+  end
+
+  # Establishes a new #uri with the specified _value_ for the query-string
+  # parameter specified by _name_. The _value_ is optional.
+  #
+  # If there is more than one query-string parameter named _name_, they are
+  # replaced by a single one with the specified _value_.
   def query_set(name, value=nil)
     entries = current_query_entries
     add_or_replace_field(entries, name, value)
@@ -383,8 +416,11 @@ public
     rebuild_uri :query => new_query
   end
 
-  # Establishes a new #uri, without the query-string parameter specified by
+  # Establishes a new #uri without the query-string parameter specified by
   # _name_.
+  #
+  # If there is more than one query-string parameter named _name_, they are
+  # removed.
   def query_unset(name)
     return unless uri.query
     entries = current_query_entries
@@ -489,9 +525,13 @@ private
     header_set 'Content-Length', body.to_s.length
   end
 
-  def field_matcher(name)
+  def field_matcher(name, value=nil)
     escaped = Regexp.escape(name)
-    Regexp.new "^(#{escaped}|#{escaped}=.*)$"
+    if value
+      Regexp.new "^(#{escaped}\=#{Regexp.escape(value)})$"
+    else
+      Regexp.new "^(#{escaped}|#{escaped}\=.*)$"
+    end
   end
 
   def request!(method)

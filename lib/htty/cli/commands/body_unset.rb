@@ -35,7 +35,7 @@ class HTTY::CLI::Commands::BodyUnset < HTTY::CLI::Command
 
   # Performs the _body-unset_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       request.body_unset
     end
   end

@@ -24,7 +24,7 @@ class HTTY::CLI::Commands::Address < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _address_ command.
   def self.command_line_arguments
-    'address'
+    'ADDRESS'
   end
 
   # Returns the help text for the _address_ command.
@@ -80,7 +80,7 @@ class HTTY::CLI::Commands::Address < HTTY::CLI::Command
 
   # Performs the _address_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       self.class.notify_if_cookies_cleared request do
         request.address(*arguments)
       end

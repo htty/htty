@@ -3,6 +3,7 @@ require 'json'
 require File.expand_path("#{File.dirname __FILE__}/../../no_response_error")
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/body_request")
+require File.expand_path("#{File.dirname __FILE__}/body_response_open")
 require File.expand_path("#{File.dirname __FILE__}/headers_response")
 require File.expand_path("#{File.dirname __FILE__}/status")
 
@@ -15,8 +16,8 @@ module HTTY::CLI::Commands; end
 # Encapsulates the _body-response_ command.
 class HTTY::CLI::Commands::BodyResponse < HTTY::CLI::Command
 
-  # Returns the name of a category under which help for the _body_ command
-  # should appear.
+  # Returns the name of a category under which help for the _body-response_
+  # command should appear.
   def self.category
     'Inspecting Responses'
   end
@@ -40,7 +41,8 @@ class HTTY::CLI::Commands::BodyResponse < HTTY::CLI::Command
 
   # Returns related command classes for the _body-response_ command.
   def self.see_also_commands
-    [HTTY::CLI::Commands::HeadersResponse,
+    [HTTY::CLI::Commands::BodyResponseOpen,
+     HTTY::CLI::Commands::HeadersResponse,
      HTTY::CLI::Commands::Status,
      HTTY::CLI::Commands::BodyRequest]
   end

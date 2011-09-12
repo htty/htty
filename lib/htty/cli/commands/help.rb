@@ -15,7 +15,7 @@ class HTTY::CLI::Commands::Help < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _help_ command.
   def self.command_line_arguments
-    '[command]'
+    '[COMMAND]'
   end
 
   # Returns the help text for the _help_ command.

@@ -4,6 +4,7 @@ require File.expand_path("#{File.dirname __FILE__}/cli/commands/help")
 require File.expand_path("#{File.dirname __FILE__}/cli/commands/quit")
 require File.expand_path("#{File.dirname __FILE__}/cli/display")
 require File.expand_path("#{File.dirname __FILE__}/session")
+require File.expand_path("#{File.dirname __FILE__}/version")
 
 module HTTY; end
 
@@ -17,18 +18,31 @@ class HTTY::CLI
 
   # Instantiates a new HTTY::CLI with the specified _command_line_arguments_.
   def initialize(command_line_arguments)
+    if command_line_arguments.include?('--version')
+      puts "v#{HTTY::VERSION}"
+      exit
+    end
+
+    if command_line_arguments.include?('--help')
+      HTTY::CLI::Commands::Help.new.perform
+      exit
+    end
+
     exit unless @session = rescuing_from(ArgumentError) do
       everything_but_options = command_line_arguments.reject do |a|
         a[0..0] == '-'
       end
       HTTY::Session.new(everything_but_options.first)
     end
+
+    register_completion_proc
   end
 
   # Takes over stdin, stdout, and stderr to expose #session to command-line
   # interaction.
   def run!
     say_hello
+
     catch :quit do
       loop do
         begin
@@ -38,10 +52,12 @@ class HTTY::CLI
                         strong(HTTY::CLI::Commands::Help.command_line))
             next
           end
+
           if command == :unclosed_quote
             $stderr.puts notice('Unclosed quoted expression -- try again')
             next
           end
+
           if ARGV.include?('--debug')
             command.perform
           else
@@ -58,6 +74,7 @@ class HTTY::CLI
         end
       end
     end
+
     say_goodbye
   end
 
@@ -77,6 +94,15 @@ private
       command_line.strip!
     end
     HTTY::CLI::Commands.build_for command_line, :session => session
+  end
+
+  def register_completion_proc
+    Readline.completion_proc = proc do |input|
+      autocomplete_list = HTTY::CLI::Commands.select do |c|
+        c.complete_for? input
+      end
+      autocomplete_list.collect(&:raw_name)
+    end
   end
 
   def repeat?(command_line)

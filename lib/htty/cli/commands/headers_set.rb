@@ -21,7 +21,7 @@ class HTTY::CLI::Commands::HeadersSet < HTTY::CLI::Command
   # Returns the arguments for the command-line usage of the _headers-set_
   # command.
   def self.command_line_arguments
-    'name value'
+    'NAME VALUE'
   end
 
   # Returns the help text for the _headers-set_ command.
@@ -47,7 +47,7 @@ class HTTY::CLI::Commands::HeadersSet < HTTY::CLI::Command
 
   # Performs the _headers-set_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       request.header_set(*arguments)
     end
   end

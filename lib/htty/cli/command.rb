@@ -84,6 +84,13 @@ class HTTY::CLI::Command
     nil
   end
 
+  # Returns +true+ if the specified _command_line_ can be autocompleted to the
+  # command.
+  def self.complete_for?(command_line)
+    command_name = command_line_for_class_name(name)
+    command_name[0...command_line.length] == command_line
+  end
+
   # Returns the help text for the command.
   def self.help
     return "Alias for #{strong alias_for.command_line}" if alias_for
@@ -96,25 +103,10 @@ class HTTY::CLI::Command
     "#{help}."
   end
 
-  # Returns an array of the classes or modules that contain this command.
-  def self.namespaces
-    container = nil
-    name.split('::')[0...-1].collect do |element|
-      if container.nil?
-        container = instance_eval("::#{element}", __FILE__, __LINE__)
-      else
-        container = container.module_eval(element, __FILE__, __LINE__)
-      end
-    end
-  end
-
-  # Returns an array of the constants that share this command's namespace.
-  def self.namespace_siblings
-    namespace = namespaces.last
-    other_commands = namespace.constants.collect do |constant|
-      type = namespace.module_eval(constant.to_s, __FILE__, __LINE__)
-      (type == self) ? nil : type
-    end.compact
+  # Returns the full name of the command as it appears on the command line,
+  # without abbreviations.
+  def self.raw_name
+    command_line_for_class_name name
   end
 
   # Returns related command classes for the command.
@@ -135,8 +127,47 @@ protected
 
 private
 
+  def self.command_line_for_class_name(class_name)
+    class_name.split('::').last.gsub(/(.)([A-Z])/, '\1-\2').downcase
+  end
+
+  def self.completion_optional(text)
+    return nil if text.empty?
+    char_length = (text[0..0] == '\\') ? 2 : 1
+    rest = (text.length > char_length)                ?
+           completion_optional(text[char_length..-1]) :
+           nil
+    "(?:#{text[0...char_length]}#{rest})?"
+  end
+
   def self.cookies?(request)
     !request.cookies.empty?
+  end
+
+  def self.make_command_line_regexp
+    pattern = Regexp.escape(command_line).gsub(/\\\[(.+)\\\]/) do |optional|
+      completion_optional($1)
+    end
+    Regexp.new "^#{pattern}(\\s.+)?$", Regexp::IGNORECASE
+  end
+
+  def self.namespaces
+    container = nil
+    name.split('::')[0...-1].collect do |element|
+      if container.nil?
+        container = instance_eval("::#{element}", __FILE__, __LINE__)
+      else
+        container = container.module_eval(element, __FILE__, __LINE__)
+      end
+    end
+  end
+
+  def self.namespace_siblings
+    namespace = namespaces.last
+    other_commands = namespace.constants.collect do |constant|
+      type = namespace.module_eval(constant.to_s, __FILE__, __LINE__)
+      (type == self) ? nil : type
+    end.compact
   end
 
 public
@@ -169,39 +200,15 @@ public
 
 protected
 
-  # Yields the last request in #session. If that request already has a response,
-  # then it adds the result of the +yield+ to the requests of #session.
-  def add_request_if_has_response
+  # Yields the last request in #session. If the block returns a different
+  # request, it is added to the requests of #session.
+  def add_request_if_new
     requests     = session.requests
     last_request = requests.last
-    if last_request.response
-      requests << yield(last_request)
-    else
-      requests[requests.length - 1] = yield(last_request)
+    unless (new_request = yield(last_request)).equal?(last_request)
+      requests << new_request
     end
     self
-  end
-
-private
-
-  def self.command_line_for_class_name(class_name)
-    class_name.split('::').last.gsub(/(.)([A-Z])/, '\1-\2').downcase
-  end
-
-  def self.completion_optional(text)
-    return nil if text.empty?
-    char_length = (text[0..0] == '\\') ? 2 : 1
-    rest = (text.length > char_length)                ?
-           completion_optional(text[char_length..-1]) :
-           nil
-    "(?:#{text[0...char_length]}#{rest})?"
-  end
-
-  def self.make_command_line_regexp
-    pattern = Regexp.escape(command_line).gsub(/\\\[(.+)\\\]/) do |optional|
-      completion_optional($1)
-    end
-    Regexp.new "^#{pattern}(\\s.+)?$", Regexp::IGNORECASE
   end
 
 end

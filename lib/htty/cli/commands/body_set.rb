@@ -41,7 +41,7 @@ class HTTY::CLI::Commands::BodySet < HTTY::CLI::Command
 
   # Performs the _body-set_ command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       puts notice('Hit Return three times to signify the end of the body')
       lines            = []
       empty_line_count = 0

@@ -43,7 +43,7 @@ class HTTY::CLI::Commands::Follow < HTTY::CLI::Command
             "wrong number of arguments (#{arguments.length} for 0)"
     end
 
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       self.class.notify_if_cookies_cleared request do
         request.follow session.last_response
       end

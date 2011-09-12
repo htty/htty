@@ -3,48 +3,38 @@ require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/ordered_has
 
 describe HTTY::OrderedHash do
   describe 'that is empty' do
-    let(:hash) { HTTY::OrderedHash.new }
+    it { should be_empty }
 
-    it 'should be empty' do
-      hash.should be_empty
-    end
-
-    describe '-- when values are added out of order' do
+    describe 'when values are added out of order' do
       before :each do
-        hash['foo'] = 'bar'
-        hash['baz'] = 'qux'
+        subject['foo'] = 'bar'
+        subject['baz'] = 'qux'
       end
 
-      it '-- should have the expected values' do
-        hash.should == {'foo' => 'bar', 'baz' => 'qux'}
-      end
+      it { should == {'foo' => 'bar', 'baz' => 'qux'} }
 
-      it '-- should return the expected array when sent #to_a' do
-        hash.to_a.should == [%w(foo bar), %w(baz qux)]
+      it 'should return the expected array when sent #to_a' do
+        subject.to_a.should == [%w(foo bar), %w(baz qux)]
       end
     end
   end
 
   describe 'that has values out of order' do
-    let(:hash) { HTTY::OrderedHash.new('foo' => 'bar', 'baz' => 'qux') }
+    subject { HTTY::OrderedHash.new('foo' => 'bar', 'baz' => 'qux') }
 
-    it 'should have the expected values' do
-      hash.should == {'foo' => 'bar', 'baz' => 'qux'}
-    end
+    it { should == {'foo' => 'bar', 'baz' => 'qux'} }
 
     it 'should index the values as expected' do
-      hash['foo'].should == 'bar'
-      hash['baz'].should == 'qux'
+      subject['foo'].should == 'bar'
+      subject['baz'].should == 'qux'
     end
 
-    describe '-- when sent #clear' do
+    describe 'when sent #clear' do
       before :each do
-        hash.clear
+        subject.clear
       end
 
-      it '-- should be empty' do
-        hash.should be_empty
-      end
+      it { should be_empty }
     end
   end
 end

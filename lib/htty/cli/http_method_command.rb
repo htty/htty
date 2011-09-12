@@ -1,7 +1,9 @@
-require File.expand_path("#{File.dirname __FILE__}/../request")
 require File.expand_path("#{File.dirname __FILE__}/display")
-require File.expand_path("#{File.dirname __FILE__}/commands/cookies_use")
-require File.expand_path("#{File.dirname __FILE__}/commands/ssl_verification_off")
+# TODO: See if we can avoid circular references without omitting these 'require' statements
+# require File.expand_path("#{File.dirname __FILE__}/../request")
+# require File.expand_path("#{File.dirname __FILE__}/commands/cookies_use")
+# require File.expand_path("#{File.dirname __FILE__}/commands/follow")
+# require File.expand_path("#{File.dirname __FILE__}/commands/ssl_verification_off")
 
 module HTTY; end
 
@@ -31,7 +33,7 @@ module HTTY::CLI::HTTPMethodCommand
 
   # Performs the command.
   def perform
-    add_request_if_has_response do |request|
+    add_request_if_new do |request|
       unless body? || request.body.to_s.empty?
         puts notice("The body of your #{method.to_s.upcase} request is not " +
                     'being sent')
