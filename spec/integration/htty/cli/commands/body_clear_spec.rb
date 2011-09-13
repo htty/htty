@@ -1,4 +1,5 @@
 require 'rspec'
+require File.expand_path("#{File.dirname __FILE__}/body_unset_sharedspec")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_clear")
 
