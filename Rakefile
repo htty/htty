@@ -37,7 +37,6 @@ end
 def define_spec_task(name, options={})
   RSpec::Core::RakeTask.new name do |t|
     t.rspec_opts = ['--color']
-    t.skip_bundler = options[:skip_bundler]
     unless options[:debug] == false
       begin
         require 'ruby-debug'
@@ -69,4 +68,4 @@ task :default => :spec
 
 # Support the 'gem test' command.
 desc ''
-define_spec_task :test, :debug => false, :skip_bundler => true
+define_spec_task :test, :debug => false

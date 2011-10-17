@@ -5,4 +5,3 @@
 Gemfile.lock
 doc/
 pkg/*
-spec/system/scenarios/**/actual_*
