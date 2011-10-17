@@ -1,6 +1,12 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.3.4"></a>v1.3.4, Mon 10/17/2011
+-------------------------------------------
+
+* Added support for Ctrl-D to exit and to terminate `body-set` command input \[with help from [bofrede](http://github.com/bofrede "bofrede at GitHub")\]
+* Added `--version` and `--help` command-line arguments
+
 <a name="v1.3.3"></a>v1.3.3, Sat 3/05/2011
 -------------------------------------------
 

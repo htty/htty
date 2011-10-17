@@ -37,7 +37,7 @@ describe HTTY::CLI::Commands::BodySet do
       expected = <<-end_help_extended
 Sets the body content used for the request. Does not communicate with the host.
 
-Hit Return three times in a row to signify the end of the body.
+Enter two blank lines, or hit Ctrl-D, to signify the end of the body.
       end_help_extended
       klass.help_extended.should == expected.chomp
     end
