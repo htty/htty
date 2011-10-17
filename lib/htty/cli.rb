@@ -67,10 +67,7 @@ class HTTY::CLI
           end
         rescue Interrupt
           puts
-          puts notice('Type ' +
-                      strong(HTTY::CLI::Commands::Quit.command_line) +
-                      ' to quit')
-          next
+          throw :quit
         end
       end
     end
