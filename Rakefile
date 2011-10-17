@@ -41,7 +41,6 @@ Cucumber::Rake::Task.new :features, 'Test features'
 def define_spec_task(name, options={})
   RSpec::Core::RakeTask.new name do |t|
     t.rspec_opts = ['--color']
-    t.skip_bundler = options[:skip_bundler]
     unless options[:debug] == false
       begin
         require 'ruby-debug'
@@ -74,7 +73,7 @@ task :default => [:spec, :features]
 # Support the 'gem test' command.
 namespace :test do
   desc ''
-  define_spec_task :specs, :debug => false, :skip_bundler => true
+  define_spec_task :specs, :debug => false
 
   Cucumber::Rake::Task.new :features, '' do |t|
     t.bundler = false

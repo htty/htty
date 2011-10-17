@@ -27,7 +27,7 @@
                  |____|     |____|    / ______|
                                       \/
 
-[<img align="right" src="https://secure.travis-ci.org/htty/htty.png" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
+[<img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
 See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html).
 
@@ -96,7 +96,7 @@ There was some cruft in the web service’s response (a horizontal line, a passa
 
 We do a Julia Child maneuver and use the `address` command to change the entire URL, rather than add individual query-string parameters one by one.
 
-Exit your session at any time by typing `quit`.
+Exit your session at any time by typing `quit` or hitting Ctrl-D.
 
 <a name="cookies-example"></a>Working with cookies
 --------------------------------------------------
@@ -154,7 +154,7 @@ When you change the userinfo portion of the address, or the entire address, the 
 
 When userinfo is supplied in a request, a bold mercantile symbol (_@_) appears next to the resulting _Authorization_ header when you display request headers (see below).
 
-Type `body-set` to enter body data, and terminate it by typing Return three times consecutively. The body will only be sent for _POST_ and _PUT_ requests. The appropriate _Content-Length_ header is created for you automatically (see below).
+Type `body-set` to enter body data, and terminate it by entering two consecutive blank lines, or by hitting Ctrl-D. The body will only be sent for _POST_ and _PUT_ requests. The appropriate _Content-Length_ header is created for you automatically (see below).
 
 Different response codes are rendered with colors that suggest their meaning:
 

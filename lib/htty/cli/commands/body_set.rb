@@ -31,7 +31,7 @@ class HTTY::CLI::Commands::BodySet < HTTY::CLI::Command
     'Sets the body content used for the request. Does not communicate with ' +
     "the host.\n"                                                            +
     "\n"                                                                     +
-    'Hit Return three times in a row to signify the end of the body.'
+    'Enter two blank lines, or hit Ctrl-D, to signify the end of the body.'
   end
 
   # Returns related command classes for the _body-set_ command.
@@ -42,7 +42,8 @@ class HTTY::CLI::Commands::BodySet < HTTY::CLI::Command
   # Performs the _body-set_ command.
   def perform
     add_request_if_new do |request|
-      puts notice('Hit Return three times to signify the end of the body')
+      puts notice('Enter two blank lines, or hit Ctrl-D, to signify the end ' +
+                  'of the body')
       lines            = []
       empty_line_count = 0
       while empty_line_count < 2 do
