@@ -2,7 +2,6 @@ rvm:
   - 1.8.7
   - 1.9.2
   - ree
-  - rbx
 script: "bundle exec rake test"
 notifications:
   irc: "irc.freenode.org#htty"
