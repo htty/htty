@@ -42,8 +42,7 @@ def define_spec_task(name, options={})
         require 'ruby-debug'
       rescue LoadError
       else
-        # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
-        t.rspec_opts << '-d'
+        t.rspec_opts << '--debug'
       end
     end
 
