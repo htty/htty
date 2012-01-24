@@ -45,7 +45,7 @@ def define_spec_task(name, options={})
     end
 
     directory = options[:as_subdirectory] ? "spec/#{name}" : 'spec'
-    t.pattern = "#{directory}/**/*_spec.rb"
+    t.pattern = %W(#{directory}/*_spec.rb #{directory}/**/*_spec.rb)
   end
 end
 
