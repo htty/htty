@@ -1,4 +1,5 @@
 .bundle/
+.rbx
 .rvmrc
 .yardoc/
 *.gem
