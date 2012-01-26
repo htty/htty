@@ -17,13 +17,13 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.8.7'
 
-  s.add_dependency 'mime-types'
+  s.add_dependency             'mime-types', '~> 1'
 
-  s.add_development_dependency 'aruba',   '< 0.3'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec',   '~> 2.7'
-  s.add_development_dependency 'vcr'
-  s.add_development_dependency 'webmock'
+  s.add_development_dependency 'aruba',      '~> 0'
+  s.add_development_dependency 'rake',       '~> 0'
+  s.add_development_dependency 'rspec',      '~> 2'
+  s.add_development_dependency 'vcr',        '~> 1'
+  s.add_development_dependency 'webmock',    '~> 1'
 
   s.rubyforge_project = 'htty'
   s.has_rdoc          = true

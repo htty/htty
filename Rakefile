@@ -1,9 +1,10 @@
-require 'bundler'
+begin
+  require 'bundler/gem_tasks'
+rescue LoadError
+end
 require 'cucumber'
 require 'cucumber/rake/task'
 require 'rspec/core/rake_task'
-
-Bundler::GemHelper.install_tasks
 
 begin
   require 'yard'
@@ -36,7 +37,9 @@ namespace :lib do
   end
 end
 
-Cucumber::Rake::Task.new :features, 'Test features'
+Cucumber::Rake::Task.new :features, 'Test features' do |t|
+  t.bundler = false
+end
 
 def define_spec_task(name, options={})
   RSpec::Core::RakeTask.new name do |t|
@@ -46,13 +49,12 @@ def define_spec_task(name, options={})
         require 'ruby-debug'
       rescue LoadError
       else
-        # TODO: Change '-d' to '--debug' when that `rspec` bug is fixed
-        t.rspec_opts << '-d'
+        t.rspec_opts << '--debug'
       end
     end
 
     directory = options[:as_subdirectory] ? "spec/#{name}" : 'spec'
-    t.pattern = "#{directory}/**/*_spec.rb"
+    t.pattern = %W(#{directory}/*_spec.rb #{directory}/**/*_spec.rb)
   end
 end
 

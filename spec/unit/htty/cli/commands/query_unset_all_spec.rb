@@ -1,5 +1,6 @@
 require 'rspec'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_clear")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_set")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset_all")
