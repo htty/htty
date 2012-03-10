@@ -44,7 +44,7 @@ You’ll need Ruby and RubyGems. It’s known to work well under OS X against Ru
 ===============================
 
 * Intuitive, Tab-completed commands and command aliases
-* Support for familiar HTTP methods _GET_, _POST_, _PUT_, and _DELETE_, as well as _HEAD_, _OPTIONS_ and _TRACE_
+* Support for familiar HTTP methods _GET_, _POST_, _PUT_, and _DELETE_, as well as _PATCH_, _HEAD_, _OPTIONS_ and _TRACE_
 * Support for HTTP Secure connections and HTTP Basic Authentication
 * Automatic URL-encoding of userinfo, paths, query-string parameters, and page fragments
 * Transcripts, both verbose and summary
