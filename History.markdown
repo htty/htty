@@ -1,7 +1,7 @@
 Version history for the _htty_ project
 ======================================
 
-<a name="v1.4.0"></a>v1.4.0, Sat 3/10/2011
+<a name="v1.4.0"></a>v1.4.0, Sat 3/10/2012
 -------------------------------------------
 
 * Added `http-patch` and `patch` commands to support HTTP PATCH
