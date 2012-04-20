@@ -51,7 +51,7 @@ Version history for the _htty_ project
 <a name="v1.1.6"></a>v1.1.6, Mon 11/22/2010
 -------------------------------------------
 
-* Added the `query-add` and `query-remove` commands [[nextmat](http://github.com/nextmat "nextmat at GitHub")]:
+* Added the `query-add` and `query-remove` commands [[nextmat](http://github.com/nextmat "nextmat at GitHub")]
 * Added context-sensitive help in connection with server certificate verification
 * Upgraded various dependencies
 
