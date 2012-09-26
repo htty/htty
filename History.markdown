@@ -1,6 +1,11 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.4.1"></a>v1.4.1, Wed 9/26/2012
+-------------------------------------------
+
+* Fixed a bug in line wrapping of long command prompts
+
 <a name="v1.4.0"></a>v1.4.0, Sat 3/10/2012
 -------------------------------------------
 
