@@ -235,4 +235,4 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 <a name="license"></a>License
 =============================
 
-Released under the [MIT License](http://htty.github.com/file.MIT-LICENSE.html).
+Released under the [MIT License](http://htty.github.com/file.License.html).
