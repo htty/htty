@@ -1,6 +1,17 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.4.1"></a>v1.4.1, Wed 9/26/2012
+-------------------------------------------
+
+* Fixed a bug in line wrapping of long command prompts
+
+<a name="v1.4.0"></a>v1.4.0, Sat 3/10/2012
+-------------------------------------------
+
+* Added `http-patch` and `patch` commands to support HTTP PATCH
+* Refined dependencies
+
 <a name="v1.3.4"></a>v1.3.4, Mon 10/17/2011
 -------------------------------------------
 
@@ -45,7 +56,7 @@ Version history for the _htty_ project
 <a name="v1.1.6"></a>v1.1.6, Mon 11/22/2010
 -------------------------------------------
 
-* Added the `query-add` and `query-remove` commands [[nextmat](http://github.com/nextmat "nextmat at GitHub")]:
+* Added the `query-add` and `query-remove` commands [[nextmat](http://github.com/nextmat "nextmat at GitHub")]
 * Added context-sensitive help in connection with server certificate verification
 * Upgraded various dependencies
 

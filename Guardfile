@@ -1,4 +1,4 @@
-guard 'rspec', :cli => '--color', :version => 2 do
+guard :rspec, :cli => '--color --debugger' do
   # Run the corresponding spec (or all specs) when code changes.
   watch( %r{^lib/(.+)\.rb$} ) do |match|
     corresponding_specs = %W(spec/integration/#{match[1]}_spec.rb

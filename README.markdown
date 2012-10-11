@@ -27,7 +27,7 @@
                  |____|     |____|    / ______|
                                       \/
 
-[<img align="right" src="https://gemnasium.com/htty/htty.png" title="Gemnasium build status" />](http://gemnasium.com/htty/htty) [<img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
+[<img align="right" src="https://codeclimate.com/badge.png" title="Code Climate" />](http://codeclimate.com/github/htty/htty) [<img align="right" src="https://gemnasium.com/htty/htty.png" title="Gemnasium build status" />](http://gemnasium.com/htty/htty) [<img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
 See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html).
 
@@ -44,7 +44,7 @@ You’ll need Ruby and RubyGems. It’s known to work well under OS X against Ru
 ===============================
 
 * Intuitive, Tab-completed commands and command aliases
-* Support for familiar HTTP methods _GET_, _POST_, _PUT_, and _DELETE_, as well as _HEAD_, _OPTIONS_ and _TRACE_
+* Support for familiar HTTP methods _GET_, _POST_, _PUT_, and _DELETE_, as well as _PATCH_, _HEAD_, _OPTIONS_ and _TRACE_
 * Support for HTTP Secure connections and HTTP Basic Authentication
 * Automatic URL-encoding of userinfo, paths, query-string parameters, and page fragments
 * Transcripts, both verbose and summary
@@ -235,4 +235,4 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 <a name="license"></a>License
 =============================
 
-Released under the [MIT License](http://htty.github.com/file.MIT-LICENSE.html).
+Released under the [MIT License](http://htty.github.com/file.License.html).

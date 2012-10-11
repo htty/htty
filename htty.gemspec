@@ -10,9 +10,11 @@ Gem::Specification.new do |s|
   s.email       = ['htty@nilsjonsson.com']
   s.homepage    = 'http://htty.github.com'
   s.summary     = 'The HTTP TTY'
-  s.description = 'htty is a console application for interacting with web '   +
-                  "servers. It's a fun way to explore web APIs and to learn " +
-                  'the ins and outs of HTTP.'
+  s.description = <<-end_description.gsub(/^\s+/, '').chomp
+                  htty is a console application for interacting with web servers.
+                  It's a fun way to explore web APIs and to learn the ins and
+                  outs of HTTP.
+                  end_description
   s.license     = 'MIT'
 
   s.required_ruby_version = '>= 1.8.7'
