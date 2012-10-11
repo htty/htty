@@ -1,6 +1,7 @@
 require 'net/http'
 require 'net/https'
 require 'uri'
+require File.expand_path("#{File.dirname __FILE__}/http_patch")
 require File.expand_path("#{File.dirname __FILE__}/preferences")
 require File.expand_path("#{File.dirname __FILE__}/response")
 
@@ -34,6 +35,15 @@ module HTTY::RequestsUtil
   def self.options(request)
     request(request) do |host|
       host.options request.send(:path_query_and_fragment), request.headers
+    end
+  end
+
+  # Makes an HTTP PATCH request with the specified _request_.
+  def self.patch(request)
+    request(request) do |host|
+      host.patch request.send(:path_query_and_fragment),
+                 request.body,
+                 request.headers
     end
   end
 
