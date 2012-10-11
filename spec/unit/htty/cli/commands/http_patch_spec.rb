@@ -6,7 +6,7 @@ require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/c
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_post")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_put")
 
-describe HTTY::CLI::Commands::HttpGet do
+describe HTTY::CLI::Commands::HttpPatch do
   describe 'class' do
     let :klass do
       subject.class
@@ -17,7 +17,7 @@ describe HTTY::CLI::Commands::HttpGet do
     end
 
     it 'should have the expected aliases' do
-      klass.aliases.should == [HTTY::CLI::Commands::Get]
+      klass.aliases.should == [HTTY::CLI::Commands::Patch]
     end
 
     it 'should belong to the expected category' do
@@ -25,7 +25,7 @@ describe HTTY::CLI::Commands::HttpGet do
     end
 
     it 'should have the expected command_line' do
-      klass.command_line.should == 'http-g[et]'
+      klass.command_line.should == 'http-pa[tch]'
     end
 
     it 'should have the expected command_line_arguments' do
@@ -33,21 +33,17 @@ describe HTTY::CLI::Commands::HttpGet do
     end
 
     it 'should have the expected help' do
-      klass.help.should == 'Issues an HTTP GET using the current request'
+      klass.help.should == 'Issues an HTTP PATCH using the current request'
     end
 
     it 'should have the expected help_extended' do
-      expected = <<-end_help_extended
-Issues an HTTP GET using the current request.
-
-Any request body you may set is ignored (i.e., it is not sent as part of the request).
-      end_help_extended
-      klass.help_extended.should == expected.chomp
+      klass.help_extended.should == 'Issues an HTTP PATCH using the current ' +
+                                    'request.'
     end
 
     it 'should have the expected see_also_commands' do
-      klass.see_also_commands.should == [HTTY::CLI::Commands::Follow,
-                                         HTTY::CLI::Commands::HttpPatch,
+      klass.see_also_commands.should == [HTTY::CLI::Commands::HttpGet,
+                                         HTTY::CLI::Commands::Follow,
                                          HTTY::CLI::Commands::HttpPost,
                                          HTTY::CLI::Commands::HttpPut,
                                          HTTY::CLI::Commands::HttpDelete]
@@ -55,14 +51,14 @@ Any request body you may set is ignored (i.e., it is not sent as part of the req
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
-        built = klass.build_for('http-get', :session => :the_session)
+        built = klass.build_for('http-patch', :session => :the_session)
         built.should be_instance_of(klass)
         built.arguments.should == []
         built.session.should   == :the_session
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
-        built = klass.build_for('http-g', :session => :a_session)
+        built = klass.build_for('http-pa', :session => :a_session)
         built.should be_instance_of(klass)
         built.arguments.should == []
         built.session.should   == :a_session
