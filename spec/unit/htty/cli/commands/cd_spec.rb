@@ -29,11 +29,11 @@ describe HTTY::CLI::Commands::Cd do
     end
 
     it 'should have the expected help' do
-      klass.help.should == "Alias for \e[1mpa[th-set]\e[0m"
+      klass.help.should == "Alias for \e[1mpath[-set]\e[0m"
     end
 
     it 'should have the expected help_extended' do
-      klass.help_extended.should == "Alias for \e[1mpa[th-set]\e[0m."
+      klass.help_extended.should == "Alias for \e[1mpath[-set]\e[0m."
     end
 
     it 'should have the expected see_also_commands' do

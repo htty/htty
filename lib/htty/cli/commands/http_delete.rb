@@ -1,6 +1,7 @@
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../http_method_command")
 require File.expand_path("#{File.dirname __FILE__}/http_get")
+require File.expand_path("#{File.dirname __FILE__}/http_patch")
 require File.expand_path("#{File.dirname __FILE__}/http_post")
 require File.expand_path("#{File.dirname __FILE__}/http_put")
 
@@ -31,6 +32,7 @@ class HTTY::CLI::Commands::HttpDelete < HTTY::CLI::Command
   # Returns related command classes for the _http-delete_ command.
   def self.see_also_commands
     [HTTY::CLI::Commands::HttpGet,
+     HTTY::CLI::Commands::HttpPatch,
      HTTY::CLI::Commands::HttpPost,
      HTTY::CLI::Commands::HttpPut]
   end

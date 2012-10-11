@@ -81,7 +81,8 @@ private
     command_line = ''
     while command_line.empty? do
       prompt = prompt(session.requests.last)
-      if (command_line = Readline.readline(prompt, true)).nil?
+      print prompt
+      if (command_line = Readline.readline('', true)).nil?
         raise Interrupt
       end
       if whitespace?(command_line) || repeat?(command_line)

@@ -22,7 +22,7 @@ describe HTTY::CLI::Commands::PathSet do
     end
 
     it 'should have the expected command_line' do
-      klass.command_line.should == 'pa[th-set]'
+      klass.command_line.should == 'path[-set]'
     end
 
     it 'should have the expected command_line_arguments' do
@@ -57,7 +57,7 @@ The console prompt shows the address for the current request.
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
-        built = klass.build_for('pa bar', :session => :a_session)
+        built = klass.build_for('path bar', :session => :a_session)
         built.should be_instance_of(klass)
         built.arguments.should == ['bar']
         built.session.should   == :a_session

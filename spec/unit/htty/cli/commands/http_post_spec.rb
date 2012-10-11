@@ -2,6 +2,7 @@ require 'rspec'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/follow")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_delete")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_get")
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_patch")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_post")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_put")
 
@@ -43,6 +44,7 @@ describe HTTY::CLI::Commands::HttpPost do
     it 'should have the expected see_also_commands' do
       klass.see_also_commands.should == [HTTY::CLI::Commands::HttpGet,
                                          HTTY::CLI::Commands::Follow,
+                                         HTTY::CLI::Commands::HttpPatch,
                                          HTTY::CLI::Commands::HttpPut,
                                          HTTY::CLI::Commands::HttpDelete]
     end
