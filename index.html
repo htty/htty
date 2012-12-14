@@ -1,37 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>htty, the HTTP TTY by htty</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>htty, the HTTP TTY by htty</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
-
-        <header>
-          <h1>htty, the HTTP TTY</h1>
-          <h2>A console application for interacting with web servers</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/htty/htty/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/htty/htty/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/htty/htty" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <pre><code>                 s         s
+    <div class="wrapper">
+      <header>
+        <h1>htty, the HTTP TTY</h1>
+        <p>A console application for interacting with web servers</p>
+        <p class="view"><a href="https://github.com/htty/htty">View the Project on GitHub <small>htty/htty</small></a></p>
+        <ul>
+          <li><a href="https://github.com/htty/htty/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/htty/htty/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/htty/htty">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <pre><code>                 s         s
   .uef^"        :8        :8      ..
 :d88E          .88       .88     @L
 `888E         :888ooo   :888ooo 9888i   .dL
@@ -60,7 +56,7 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
                                   \/
 </code></pre>
 
-<p><a href="http://gemnasium.com/htty/htty"><img align="right" src="https://gemnasium.com/htty/htty.png" title="Gemnasium build status"></a> <a href="http://travis-ci.org/htty/htty"><img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status"></a> <a href="http://htty.github.com">htty</a> is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.</p>
+<p><a href="http://codeclimate.com/github/htty/htty"><img align="right" src="https://codeclimate.com/badge.png" title="Code Climate report"></a> <a href="http://gemnasium.com/htty/htty"><img align="right" src="https://gemnasium.com/htty/htty.png" title="Gemnasium build status"></a> <a href="http://travis-ci.org/htty/htty"><img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status"></a> <a href="http://htty.github.com">htty</a> is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.</p>
 
 <p>See what’s changed lately by reading the <a href="http://htty.github.com/file.History.html">project history</a>.</p>
 
@@ -194,7 +190,7 @@ end
 
 <p>When you change the userinfo portion of the address, or the entire address, the appropriate HTTP Basic Authentication header is created for you automatically. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).</p>
 
-<p>When userinfo is supplied in a request, a bold mercantile symbol (<em>@</em>) appears next to the resulting <em>Authorization</em> header when you display request headers (see below).</p>
+<p>When userinfo is supplied in a request, a bold mercantile symbol (_@_) appears next to the resulting <em>Authorization</em> header when you display request headers (see below).</p>
 
 <p>Type <code>body-set</code> to enter body data, and terminate it by entering two consecutive blank lines, or by hitting Ctrl-D. The body will only be sent for <em>POST</em> and <em>PUT</em> requests. The appropriate <em>Content-Length</em> header is created for you automatically (see below).</p>
 
@@ -283,16 +279,14 @@ end
 </ul><h1>
 <a name="license"></a>License</h1>
 
-<p>Released under the <a href="http://htty.github.com/file.MIT-LICENSE.html">MIT License</a>.</p>
-        </section>
-
-        <footer>
-          htty, the HTTP TTY is maintained by <a href="https://github.com/htty">htty</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+<p>Released under the <a href="http://htty.github.com/file.License.html">MIT License</a>.</p>
+      </section>
     </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/htty">htty</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
