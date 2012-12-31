@@ -29,7 +29,7 @@
 
 [<img align="right" src="https://codeclimate.com/badge.png" title="Code Climate report" />](http://codeclimate.com/github/htty/htty) [<img align="right" src="https://gemnasium.com/htty/htty.png" title="Gemnasium build status" />](http://gemnasium.com/htty/htty) [<img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
-See what’s changed lately by reading the [project history](http://htty.github.com/file.History.html).
+See what’s changed lately by reading the [project history](http://github.com/htty/htty/blob/master/History.markdown).
 
 <a name="installation"></a>Installation
 =======================================
@@ -235,4 +235,4 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 <a name="license"></a>License
 =============================
 
-Released under the [MIT License](http://htty.github.com/file.License.html).
+Released under the [MIT License](http://github.com/htty/htty/blob/master/License.markdown).
