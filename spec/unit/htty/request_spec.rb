@@ -38,44 +38,6 @@ describe HTTY::Request do
       HTTY::Request
     end
 
-    describe 'an invalid IPv4 address having' do
-      describe 'consecutive dots' do
-        it 'should raise URI::InvalidURIError' do
-          expect { klass.new '1.2.3..4' }.to raise_error(URI::InvalidURIError)
-        end
-      end
-
-      describe 'no dots' do
-        it 'should raise URI::InvalidURIError' do
-          expect { klass.new '1234' }.to raise_error(URI::InvalidURIError)
-        end
-      end
-
-      describe 'too few dotted decimals' do
-        it 'should raise URI::InvalidURIError' do
-          expect { klass.new '1.2.3' }.to raise_error(URI::InvalidURIError)
-        end
-      end
-
-      describe 'too many dotted decimals' do
-        it 'should raise URI::InvalidURIError' do
-          expect { klass.new '1.2.3.4.5' }.to raise_error(URI::InvalidURIError)
-        end
-      end
-
-      describe 'a dotted decimal out of range' do
-        it 'should raise URI::InvalidURIError' do
-          expect { klass.new '1.2.3.1000' }.to raise_error(URI::InvalidURIError)
-        end
-      end
-    end
-
-    describe 'an invalid hostname having a leading hyphen' do
-      it 'should raise URI::InvalidURIError' do
-        expect { klass.new '-google.com' }.to raise_error(URI::InvalidURIError)
-      end
-    end
-
     describe 'a valid FTP address' do
       it 'should raise URI::InvalidURIError' do
         expect do
