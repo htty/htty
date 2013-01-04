@@ -1,4 +1,4 @@
-require 'rspec'
+require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/cli")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
 

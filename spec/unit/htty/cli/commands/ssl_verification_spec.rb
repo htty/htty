@@ -1,4 +1,4 @@
-require 'rspec'
+require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification_off")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification_on")

@@ -1,4 +1,4 @@
-guard :rspec, :cli => '--color --debugger' do
+guard :rspec, :cli => '--debugger' do
   # Run the corresponding spec (or all specs) when code changes.
   watch( %r{^lib/(.+)\.rb$} ) do |match|
     corresponding_specs = %W(spec/integration/#{match[1]}_spec.rb
@@ -11,6 +11,9 @@ guard :rspec, :cli => '--color --debugger' do
 
   # Run a spec when it changes.
   watch %r{^spec/.+_spec\.rb$}
+
+  # Run all specs when the RSpec configuration changes.
+  watch( 'spec/spec_helper.rb' ) { 'spec' }
 
   # Run all specs when the bundle changes.
   watch( 'Gemfile.lock' ) { 'spec' }

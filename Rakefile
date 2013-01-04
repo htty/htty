@@ -34,7 +34,7 @@ end
 
 def define_spec_task(name, options={})
   RSpec::Core::RakeTask.new name do |t|
-    t.rspec_opts = ['--color']
+    t.rspec_opts ||= []
     unless options[:debug] == false
       begin
         require 'ruby-debug'
