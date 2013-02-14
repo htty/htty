@@ -11,7 +11,7 @@ end
 
 group :doc do
   gem   'yard',          '~> 0', :platforms => [:ruby, :mswin, :mingw]
-  gem   'rdiscount',     '~> 1', :platforms => [:ruby, :mswin, :mingw]
+  gem   'rdiscount',             :platforms => [:ruby, :mswin, :mingw]
 end
 
 group :tooling do
