@@ -27,7 +27,12 @@
                  |____|     |____|    / ______|
                                       \/
 
-[<img align="right" src="https://codeclimate.com/badge.png" title="Code Climate report" />](http://codeclimate.com/github/htty/htty) [<img align="right" src="https://gemnasium.com/htty/htty.png" title="Gemnasium build status" />](http://gemnasium.com/htty/htty) [<img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" />](http://travis-ci.org/htty/htty) [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
+[<img align="right" src="https://badge.fury.io/rb/htty.png" title="RubyGems release" height="13" />][rubygems-release] [<img align="right" src="https://codeclimate.com/github/htty/htty.png" title="Code Climate report" height="13" />][code-climate-report] [<img align="right" src="https://gemnasium.com/htty/htty.png" title="Gemnasium build status" height="13" />][gemnasium-build-status] [<img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" height="13" />][travis-ci-build-status] [htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
+
+[rubygems-release]:       http://rubygems.org/gems/htty
+[code-climate-report]:    http://codeclimate.com/github/htty/htty
+[gemnasium-build-status]: http://gemnasium.com/htty/htty
+[travis-ci-build-status]: http://travis-ci.org/htty/htty
 
 See what’s changed lately by reading the [project history](http://github.com/htty/htty/blob/master/History.markdown).
 
