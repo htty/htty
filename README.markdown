@@ -157,7 +157,7 @@ This application expects _GET_ and _POST_ requests and responds in various contr
 
 When you change the userinfo portion of the address, or the entire address, the appropriate HTTP Basic Authentication header is created for you automatically. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).
 
-When userinfo is supplied in a request, a bold mercantile symbol (_@_) appears next to the resulting _Authorization_ header when you display request headers (see below).
+When userinfo is supplied in a request, a bold mercantile symbol ( _@_ ) appears next to the resulting _Authorization_ header when you display request headers (see below).
 
 Type `body-set` to enter body data, and terminate it by entering two consecutive blank lines, or by hitting Ctrl-D. The body will only be sent for _POST_ and _PUT_ requests. The appropriate _Content-Length_ header is created for you automatically (see below).
 
