@@ -36,8 +36,8 @@
 
 See what’s changed lately by reading the [project history](http://github.com/htty/htty/blob/master/History.markdown).
 
-<a name="installation"></a>Installation
-=======================================
+Installation
+============
 
 It couldn’t be much easier.
 
@@ -45,8 +45,8 @@ It couldn’t be much easier.
 
 You’ll need Ruby and RubyGems. It’s known to work well under OS X against Ruby v1.8.7, v1.9.2, and v1.9.3.
 
-<a name="features"></a>Features
-===============================
+Features
+========
 
 * Intuitive, Tab-completed commands and command aliases
 * Support for familiar HTTP methods _GET_, _POST_, _PUT_, and _DELETE_, as well as _PATCH_, _HEAD_, _OPTIONS_ and _TRACE_
@@ -65,13 +65,13 @@ The things you can do with _htty_ are:
 * **Review history** — a normal and a verbose transcript of your session are available at all times (destroyed when you quit _htty_)
 * **Reuse previous requests** — you can refer to prior requests and copy them
 
-<a name="examples"></a>Examples
-===============================
+Examples
+========
 
 Here are a few annotated _htty_ session transcripts to get you started.
 
-<a name="basic-example"></a>Querying a web service
---------------------------------------------------
+Querying a web service
+----------------------
 
 This simple example shows how to explore a read-only web service with _htty_.
 
@@ -103,8 +103,8 @@ We do a Julia Child maneuver and use the `address` command to change the entire 
 
 Exit your session at any time by typing `quit` or hitting Ctrl-D.
 
-<a name="cookies-example"></a>Working with cookies
---------------------------------------------------
+Working with cookies
+--------------------
 
 The next example demonstrates <i>htty</i>’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.
 
@@ -126,8 +126,8 @@ Note that history contains only numbered HTTP request and response pairs, not a 
 
 The `reuse` command makes a copy of the headers and body of an earlier request for you to build on.
 
-<a name="history-example"></a>Understanding complex HTTP conversations at a glance using history
-------------------------------------------------------------------------------------------------
+Understanding complex HTTP conversations at a glance using history
+------------------------------------------------------------------
 
 Now we’ll look at <i>htty</i>’s HTTP Basic Authentication support and learn how to display unabbreviated transcripts of _htty_ sessions.
 
@@ -172,8 +172,8 @@ Different response codes are rendered with colors that suggest their meaning:
 
 As with the abbreviated history demonstrated earlier, verbose history shows a numbered list of requests and the responses they elicited. All information exchanged between client and server is shown.
 
-<a name="help"></a>Getting help
--------------------------------
+Getting help
+------------
 
 You can learn how to use _htty_ commands from within _htty_.
 
@@ -181,13 +181,13 @@ You can learn how to use _htty_ commands from within _htty_.
 
 The `help` command takes an optional argument of the abbreviated or full name of a command.
 
-<a name="coming-soon"></a>Coming soon
-=====================================
+Coming soon
+===========
 
 Here are some features that are coming down the pike.
 
-<a name="forms-coming-soon"></a>Commands for streamlining web form submission
------------------------------------------------------------------------------
+Commands for streamlining web form submission
+---------------------------------------------
 
 These features will make _htty_ better at screen-scraping.
 
@@ -201,29 +201,29 @@ Using any of the forthcoming `form` commands will clear any non-form content in 
 
 You will also be able to pop open a browser window containing request and response bodies.
 
-<a name="custom-aliases-coming-soon"></a>Custom command aliases and shell emulation of _http-console_
------------------------------------------------------------------------------------------------------
+Custom command aliases and shell emulation of _http-console_
+------------------------------------------------------------
 
 You should be able to make your own command aliases.
 
 _http-console_ has a nice command-line. We should have an _http-console_ skin for _htty_.
 
-<a name="contributing"></a>Contributing
-=======================================
+Contributing
+============
 
 Report defects and feature requests on [GitHub Issues](http://github.com/htty/htty/issues).
 
 Your patches are welcome, and you will receive attribution here for good stuff. Fork [the official _htty_ repository](http://github.com/htty/htty "htty’s ‘htty’ repository at GitHub") and send a pull request.
 
-<a name="contact"></a>News and information
-==========================================
+News and information
+====================
 
 Stay in touch with the _htty_ project by following [@get_htty](http://twitter.com/get_htty "get_htty at Twitter") on Twitter.
 
 You can also get help in the [#htty channel on Freenode](http://webchat.freenode.net/?channels=htty).
 
-<a name="credits"></a>Credits
-=============================
+Credits
+=======
 
 The author, [Nils Jonsson](mailto:htty@nilsjonsson.com), owes a debt of inspiration to the [_http-console_](http://github.com/cloudhead/http-console) project.
 
@@ -237,8 +237,8 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 * Robert Pitts ([rbxbx](http://github.com/rbxbx "rbxbx at GitHub"))
 * Matt Sanders ([nextmat](http://github.com/nextmat "nextmat at GitHub"))
 
-<a name="license"></a>License
-=============================
+License
+=======
 
 Released under the [MIT License](http://github.com/htty/htty/blob/master/License.markdown).
 
