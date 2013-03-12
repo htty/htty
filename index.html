@@ -56,12 +56,16 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
                                   \/
 </code></pre>
 
-<p><a href="http://rubygems.org/gems/htty"><img align="right" src="https://badge.fury.io/rb/htty.png" title="RubyGems release" height="13"></a> <a href="http://codeclimate.com/github/htty/htty"><img align="right" src="https://codeclimate.com/github/htty/htty.png" title="Code Climate report" height="13"></a> <a href="http://gemnasium.com/htty/htty"><img align="right" src="https://gemnasium.com/htty/htty.png" title="Gemnasium build status" height="13"></a> <a href="http://travis-ci.org/htty/htty"><img align="right" src="https://secure.travis-ci.org/htty/htty.png?branch=master" title="Travis CI build status" height="13"></a> <a href="http://htty.github.com">htty</a> is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.</p>
+<p><a href="http://htty.github.com">htty</a> is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.</p>
+
+<p><a href="http://travis-ci.org/htty/htty" title="Travis CI build status"><img src="https://secure.travis-ci.org/htty/htty.png?branch=master" alt="Travis CI build status"></a>
+<a href="http://gemnasium.com/htty/htty" title="Gemnasium build status"><img src="https://gemnasium.com/htty/htty.png" alt="Gemnasium build status"></a>
+<a href="http://codeclimate.com/github/htty/htty" title="Code Climate report"><img src="https://codeclimate.com/github/htty/htty.png" alt="Code Climate report"></a>
+<a href="http://rubygems.org/gems/htty" title="RubyGems release"><img src="https://badge.fury.io/rb/htty.png" alt="RubyGems release"></a></p>
 
 <p>See what’s changed lately by reading the <a href="http://github.com/htty/htty/blob/master/History.markdown">project history</a>.</p>
 
-<h1>
-<a name="installation"></a>Installation</h1>
+<h1>Installation</h1>
 
 <p>It couldn’t be much easier.</p>
 
@@ -70,8 +74,7 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>You’ll need Ruby and RubyGems. It’s known to work well under OS X against Ruby v1.8.7, v1.9.2, and v1.9.3.</p>
 
-<h1>
-<a name="features"></a>Features</h1>
+<h1>Features</h1>
 
 <ul>
 <li>Intuitive, Tab-completed commands and command aliases</li>
@@ -97,13 +100,11 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 <strong>Review history</strong> — a normal and a verbose transcript of your session are available at all times (destroyed when you quit <em>htty</em>)</li>
 <li>
 <strong>Reuse previous requests</strong> — you can refer to prior requests and copy them</li>
-</ul><h1>
-<a name="examples"></a>Examples</h1>
+</ul><h1>Examples</h1>
 
 <p>Here are a few annotated <em>htty</em> session transcripts to get you started.</p>
 
-<h2>
-<a name="basic-example"></a>Querying a web service</h2>
+<h2>Querying a web service</h2>
 
 <p>This simple example shows how to explore a read-only web service with <em>htty</em>.</p>
 
@@ -135,8 +136,7 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>Exit your session at any time by typing <code>quit</code> or hitting Ctrl-D.</p>
 
-<h2>
-<a name="cookies-example"></a>Working with cookies</h2>
+<h2>Working with cookies</h2>
 
 <p>The next example demonstrates <i>htty</i>’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.</p>
 
@@ -158,8 +158,7 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>The <code>reuse</code> command makes a copy of the headers and body of an earlier request for you to build on.</p>
 
-<h2>
-<a name="history-example"></a>Understanding complex HTTP conversations at a glance using history</h2>
+<h2>Understanding complex HTTP conversations at a glance using history</h2>
 
 <p>Now we’ll look at <i>htty</i>’s HTTP Basic Authentication support and learn how to display unabbreviated transcripts of <em>htty</em> sessions.</p>
 
@@ -190,7 +189,7 @@ end
 
 <p>When you change the userinfo portion of the address, or the entire address, the appropriate HTTP Basic Authentication header is created for you automatically. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).</p>
 
-<p>When userinfo is supplied in a request, a bold mercantile symbol (_@_) appears next to the resulting <em>Authorization</em> header when you display request headers (see below).</p>
+<p>When userinfo is supplied in a request, a bold mercantile symbol ( <em>@</em> ) appears next to the resulting <em>Authorization</em> header when you display request headers (see below).</p>
 
 <p>Type <code>body-set</code> to enter body data, and terminate it by entering two consecutive blank lines, or by hitting Ctrl-D. The body will only be sent for <em>POST</em> and <em>PUT</em> requests. The appropriate <em>Content-Length</em> header is created for you automatically (see below).</p>
 
@@ -205,8 +204,7 @@ end
 
 <p>As with the abbreviated history demonstrated earlier, verbose history shows a numbered list of requests and the responses they elicited. All information exchanged between client and server is shown.</p>
 
-<h2>
-<a name="help"></a>Getting help</h2>
+<h2>Getting help</h2>
 
 <p>You can learn how to use <em>htty</em> commands from within <em>htty</em>.</p>
 
@@ -214,13 +212,11 @@ end
 
 <p>The <code>help</code> command takes an optional argument of the abbreviated or full name of a command.</p>
 
-<h1>
-<a name="coming-soon"></a>Coming soon</h1>
+<h1>Coming soon</h1>
 
 <p>Here are some features that are coming down the pike.</p>
 
-<h2>
-<a name="forms-coming-soon"></a>Commands for streamlining web form submission</h2>
+<h2>Commands for streamlining web form submission</h2>
 
 <p>These features will make <em>htty</em> better at screen-scraping.</p>
 
@@ -239,30 +235,26 @@ end
 <code>form-remove-all</code> — remove all URL-encoded form parameters from the request</li>
 </ul><p>You will also be able to pop open a browser window containing request and response bodies.</p>
 
-<h2>
-<a name="custom-aliases-coming-soon"></a>Custom command aliases and shell emulation of <em>http-console</em>
+<h2>Custom command aliases and shell emulation of <em>http-console</em>
 </h2>
 
 <p>You should be able to make your own command aliases.</p>
 
 <p><em>http-console</em> has a nice command-line. We should have an <em>http-console</em> skin for <em>htty</em>.</p>
 
-<h1>
-<a name="contributing"></a>Contributing</h1>
+<h1>Contributing</h1>
 
 <p>Report defects and feature requests on <a href="http://github.com/htty/htty/issues">GitHub Issues</a>.</p>
 
 <p>Your patches are welcome, and you will receive attribution here for good stuff. Fork <a href="http://github.com/htty/htty" title="htty’s ‘htty’ repository at GitHub">the official <em>htty</em> repository</a> and send a pull request.</p>
 
-<h1>
-<a name="contact"></a>News and information</h1>
+<h1>News and information</h1>
 
 <p>Stay in touch with the <em>htty</em> project by following <a href="http://twitter.com/get_htty" title="get_htty at Twitter">@get_htty</a> on Twitter.</p>
 
 <p>You can also get help in the <a href="http://webchat.freenode.net/?channels=htty">#htty channel on Freenode</a>.</p>
 
-<h1>
-<a name="credits"></a>Credits</h1>
+<h1>Credits</h1>
 
 <p>The author, <a href="mailto:htty@nilsjonsson.com">Nils Jonsson</a>, owes a debt of inspiration to the <a href="http://github.com/cloudhead/http-console"><em>http-console</em></a> project.</p>
 
@@ -276,8 +268,7 @@ end
 <li>Sam X (<a href="http://github.com/dtjm" title="dtjm at GitHub">dtjm</a>)</li>
 <li>Robert Pitts (<a href="http://github.com/rbxbx" title="rbxbx at GitHub">rbxbx</a>)</li>
 <li>Matt Sanders (<a href="http://github.com/nextmat" title="nextmat at GitHub">nextmat</a>)</li>
-</ul><h1>
-<a name="license"></a>License</h1>
+</ul><h1>License</h1>
 
 <p>Released under the <a href="http://github.com/htty/htty/blob/master/License.markdown">MIT License</a>.</p>
       </section>
