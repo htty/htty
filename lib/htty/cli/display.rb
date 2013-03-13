@@ -96,7 +96,7 @@ module HTTY::CLI::Display
   end
 
   def say_header(message, style=:normal)
-    puts send(style, notice('')) + highlight(messag)
+    puts send(style, notice('')) + highlight(message)
   end
 
   def say_hello
