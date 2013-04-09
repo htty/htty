@@ -1,20 +1,19 @@
-guard :rspec, :cli => '--debugger' do
-  # Run the corresponding spec (or all specs) when code changes.
-  watch( %r{^lib/(.+)\.rb$} ) do |match|
-    corresponding_specs = %W(spec/integration/#{match[1]}_spec.rb
-                             spec/unit/#{match[1]}_spec.rb)
-    existing = corresponding_specs.select do |s|
-      File.file? File.expand_path( "../#{s}", __FILE__ )
-    end
-    existing.empty? ? 'spec' : existing
+interactor :off
+
+guard :rspec, :cli => '--debug' do
+  # Run the corresponding spec(s) (or all specs) when code changes.
+  watch(%r{^lib/(.+)\.rb$}) do |match|
+    corresponding_specs = Dir["spec/{integration,unit}/#{match[1]}_spec.rb"]
+    corresponding_specs.empty? ? 'spec' : corresponding_specs
   end
 
   # Run a spec when it changes.
   watch %r{^spec/.+_spec\.rb$}
 
   # Run all specs when the RSpec configuration changes.
-  watch( 'spec/spec_helper.rb' ) { 'spec' }
+  watch('.rspec'             ) { 'spec' }
+  watch('spec/spec_helper.rb') { 'spec' }
 
   # Run all specs when the bundle changes.
-  watch( 'Gemfile.lock' ) { 'spec' }
+  watch('Gemfile.lock') { 'spec' }
 end
