@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Nils Jonsson']
   s.email       = ['htty@nilsjonsson.com']
-  s.homepage    = 'http://htty.github.com'
+  s.homepage    = 'http://htty.github.io'
   s.summary     = 'The HTTP TTY'
   s.description = <<-end_description.gsub(/^\s+/, '').chomp
                   htty is a console application for interacting with web servers.

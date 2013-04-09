@@ -27,7 +27,7 @@
                  |____|     |____|    / ______|
                                       \/
 
-[htty](http://htty.github.com) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
+[htty](http://htty.github.io) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
 [![Travis CI build status]](http://travis-ci.org/htty/htty          "Travis CI build status")
 [![Gemnasium build status]](http://gemnasium.com/htty/htty          "Gemnasium build status")
@@ -75,7 +75,7 @@ Querying a web service
 
 This simple example shows how to explore a read-only web service with _htty_.
 
-![ESV Bible Web Service example #1](http://htty.github.com/images/esvapi1.png)
+![ESV Bible Web Service example #1](http://htty.github.io/images/esvapi1.png)
 
 You can point _htty_ at a complete or partial web URL. If you don’t supply a URL, http://0.0.0.0/ (port 80) will be used. You can vary the protocol scheme, userinfo, host, port, path, query string, and fragment as you wish.
 
@@ -85,17 +85,17 @@ The `get` command is one of seven HTTP request methods supported. A concise summ
 
 You can follow redirects using the `follow` command. No request is made until you type a request command such as `get` or `post`.
 
-![ESV Bible Web Service example #2](http://htty.github.com/images/esvapi2.png)
+![ESV Bible Web Service example #2](http://htty.github.io/images/esvapi2.png)
 
 You can tweak segments of the address at will. Here we are navigating the site’s path hierarchy, which you can do with relative as well as absolute pathspecs.
 
-![ESV Bible Web Service example #3](http://htty.github.com/images/esvapi3.png)
+![ESV Bible Web Service example #3](http://htty.github.io/images/esvapi3.png)
 
 Here we add query-string parameters. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).
 
 The `headers-response` and `body-response` commands reveal the details of a response.
 
-![ESV Bible Web Service example #4](http://htty.github.com/images/esvapi4.png)
+![ESV Bible Web Service example #4](http://htty.github.io/images/esvapi4.png)
 
 There was some cruft in the web service’s response (a horizontal line, a passage reference, verse numbers, a copyright stamp, and line breaks). We eliminate it by using API options provided by the web service we’re talking to.
 
@@ -108,17 +108,17 @@ Working with cookies
 
 The next example demonstrates <i>htty</i>’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.
 
-![Google example #1](http://htty.github.com/images/google1.png)
+![Google example #1](http://htty.github.io/images/google1.png)
 
 The _https://_ scheme and port 443 imply each other, just as the _http://_ scheme and port 80 imply each other. If you omit the scheme or the port, it will default to the appropriate value.
 
 Notice that when cookies are offered in a response, a bold asterisk (it looks like a cookie) appears in the response summary. The same cookie symbol appears next to the _Set-Cookie_ header when you display response headers.
 
-![Google example #2](http://htty.github.com/images/google2.png)
+![Google example #2](http://htty.github.io/images/google2.png)
 
 The `cookies-use` command copies cookies out of the response into the next request. The cookie symbol appears next to the _Cookie_ header when you display request headers.
 
-![Google example #3](http://htty.github.com/images/google3.png)
+![Google example #3](http://htty.github.io/images/google3.png)
 
 An abbreviated history is available through the `history` command. Information about requests in the history includes request method, URL, number of headers (and a cookie symbol, if cookies were sent), and the size of the body. Information about responses in the history includes response code, number of headers (and a cookie symbol, if cookies were received), and the size of the body.
 
@@ -153,7 +153,7 @@ Assume that we have the following Sinatra application listening on Sinatra’s d
 
 This application expects _GET_ and _POST_ requests and responds in various contrived ways.
 
-![Sinatra application example #1](http://htty.github.com/images/sinatra1.png)
+![Sinatra application example #1](http://htty.github.io/images/sinatra1.png)
 
 When you change the userinfo portion of the address, or the entire address, the appropriate HTTP Basic Authentication header is created for you automatically. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).
 
@@ -168,7 +168,7 @@ Different response codes are rendered with colors that suggest their meaning:
 * Response codes between 400 and 499 appear <span style="background-color: darkred; color: white; font-weight: bold; padding: 0 0.25em 0 0.25em;">white on red</span> to indicate failure
 * Response codes between 500 and 599 appear <span style="background-color: yellow; color: black; font-weight: bold; padding: 0 0.25em 0 0.25em; text-decoration: blink;">flashing black on yellow</span> to indicate a server error
 
-![Sinatra application example #2](http://htty.github.com/images/sinatra2.png)
+![Sinatra application example #2](http://htty.github.io/images/sinatra2.png)
 
 As with the abbreviated history demonstrated earlier, verbose history shows a numbered list of requests and the responses they elicited. All information exchanged between client and server is shown.
 
@@ -177,7 +177,7 @@ Getting help
 
 You can learn how to use _htty_ commands from within _htty_.
 
-![htty’s built-in help](http://htty.github.com/images/help.png)
+![htty’s built-in help](http://htty.github.io/images/help.png)
 
 The `help` command takes an optional argument of the abbreviated or full name of a command.
 
