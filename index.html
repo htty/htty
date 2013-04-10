@@ -56,7 +56,7 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
                                   \/
 </code></pre>
 
-<p><a href="http://htty.github.com">htty</a> is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.</p>
+<p><a href="http://htty.github.io">htty</a> is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.</p>
 
 <p><a href="http://travis-ci.org/htty/htty" title="Travis CI build status"><img src="https://secure.travis-ci.org/htty/htty.png?branch=master" alt="Travis CI build status"></a>
 <a href="http://gemnasium.com/htty/htty" title="Gemnasium build status"><img src="https://gemnasium.com/htty/htty.png" alt="Gemnasium build status"></a>
@@ -108,7 +108,7 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>This simple example shows how to explore a read-only web service with <em>htty</em>.</p>
 
-<p><img src="http://htty.github.com/images/esvapi1.png" alt="ESV Bible Web Service example #1"></p>
+<p><img src="http://htty.github.io/images/esvapi1.png" alt="ESV Bible Web Service example #1"></p>
 
 <p>You can point <em>htty</em> at a complete or partial web URL. If you don’t supply a URL, <a href="http://0.0.0.0/">http://0.0.0.0/</a> (port 80) will be used. You can vary the protocol scheme, userinfo, host, port, path, query string, and fragment as you wish.</p>
 
@@ -118,17 +118,17 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>You can follow redirects using the <code>follow</code> command. No request is made until you type a request command such as <code>get</code> or <code>post</code>.</p>
 
-<p><img src="http://htty.github.com/images/esvapi2.png" alt="ESV Bible Web Service example #2"></p>
+<p><img src="http://htty.github.io/images/esvapi2.png" alt="ESV Bible Web Service example #2"></p>
 
 <p>You can tweak segments of the address at will. Here we are navigating the site’s path hierarchy, which you can do with relative as well as absolute pathspecs.</p>
 
-<p><img src="http://htty.github.com/images/esvapi3.png" alt="ESV Bible Web Service example #3"></p>
+<p><img src="http://htty.github.io/images/esvapi3.png" alt="ESV Bible Web Service example #3"></p>
 
 <p>Here we add query-string parameters. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).</p>
 
 <p>The <code>headers-response</code> and <code>body-response</code> commands reveal the details of a response.</p>
 
-<p><img src="http://htty.github.com/images/esvapi4.png" alt="ESV Bible Web Service example #4"></p>
+<p><img src="http://htty.github.io/images/esvapi4.png" alt="ESV Bible Web Service example #4"></p>
 
 <p>There was some cruft in the web service’s response (a horizontal line, a passage reference, verse numbers, a copyright stamp, and line breaks). We eliminate it by using API options provided by the web service we’re talking to.</p>
 
@@ -140,17 +140,17 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>The next example demonstrates <i>htty</i>’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.</p>
 
-<p><img src="http://htty.github.com/images/google1.png" alt="Google example #1"></p>
+<p><img src="http://htty.github.io/images/google1.png" alt="Google example #1"></p>
 
 <p>The <em>https://</em> scheme and port 443 imply each other, just as the <em>http://</em> scheme and port 80 imply each other. If you omit the scheme or the port, it will default to the appropriate value.</p>
 
 <p>Notice that when cookies are offered in a response, a bold asterisk (it looks like a cookie) appears in the response summary. The same cookie symbol appears next to the <em>Set-Cookie</em> header when you display response headers.</p>
 
-<p><img src="http://htty.github.com/images/google2.png" alt="Google example #2"></p>
+<p><img src="http://htty.github.io/images/google2.png" alt="Google example #2"></p>
 
 <p>The <code>cookies-use</code> command copies cookies out of the response into the next request. The cookie symbol appears next to the <em>Cookie</em> header when you display request headers.</p>
 
-<p><img src="http://htty.github.com/images/google3.png" alt="Google example #3"></p>
+<p><img src="http://htty.github.io/images/google3.png" alt="Google example #3"></p>
 
 <p>An abbreviated history is available through the <code>history</code> command. Information about requests in the history includes request method, URL, number of headers (and a cookie symbol, if cookies were sent), and the size of the body. Information about responses in the history includes response code, number of headers (and a cookie symbol, if cookies were received), and the size of the body.</p>
 
@@ -185,7 +185,7 @@ end
 
 <p>This application expects <em>GET</em> and <em>POST</em> requests and responds in various contrived ways.</p>
 
-<p><img src="http://htty.github.com/images/sinatra1.png" alt="Sinatra application example #1"></p>
+<p><img src="http://htty.github.io/images/sinatra1.png" alt="Sinatra application example #1"></p>
 
 <p>When you change the userinfo portion of the address, or the entire address, the appropriate HTTP Basic Authentication header is created for you automatically. Notice that characters that require URL encoding are automatically URL-encoded (unless they are part of a URL-encoded expression).</p>
 
@@ -200,7 +200,7 @@ end
 <li>Response codes between 300 and 399 appear white on blue to indicate redirection</li>
 <li>Response codes between 400 and 499 appear white on red to indicate failure</li>
 <li>Response codes between 500 and 599 appear flashing black on yellow to indicate a server error</li>
-</ul><p><img src="http://htty.github.com/images/sinatra2.png" alt="Sinatra application example #2"></p>
+</ul><p><img src="http://htty.github.io/images/sinatra2.png" alt="Sinatra application example #2"></p>
 
 <p>As with the abbreviated history demonstrated earlier, verbose history shows a numbered list of requests and the responses they elicited. All information exchanged between client and server is shown.</p>
 
@@ -208,7 +208,7 @@ end
 
 <p>You can learn how to use <em>htty</em> commands from within <em>htty</em>.</p>
 
-<p><img src="http://htty.github.com/images/help.png" alt="htty’s built-in help"></p>
+<p><img src="http://htty.github.io/images/help.png" alt="htty’s built-in help"></p>
 
 <p>The <code>help</code> command takes an optional argument of the abbreviated or full name of a command.</p>
 
