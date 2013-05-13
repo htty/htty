@@ -15,7 +15,7 @@ group :doc do
 end
 
 group :tooling do
-  gem   'guard-rspec',   '~> 2'
+  gem   'guard-rspec',   '~> 3'
   if RUBY_PLATFORM =~ /darwin/i
     gem 'rb-fsevent',    '~> 0',                        :require => false
   end
