@@ -268,13 +268,23 @@ public
   def follow(response)
     raise HTTY::NoResponseError unless response
 
-    location_header = response.headers.detect do |name, value|
+    _, location_header = response.headers.detect do |name, value|
       name == HTTY::Response::LOCATION_HEADER_NAME
     end
-    unless location_header && location_header.last
-      raise HTTY::NoLocationHeaderError
+
+    raise HTTY::NoLocationHeaderError unless location_header
+
+    location_uri = URI.parse(location_header)
+    if location_uri.absolute?
+      address location_header
+    else
+      location_uri.scheme = @uri.scheme
+      location_uri.userinfo = @uri.userinfo
+      location_uri.host = @uri.host
+      location_uri.port = @uri.port
+      location_uri.path = (Pathname.new(@uri.path) + location_uri.path).to_s
+      address location_uri.to_s
     end
-    address location_header.last
   end
 
   # Establishes a new #uri with the specified _fragment_.
