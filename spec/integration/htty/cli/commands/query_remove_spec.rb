@@ -15,6 +15,24 @@ describe HTTY::CLI::Commands::QueryRemove do
     klass.new :session => session, :arguments => arguments
   end
 
+  describe 'with existing query string with only one key and value' do
+    before :each do
+      session.requests.last.uri.query = 'test=true'
+    end
+
+    describe 'with only key in query string' do
+      it 'should empty the query string' do
+        instance('test').perform
+        session.requests.last.uri.query.should be_nil
+      end
+
+      it 'should not leave a trailing question mark' do
+        instance('test').perform
+        session.requests.last.uri.to_s.should_not end_with('?')
+      end
+    end
+  end
+
   describe 'with existing query string with duplicate keys set' do
     before :each do
       session.requests.last.uri.query = 'test=true&test=false'
