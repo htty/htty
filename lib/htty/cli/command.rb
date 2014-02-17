@@ -203,11 +203,11 @@ protected
   # Yields the last request in #session. If the block returns a different
   # request, it is added to the requests of #session.
   def add_request_if_new
-    requests     = session.requests
-    last_request = requests.last
-    unless (new_request = yield(last_request)).equal?(last_request)
-      requests << new_request
-    end
+    last_request = session.requests.last
+    maybe_next_request = yield(last_request)
+    session.requests << maybe_next_request unless (
+      maybe_next_request.nil? or maybe_next_request.equal?(last_request)
+    )
     self
   end
 
