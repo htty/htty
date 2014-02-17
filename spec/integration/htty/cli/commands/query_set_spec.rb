@@ -15,6 +15,12 @@ describe HTTY::CLI::Commands::QuerySet do
     klass.new :session => session, :arguments => arguments
   end
 
+  describe 'without an argument' do
+    it 'should raise an error' do
+      expect{instance.perform}.to raise_error(ArgumentError)
+    end
+  end
+
   describe 'with one argument' do
     it 'should assign a single key' do
       instance('test').perform

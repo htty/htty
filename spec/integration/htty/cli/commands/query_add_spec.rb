@@ -15,6 +15,12 @@ describe HTTY::CLI::Commands::QueryAdd do
     klass.new :session => session, :arguments => arguments
   end
 
+  describe 'without an argument' do
+    it 'should raise an error' do
+      expect{instance.perform}.to raise_error(ArgumentError)
+    end
+  end
+
   describe 'with key argument only' do
     describe 'without key already present' do
       it 'should add key' do
