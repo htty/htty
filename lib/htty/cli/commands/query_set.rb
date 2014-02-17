@@ -60,6 +60,9 @@ class HTTY::CLI::Commands::QuerySet < HTTY::CLI::Command
 
   # Performs the _query-set_ command.
   def perform
+    if arguments.empty?
+      raise ArgumentError, 'wrong number of arguments (0 for N)'
+    end
     add_request_if_new do |request|
       self.class.notify_if_cookies_cleared request do
         escaped_arguments = escape_or_warn_of_escape_sequences(arguments)
