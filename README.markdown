@@ -232,6 +232,7 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 * Rob Dawson (ephox-rob/[rojotek](http://github.com/rojotek "rojotek at GitHub"))
 * Bo Frederiksen ([bofrede](http://github.com/bofrede "bofrede at GitHub"))
 * Johannes Gorset ([jgorset](http://github.com/jgorset "jgorset at GitHub"))
+* Gabriele Lana ([gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub"))
 * Carson McDonald ([carsonmcdonald](http://github.com/carsonmcdonald "carsonmcdonald at GitHub"))
 * Sam X ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
 * Robert Pitts ([rbxbx](http://github.com/rbxbx "rbxbx at GitHub"))
