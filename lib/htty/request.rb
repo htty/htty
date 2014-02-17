@@ -494,8 +494,10 @@ protected
     components = URI::HTTP::COMPONENT.inject({}) do |result, c|
       result.merge c => uri.send(c)
     end
+    components = components.merge(changed_components)
+    components[:query] = nil if components[:query] && components[:query].empty?
     self.class.send(:set_up_cookies_and_authentication, self) do
-      @uri = self.class.build_uri(components.merge(changed_components))
+      @uri = self.class.build_uri(components)
     end
   end
 

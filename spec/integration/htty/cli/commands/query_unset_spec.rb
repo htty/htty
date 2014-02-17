@@ -1,4 +1,5 @@
 require 'spec_helper'
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset")
 
@@ -23,7 +24,12 @@ describe HTTY::CLI::Commands::QueryUnset do
     describe 'with only key specified' do
       it 'should remove all entries' do
         instance('test').perform
-        session.requests.last.uri.query.should == ''
+        session.requests.last.uri.query.should be_nil
+      end
+
+      it 'should not leave a trailing question mark' do
+        instance('test').perform
+        session.requests.last.uri.to_s.should_not end_with('?')
       end
     end
 
