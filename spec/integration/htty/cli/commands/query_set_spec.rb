@@ -63,10 +63,10 @@ describe HTTY::CLI::Commands::QuerySet do
     end
 
     it 'should play nice with nested fields' do
-      session.requests.last.uri.query = 'test[my][]=1'
+      instance('test[my][]', '1').perform
       instance('test[my][]', '2').perform
       instance('test', '3').perform
-      session.requests.last.uri.query.should == 'test[my][]=2&test=3'
+      session.requests.last.uri.query.should == 'test%5Bmy%5D%5B%5D=2&test=3'
     end
   end
 end

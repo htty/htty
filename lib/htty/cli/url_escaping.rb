@@ -17,7 +17,13 @@ module HTTY::CLI::UrlEscaping
             'sequences'
         a
       else
-        URI.escape a
+        # There's a lot of confusion about this, the default implementation
+        # of URI.escape is marked as "obsolete", CGI.escape does another work,
+        # a safe solution seems to use https://github.com/sporkmonger/addressable
+        # without adding a new dependecy I found that encode all not unreserved
+        # characters (unfortunately that doesn't mean all reserved characters) it's
+        # a pretty safe solution, see http://tools.ietf.org/html/rfc3986#section-2.3
+        URI.escape(a, /[^-_.~a-zA-Z0-9]/)
       end
     end
   end
