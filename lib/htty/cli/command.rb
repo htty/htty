@@ -119,9 +119,8 @@ protected
   # Displays a notice if cookies are cleared on the specified _request_ in the
   # course of the block.
   def self.notify_if_cookies_cleared(request)
-    had_cookies = cookies?(request)
     changed_request = yield
-    puts notice('Cookies cleared') if had_cookies && !cookies?(changed_request)
+    puts notice('Cookies cleared') if request.cookies? && !changed_request.cookies?
     changed_request
   end
 
@@ -138,10 +137,6 @@ private
            completion_optional(text[char_length..-1]) :
            nil
     "(?:#{text[0...char_length]}#{rest})?"
-  end
-
-  def self.cookies?(request)
-    !request.cookies.empty?
   end
 
   def self.make_command_line_regexp

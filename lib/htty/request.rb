@@ -229,6 +229,11 @@ public
     self
   end
 
+  # Returns true if has some cookies.
+  def cookies?
+    not cookies.empty?
+  end
+
   # Returns an array of the cookies belonging to the request.
   def cookies
     HTTY::CookiesUtil.cookies_from_string @headers[COOKIES_HEADER_NAME]
