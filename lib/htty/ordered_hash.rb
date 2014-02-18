@@ -15,13 +15,6 @@ class HTTY::OrderedHash
     end
   end
 
-  # @private
-  def initialize_copy(source)
-    super
-    @inner_hash = @inner_hash.dup
-    @inner_keys = @inner_keys.dup
-  end
-
   def [](key)
     @inner_hash[key]
   end

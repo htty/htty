@@ -37,11 +37,4 @@ protected
     end
   end
 
-  # @private
-  def initialize_copy(source)
-    super
-    @body    = @body.dup if @body
-    @headers = @headers.dup
-  end
-
 end
