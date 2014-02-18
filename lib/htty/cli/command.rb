@@ -27,17 +27,18 @@ class HTTY::CLI::Command
   def self.build_for(command_line, attributes={})
     command_line_regexp = make_command_line_regexp
     if (match = (command_line_regexp.match(command_line)))
-      if (arguments = match.captures[0])
-        begin
-          arguments = sanitize_arguments(arguments.strip.shellsplit)
-        rescue ArgumentError
-          return :unclosed_quote
+      begin
+        if (arguments = match.captures[0])
+          attributes = attributes.merge(
+            :arguments => sanitize_arguments(arguments.strip.shellsplit)
+          )
         end
-        return new(attributes.merge(:arguments => arguments))
+      rescue ArgumentError
+        :unclosed_quote
+      else
+        new(attributes)
       end
-      return new(attributes)
     end
-    nil
   end
 
   # Returns the name of a category under which help for the command should
