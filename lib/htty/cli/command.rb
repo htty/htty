@@ -27,7 +27,6 @@ class HTTY::CLI::Command
   def self.build_for(command_line, attributes={})
     command_line_regexp = make_command_line_regexp
     if (match = (command_line_regexp.match(command_line)))
-      all_attributes = attributes
       if (arguments = match.captures[0])
         begin
           arguments = sanitize_arguments(arguments.strip.shellsplit)
