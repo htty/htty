@@ -398,8 +398,34 @@ public
   def query_add(name, value=nil)
     entries = current_query_entries
     entries << name + (value.nil? ? '' : "=#{value}")
-    new_query = entries.empty? ? nil : entries.join('&')
-    rebuild_uri :query => new_query
+    query_set_all(entries)
+  end
+
+  # Establishes a new #uri with the specified _value_ for the query-string
+  # parameter specified by _name_. The _value_ is optional.
+  #
+  # If there is more than one query-string parameter named _name_, they are
+  # replaced by a single one with the specified _value_.
+  def query_set(name, value=nil)
+    entries = current_query_entries
+    add_or_replace_field(entries, name, value)
+    query_set_all(entries)
+  end
+
+  # Establishes a new #uri with the query-string parameter specified by by
+  # _query_string_ parameter
+  def query_set_all(query_string)
+    # _query_string_ as an array of parameters is only for internal usage
+    query_string =
+      case query_string
+        when Array
+          query_string.empty? ? nil : query_string.join('&')
+        when String
+          query_string
+        else
+          nil
+      end
+    rebuild_uri :query => query_string
   end
 
   # Establishes a new #uri, removing the last query-string parameter specified
@@ -416,19 +442,7 @@ public
         break
       end
     end
-    rebuild_uri :query => entries.join('&')
-  end
-
-  # Establishes a new #uri with the specified _value_ for the query-string
-  # parameter specified by _name_. The _value_ is optional.
-  #
-  # If there is more than one query-string parameter named _name_, they are
-  # replaced by a single one with the specified _value_.
-  def query_set(name, value=nil)
-    entries = current_query_entries
-    add_or_replace_field(entries, name, value)
-    new_query = entries.empty? ? nil : entries.join('&')
-    rebuild_uri :query => new_query
+    query_set_all(entries)
   end
 
   # Establishes a new #uri without the query-string parameter specified by
@@ -442,7 +456,7 @@ public
     entries.delete_if do |entry|
       entry =~ field_matcher(name)
     end
-    rebuild_uri :query => entries.join('&')
+    query_set_all(entries)
   end
 
   # Establishes a new #uri without a query string.
