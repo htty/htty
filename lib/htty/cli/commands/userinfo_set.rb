@@ -13,7 +13,7 @@ module HTTY::CLI::Commands; end
 # Encapsulates the _userinfo-set_ command.
 class HTTY::CLI::Commands::UserinfoSet < HTTY::CLI::Command
 
-  include HTTY::CLI::UrlEscaping
+  extend HTTY::CLI::UrlEscaping
 
   # Returns the name of a category under which help for the _userinfo-set_
   # command should appear.
@@ -53,25 +53,19 @@ class HTTY::CLI::Commands::UserinfoSet < HTTY::CLI::Command
     [HTTY::CLI::Commands::UserinfoUnset, HTTY::CLI::Commands::Address]
   end
 
+  def self.sanitize_arguments(arguments)
+    if (arguments.length == 1) && (arguments.first.scan(':').length == 1)
+      arguments = arguments.first.split(':')
+    end
+    escape_or_warn_of_escape_sequences(arguments)
+  end
+
   # Performs the _userinfo-set_ command.
   def perform
     add_request_if_new do |request|
-      arguments = self.arguments
-      if (arguments.length == 1) && (arguments.first.scan(':').length == 1)
-        arguments = arguments.first.split(':')
-      end
-      arguments = escape_mercantile(escape_or_warn_of_escape_sequences(arguments))
       self.class.notify_if_cookies_cleared request do
         request.userinfo_set(*arguments)
       end
-    end
-  end
-
-private
-
-  def escape_mercantile(arguments)
-    arguments.collect do |a|
-      a.gsub '@', '%40'
     end
   end
 

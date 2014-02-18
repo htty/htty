@@ -27,18 +27,18 @@ class HTTY::CLI::Command
   def self.build_for(command_line, attributes={})
     command_line_regexp = make_command_line_regexp
     if (match = (command_line_regexp.match(command_line)))
-      all_attributes = attributes
-      if (arguments = match.captures[0])
-        begin
-          split_arguments = arguments.strip.shellsplit
-        rescue ArgumentError
-          return :unclosed_quote
+      begin
+        if (arguments = match.captures[0])
+          attributes = attributes.merge(
+            :arguments => sanitize_arguments(arguments.strip.shellsplit)
+          )
         end
-        return new(attributes.merge(:arguments => split_arguments))
+      rescue ArgumentError
+        :unclosed_quote
+      else
+        new(attributes)
       end
-      return new(attributes)
     end
-    nil
   end
 
   # Returns the name of a category under which help for the command should
@@ -112,6 +112,12 @@ class HTTY::CLI::Command
   # Returns related command classes for the command.
   def self.see_also_commands
     Array(alias_for)
+  end
+
+  # Escape, split, chop, ... arguments before they are used to build the
+  # command
+  def self.sanitize_arguments(arguments)
+    arguments
   end
 
 protected
