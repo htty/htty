@@ -141,13 +141,6 @@ public
     establish_content_length
   end
 
-  # @private
-  def initialize_copy(source)
-    super
-    @response = @response.dup if @response
-    @uri      = @uri.dup
-  end
-
   # Returns +true+ if _other_request_ is equivalent to the request.
   def ==(other_request)
     return false unless super(other_request)
