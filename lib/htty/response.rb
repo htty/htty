@@ -23,6 +23,7 @@ class HTTY::Response < HTTY::Payload
   def initialize(attributes={})
     super attributes
     @status = attributes[:status]
+    @already_followed = false
   end
 
   # Returns an array of the cookies belonging to the response.
@@ -30,4 +31,26 @@ class HTTY::Response < HTTY::Payload
     HTTY::CookiesUtil.cookies_from_string @headers[COOKIES_HEADER_NAME]
   end
 
+  def follow_relative_to(request)
+    return request if @already_followed
+    location_uri = URI.parse(location_header = location)
+    if location_uri.absolute?
+      request.address location_header
+    else
+      request.
+        path_set(location_uri.path).
+        query_set_all(location_uri.query).
+        fragment_set(location_uri.fragment)
+    end
+  ensure
+    @already_followed = true
+  end
+
+  def location
+    _, location = headers.detect do |name, value|
+      name == HTTY::Response::LOCATION_HEADER_NAME
+    end
+    raise HTTY::NoLocationHeaderError unless location
+    location
+  end
 end

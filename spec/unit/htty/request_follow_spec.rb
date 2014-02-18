@@ -2,11 +2,12 @@ require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
 
+
 describe HTTY::Request do
   let(:request_address) {'http://example.com/a?b=c#d'}
   let(:request) {HTTY::Request.new request_address}
 
-  describe 'when #follow a response' do
+  describe '#follow a response' do
     let(:response) do
       HTTY::Response.new({:headers => {'Location' => response_location}})
     end
@@ -51,6 +52,14 @@ describe HTTY::Request do
         expected_uri.query = nil
         expected_uri.fragment = nil
         request.follow(response).uri.should == expected_uri
+      end
+
+      context 'when invoked more than once' do
+        let(:after_follow) {request.follow(response)}
+
+        it 'should return always the same request' do
+          after_follow.uri.should == after_follow.follow(response).uri
+        end
       end
     end
 
