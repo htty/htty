@@ -71,5 +71,27 @@ The console prompt shows the address for the current request. Userinfo appears i
         built.should == nil
       end
     end
+
+    describe '#sanitize_arguments' do
+      context 'when only one argument like username:password' do
+        let(:arguments) {['username:password']}
+
+        it 'should be splitted in two arguments' do
+          klass.sanitize_arguments(arguments).should == [
+            'username', 'password'
+          ]
+        end
+      end
+
+      context 'when arguments contains special characters' do
+        let(:arguments) {['user/name', 'password']}
+
+        it 'should escape them' do
+          klass.sanitize_arguments(arguments).should == [
+            'user%2Fname', 'password'
+          ]
+        end
+      end
+    end
   end
 end

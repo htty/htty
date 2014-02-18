@@ -10,7 +10,7 @@ module HTTY::CLI::UrlEscaping
 
   include HTTY::CLI::Display
 
-  def escape_or_warn_of_escape_sequences(arguments)
+  def self.escape_or_warn_of_escape_sequences(arguments)
     arguments.collect do |a|
       if a =~ /%[0-9a-f]{2}/i
         say "Argument '#{a}' was not URL-escaped because it contains escape " +
@@ -26,6 +26,10 @@ module HTTY::CLI::UrlEscaping
         URI.escape(a, /[^-_.~a-zA-Z0-9]/)
       end
     end
+  end
+
+  def escape_or_warn_of_escape_sequences(arguments)
+    HTTY::CLI::UrlEscaping.escape_or_warn_of_escape_sequences(arguments)
   end
 
 end

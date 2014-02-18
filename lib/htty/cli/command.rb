@@ -30,11 +30,11 @@ class HTTY::CLI::Command
       all_attributes = attributes
       if (arguments = match.captures[0])
         begin
-          split_arguments = arguments.strip.shellsplit
+          arguments = sanitize_arguments(arguments.strip.shellsplit)
         rescue ArgumentError
           return :unclosed_quote
         end
-        return new(attributes.merge(:arguments => split_arguments))
+        return new(attributes.merge(:arguments => arguments))
       end
       return new(attributes)
     end
@@ -112,6 +112,12 @@ class HTTY::CLI::Command
   # Returns related command classes for the command.
   def self.see_also_commands
     Array(alias_for)
+  end
+
+  # Escape, split, chop, ... arguments before they are used to build the
+  # command
+  def self.sanitize_arguments(arguments)
+    arguments
   end
 
 protected
