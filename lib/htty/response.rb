@@ -28,7 +28,7 @@ class HTTY::Response < HTTY::Payload
 
   # Returns an array of the cookies belonging to the response.
   def cookies
-    HTTY::CookiesUtil.cookies_from_string @headers[COOKIES_HEADER_NAME]
+    cookies_from(COOKIES_HEADER_NAME)
   end
 
   def follow_relative_to(request)
@@ -47,10 +47,6 @@ class HTTY::Response < HTTY::Payload
   end
 
   def location
-    _, location = headers.detect do |name, value|
-      name == HTTY::Response::LOCATION_HEADER_NAME
-    end
-    raise HTTY::NoLocationHeaderError unless location
-    location
+    header(LOCATION_HEADER_NAME, HTTY::NoLocationHeaderError.new)
   end
 end

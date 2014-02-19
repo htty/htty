@@ -230,7 +230,7 @@ public
 
   # Returns an array of the cookies belonging to the request.
   def cookies
-    HTTY::CookiesUtil.cookies_from_string @headers[COOKIES_HEADER_NAME]
+    cookies_from(COOKIES_HEADER_NAME)
   end
 
   # Removes all #cookies.
