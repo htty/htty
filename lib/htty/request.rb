@@ -6,6 +6,7 @@ require File.expand_path("#{File.dirname __FILE__}/cookies_util")
 require File.expand_path("#{File.dirname __FILE__}/no_location_header_error")
 require File.expand_path("#{File.dirname __FILE__}/no_response_error")
 require File.expand_path("#{File.dirname __FILE__}/no_set_cookie_header_error")
+require File.expand_path("#{File.dirname __FILE__}/uri")
 require File.expand_path("#{File.dirname __FILE__}/payload")
 require File.expand_path("#{File.dirname __FILE__}/requests_util")
 require File.expand_path("#{File.dirname __FILE__}/response")
@@ -293,19 +294,43 @@ public
   def header_set(name, value)
     return dup_without_response.header_set(name, value) if response
 
-    name = name.to_s
+    name = name && name.to_s
+    value = value && value.to_s
+
+    # to avoid recursion when rebuild_uri
+    return self if @headers[name] == value
+
     if value.nil?
       @headers.delete name
+      if name.downcase == AUTHORIZATION_HEADER_NAME.downcase
+        return rebuild_uri :userinfo => nil
+      end
       return self
     end
 
-    @headers[name] = value.to_s
+    @headers[name] = value
+    if name.downcase == AUTHORIZATION_HEADER_NAME.downcase
+      HTTY::Headers.credentials_from(value) do |username, password|
+        return rebuild_uri :userinfo => [
+          HTTY::URI.escape_component(username),
+          HTTY::URI.escape_component(password)
+        ].compact.join(':')
+      end
+    end
     self
   end
 
   # Removes the element of #headers having the specified _name_.
   def header_unset(name)
     header_set name, nil
+  end
+
+  # Removes all #headers.
+  def headers_unset_all
+    return dup_without_response.headers_unset_all if response
+
+    @headers.clear
+    rebuild_uri :userinfo => nil
   end
 
   # Returns an array of the headers belonging to the payload. If
@@ -322,14 +347,6 @@ public
     end
 
     super()
-  end
-
-  # Removes all #headers.
-  def headers_unset_all
-    return dup_without_response.headers_unset_all if response
-
-    @headers.clear
-    self
   end
 
   # Establishes a new #uri with the specified _host_.

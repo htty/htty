@@ -1,4 +1,5 @@
 require File.expand_path("#{File.dirname __FILE__}/ordered_hash")
+require File.expand_path("#{File.dirname __FILE__}/headers")
 
 module HTTY; end
 

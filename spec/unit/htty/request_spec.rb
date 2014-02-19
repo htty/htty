@@ -3,36 +3,12 @@ require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/version")
 
-shared_examples_for 'an empty request' do
-  it 'should have only the default headers' do
-    request.headers.should == [['User-Agent', "htty/#{HTTY::VERSION}"]]
-  end
-
-  it 'should have no body' do
-    request.body.should be_nil
-  end
-
-  it 'should have no response' do
-    request.response.should be_nil
-  end
-end
-
-shared_examples_for 'an empty, authenticated request' do
-  it 'should the expected Authorization header plus the default headers' do
-    request.headers.should == [['User-Agent',    "htty/#{HTTY::VERSION}"],
-                               ['Authorization', 'Basic bmpvbnNzb24=']]
-  end
-
-  it 'should have no body' do
-    request.body.should be_nil
-  end
-
-  it 'should have no response' do
-    request.response.should be_nil
-  end
-end
+require File.expand_path("#{File.dirname __FILE__}/shared_examples_for_requests")
 
 describe HTTY::Request do
+  let(:username) {'njonsson'}
+  let(:password) {nil}
+
   describe 'initializing with' do
     let :klass do
       HTTY::Request
@@ -350,93 +326,6 @@ describe HTTY::Request do
 
             it_should_behave_like 'an empty, authenticated request'
           end
-        end
-
-        describe '-- when sent #userinfo_set with' do
-          describe 'the same userinfo --' do
-            before :each do
-              request.userinfo_set 'njonsson'
-            end
-
-            it 'should have an unchanged URI' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#content')
-            end
-
-            it_should_behave_like 'an empty, authenticated request'
-          end
-
-          describe 'different userinfo' do
-            describe "that does not contain '@' --" do
-              before :each do
-                request.userinfo_set 'nils'
-              end
-
-              it 'should have the same URI, with the changed userinfo' do
-                request.uri.should == URI.parse('https://nils@github.com:123' +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#content')
-              end
-
-              it 'should the expected Authorization header plus the default ' +
-                 'headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic bmlscw==']]
-              end
-
-              it 'should have no body' do
-                request.body.should be_nil
-              end
-
-              it 'should have no response' do
-                request.response.should be_nil
-              end
-            end
-
-            describe "that contains an escaped '@' --" do
-              before :each do
-                request.userinfo_set 'n%45'
-              end
-
-              it 'should have the same URI, with the changed userinfo' do
-                request.uri.should == URI.parse('https://n%45@github.com:123' +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#content')
-              end
-
-              it 'should the expected Authorization header plus the default ' +
-                 'headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic bkU=']]
-              end
-
-              it 'should have no body' do
-                request.body.should be_nil
-              end
-
-              it 'should have no response' do
-                request.response.should be_nil
-              end
-            end
-          end
-        end
-
-        describe '-- when sent #userinfo_unset --' do
-          before :each do
-            request.userinfo_unset
-          end
-
-          it 'should have the same URI, without userinfo' do
-            request.uri.should == URI.parse('https://github.com:123'      +
-                                            '/search/deep?q=http&lang=en' +
-                                            '#content')
-          end
-
-          it_should_behave_like 'an empty request'
         end
 
         describe '-- when sent #host_set with' do
@@ -1064,39 +953,6 @@ describe HTTY::Request do
              'scheme' do
             new_request.uri.should == URI.parse('http://njonsson@github.com'  +
                                                 ':123'                        +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#content')
-          end
-
-          it 'should return a request without a response' do
-            new_request.response.should be_nil
-          end
-        end
-
-        describe '-- when sent #userinfo_set with different userinfo --' do
-          let :new_request do
-            request.userinfo_set 'nils'
-          end
-
-          it 'should return a request with the same URI having the changed ' +
-             'userinfo' do
-            new_request.uri.should == URI.parse('https://nils@github.com:123' +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#content')
-          end
-
-          it 'should return a request without a response' do
-            new_request.response.should be_nil
-          end
-        end
-
-        describe '-- when sent #userinfo_unset --' do
-          let :new_request do
-            request.userinfo_unset
-          end
-
-          it 'should return a request with the same URI not having userinfo' do
-            new_request.uri.should == URI.parse('https://github.com:123'      +
                                                 '/search/deep?q=http&lang=en' +
                                                 '#content')
           end
