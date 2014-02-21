@@ -19,7 +19,7 @@ module HTTY::CLI::InputDevice
         command_line.chomp!
         command_line.strip!
         next if command_line.empty?
-        @display.print_prompt(command_line + "\n")
+        @display.visualize_prompt(command_line + "\n")
         yield command_line
       end
     end
@@ -36,7 +36,7 @@ module HTTY::CLI::InputDevice
         begin
           command_line = ''
           while command_line.empty? do
-            @display.print_prompt
+            @display.visualize_prompt
             if (command_line = Readline.readline('', true)).nil?
               raise Interrupt
             end

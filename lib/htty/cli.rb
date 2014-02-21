@@ -36,7 +36,7 @@ class HTTY::CLI
   end
 
   # This is something like should belong to Display
-  def print_prompt(message = '')
+  def visualize_prompt(message = '')
     print prompt(@session.requests.last) + message
   end
 
