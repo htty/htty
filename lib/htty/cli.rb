@@ -58,7 +58,7 @@ class HTTY::CLI
             next
           end
 
-          if ARGV.include?('--debug')
+          if ARGV.include?('--show-backtrace')
             command.perform
           else
             rescuing_from Exception do
