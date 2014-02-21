@@ -48,8 +48,8 @@ module HTTY::CLI::InputDevice
           end
           yield command_line
         rescue Interrupt
-          puts
-          throw :quit
+          @display.break
+          yield 'quit'
         end
       end
     end

@@ -1,6 +1,5 @@
 require File.expand_path("#{File.dirname __FILE__}/cli/commands")
 require File.expand_path("#{File.dirname __FILE__}/cli/commands/help")
-require File.expand_path("#{File.dirname __FILE__}/cli/commands/quit")
 require File.expand_path("#{File.dirname __FILE__}/cli/input_device")
 require File.expand_path("#{File.dirname __FILE__}/cli/display")
 require File.expand_path("#{File.dirname __FILE__}/session")

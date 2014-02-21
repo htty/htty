@@ -103,6 +103,10 @@ module HTTY::CLI::Display
          strong('HTTP TTY') + normal('. Heck To The Yeah!')
   end
 
+  def break
+    puts ''
+  end
+
   def show_headers(headers, options={})
     show_asterisk_next_to   = (options[:show_asterisk_next_to] || '').downcase
     show_mercantile_next_to = (options[:show_mercantile_next_to] || '').downcase
