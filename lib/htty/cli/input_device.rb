@@ -2,7 +2,27 @@ require 'readline'
 
 module HTTY::CLI::InputDevice
   def self.new(display)
-    TTY.new(display)
+    if STDIN.tty?
+      TTY.new(display)
+    else
+      Pipe.new(display)
+    end
+  end
+
+  class Pipe
+    def initialize(display)
+      @display = display
+    end
+
+    def commands
+      STDIN.each_line do |command_line|
+        command_line.chomp!
+        command_line.strip!
+        next if command_line.empty?
+        @display.print_prompt(command_line + "\n")
+        yield command_line
+      end
+    end
   end
 
   class TTY
