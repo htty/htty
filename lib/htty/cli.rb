@@ -18,22 +18,9 @@ class HTTY::CLI
 
   # Instantiates a new HTTY::CLI with the specified _command_line_arguments_.
   def initialize(command_line_arguments)
-    if command_line_arguments.include?('--version')
-      puts "v#{HTTY::VERSION}"
-      exit
-    end
-
-    if command_line_arguments.include?('--help')
-      HTTY::CLI::Commands::Help.new.perform
-      exit
-    end
-
-    exit unless @session = rescuing_from(ArgumentError) do
-      everything_but_options = command_line_arguments.reject do |a|
-        a[0..0] == '-'
-      end
-      HTTY::Session.new(everything_but_options.first)
-    end
+    handle_version(command_line_arguments)
+    handle_help(command_line_arguments)
+    initialize_session(command_line_arguments)
   end
 
   # Takes over STDIN, STDOUT, and STDERR to expose #session to command-line
@@ -47,7 +34,6 @@ class HTTY::CLI
     end
     say_goodbye
   end
-
 
   # This is something like should belong to Display
   def print_prompt(message = '')
@@ -78,6 +64,29 @@ private
       rescuing_from Exception do
         command.perform
       end
+    end
+  end
+
+  def handle_version(command_line_arguments)
+    if command_line_arguments.include?('--version')
+      puts "v#{HTTY::VERSION}"
+      exit
+    end
+  end
+
+  def handle_help(command_line_arguments)
+    if command_line_arguments.include?('--help')
+      HTTY::CLI::Commands::Help.new.perform
+      exit
+    end
+  end
+
+  def initialize_session(command_line_arguments)
+    exit unless @session = rescuing_from(ArgumentError) do
+      everything_but_options = command_line_arguments.reject do |a|
+        a[0..0] == '-'
+      end
+      HTTY::Session.new(everything_but_options.first)
     end
   end
 end
