@@ -69,7 +69,6 @@ module HTTY::CLI::Display
 
   def normal(string)
     return string
-    # format string, :foreground_dark_default
   end
 
   def pluralize(word, number)
