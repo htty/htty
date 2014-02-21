@@ -13,28 +13,28 @@ module HTTY::RequestsUtil
   # Makes an HTTP DELETE request with the specified _request_.
   def self.delete(request)
     request(request) do |host|
-      host.delete request.send(:path_query_and_fragment), request.headers
+      host.delete request.send(:path_query_and_fragment), headers_from(request)
     end
   end
 
   # Makes an HTTP GET request with the specified _request_.
   def self.get(request)
     request(request) do |host|
-      host.request_get request.send(:path_query_and_fragment), request.headers
+      host.request_get request.send(:path_query_and_fragment), headers_from(request)
     end
   end
 
   # Makes an HTTP HEAD request with the specified _request_.
   def self.head(request)
     request(request) do |host|
-      host.head request.send(:path_query_and_fragment), request.headers
+      host.head request.send(:path_query_and_fragment), headers_from(request)
     end
   end
 
   # Makes an HTTP OPTIONS request with the specified _request_.
   def self.options(request)
     request(request) do |host|
-      host.options request.send(:path_query_and_fragment), request.headers
+      host.options request.send(:path_query_and_fragment), headers_from(request)
     end
   end
 
@@ -43,7 +43,7 @@ module HTTY::RequestsUtil
     request(request) do |host|
       host.patch request.send(:path_query_and_fragment),
                  request.body,
-                 request.headers
+                 headers_from(request)
     end
   end
 
@@ -52,7 +52,7 @@ module HTTY::RequestsUtil
     request(request) do |host|
       host.post request.send(:path_query_and_fragment),
                 request.body,
-                request.headers
+                headers_from(request)
     end
   end
 
@@ -61,14 +61,14 @@ module HTTY::RequestsUtil
     request(request) do |host|
       host.put request.send(:path_query_and_fragment),
                request.body,
-               request.headers
+               headers_from(request)
     end
   end
 
   # Makes an HTTP TRACE request with the specified _request_.
   def self.trace(request)
     request(request) do |host|
-      host.trace request.send(:path_query_and_fragment), request.headers
+      host.trace request.send(:path_query_and_fragment), headers_from(request)
     end
   end
 
@@ -105,5 +105,18 @@ private
     end
     request
   end
+
+  def self.headers_from(request)
+    return request.headers unless HEADERS_MUST_BE_AN_HASH
+    return {} if request.headers.empty?
+    request.headers.flatten.each_slice(2).reduce({}) do |hash, pair|
+      hash[pair.first] = pair.last
+      hash
+    end
+  end
+
+  # starting from 2.0.0 net/http requires headers to be hashes
+  HEADERS_MUST_BE_AN_HASH =
+    Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.0.0')
 
 end
