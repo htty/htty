@@ -1,7 +1,7 @@
 require 'spec_helper'
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/ordered_hash")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/headers")
 
-describe HTTY::OrderedHash do
+describe HTTY::Headers do
   describe 'that is empty' do
     it { should be_empty }
 
@@ -20,7 +20,7 @@ describe HTTY::OrderedHash do
   end
 
   describe 'that has values out of order' do
-    subject { HTTY::OrderedHash.new('foo' => 'bar', 'baz' => 'qux') }
+    subject { described_class.new('foo' => 'bar', 'baz' => 'qux') }
 
     it { should == {'foo' => 'bar', 'baz' => 'qux'} }
 

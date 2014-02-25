@@ -1,4 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/ordered_hash")
+require File.expand_path("#{File.dirname __FILE__}/headers")
 require File.expand_path("#{File.dirname __FILE__}/no_header_error")
 require File.expand_path("#{File.dirname __FILE__}/cookies_util")
 
@@ -51,7 +51,7 @@ protected
   # * <tt>:headers</tt>
   def initialize(attributes={})
     @body    = attributes[:body]
-    @headers = HTTY::OrderedHash.new
+    @headers = HTTY::Headers.new
     Array(attributes[:headers]).each do |name, value|
       @headers[name] = value
     end
