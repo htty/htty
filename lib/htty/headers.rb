@@ -3,27 +3,28 @@ require 'base64'
 
 module HTTY; end
 
-# Behaves like an Hash but preserves the insertion order of values and keys are
-# case insensitive
+# Represents the Headers of a Request or a Response. Headers preserve the
+# insertion order and are case insensitive. A custom Hash is used because Hash
+# did not have this behavior in Ruby v1.8.7 and earlier.
 class HTTY::Headers
+
   def initialize(hash={})
     @inner_hash = {}
+    @inner_keys = {}
+    @ordered_keys = []
     hash.each_pair do |key, value|
-      @inner_hash[key] = value
-    end
-    @inner_keys = []
-    @inner_hash.each_key do |k|
-      @inner_keys << k
+      self[key] = value
     end
   end
 
   def [](key)
-    @inner_hash[key]
+    @inner_hash[key.downcase]
   end
 
   def []=(key, value)
-    @inner_keys << key unless @inner_hash.key?(key)
-    @inner_hash[key] = value
+    @ordered_keys << key.downcase unless @inner_hash.key?(key.downcase)
+    @inner_keys[key.downcase] = key
+    @inner_hash[key.downcase] = value
     self
   end
 
@@ -43,11 +44,13 @@ class HTTY::Headers
   def clear
     @inner_hash.clear
     @inner_keys.clear
+    @ordered_keys.clear
   end
 
   def delete(key)
-    @inner_keys.delete(key) if @inner_hash.key?(key)
-    @inner_hash.delete key
+    @ordered_keys.delete(key.downcase) if @inner_hash.key?(key.downcase)
+    @inner_keys.delete(key.downcase)
+    @inner_hash.delete(key.downcase)
   end
 
   def empty?
@@ -55,8 +58,8 @@ class HTTY::Headers
   end
 
   def to_a
-    @inner_keys.inject([]) do |result, key|
-      result + [[key, @inner_hash[key]]]
+    @ordered_keys.inject([]) do |result, normalized_key|
+      result + [[@inner_keys[normalized_key], @inner_hash[normalized_key]]]
     end
   end
 
