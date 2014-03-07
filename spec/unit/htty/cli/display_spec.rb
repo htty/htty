@@ -2,42 +2,6 @@ require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../../lib/htty/headers")
 require File.expand_path("#{File.dirname __FILE__}/../../../../lib/htty/cli/display")
 
-RSpec::Matchers.define :print_on_stdout do |check|
-
-  @captured = nil
-
-  match do |block|
-    begin
-      stdout_saved = $stdout
-      $stdout = StringIO.new
-      block.call
-    ensure
-      @captured = $stdout
-      $stdout = stdout_saved
-    end
-    case check
-    when String
-      @captured.string == check
-    when Regexp
-      @captured.string.match(check)
-    else
-      false
-    end
-  end
-
-  failure_message_for_should do
-    "expected #{description}"
-  end
-
-  failure_message_for_should_not do
-    "expected not #{description}"
-  end
-
-  description do
-    "\n#{check}\non STDOUT but got\n#{@captured.string}\n"
-  end
-end
-
 describe HTTY::CLI::Display do
   let(:display) {Class.new.new.extend(HTTY::CLI::Display)}
 

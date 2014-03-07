@@ -15,3 +15,40 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
+
+
+RSpec::Matchers.define :print_on_stdout do |check|
+
+  @captured = nil
+
+  match do |block|
+    begin
+      real_stdout = $stdout
+      $stdout = StringIO.new
+      block.call
+    ensure
+      @captured = $stdout
+      $stdout = real_stdout
+    end
+    case check
+    when String
+      @captured.string == check
+    when Regexp
+      @captured.string.match(check)
+    else
+      false
+    end
+  end
+
+  failure_message_for_should do
+    "expected #{description}"
+  end
+
+  failure_message_for_should_not do
+    "expected not #{description}"
+  end
+
+  description do
+    "\n#{check}\non STDOUT but got\n#{@captured.string}\n"
+  end
+end
