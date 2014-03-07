@@ -105,12 +105,12 @@ module HTTY::CLI::Display
   end
 
   def show_headers(headers, options={})
-    show_asterisk_next_to   = options[:show_asterisk_next_to]
-    show_mercantile_next_to = options[:show_mercantile_next_to]
+    show_asterisk_next_to   = (options[:show_asterisk_next_to] || '').downcase
+    show_mercantile_next_to = (options[:show_mercantile_next_to] || '').downcase
 
     asterisk_symbol, mercantile_symbol = nil, nil
     margin = headers.inject 0 do |result, header|
-      header_name = header.first
+      header_name = header.first.downcase
       asterisk_symbol   ||= (header_name == show_asterisk_next_to)   ? '*' : nil
       mercantile_symbol ||= (header_name == show_mercantile_next_to) ? '@' : nil
       asterisk   = (header_name == show_asterisk_next_to)   ? asterisk_symbol   : ''
@@ -119,10 +119,9 @@ module HTTY::CLI::Display
        result].max
     end
     headers.each do |name, value|
-      asterisk   = (name == show_asterisk_next_to)   ? asterisk_symbol   : nil
-      mercantile = (name == show_mercantile_next_to) ? mercantile_symbol : nil
-      justified_name = name.rjust margin -
-                       [asterisk.to_s.length, mercantile.to_s.length].max
+      asterisk   = (name.downcase == show_asterisk_next_to)   ? asterisk_symbol   : nil
+      mercantile = (name.downcase == show_mercantile_next_to) ? mercantile_symbol : nil
+      justified_name = name.rjust margin - [asterisk.to_s.length, mercantile.to_s.length].max
       puts "#{justified_name}:#{strong(asterisk || mercantile)} " + value
     end
   end
