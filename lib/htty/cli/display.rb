@@ -69,7 +69,6 @@ module HTTY::CLI::Display
 
   def normal(string)
     return string
-    # format string, :foreground_dark_default
   end
 
   def pluralize(word, number)
@@ -102,6 +101,10 @@ module HTTY::CLI::Display
   def say_hello
     puts normal(notice('Welcome to ')) + logotype + normal(', the ') +
          strong('HTTP TTY') + normal('. Heck To The Yeah!')
+  end
+
+  def break
+    puts ''
   end
 
   def show_headers(headers, options={})
