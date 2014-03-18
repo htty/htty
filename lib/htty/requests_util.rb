@@ -116,6 +116,7 @@ private
   end
 
   # starting from 2.0.0 net/http requires headers to be hashes
+  require 'rubygems' # Not necessary under Ruby v2
   HEADERS_MUST_BE_AN_HASH =
     Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.0.0')
 
