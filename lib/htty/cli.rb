@@ -34,9 +34,14 @@ class HTTY::CLI
     say_goodbye
   end
 
-  # This is something like should belong to Display
-  def visualize_prompt(message = '')
-    print prompt(@session.requests.last) + message
+  # This is something that should belong to Display
+  def line(command = '')
+     puts formatted_prompt + command
+  end
+
+  # This is something that should belong to Display
+  def formatted_prompt
+    formatted_prompt_for(@session.requests.last)
   end
 
 private

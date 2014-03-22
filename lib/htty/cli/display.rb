@@ -82,7 +82,7 @@ module HTTY::CLI::Display
     end
   end
 
-  def prompt(request)
+  def formatted_prompt_for(request)
     format_request_uri(request.uri) + normal('> ')
   end
 
