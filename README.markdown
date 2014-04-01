@@ -181,33 +181,6 @@ You can learn how to use _htty_ commands from within _htty_.
 
 The `help` command takes an optional argument of the abbreviated or full name of a command.
 
-Coming soon
-===========
-
-Here are some features that are coming down the pike.
-
-Commands for streamlining web form submission
----------------------------------------------
-
-These features will make _htty_ better at screen-scraping.
-
-Using any of the forthcoming `form` commands will clear any non-form content in the body of the request. Adding at least one URL-encoded form parameter to the request will set the _Content-Type_ header to _application/x-www-form-urlencoded_. Removing all URL-encoded form parameters will remove this header.
-
-* `form` — display all form parameters offered in the response
-* `form-fill` — prompt in turn for a value for each of the form inputs in the response
-* <code>form-add _name_ _value_</code> — add a URL-encoded form parameter for the request, using the specified name and value
-* <code>form-remove _name_</code> — remove a URL-encoded form parameter from the request, using the specified name
-* `form-remove-all` — remove all URL-encoded form parameters from the request
-
-You will also be able to pop open a browser window containing request and response bodies.
-
-Custom command aliases and shell emulation of _http-console_
-------------------------------------------------------------
-
-You should be able to make your own command aliases.
-
-_http-console_ has a nice command-line. We should have an _http-console_ skin for _htty_.
-
 Contributing
 ============
 
