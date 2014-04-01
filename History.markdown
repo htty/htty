@@ -1,6 +1,20 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.5.0"></a>v1.5.0, Tue 4/01/2014
+-------------------------------------------
+
+* Added support for Ruby v1.9.3, v2.0, and v2.1 \[with help from [gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")\]
+* Added the `body-edit` command for using `$EDITOR` to manipulate the request body [[gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")]
+* Added support for following relative URIs in _Location_ response headers [[gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")]
+* Added support for automatically URL-encoding reserved characters such as _?_ [[gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")]
+* Added support for automatically synchronizing userinfo and the _Authorization_ request header [[gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")]
+* Improved support for scripting via _stdin_ [[gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")]
+* Added support for case-insensitive editing of request headers [[gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")]
+* Fixed a bug that mangled the prompt upon backspace [[gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")]
+* Fixed bugs in the `query-*` commands [[gabrielelana](http://github.com/gabrielelana "gabrielelana at GitHub")]
+* Updated and refined dependencies
+
 <a name="v1.4.1"></a>v1.4.1, Wed 9/26/2012
 -------------------------------------------
 
