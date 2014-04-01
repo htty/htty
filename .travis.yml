@@ -16,7 +16,7 @@ rvm:
   - rbx-head
 notifications:
   irc: "irc.freenode.org#htty"
-script: "bundle exec rake"
+script: "bundle exec rake test"
 matrix:
   allow_failures:
     - rvm: ruby-head
