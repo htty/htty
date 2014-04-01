@@ -39,10 +39,10 @@ module HTTY::CLI::Display
 
   def format(string, *attributes)
     segments = attributes.collect do |a|
-      "\x1b[#{FORMATS[a]}m"
+      "\e[#{FORMATS[a]}m"
     end
     segments << string
-    segments << "\x1b[0m"
+    segments << "\e[0m"
     segments.join ''
   end
 

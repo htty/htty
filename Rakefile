@@ -23,7 +23,7 @@ namespace :lib do
       if verbose?
         puts "* #{f}"
       else
-        print "\x1b[1;32m.\x1b[0m"
+        print "\e[1;32m.\e[0m"
       end
       command = "/usr/bin/env ruby -e 'require File.expand_path(#{f.inspect})'"
       break unless system(command)
