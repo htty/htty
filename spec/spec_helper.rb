@@ -52,3 +52,18 @@ RSpec::Matchers.define :print_on_stdout do |check|
     "\n#{check}\non STDOUT but got\n#{@captured.string}\n"
   end
 end
+
+RSpec::Matchers.define :be_multiline do
+  match do |actual|
+    case actual
+    when String
+      !actual.empty? && actual.split(/\n/).count > 1
+    else
+      false
+    end
+  end
+
+  description do
+    'be more than one line'
+  end
+end
