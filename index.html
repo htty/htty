@@ -65,16 +65,18 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>See what’s changed lately by reading the <a href="http://github.com/htty/htty/blob/master/History.markdown">project history</a>.</p>
 
-<h1>Installation</h1>
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
 <p>It couldn’t be much easier.</p>
 
 <pre><code>$ gem install htty
 </code></pre>
 
-<p>You’ll need Ruby and RubyGems. It’s known to work well under OS X against Ruby v1.8.7, v1.9.2, and v1.9.3.</p>
+<p>You’ll need Ruby and RubyGems. It’s known to work well under OS X against Ruby v1.8.7, v1.9.2, v1.9.3, v2.0, and v2.1.</p>
 
-<h1>Features</h1>
+<h1>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
 
 <ul>
 <li>Intuitive, Tab-completed commands and command aliases</li>
@@ -100,11 +102,13 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 <strong>Review history</strong> — a normal and a verbose transcript of your session are available at all times (destroyed when you quit <em>htty</em>)</li>
 <li>
 <strong>Reuse previous requests</strong> — you can refer to prior requests and copy them</li>
-</ul><h1>Examples</h1>
+</ul><h1>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h1>
 
 <p>Here are a few annotated <em>htty</em> session transcripts to get you started.</p>
 
-<h2>Querying a web service</h2>
+<h2>
+<a name="querying-a-web-service" class="anchor" href="#querying-a-web-service"><span class="octicon octicon-link"></span></a>Querying a web service</h2>
 
 <p>This simple example shows how to explore a read-only web service with <em>htty</em>.</p>
 
@@ -136,7 +140,8 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>Exit your session at any time by typing <code>quit</code> or hitting Ctrl-D.</p>
 
-<h2>Working with cookies</h2>
+<h2>
+<a name="working-with-cookies" class="anchor" href="#working-with-cookies"><span class="octicon octicon-link"></span></a>Working with cookies</h2>
 
 <p>The next example demonstrates <i>htty</i>’s HTTP Secure support and cookies features, as well as how to review and revisit past requests.</p>
 
@@ -158,7 +163,8 @@ m888N= 888&gt;   'Y"       'Y"      "88"  888
 
 <p>The <code>reuse</code> command makes a copy of the headers and body of an earlier request for you to build on.</p>
 
-<h2>Understanding complex HTTP conversations at a glance using history</h2>
+<h2>
+<a name="understanding-complex-http-conversations-at-a-glance-using-history" class="anchor" href="#understanding-complex-http-conversations-at-a-glance-using-history"><span class="octicon octicon-link"></span></a>Understanding complex HTTP conversations at a glance using history</h2>
 
 <p>Now we’ll look at <i>htty</i>’s HTTP Basic Authentication support and learn how to display unabbreviated transcripts of <em>htty</em> sessions.</p>
 
@@ -204,7 +210,8 @@ end
 
 <p>As with the abbreviated history demonstrated earlier, verbose history shows a numbered list of requests and the responses they elicited. All information exchanged between client and server is shown.</p>
 
-<h2>Getting help</h2>
+<h2>
+<a name="getting-help" class="anchor" href="#getting-help"><span class="octicon octicon-link"></span></a>Getting help</h2>
 
 <p>You can learn how to use <em>htty</em> commands from within <em>htty</em>.</p>
 
@@ -212,63 +219,39 @@ end
 
 <p>The <code>help</code> command takes an optional argument of the abbreviated or full name of a command.</p>
 
-<h1>Coming soon</h1>
-
-<p>Here are some features that are coming down the pike.</p>
-
-<h2>Commands for streamlining web form submission</h2>
-
-<p>These features will make <em>htty</em> better at screen-scraping.</p>
-
-<p>Using any of the forthcoming <code>form</code> commands will clear any non-form content in the body of the request. Adding at least one URL-encoded form parameter to the request will set the <em>Content-Type</em> header to <em>application/x-www-form-urlencoded</em>. Removing all URL-encoded form parameters will remove this header.</p>
-
-<ul>
-<li>
-<code>form</code> — display all form parameters offered in the response</li>
-<li>
-<code>form-fill</code> — prompt in turn for a value for each of the form inputs in the response</li>
-<li>
-<code>form-add <em>name</em> <em>value</em></code> — add a URL-encoded form parameter for the request, using the specified name and value</li>
-<li>
-<code>form-remove <em>name</em></code> — remove a URL-encoded form parameter from the request, using the specified name</li>
-<li>
-<code>form-remove-all</code> — remove all URL-encoded form parameters from the request</li>
-</ul><p>You will also be able to pop open a browser window containing request and response bodies.</p>
-
-<h2>Custom command aliases and shell emulation of <em>http-console</em>
-</h2>
-
-<p>You should be able to make your own command aliases.</p>
-
-<p><em>http-console</em> has a nice command-line. We should have an <em>http-console</em> skin for <em>htty</em>.</p>
-
-<h1>Contributing</h1>
+<h1>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h1>
 
 <p>Report defects and feature requests on <a href="http://github.com/htty/htty/issues">GitHub Issues</a>.</p>
 
 <p>Your patches are welcome, and you will receive attribution here for good stuff. Fork <a href="http://github.com/htty/htty" title="htty’s ‘htty’ repository at GitHub">the official <em>htty</em> repository</a> and send a pull request.</p>
 
-<h1>News and information</h1>
+<h1>
+<a name="news-and-information" class="anchor" href="#news-and-information"><span class="octicon octicon-link"></span></a>News and information</h1>
 
 <p>Stay in touch with the <em>htty</em> project by following <a href="http://twitter.com/get_htty" title="get_htty at Twitter">@get_htty</a> on Twitter.</p>
 
 <p>You can also get help in the <a href="http://webchat.freenode.net/?channels=htty">#htty channel on Freenode</a>.</p>
 
-<h1>Credits</h1>
+<h1>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h1>
 
 <p>The author, <a href="mailto:htty@nilsjonsson.com">Nils Jonsson</a>, owes a debt of inspiration to the <a href="http://github.com/cloudhead/http-console"><em>http-console</em></a> project.</p>
 
 <p>Thanks to <a href="http://github.com/htty/htty/contributors" title="htty contributors at GitHub">contributors</a> (in alphabetical order):</p>
 
 <ul>
+<li>Pascal Borreli (<a href="http://github.com/pborreli" title="pborreli at GitHub">pborreli</a>)</li>
 <li>Rob Dawson (ephox-rob/<a href="http://github.com/rojotek" title="rojotek at GitHub">rojotek</a>)</li>
 <li>Bo Frederiksen (<a href="http://github.com/bofrede" title="bofrede at GitHub">bofrede</a>)</li>
 <li>Johannes Gorset (<a href="http://github.com/jgorset" title="jgorset at GitHub">jgorset</a>)</li>
+<li>Gabriele Lana (<a href="http://github.com/gabrielelana" title="gabrielelana at GitHub">gabrielelana</a>)</li>
 <li>Carson McDonald (<a href="http://github.com/carsonmcdonald" title="carsonmcdonald at GitHub">carsonmcdonald</a>)</li>
-<li>Sam X (<a href="http://github.com/dtjm" title="dtjm at GitHub">dtjm</a>)</li>
+<li>Sam Nguyen (<a href="http://github.com/dtjm" title="dtjm at GitHub">dtjm</a>)</li>
 <li>Robert Pitts (<a href="http://github.com/rbxbx" title="rbxbx at GitHub">rbxbx</a>)</li>
 <li>Matt Sanders (<a href="http://github.com/nextmat" title="nextmat at GitHub">nextmat</a>)</li>
-</ul><h1>License</h1>
+</ul><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
 <p>Released under the <a href="http://github.com/htty/htty/blob/master/License.markdown">MIT License</a>.</p>
       </section>
