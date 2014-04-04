@@ -29,10 +29,11 @@
 
 [htty](http://htty.github.io) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
-[![Travis CI build status]](http://travis-ci.org/htty/htty          "Travis CI build status")
-[![Gemnasium build status]](http://gemnasium.com/htty/htty          "Gemnasium build status")
-[![Code Climate report]   ](http://codeclimate.com/github/htty/htty "Code Climate report")
-[![RubyGems release]      ](http://rubygems.org/gems/htty           "RubyGems release")
+[![Travis CI build status]           ](http://travis-ci.org/htty/htty          "Travis CI build status")
+[![Gemnasium build status]           ](http://gemnasium.com/htty/htty          "Gemnasium build status")
+[![Code Climate code quality report] ](http://codeclimate.com/github/htty/htty "Code Climate report")
+[![Code Climate test coverage report]](http://codeclimate.com/github/htty/htty "Code Climate report")
+[![RubyGems release]                 ](http://rubygems.org/gems/htty           "RubyGems release")
 
 See what’s changed lately by reading the [project history](http://github.com/htty/htty/blob/master/History.markdown).
 
@@ -217,7 +218,8 @@ License
 
 Released under the [MIT License](http://github.com/htty/htty/blob/master/License.markdown).
 
-[Travis CI build status]: https://secure.travis-ci.org/htty/htty.png?branch=master
-[Gemnasium build status]: https://gemnasium.com/htty/htty.png
-[Code Climate report]:    https://codeclimate.com/github/htty/htty.png
-[RubyGems release]:       https://badge.fury.io/rb/htty.png
+[Travis CI build status]:            https://secure.travis-ci.org/htty/htty.png?branch=master
+[Gemnasium build status]:            https://gemnasium.com/htty/htty.png
+[Code Climate code quality report]:  https://codeclimate.com/github/htty/htty.png
+[Code Climate test coverage report]: https://codeclimate.com/github/htty/htty/coverage.png
+[RubyGems release]:                  https://badge.fury.io/rb/htty.png
