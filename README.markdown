@@ -28,12 +28,12 @@
 
 [htty](http://htty.github.io) is a console application for interacting with web servers. It’s a fun way to explore web APIs and to learn the ins and outs of HTTP.
 
-[![Travis CI build status]           ](http://travis-ci.org/htty/htty               "Travis CI build status")
-[![Gemnasium build status]           ](http://gemnasium.com/htty/htty               "Gemnasium report")
-[![Code Climate code quality status] ](http://codeclimate.com/github/htty/htty      "Code Climate report")
-[![Code Climate test coverage status]](http://codeclimate.com/github/htty/htty      "Code Climate report")
-[![Inline build status]              ](http://inch-ci.org/github/htty/htty "Inline report")
-[![RubyGems release]                 ](http://rubygems.org/gems/htty                "RubyGems release")
+[![Travis CI build status]            ](http://travis-ci.org/htty/htty          "Travis CI build")
+[![Gemnasium dependencies status]     ](http://gemnasium.com/htty/htty          "Gemnasium dependencies analysis")
+[![Code Climate code quality]         ](http://codeclimate.com/github/htty/htty "Code Climate analysis")
+[![Code Climate test coverage]        ](http://codeclimate.com/github/htty/htty "Code Climate analysis")
+[![Inch inline documentation coverage]](http://inch-ci.org/github/htty/htty     "Inch inline documentation analysis")
+[![RubyGems release]                  ](http://rubygems.org/gems/htty           "RubyGems release")
 
 See what’s changed lately by reading the [project history](http://github.com/htty/htty/blob/master/History.markdown).
 
@@ -218,9 +218,9 @@ License
 
 Released under the [MIT License](http://github.com/htty/htty/blob/master/License.markdown).
 
-[Travis CI build status]:            https://secure.travis-ci.org/htty/htty.png?branch=master
-[Gemnasium build status]:            https://gemnasium.com/htty/htty.png
-[Code Climate code quality status]:  https://codeclimate.com/github/htty/htty.png
-[Code Climate test coverage status]: https://codeclimate.com/github/htty/htty/coverage.png
-[Inline build status]:               http://inch-ci.org/github/htty/htty.png
-[RubyGems release]:                  https://badge.fury.io/rb/htty.png
+[Travis CI build status]:             https://secure.travis-ci.org/htty/htty.png?branch=master
+[Gemnasium dependencies status]:      https://gemnasium.com/htty/htty.png
+[Code Climate code quality]:          https://codeclimate.com/github/htty/htty.png
+[Code Climate test coverage]:         https://codeclimate.com/github/htty/htty/coverage.png
+[Inch inline documentation coverage]: http://inch-ci.org/github/htty/htty.png
+[RubyGems release]:                   https://badge.fury.io/rb/htty.png
