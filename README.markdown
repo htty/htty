@@ -32,7 +32,7 @@
 [![Gemnasium build status]           ](http://gemnasium.com/htty/htty               "Gemnasium report")
 [![Code Climate code quality status] ](http://codeclimate.com/github/htty/htty      "Code Climate report")
 [![Code Climate test coverage status]](http://codeclimate.com/github/htty/htty      "Code Climate report")
-[![Inline build status]              ](http://inch-pages.github.io/github/htty/htty "Inline report")
+[![Inline build status]              ](http://inch-ci.org/github/htty/htty "Inline report")
 [![RubyGems release]                 ](http://rubygems.org/gems/htty                "RubyGems release")
 
 See what’s changed lately by reading the [project history](http://github.com/htty/htty/blob/master/History.markdown).
@@ -222,5 +222,5 @@ Released under the [MIT License](http://github.com/htty/htty/blob/master/License
 [Gemnasium build status]:            https://gemnasium.com/htty/htty.png
 [Code Climate code quality status]:  https://codeclimate.com/github/htty/htty.png
 [Code Climate test coverage status]: https://codeclimate.com/github/htty/htty/coverage.png
-[Inline build status]:               http://inch-pages.github.io/github/htty/htty.png
+[Inline build status]:               http://inch-ci.org/github/htty/htty.png
 [RubyGems release]:                  https://badge.fury.io/rb/htty.png
