@@ -3,6 +3,11 @@ source 'http://rubygems.org'
 gemspec
 
 gem     'jruby-openssl',           '~> 0', :platforms => :jruby
+if RUBY_VERSION.to_s.start_with?( '1.8' )
+  gem   'mime-types',              '~> 1'
+else
+  gem   'mime-types',              '~> 2'
+end
 
 group :debug do
   gem   'ruby-debug',              '~> 0', :platforms => :mri_18

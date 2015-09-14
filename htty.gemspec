@@ -19,8 +19,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.8.7'
 
-  s.add_dependency             'mime-types', '~> 2'
-
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec', '~> 2'
 
