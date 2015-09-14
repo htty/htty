@@ -214,6 +214,7 @@ Thanks to [contributors](http://github.com/htty/htty/contributors "htty contribu
 * Sam Nguyen ([dtjm](http://github.com/dtjm "dtjm at GitHub"))
 * Robert Pitts ([rbxbx](http://github.com/rbxbx "rbxbx at GitHub"))
 * Matt Sanders ([nextmat](http://github.com/nextmat "nextmat at GitHub"))
+* [vijay-v](http://github.com/vijay-v "vijay-v at GitHub")
 
 License
 =======
