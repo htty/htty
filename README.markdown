@@ -134,23 +134,25 @@ Now we’ll look at <i>htty</i>’s HTTP Basic Authentication support and learn 
 
 Assume that we have the following Sinatra application listening on Sinatra’s default port, 4567.
 
-    require 'sinatra'
+``` ruby
+require 'sinatra'
 
-    get '/all-good' do
-      [200, [['Set-Cookie', 'foo=bar; baz']], 'Hello World!']
-    end
+get '/all-good' do
+  [200, [['Set-Cookie', 'foo=bar; baz']], 'Hello World!']
+end
 
-    put '/huh' do
-      [404, 'What?']
-    end
+put '/huh' do
+  [404, 'What?']
+end
 
-    delete '/hurl' do
-      [500, 'Barf!']
-    end
+delete '/hurl' do
+  [500, 'Barf!']
+end
 
-    post '/submit-novel' do
-      redirect '/all-good'
-    end
+post '/submit-novel' do
+  redirect '/all-good'
+end
+```
 
 This application expects _GET_ and _POST_ requests and responds in various contrived ways.
 
