@@ -1,6 +1,11 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.5.1"></a>v1.5.1, Mon 9/14/2015
+-------------------------------------------
+
+* Fixed a bug that crashed on startup for some Ruby versions [[vijay-v](http://github.com/vijay-v "vijay-v at GitHub")]
+
 <a name="v1.5.0"></a>v1.5.0, Tue 4/01/2014
 -------------------------------------------
 
