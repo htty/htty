@@ -40,7 +40,11 @@ class HTTY::CLI::Commands::PathSet < HTTY::CLI::Command
   def perform
     add_request_if_new do |request|
       self.class.notify_if_cookies_cleared request do
-        request.path_set(*escape_or_warn_of_escape_sequences(arguments))
+        path = arguments[0]
+        path_components = path.split('/')
+        escaped_components = escape_or_warn_of_escape_sequences(path_components)
+        escaped_path = escaped_components.join('/')
+        request.path_set(escaped_path)
       end
     end
   end
