@@ -69,7 +69,7 @@ The things you can do with _htty_ are:
 Examples
 ========
 
-Here are a few annotated _htty_ session transcripts to get you started.
+Here are a few annotated _htty_ session transcripts to get you started (terminal screenshots shown here are also available in [textual form](http://github.com/htty/htty/blob/master/examples.markdown)).
 
 Querying a web service
 ----------------------
