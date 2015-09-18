@@ -19,7 +19,7 @@ class HTTY::Request < HTTY::Payload
   AUTHORIZATION_HEADER_NAME = 'Authorization'
   COOKIES_HEADER_NAME       = 'Cookie'
 
-  METHODS_SENDING_BODY = [:post, :put]
+  METHODS_SENDING_BODY = [:patch, :post, :put]
 
   # Returns a URI authority (a combination of userinfo, host, and port)
   # corresponding to the specified _components_ hash. Valid _components_ keys
