@@ -1,6 +1,11 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.5.2"></a>v1.5.2, Thu 9/17/2015
+-------------------------------------------
+
+* Fixed a bug that prevented the `http-patch` command from sending a request body
+
 <a name="v1.5.1"></a>v1.5.1, Mon 9/14/2015
 -------------------------------------------
 
