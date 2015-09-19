@@ -60,8 +60,13 @@ class HTTY::CLI::Commands::Reuse < HTTY::CLI::Command
 
     index = arguments.first.to_i
     unless (1..requests_with_responses.length).include?(index)
-      raise ArgumentError,
-            "index must be between 1 and #{requests_with_responses.length}"
+      if requests_with_responses.length == 1
+        raise ArgumentError,
+              "index must be 1"
+      else
+        raise ArgumentError,
+              "index must be between 1 and #{requests_with_responses.length}"
+      end
     end
 
     add_request_if_new do
