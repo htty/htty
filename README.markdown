@@ -205,6 +205,7 @@ The author, [Nils Jonsson](mailto:htty@nilsjonsson.com), owes a debt of inspirat
 
 Thanks to [contributors](http://github.com/htty/htty/contributors "htty contributors at GitHub") (in alphabetical order):
 
+* Dillon Benson ([dibenso](http://github.com/dibenso "dibenso at GitHub"))
 * Pascal Borreli ([pborreli](http://github.com/pborreli "pborreli at GitHub"))
 * Rob Dawson (ephox-rob/[rojotek](http://github.com/rojotek "rojotek at GitHub"))
 * Bo Frederiksen ([bofrede](http://github.com/bofrede "bofrede at GitHub"))
