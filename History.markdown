@@ -1,6 +1,11 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.5.4"></a>v1.5.4, Mon 10/05/2015
+-------------------------------------------
+
+* Improved the error message displayed when the `reuse` command receives no arguments
+
 <a name="v1.5.3"></a>v1.5.3, Thu 9/17/2015
 -------------------------------------------
 
