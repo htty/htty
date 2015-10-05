@@ -222,7 +222,7 @@ License
 
 Released under the [MIT License](http://github.com/htty/htty/blob/master/License.markdown).
 
-[Travis CI build status]:             https://secure.travis-ci.org/htty/htty.png?branch=master
+[Travis CI build status]:             https://travis-ci.org/htty/htty.svg?branch=master
 [Gemnasium dependencies status]:      https://gemnasium.com/htty/htty.png
 [Code Climate code quality]:          https://codeclimate.com/github/htty/htty.png
 [Code Climate test coverage]:         https://codeclimate.com/github/htty/htty/coverage.png
