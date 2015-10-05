@@ -3,6 +3,7 @@ bundler_args: --without debug doc tooling
 rvm:
   - 2.0
   - 2.1
+  - 2.2
   - ruby-head
   - jruby-head
   - rbx
