@@ -11,9 +11,8 @@ rvm:
   - jruby-18mode
   - jruby-19mode
   - jruby-head
-  - rbx-18mode
-  - rbx-19mode
-  - rbx-head
+  - rbx
+  - rbx-2
 notifications:
   irc: "irc.freenode.org#htty"
 script: "bundle exec rake test"
@@ -23,6 +22,5 @@ matrix:
     - rvm: jruby-18mode
     - rvm: jruby-19mode
     - rvm: jruby-head
-    - rvm: rbx-18mode
-    - rvm: rbx-19mode
-    - rvm: rbx-head
+    - rvm: rbx
+    - rvm: rbx-2
