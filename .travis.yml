@@ -25,3 +25,6 @@ matrix:
     - rvm: jruby-head
     - rvm: rbx
     - rvm: rbx-2
+branches:
+  except:
+    - /^gh-pages.*$/
