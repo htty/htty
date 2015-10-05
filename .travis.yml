@@ -1,15 +1,9 @@
 language: ruby
 bundler_args: --without debug doc tooling
 rvm:
-  - 1.8.7
-  - 1.9.2
-  - 1.9.3
   - 2.0
   - 2.1
   - ruby-head
-  - ree
-  - jruby-18mode
-  - jruby-19mode
   - jruby-head
   - rbx
   - rbx-2
@@ -19,8 +13,6 @@ script: "bundle exec rake test"
 matrix:
   allow_failures:
     - rvm: ruby-head
-    - rvm: jruby-18mode
-    - rvm: jruby-19mode
     - rvm: jruby-head
     - rvm: rbx
     - rvm: rbx-2
