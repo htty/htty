@@ -1,4 +1,5 @@
 require 'spec_helper'
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/delete")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_delete")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_get")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_patch")
