@@ -1,8 +1,6 @@
 require File.expand_path("#{File.dirname __FILE__}/../../preferences")
 require File.expand_path("#{File.dirname __FILE__}/../command")
 require File.expand_path("#{File.dirname __FILE__}/../display")
-require File.expand_path("#{File.dirname __FILE__}/ssl_verification_off")
-require File.expand_path("#{File.dirname __FILE__}/ssl_verification_on")
 
 module HTTY; end
 
