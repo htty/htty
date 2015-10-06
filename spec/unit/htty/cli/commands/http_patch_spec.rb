@@ -5,6 +5,7 @@ require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/c
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_patch")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_post")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_put")
+require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/patch")
 
 describe HTTY::CLI::Commands::HttpPatch do
   describe 'class' do
