@@ -1,6 +1,6 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/session")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/cli/command")
+require File.expand_path("#{File.dirname __FILE__}/../../../../lib/htty/request")
+require File.expand_path("#{File.dirname __FILE__}/../../../../lib/htty/session")
+require File.expand_path("#{File.dirname __FILE__}/../../../../lib/htty/cli/command")
 
 RSpec.describe HTTY::CLI::Command do
   let(:last_request) {HTTY::Request.new('http://0.0.0.0')}
