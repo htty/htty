@@ -18,12 +18,13 @@ Gem::Specification.new do |spec|
   spec.homepage    = 'http://htty.github.io'
   spec.license     = 'MIT'
 
-  spec.required_ruby_version = '>= 1.8.7'
+  spec.required_ruby_version = '~> 2'
 
-  spec.add_dependency             'mime-types', '~>  1'
-  spec.add_development_dependency 'bundler',    '~>  1'
-  spec.add_development_dependency 'rake',       '~> 10'
-  spec.add_development_dependency 'rspec',      '~>  3'
+  spec.add_dependency             'mime-types',                '~>  2'
+  spec.add_development_dependency 'bundler',                   '~>  1'
+  spec.add_development_dependency 'codeclimate-test-reporter', '~>  0'
+  spec.add_development_dependency 'rake',                      '~> 10'
+  spec.add_development_dependency 'rspec',                     '~>  3'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
                          f.match(%r{^(test|spec|features)/})

@@ -29,7 +29,7 @@ class HTTY::CLI::Command
     if (match = (command_line_regexp.match(command_line)))
       begin
         if (arguments = match.captures[0])
-          attributes = attributes.merge(:arguments => sanitize_arguments(arguments.strip.shellsplit))
+          attributes = attributes.merge(arguments: sanitize_arguments(arguments.strip.shellsplit))
         end
       rescue ArgumentError
         :unclosed_quote
@@ -192,7 +192,7 @@ public
     unless (alias_for = self.class.alias_for)
       raise NotImplementedError, 'not implemented yet'
     end
-    alias_for.new(:arguments => arguments, :session => session).perform
+    alias_for.new(arguments: arguments, session: session).perform
   end
 
 protected

@@ -6,9 +6,9 @@ debug_option = begin
                rescue LoadError
                  nil
                end
-guard :rspec, :all_on_start => true,
-              :all_after_pass => true,
-              :cmd => "bundle exec rspec --format progress#{debug_option}" do
+guard :rspec, all_on_start: true,
+              all_after_pass: true,
+              cmd: "bundle exec rspec --format progress#{debug_option}" do
   dsl = Guard::RSpec::Dsl.new(self)
   rspec, ruby = dsl.rspec, dsl.ruby
 

@@ -101,13 +101,13 @@ class HTTY::Request < HTTY::Payload
       scheme = (port.to_i == URI::HTTPS::DEFAULT_PORT) ? 'https' : 'http'
     end
 
-    build_uri :scheme   => scheme,
-              :userinfo => userinfo,
-              :host     => host,
-              :port     => port,
-              :path     => path,
-              :query    => query,
-              :fragment => fragment
+    build_uri scheme:   scheme,
+              userinfo: userinfo,
+              host:     host,
+              port:     port,
+              path:     path,
+              query:    query,
+              fragment: fragment
   end
 
 protected
@@ -136,7 +136,7 @@ public
   # Initializes a new HTTY::Request with a #uri corresponding to the specified
   # _address_.
   def initialize(address)
-    super({:headers => [['User-Agent', "htty/#{HTTY::VERSION}"]]})
+    super({headers: [['User-Agent', "htty/#{HTTY::VERSION}"]]})
     @uri = self.class.parse_uri(address)
     establish_basic_authentication
     establish_content_length
@@ -271,7 +271,7 @@ public
 
   # Establishes a new #uri with the specified _fragment_.
   def fragment_set(fragment)
-    rebuild_uri :fragment => fragment
+    rebuild_uri fragment: fragment
   end
 
   # Establishes a new #uri without a fragment.
@@ -303,7 +303,7 @@ public
     if value.nil?
       @headers.delete name
       if name.downcase == AUTHORIZATION_HEADER_NAME.downcase
-        return rebuild_uri :userinfo => nil
+        return rebuild_uri userinfo: nil
       end
       return self
     end
@@ -311,7 +311,7 @@ public
     @headers[name] = value
     if name.downcase == AUTHORIZATION_HEADER_NAME.downcase
       HTTY::Headers.credentials_from(value) do |username, password|
-        return rebuild_uri :userinfo => [
+        return rebuild_uri userinfo: [
           HTTY::URI.escape_component(username),
           HTTY::URI.escape_component(password)
         ].compact.join(':')
@@ -330,7 +330,7 @@ public
     return dup_without_response.headers_unset_all if response
 
     @headers.clear
-    rebuild_uri :userinfo => nil
+    rebuild_uri userinfo: nil
   end
 
   # Returns an array of the headers belonging to the payload. If
@@ -351,7 +351,7 @@ public
 
   # Establishes a new #uri with the specified _host_.
   def host_set(host)
-    rebuild_uri :host => host
+    rebuild_uri host: host
   end
 
   # Makes an HTTP +OPTIONS+ request using the path of #uri.
@@ -368,12 +368,12 @@ public
   # relative.
   def path_set(path)
     absolute_path = (Pathname.new(uri.path) + path).to_s
-    rebuild_uri :path => absolute_path
+    rebuild_uri path: absolute_path
   end
 
   # Establishes a new #uri with the specified _port_.
   def port_set(port)
-    rebuild_uri :port => port
+    rebuild_uri port: port
   end
 
   # Makes an HTTP +POST+ request using the path of #uri.
@@ -418,7 +418,7 @@ public
         else
           nil
       end
-    rebuild_uri :query => query_string
+    rebuild_uri query: query_string
   end
 
   # Establishes a new #uri, removing the last query-string parameter specified
@@ -454,12 +454,12 @@ public
 
   # Establishes a new #uri without a query string.
   def query_unset_all
-    rebuild_uri :query => nil
+    rebuild_uri query: nil
   end
 
   # Establishes a new #uri with the specified _scheme_.
   def scheme_set(scheme)
-    rebuild_uri :scheme => scheme
+    rebuild_uri scheme: scheme
   end
 
   # Makes an HTTP +TRACE+ request using the path of #uri.
@@ -470,7 +470,7 @@ public
   # Establishes a new #uri with the specified _userinfo_.
   def userinfo_set(username, password=nil)
     userinfo = [username, password].compact.join(':')
-    rebuild_uri :userinfo => userinfo
+    rebuild_uri userinfo: userinfo
   end
 
   # Establishes a new #uri without userinfo.
@@ -495,9 +495,9 @@ protected
   end
 
   def path_query_and_fragment
-    self.class.build_path_query_and_fragment :path     => uri.path,
-                                             :query    => uri.query,
-                                             :fragment => uri.fragment
+    self.class.build_path_query_and_fragment path:     uri.path,
+                                             query:    uri.query,
+                                             fragment: uri.fragment
   end
 
   def rebuild_uri(changed_components)
@@ -536,9 +536,9 @@ private
   end
 
   def authority
-    self.class.build_authority :userinfo => uri.userinfo,
-                               :host     => uri.host,
-                               :port     => uri.port
+    self.class.build_authority userinfo: uri.userinfo,
+                               host:     uri.host,
+                               port:     uri.port
   end
 
   def current_query_entries

@@ -11,7 +11,7 @@ RSpec.describe HTTY::CLI::Commands::QueryRemove do
   end
 
   def instance(*arguments)
-    klass.new :session => session, :arguments => arguments
+    klass.new session: session, arguments: arguments
   end
 
   describe 'with existing query string with only one key and value' do

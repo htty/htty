@@ -53,7 +53,7 @@ end
 namespace :spec do |n|
   %w(unit integration).each do |type_of_spec|
     desc "Run #{type_of_spec} specs"
-    define_spec_task type_of_spec, :as_subdirectory => true
+    define_spec_task type_of_spec, as_subdirectory: true
   end
 end
 
@@ -62,8 +62,8 @@ define_spec_task :spec
 
 desc 'Run all specs'
 task '' => :spec
-task :default => :spec
+task default: :spec
 
 # Support the 'gem test' command.
 desc ''
-define_spec_task :test, :debug => false, :format => :progress
+define_spec_task :test, debug: false, format: :progress

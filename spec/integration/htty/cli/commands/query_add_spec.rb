@@ -11,7 +11,7 @@ RSpec.describe HTTY::CLI::Commands::QueryAdd do
   end
 
   def instance(*arguments)
-    klass.new :session => session, :arguments => arguments
+    klass.new session: session, arguments: arguments
   end
 
   describe 'without an argument' do

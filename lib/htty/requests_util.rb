@@ -99,9 +99,9 @@ private
         headers << h
       end
       request.send :response=,
-                   HTTY::Response.new(:status  => http_response_to_status(http_response),
-                                      :headers => headers,
-                                      :body    => http_response.body)
+                   HTTY::Response.new(status:  http_response_to_status(http_response),
+                                      headers: headers,
+                                      body:    http_response.body)
     end
     request
   end

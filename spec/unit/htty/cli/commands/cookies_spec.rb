@@ -60,14 +60,14 @@ Cookies are cleared automatically when you change hosts.
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
-        built = klass.build_for('cookies', :session => :the_session)
+        built = klass.build_for('cookies', session: :the_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq([])
         expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
-        built = klass.build_for('x', :session => :another_session)
+        built = klass.build_for('x', session: :another_session)
         expect(built).to eq(nil)
       end
     end

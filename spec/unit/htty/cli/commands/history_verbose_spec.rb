@@ -49,21 +49,21 @@ All headers and body content of each request-response pair are shown.
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
-        built = klass.build_for('history-verbose', :session => :the_session)
+        built = klass.build_for('history-verbose', session: :the_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq([])
         expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
-        built = klass.build_for('history-', :session => :a_session)
+        built = klass.build_for('history-', session: :a_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq([])
         expect(built.session).to eq(:a_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
-        built = klass.build_for('x', :session => :another_session)
+        built = klass.build_for('x', session: :another_session)
         expect(built).to eq(nil)
       end
     end

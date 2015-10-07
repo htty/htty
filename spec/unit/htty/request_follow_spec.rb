@@ -8,7 +8,7 @@ RSpec.describe HTTY::Request do
 
   describe '#follow a response' do
     let(:response) do
-      HTTY::Response.new({:headers => {'Location' => response_location}})
+      HTTY::Response.new({headers: {'Location' => response_location}})
     end
 
     before :each do

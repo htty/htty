@@ -8,7 +8,7 @@ RSpec.describe HTTY::Payload do
   let(:body) {nil}
   let(:headers) {[['Accept', 'application/json']]}
 
-  subject {@bare_payload.new({:body => body, :headers => headers})}
+  subject {@bare_payload.new({body: body, headers: headers})}
 
   it 'should heave headers' do
     expect(subject.headers).to eq(headers)

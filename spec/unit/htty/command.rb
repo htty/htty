@@ -10,7 +10,7 @@ RSpec.describe HTTY::CLI::Command do
     session
   end
 
-  subject{described_class.new(:session => session)}
+  subject{described_class.new(session: session)}
 
   describe '#add_request_if_new' do
     context 'when command returns nil' do

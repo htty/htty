@@ -44,7 +44,7 @@ Content-Type:#{display.strong ''} application/json
     context 'with marked headers' do
       context 'with one header' do
         let(:headers) {HTTY::Headers.new('User-Agent' => 'htty/1.4.1').to_a}
-        let(:options) {{:show_mercantile_next_to => 'User-Agent'}}
+        let(:options) {{show_mercantile_next_to: 'User-Agent'}}
 
         it 'displays the header starting from the beginning of the line' do
           expect {
@@ -54,7 +54,7 @@ Content-Type:#{display.strong ''} application/json
       end
 
       context 'with few headers' do
-        let(:options) {{:show_mercantile_next_to => 'Content-Type'}}
+        let(:options) {{show_mercantile_next_to: 'Content-Type'}}
         let(:headers) {
           headers = HTTY::Headers.new
           headers['User-Agent'] = 'htty/1.4.1'
@@ -74,7 +74,7 @@ Content-Type:#{display.strong '@'} application/json
     end
 
     context 'when asked to mark an header' do
-      let(:options) {{:show_mercantile_next_to => 'Content-Type'}}
+      let(:options) {{show_mercantile_next_to: 'Content-Type'}}
       let(:headers) {HTTY::Headers.new('content-type' => 'application/json').to_a}
 
       it 'marks headers indipendently of the text case' do

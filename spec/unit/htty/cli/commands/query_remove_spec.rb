@@ -59,21 +59,21 @@ The console prompt shows the address for the current request.
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
-        built = klass.build_for('query-remove foo bar', :session => :the_session)
+        built = klass.build_for('query-remove foo bar', session: :the_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq(%w(foo bar))
         expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
-        built = klass.build_for('query-r baz', :session => :a_session)
+        built = klass.build_for('query-r baz', session: :a_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq(['baz'])
         expect(built.session).to eq(:a_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
-        built = klass.build_for('x qux', :session => :another_session)
+        built = klass.build_for('x qux', session: :another_session)
         expect(built).to eq(nil)
       end
     end

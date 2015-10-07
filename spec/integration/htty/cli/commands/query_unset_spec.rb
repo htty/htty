@@ -12,7 +12,7 @@ RSpec.describe HTTY::CLI::Commands::QueryUnset do
   end
 
   def instance(*arguments)
-    klass.new :session => session, :arguments => arguments
+    klass.new session: session, arguments: arguments
   end
 
   describe 'with existing query string with duplicate keys set' do

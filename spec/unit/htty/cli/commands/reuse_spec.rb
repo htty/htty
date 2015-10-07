@@ -49,21 +49,21 @@ The argument is an index number that appears when you type \e[1mhistory\e[0m.
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
-        built = klass.build_for('reuse foo', :session => :the_session)
+        built = klass.build_for('reuse foo', session: :the_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq(['foo'])
         expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
-        built = klass.build_for('r bar', :session => :a_session)
+        built = klass.build_for('r bar', session: :a_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq(['bar'])
         expect(built.session).to eq(:a_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
-        built = klass.build_for('x baz', :session => :another_session)
+        built = klass.build_for('x baz', session: :another_session)
         expect(built).to eq(nil)
       end
     end

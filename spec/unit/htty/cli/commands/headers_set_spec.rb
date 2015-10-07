@@ -51,21 +51,21 @@ Headers must have unique names. When you set a header that already exists, its v
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
-        built = klass.build_for('headers-set foo bar', :session => :the_session)
+        built = klass.build_for('headers-set foo bar', session: :the_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq(%w(foo bar))
         expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
-        built = klass.build_for('headers-s baz qux', :session => :a_session)
+        built = klass.build_for('headers-s baz qux', session: :a_session)
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq(%w(baz qux))
         expect(built.session).to eq(:a_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
-        built = klass.build_for('x quux corge', :session => :another_session)
+        built = klass.build_for('x quux corge', session: :another_session)
         expect(built).to eq(nil)
       end
     end

@@ -1,7 +1,6 @@
 begin
   require 'codeclimate-test-reporter'
 rescue LoadError
-rescue SyntaxError
 else
   CodeClimate::TestReporter.start
 end

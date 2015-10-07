@@ -60,7 +60,7 @@ class HTTY::CLI::Commands::HeadersResponse < HTTY::CLI::Command
       raise HTTY::NoResponseError
     end
     show_headers response.headers,
-                 :show_asterisk_next_to => HTTY::Response::COOKIES_HEADER_NAME
+                 show_asterisk_next_to: HTTY::Response::COOKIES_HEADER_NAME
     self
   end
 

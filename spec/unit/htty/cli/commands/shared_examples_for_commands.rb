@@ -34,7 +34,7 @@ RSpec.shared_examples_for 'a command' do
   describe 'build_for' do
     it 'should correctly handle a valid, unabbreviated command line' do
       command_used = command_line.tr('[]', '')
-      built = described_class.build_for(command_used, :session => :the_session)
+      built = described_class.build_for(command_used, session: :the_session)
       expect(built).to be_instance_of(described_class)
       expect(built.arguments).to eq([])
       expect(built.session).to eq(:the_session)
@@ -43,7 +43,7 @@ RSpec.shared_examples_for 'a command' do
     it 'should correctly handle a valid, abbreviated command line' do
       if command_line =~ /^(.*)\[(.*?)\]$/
         command_used = $1 + $2[0, rand($2.length)+1]
-        built = described_class.build_for(command_used, :session => :the_session)
+        built = described_class.build_for(command_used, session: :the_session)
         expect(built).to be_instance_of(described_class)
         expect(built.arguments).to eq([])
         expect(built.session).to eq(:the_session)

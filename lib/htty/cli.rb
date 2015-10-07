@@ -47,7 +47,7 @@ class HTTY::CLI
 private
 
   def run_command_line(command_line)
-    command = HTTY::CLI::Commands.build_for command_line, :session => @session
+    command = HTTY::CLI::Commands.build_for command_line, session: @session
 
     unless command
       STDERR.puts notice('Unrecognized command')
