@@ -22,9 +22,8 @@ module HTTY::CLI::Commands
   # Yields each HTTY::CLI::Command descendant in turn.
   def self.each
     Dir.glob "#{File.dirname __FILE__}/commands/*.rb" do |f|
-      class_name = File.basename(f, '.rb').gsub(/^(.)/) do |initial|
-        initial.upcase
-      end.gsub(/_(\S)/) do |initial|
+      class_name = File.basename(f, '.rb').gsub(/^(.)/, &:upcase).
+                                           gsub(/_(\S)/) do |initial|
         initial.gsub(/_/, '').upcase
       end
       klass = const_get(class_name) rescue nil

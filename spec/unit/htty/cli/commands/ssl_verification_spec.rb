@@ -1,37 +1,36 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification_off")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification_on")
 
-describe HTTY::CLI::Commands::SslVerification do
+RSpec.describe HTTY::CLI::Commands::SslVerification do
   describe 'class' do
     let :klass do
       subject.class
     end
 
     it 'should be an alias_for the expected command' do
-      klass.alias_for.should == nil
+      expect(klass.alias_for).to eq(nil)
     end
 
     it 'should have the expected aliases' do
-      klass.aliases.should == []
+      expect(klass.aliases).to eq([])
     end
 
     it 'should belong to the expected category' do
-      klass.category.should == 'Preferences'
+      expect(klass.category).to eq('Preferences')
     end
 
     it 'should have the expected command_line' do
-      klass.command_line.should == 'ssl-verification'
+      expect(klass.command_line).to eq('ssl-verification')
     end
 
     it 'should have the expected command_line_arguments' do
-      klass.command_line_arguments.should == nil
+      expect(klass.command_line_arguments).to eq(nil)
     end
 
     it 'should have the expected help' do
-      klass.help.should == 'Displays the preference for SSL certificate ' +
-                           'verification'
+      expect(klass.help).to eq('Displays the preference for SSL certificate ' +
+                               'verification')
     end
 
     it 'should have the expected help_extended' do
@@ -40,25 +39,25 @@ Displays the preference for SSL certificate verification. Does not communicate w
 
 When issuing HTTP Secure requests, server certificates will be verified. You can disable and reenable this behavior.
       end_help_extended
-      klass.help_extended.should == expected.chomp
+      expect(klass.help_extended).to eq(expected.chomp)
     end
 
     it 'should have the expected see_also_commands' do
-      klass.see_also_commands.should == [HTTY::CLI::Commands::SslVerificationOff,
-                                         HTTY::CLI::Commands::SslVerificationOn]
+      expect(klass.see_also_commands).to eq([HTTY::CLI::Commands::SslVerificationOff,
+                                             HTTY::CLI::Commands::SslVerificationOn])
     end
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
         built = klass.build_for('ssl-verification', :session => :the_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == []
-        built.session.should   == :the_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq([])
+        expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
         built = klass.build_for('x', :session => :another_session)
-        built.should == nil
+        expect(built).to eq(nil)
       end
     end
   end

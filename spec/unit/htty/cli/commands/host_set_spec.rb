@@ -1,35 +1,34 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/host_set")
 
-describe HTTY::CLI::Commands::HostSet do
+RSpec.describe HTTY::CLI::Commands::HostSet do
   describe 'class' do
     let :klass do
       subject.class
     end
 
     it 'should be an alias_for the expected command' do
-      klass.alias_for.should == nil
+      expect(klass.alias_for).to eq(nil)
     end
 
     it 'should have the expected aliases' do
-      klass.aliases.should == []
+      expect(klass.aliases).to eq([])
     end
 
     it 'should belong to the expected category' do
-      klass.category.should == 'Navigation'
+      expect(klass.category).to eq('Navigation')
     end
 
     it 'should have the expected command_line' do
-      klass.command_line.should == 'ho[st-set]'
+      expect(klass.command_line).to eq('ho[st-set]')
     end
 
     it 'should have the expected command_line_arguments' do
-      klass.command_line_arguments.should == 'HOST'
+      expect(klass.command_line_arguments).to eq('HOST')
     end
 
     it 'should have the expected help' do
-      klass.help.should == "Changes the host of the request's address"
+      expect(klass.help).to eq("Changes the host of the request's address")
     end
 
     it 'should have the expected help_extended' do
@@ -40,31 +39,31 @@ The host you supply can be either a hostname (e.g., 'github.com') or an IP addre
 
 The console prompt shows the address for the current request.
       end_help_extended
-      klass.help_extended.should == expected.chomp
+      expect(klass.help_extended).to eq(expected.chomp)
     end
 
     it 'should have the expected see_also_commands' do
-      klass.see_also_commands.should == [HTTY::CLI::Commands::Address]
+      expect(klass.see_also_commands).to eq([HTTY::CLI::Commands::Address])
     end
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
         built = klass.build_for('host-set foo', :session => :the_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == ['foo']
-        built.session.should   == :the_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['foo'])
+        expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
         built = klass.build_for('ho bar', :session => :a_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == ['bar']
-        built.session.should   == :a_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['bar'])
+        expect(built.session).to eq(:a_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
         built = klass.build_for('x baz', :session => :another_session)
-        built.should == nil
+        expect(built).to eq(nil)
       end
     end
   end

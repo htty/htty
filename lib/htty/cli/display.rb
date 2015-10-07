@@ -174,13 +174,13 @@ module HTTY::CLI::Display
   # http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002281
   def word_wrap_indented(text, columns=2..80)
     indent_by, wrap_at = columns.min, columns.max - columns.min
-    text.split("\n").collect do |line|
+    text.split("\n").collect { |line|
       (wrap_at < line.length)                              ?
       line.gsub(/(.{1,#{wrap_at}})(\s+|$)/, "\\1\n").strip :
       line
-    end.join("\n").split("\n").collect do |line|
+    }.join("\n").split("\n").collect { |line|
       indent line, indent_by
-    end.join "\n"
+    }.join "\n"
   end
 
 private

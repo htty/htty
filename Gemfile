@@ -1,26 +1,28 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gemspec
 
-gem     'jruby-openssl',           '~> 0', :platforms => :jruby
-
 group :debug do
-  gem   'ruby-debug',              '~> 0', :platforms => :mri_18
-  gem   'ruby-debug19',            '~> 0', :platforms => :mri_19, :require => 'ruby-debug'
+  gem   'pry-byebug',                '~> 3'
 end
 
 group :development do
-  gem 'codeclimate-test-reporter', '~> 0', :platforms => :mri_20, :require => false
+  if RUBY_VERSION.start_with?('1.8')
+    gem 'codeclimate-test-reporter', '> 0', '< 0.4.2',
+                                             :require => false
+  else
+    gem 'codeclimate-test-reporter', '~> 0', :require => false
+  end
 end
 
 group :doc do
-  gem   'yard',                    '~> 0', :platforms => [:ruby, :mswin, :mingw]
-  gem   'rdiscount',                       :platforms => [:ruby, :mswin, :mingw]
+  gem   'yard',                      '~> 0', :require => false
+  gem   'rdiscount',                 '~> 2', :require => false
 end
 
 group :tooling do
-  gem   'guard-rspec',   '~> 3'
+  gem   'guard-rspec',               '~> 4', :require => false
   if RUBY_PLATFORM =~ /darwin/i
-    gem 'rb-fsevent',    '~> 0',                                  :require => false
+    gem 'rb-fsevent',                '~> 0', :require => false
   end
 end

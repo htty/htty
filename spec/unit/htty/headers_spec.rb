@@ -1,7 +1,6 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/headers")
 
-describe HTTY::Headers do
+RSpec.describe HTTY::Headers do
   describe 'that is empty' do
     it { should be_empty }
 
@@ -14,7 +13,7 @@ describe HTTY::Headers do
       it { should == {'foo' => 'bar', 'baz' => 'qux'} }
 
       it 'should return the expected array when sent #to_a' do
-        subject.to_a.should == [%w(foo bar), %w(baz qux)]
+        expect(subject.to_a).to eq([%w(foo bar), %w(baz qux)])
       end
     end
   end
@@ -25,8 +24,8 @@ describe HTTY::Headers do
     it { should == {'foo' => 'bar', 'baz' => 'qux'} }
 
     it 'should index the values as expected' do
-      subject['foo'].should == 'bar'
-      subject['baz'].should == 'qux'
+      expect(subject['foo']).to eq('bar')
+      expect(subject['baz']).to eq('qux')
     end
 
     describe 'when sent #clear' do

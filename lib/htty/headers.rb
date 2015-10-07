@@ -74,7 +74,7 @@ class HTTY::Headers
   def self.credentials_from(basic_authentication)
     if match = /^Basic (.+)$/.match(basic_authentication)
       credentials = Base64.decode64(match[1]).split(':')
-      return yield *credentials if block_given?
+      return yield(*credentials) if block_given?
       return credentials
     end
   end

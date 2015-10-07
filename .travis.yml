@@ -1,4 +1,5 @@
 language: ruby
+before_install: gem install bundler -v 1.10.6
 bundler_args: --without debug doc tooling
 rvm:
   - 2.0

@@ -29,9 +29,7 @@ class HTTY::CLI::Command
     if (match = (command_line_regexp.match(command_line)))
       begin
         if (arguments = match.captures[0])
-          attributes = attributes.merge(
-            :arguments => sanitize_arguments(arguments.strip.shellsplit)
-          )
+          attributes = attributes.merge(:arguments => sanitize_arguments(arguments.strip.shellsplit))
         end
       rescue ArgumentError
         :unclosed_quote
@@ -61,17 +59,15 @@ class HTTY::CLI::Command
       end
     end
     all_command_lines = [my_command_line] + other_command_lines
-    all_abbrevs = Abbrev.abbrev(all_command_lines).group_by do |abbrev,
-                                                                command_line|
+    all_abbrevs = Abbrev.abbrev(all_command_lines).group_by { |abbrev,
+                                                               command_line|
       command_line
-    end.collect do |command_line, abbrevs|
-      abbrevs.sort_by do |command_line, abbrev|
-        command_line
-      end.first
+    }.collect do |command_line, abbrevs|
+      abbrevs.sort_by { |command_line, abbrev| command_line }.first
     end
-    my_abbrev = all_abbrevs.detect do |abbrev, command_line|
+    my_abbrev = all_abbrevs.detect { |abbrev, command_line|
       command_line == my_command_line
-    end.first
+    }.first
     my_abbrev_regexp = Regexp.new("^(#{Regexp.escape my_abbrev})(.*)$")
     my_command_line.gsub my_abbrev_regexp do
       $2.empty? ? $1 : "#{$1}[#{$2}]"
@@ -165,10 +161,10 @@ private
 
   def self.namespace_siblings
     namespace = namespaces.last
-    other_commands = namespace.constants.collect do |constant|
+    namespace.constants.collect { |constant|
       type = namespace.module_eval(constant.to_s, __FILE__, __LINE__)
       (type == self) ? nil : type
-    end.compact
+    }.compact
   end
 
 public

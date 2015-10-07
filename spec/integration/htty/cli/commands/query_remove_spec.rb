@@ -1,8 +1,7 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_remove")
 
-describe HTTY::CLI::Commands::QueryRemove do
+RSpec.describe HTTY::CLI::Commands::QueryRemove do
   let :klass do
     subject.class
   end
@@ -23,12 +22,12 @@ describe HTTY::CLI::Commands::QueryRemove do
     describe 'with only key in query string' do
       it 'should empty the query string' do
         instance('test').perform
-        session.requests.last.uri.query.should be_nil
+        expect(session.requests.last.uri.query).to be_nil
       end
 
       it 'should not leave a trailing question mark' do
         instance('test').perform
-        session.requests.last.uri.to_s.should_not end_with('?')
+        expect(session.requests.last.uri.to_s).not_to end_with('?')
       end
     end
   end
@@ -41,14 +40,14 @@ describe HTTY::CLI::Commands::QueryRemove do
     describe 'with only key specified' do
       it 'should remove last entry' do
         instance('test').perform
-        session.requests.last.uri.query.should == 'test=true'
+        expect(session.requests.last.uri.query).to eq('test=true')
       end
     end
 
     describe 'with key and value specified' do
       it 'should remove matching entry only' do
         instance('test', 'true').perform
-        session.requests.last.uri.query.should == 'test=false'
+        expect(session.requests.last.uri.query).to eq('test=false')
       end
     end
   end

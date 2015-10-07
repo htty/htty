@@ -1,37 +1,36 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/history")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/history_verbose")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/reuse")
 
-describe HTTY::CLI::Commands::Reuse do
+RSpec.describe HTTY::CLI::Commands::Reuse do
   describe 'class' do
     let :klass do
       subject.class
     end
 
     it 'should be an alias_for the expected command' do
-      klass.alias_for.should == nil
+      expect(klass.alias_for).to eq(nil)
     end
 
     it 'should have the expected aliases' do
-      klass.aliases.should == []
+      expect(klass.aliases).to eq([])
     end
 
     it 'should belong to the expected category' do
-      klass.category.should == 'Navigation'
+      expect(klass.category).to eq('Navigation')
     end
 
     it 'should have the expected command_line' do
-      klass.command_line.should == 'r[euse]'
+      expect(klass.command_line).to eq('r[euse]')
     end
 
     it 'should have the expected command_line_arguments' do
-      klass.command_line_arguments.should == 'INDEX'
+      expect(klass.command_line_arguments).to eq('INDEX')
     end
 
     it 'should have the expected help' do
-      klass.help.should == 'Copies a previous request by the index number ' +
-                           'shown in history'
+      expect(klass.help).to eq('Copies a previous request by the index number ' +
+                               'shown in history')
     end
 
     it 'should have the expected help_extended' do
@@ -40,32 +39,32 @@ Copies the properties of a previous request to be used for the request, using th
 
 The argument is an index number that appears when you type \e[1mhistory\e[0m.
       end_help_extended
-      klass.help_extended.should == expected.chomp
+      expect(klass.help_extended).to eq(expected.chomp)
     end
 
     it 'should have the expected see_also_commands' do
-      klass.see_also_commands.should == [HTTY::CLI::Commands::History,
-                                         HTTY::CLI::Commands::HistoryVerbose]
+      expect(klass.see_also_commands).to eq([HTTY::CLI::Commands::History,
+                                             HTTY::CLI::Commands::HistoryVerbose])
     end
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
         built = klass.build_for('reuse foo', :session => :the_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == ['foo']
-        built.session.should   == :the_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['foo'])
+        expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
         built = klass.build_for('r bar', :session => :a_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == ['bar']
-        built.session.should   == :a_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['bar'])
+        expect(built.session).to eq(:a_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
         built = klass.build_for('x baz', :session => :another_session)
-        built.should == nil
+        expect(built).to eq(nil)
       end
     end
   end

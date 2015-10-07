@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+which bundle || gem install bundler
+bundle
+
+# Do any other automated setup that you need to do here

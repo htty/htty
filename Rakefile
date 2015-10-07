@@ -35,12 +35,13 @@ end
 def define_spec_task(name, options={})
   RSpec::Core::RakeTask.new name do |t|
     t.rspec_opts ||= []
+    t.rspec_opts << "--format #{options[:format]}" if options[:format]
     unless options[:debug] == false
       begin
-        require 'ruby-debug'
+        require 'pry-byebug'
       rescue LoadError
       else
-        t.rspec_opts << '--debug'
+        t.rspec_opts << '--require pry-byebug'
       end
     end
 
@@ -60,9 +61,9 @@ desc 'Run all specs'
 define_spec_task :spec
 
 desc 'Run all specs'
-task ''       => :spec
+task '' => :spec
 task :default => :spec
 
 # Support the 'gem test' command.
 desc ''
-define_spec_task :test, :debug => false
+define_spec_task :test, :debug => false, :format => :progress

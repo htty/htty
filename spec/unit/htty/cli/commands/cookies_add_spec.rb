@@ -1,4 +1,3 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookie_add")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_add")
@@ -6,34 +5,34 @@ require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/c
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_remove_all")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_use")
 
-describe HTTY::CLI::Commands::CookiesAdd do
+RSpec.describe HTTY::CLI::Commands::CookiesAdd do
   describe 'class' do
     let :klass do
       subject.class
     end
 
     it 'should be an alias_for the expected command' do
-      klass.alias_for.should == nil
+      expect(klass.alias_for).to eq(nil)
     end
 
     it 'should have the expected aliases' do
-      klass.aliases.should == [HTTY::CLI::Commands::CookieAdd]
+      expect(klass.aliases).to eq([HTTY::CLI::Commands::CookieAdd])
     end
 
     it 'should belong to the expected category' do
-      klass.category.should == 'Building Requests'
+      expect(klass.category).to eq('Building Requests')
     end
 
     it 'should have the expected command_line' do
-      klass.command_line.should == 'cookies-a[dd]'
+      expect(klass.command_line).to eq('cookies-a[dd]')
     end
 
     it 'should have the expected command_line_arguments' do
-      klass.command_line_arguments.should == 'NAME [VALUE]'
+      expect(klass.command_line_arguments).to eq('NAME [VALUE]')
     end
 
     it 'should have the expected help' do
-      klass.help.should == 'Adds a cookie to the request'
+      expect(klass.help).to eq('Adds a cookie to the request')
     end
 
     it 'should have the expected help_extended' do
@@ -44,34 +43,34 @@ Cookies are not required to have unique names. You can add multiple cookies with
 
 Cookies are not required to have values, either.
       end_help_extended
-      klass.help_extended.should == expected.chomp
+      expect(klass.help_extended).to eq(expected.chomp)
     end
 
     it 'should have the expected see_also_commands' do
-      klass.see_also_commands.should == [HTTY::CLI::Commands::Cookies,
-                                         HTTY::CLI::Commands::CookiesRemove,
-                                         HTTY::CLI::Commands::CookiesRemoveAll,
-                                         HTTY::CLI::Commands::CookiesUse]
+      expect(klass.see_also_commands).to eq([HTTY::CLI::Commands::Cookies,
+                                             HTTY::CLI::Commands::CookiesRemove,
+                                             HTTY::CLI::Commands::CookiesRemoveAll,
+                                             HTTY::CLI::Commands::CookiesUse])
     end
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
         built = klass.build_for('cookies-add foo bar', :session => :the_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == %w(foo bar)
-        built.session.should   == :the_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(%w(foo bar))
+        expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
         built = klass.build_for('cookies-a baz', :session => :a_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == ['baz']
-        built.session.should   == :a_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['baz'])
+        expect(built.session).to eq(:a_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
         built = klass.build_for('x qux', :session => :another_session)
-        built.should == nil
+        expect(built).to eq(nil)
       end
     end
   end

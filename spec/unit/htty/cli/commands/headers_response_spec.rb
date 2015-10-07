@@ -1,4 +1,3 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_response")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_use")
@@ -6,34 +5,34 @@ require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/c
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_response")
 require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/status")
 
-describe HTTY::CLI::Commands::HeadersResponse do
+RSpec.describe HTTY::CLI::Commands::HeadersResponse do
   describe 'class' do
     let :klass do
       subject.class
     end
 
     it 'should be an alias_for the expected command' do
-      klass.alias_for.should == nil
+      expect(klass.alias_for).to eq(nil)
     end
 
     it 'should have the expected aliases' do
-      klass.aliases.should == []
+      expect(klass.aliases).to eq([])
     end
 
     it 'should belong to the expected category' do
-      klass.category.should == 'Inspecting Responses'
+      expect(klass.category).to eq('Inspecting Responses')
     end
 
     it 'should have the expected command_line' do
-      klass.command_line.should == 'headers[-response]'
+      expect(klass.command_line).to eq('headers[-response]')
     end
 
     it 'should have the expected command_line_arguments' do
-      klass.command_line_arguments.should == nil
+      expect(klass.command_line_arguments).to eq(nil)
     end
 
     it 'should have the expected help' do
-      klass.help.should == 'Displays the headers of the response'
+      expect(klass.help).to eq('Displays the headers of the response')
     end
 
     it 'should have the expected help_extended' do
@@ -42,35 +41,35 @@ Displays the headers received in the response. Does not communicate with the hos
 
 A 'Set-Cookie' request header is marked with a bold asterisk (it looks like a cookie).
       end_help_extended
-      klass.help_extended.should == expected.chomp
+      expect(klass.help_extended).to eq(expected.chomp)
     end
 
     it 'should have the expected see_also_commands' do
-      klass.see_also_commands.should == [HTTY::CLI::Commands::BodyResponse,
-                                         HTTY::CLI::Commands::Cookies,
-                                         HTTY::CLI::Commands::CookiesUse,
-                                         HTTY::CLI::Commands::Status,
-                                         HTTY::CLI::Commands::HeadersRequest]
+      expect(klass.see_also_commands).to eq([HTTY::CLI::Commands::BodyResponse,
+                                             HTTY::CLI::Commands::Cookies,
+                                             HTTY::CLI::Commands::CookiesUse,
+                                             HTTY::CLI::Commands::Status,
+                                             HTTY::CLI::Commands::HeadersRequest])
     end
 
     describe 'build_for' do
       it 'should correctly handle a valid, unabbreviated command line' do
         built = klass.build_for('headers-response', :session => :the_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == []
-        built.session.should   == :the_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq([])
+        expect(built.session).to eq(:the_session)
       end
 
       it 'should correctly handle a valid, abbreviated command line' do
         built = klass.build_for('headers', :session => :a_session)
-        built.should be_instance_of(klass)
-        built.arguments.should == []
-        built.session.should   == :a_session
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq([])
+        expect(built.session).to eq(:a_session)
       end
 
       it 'should correctly handle a command line with a bad command' do
         built = klass.build_for('x', :session => :another_session)
-        built.should == nil
+        expect(built).to eq(nil)
       end
     end
   end
