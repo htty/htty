@@ -2,9 +2,9 @@ require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/cli/url_esc
 
 RSpec.describe HTTY::CLI::UrlEscaping do
   subject do
-    o = Object.new.extend(HTTY::CLI::UrlEscaping)
-    o.stub(:say)
-    o
+    Object.new.extend(HTTY::CLI::UrlEscaping).tap do |o|
+      allow(o).to receive(:say)
+    end
   end
 
   describe '.escape_or_warn_of_escape_sequences' do
@@ -56,7 +56,7 @@ RSpec.describe HTTY::CLI::UrlEscaping do
   end
 
   def should_escape(s)
-    expect(escape(s)).not_to == [s]
+    expect(escape(s)).not_to eq([s])
   end
 
   def should_not_escape(s)

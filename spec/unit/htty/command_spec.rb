@@ -1,13 +1,14 @@
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
+require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/session")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/cli/command")
 
 RSpec.describe HTTY::CLI::Command do
   let(:last_request) {HTTY::Request.new('http://0.0.0.0')}
   let(:requests) {[last_request]}
   let(:session) do
-    session = double
-    session.stub(:requests) {requests}
-    session
+    double(HTTY::Session).tap do |session|
+      allow(session).to receive(:requests).and_return(requests)
+    end
   end
 
   subject{described_class.new(session: session)}
