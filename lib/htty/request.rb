@@ -206,13 +206,13 @@ public
 
     # Remove just one matching cookie from the end.
     rejected = false
-    new_cookies = cookies.reverse.reject do |cookie_name, cookie_value|
+    new_cookies = cookies.reverse.reject { |cookie_name, cookie_value|
       if !rejected && (cookie_name == name)
         rejected = true
       else
         false
       end
-    end.reverse
+    }.reverse
 
     cookies_string = HTTY::CookiesUtil.cookies_to_string(new_cookies)
     if cookies_string

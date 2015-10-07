@@ -1,9 +1,8 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
 
 
-describe HTTY::Request do
+RSpec.describe HTTY::Request do
   let(:request_address) {'http://example.com/a?b=c#d'}
   let(:request) {HTTY::Request.new request_address}
 
@@ -20,11 +19,11 @@ describe HTTY::Request do
       let(:response_location) {'http://followme.com/a/b/c'}
 
       it 'should return another request' do
-        request.follow(response).should_not == request
+        expect(request.follow(response)).not_to eq(request)
       end
 
       it 'should return a request with the absolute URI as its HTTP URI' do
-        request.follow(response).uri.should == URI.parse(response_location)
+        expect(request.follow(response).uri).to eq(URI.parse(response_location))
       end
     end
 
@@ -37,7 +36,7 @@ describe HTTY::Request do
         expected_uri.path = response_location
         expected_uri.query = nil
         expected_uri.fragment = nil
-        request.follow(response).uri.should == expected_uri
+        expect(request.follow(response).uri).to eq(expected_uri)
       end
     end
 
@@ -51,14 +50,14 @@ describe HTTY::Request do
         expected_uri.path = File.join(expected_uri.path, response_location)
         expected_uri.query = nil
         expected_uri.fragment = nil
-        request.follow(response).uri.should == expected_uri
+        expect(request.follow(response).uri).to eq(expected_uri)
       end
 
       context 'when invoked more than once' do
         let(:after_follow) {request.follow(response)}
 
         it 'should return always the same request' do
-          after_follow.uri.should == after_follow.follow(response).uri
+          expect(after_follow.uri).to eq(after_follow.follow(response).uri)
         end
       end
     end
@@ -69,11 +68,11 @@ describe HTTY::Request do
       it 'should return a request with URI query string ' +
          'equal to the Location query string' do
         expected_query = URI.parse(response_location).query
-        request.follow(response).uri.query.should == expected_query
+        expect(request.follow(response).uri.query).to eq(expected_query)
       end
 
       it 'should return a request without URI fragment' do
-        request.follow(response).uri.fragment.should be_nil
+        expect(request.follow(response).uri.fragment).to be_nil
       end
     end
 
@@ -83,11 +82,11 @@ describe HTTY::Request do
       it 'should return a request with URI fragment ' +
          'equal to the Location fragment' do
         expected_fragment = URI.parse(response_location).fragment
-        request.follow(response).uri.fragment.should == expected_fragment
+        expect(request.follow(response).uri.fragment).to eq(expected_fragment)
       end
 
       it 'should return a request without URI query string' do
-        request.follow(response).uri.query.should be_nil
+        expect(request.follow(response).uri.query).to be_nil
       end
     end
   end

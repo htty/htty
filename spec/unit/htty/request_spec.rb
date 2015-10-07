@@ -1,11 +1,10 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/version")
 
 require File.expand_path("#{File.dirname __FILE__}/shared_examples_for_requests")
 
-describe HTTY::Request do
+RSpec.describe HTTY::Request do
   let(:username) {'njonsson'}
   let(:password) {nil}
 
@@ -16,10 +15,10 @@ describe HTTY::Request do
 
     describe 'a valid FTP address' do
       it 'should raise URI::InvalidURIError' do
-        expect do
+        expect {
           klass.new 'ftp://myftpsite.info'
-        end.to raise_error(ArgumentError,
-                           'only http:// and https:// schemes are supported')
+        }.to raise_error(ArgumentError,
+                         'only http:// and https:// schemes are supported')
       end
     end
   end
@@ -30,7 +29,7 @@ describe HTTY::Request do
     end
 
     it 'should have the URI http://0.0.0.0:80/' do
-      request.uri.should == URI.parse('http://0.0.0.0:80/')
+      expect(request.uri).to eq(URI.parse('http://0.0.0.0:80/'))
     end
 
     it_should_behave_like 'an empty request'
@@ -42,7 +41,7 @@ describe HTTY::Request do
     end
 
     it 'should have the URI http://0.0.0.0:80/' do
-      request.uri.should == URI.parse('http://0.0.0.0:80/')
+      expect(request.uri).to eq(URI.parse('http://0.0.0.0:80/'))
     end
 
     it_should_behave_like 'an empty request'
@@ -55,7 +54,7 @@ describe HTTY::Request do
       end
 
       it 'should have an HTTP URI for that host' do
-        request.uri.should == URI.parse('http://127.0.0.1:80/')
+        expect(request.uri).to eq(URI.parse('http://127.0.0.1:80/'))
       end
 
       it_should_behave_like 'an empty request'
@@ -67,7 +66,7 @@ describe HTTY::Request do
       end
 
       it 'should have HTTP URI for that host' do
-        request.uri.should == URI.parse('http://localhost:80/')
+        expect(request.uri).to eq(URI.parse('http://localhost:80/'))
       end
 
       it_should_behave_like 'an empty request'
@@ -79,7 +78,7 @@ describe HTTY::Request do
           end
 
           it 'should have a URI including the query parameter' do
-            request.uri.should == URI.parse('http://localhost:80/?foo=bar')
+            expect(request.uri).to eq(URI.parse('http://localhost:80/?foo=bar'))
           end
 
           it_should_behave_like 'an empty request'
@@ -93,7 +92,7 @@ describe HTTY::Request do
       end
 
       it 'should have an HTTP URI for that host on that port' do
-        request.uri.should == URI.parse('http://localhost:8080/')
+        expect(request.uri).to eq(URI.parse('http://localhost:8080/'))
       end
 
       it_should_behave_like 'an empty request'
@@ -105,7 +104,7 @@ describe HTTY::Request do
       end
 
       it 'should have an HTTP URI for that host' do
-        request.uri.should == URI.parse('http://localhost:80/')
+        expect(request.uri).to eq(URI.parse('http://localhost:80/'))
       end
 
       it_should_behave_like 'an empty request'
@@ -117,7 +116,7 @@ describe HTTY::Request do
       end
 
       it 'should have an HTTPS URI for host with that userinfo' do
-        request.uri.should == URI.parse('https://njonsson@github.com:443/')
+        expect(request.uri).to eq(URI.parse('https://njonsson@github.com:443/'))
       end
 
       it_should_behave_like 'an empty, authenticated request'
@@ -129,7 +128,7 @@ describe HTTY::Request do
       end
 
       it 'should have an HTTP URI for the root of that host' do
-        request.uri.should == URI.parse('http://github.com:80/')
+        expect(request.uri).to eq(URI.parse('http://github.com:80/'))
       end
 
       it_should_behave_like 'an empty request'
@@ -141,7 +140,7 @@ describe HTTY::Request do
       end
 
       it 'should have an HTTPS URI for the root of that host' do
-        request.uri.should == URI.parse('https://github.com:443/')
+        expect(request.uri).to eq(URI.parse('https://github.com:443/'))
       end
 
       it_should_behave_like 'an empty request'
@@ -153,7 +152,7 @@ describe HTTY::Request do
       end
 
       it 'should have an HTTP URI for the root of that host on port 443' do
-        request.uri.should == URI.parse('http://github.com:443/')
+        expect(request.uri).to eq(URI.parse('http://github.com:443/'))
       end
 
       it_should_behave_like 'an empty request'
@@ -165,7 +164,7 @@ describe HTTY::Request do
       end
 
       it 'should have an HTTP URI for that path on that host' do
-        request.uri.should == URI.parse('http://github.com:80/explore')
+        expect(request.uri).to eq(URI.parse('http://github.com:80/explore'))
       end
 
       it_should_behave_like 'an empty request'
@@ -176,9 +175,9 @@ describe HTTY::Request do
         HTTY::Request.new 'github.com?search=http'
       end
 
-      it 'should have an HTTP URI for that query string and the root of ' +
-         'that host' do
-        request.uri.should == URI.parse('http://github.com:80/?search=http')
+      it 'should have an HTTP URI for that query string and the root of that ' +
+         'host' do
+        expect(request.uri).to eq(URI.parse('http://github.com:80/?search=http'))
       end
 
       it_should_behave_like 'an empty request'
@@ -189,10 +188,10 @@ describe HTTY::Request do
         HTTY::Request.new 'github.com/search?q=http&lang=en'
       end
 
-      it 'should have an HTTP URI for that query string and that path on ' +
-         'that host' do
-        request.uri.should == URI.parse('http://github.com:80' +
-                                        '/search?q=http&lang=en')
+      it 'should have an HTTP URI for that query string and that path on that ' +
+         'host' do
+        expect(request.uri).to eq(URI.parse('http://github.com:80' +
+                                            '/search?q=http&lang=en'))
       end
 
       it_should_behave_like 'an empty request'
@@ -203,9 +202,9 @@ describe HTTY::Request do
         HTTY::Request.new 'github.com/explore#trending'
       end
 
-      it 'should have an HTTP URI for that fragment of that path on that ' +
-         'host' do
-        request.uri.should == URI.parse('http://github.com:80/explore#trending')
+      it 'should have an HTTP URI for that fragment of that path on that host' do
+        expect(request.uri).to eq(URI.parse('http://github.com:80' +
+                                            '/explore#trending'))
       end
 
       it_should_behave_like 'an empty request'
@@ -216,18 +215,18 @@ describe HTTY::Request do
         HTTY::Request.new 'github.com:123/search/deep?q=http&lang=en#content'
       end
 
-      it 'should have an HTTP URI for that query string and that fragment ' +
-         'of that path on that host on that port' do
-        request.uri.should == URI.parse('http://github.com:123'       +
-                                        '/search/deep?q=http&lang=en' +
-                                        '#content')
+      it 'should have an HTTP URI for that query string and that fragment of ' +
+         'that path on that host on that port' do
+        expect(request.uri).to eq(URI.parse('http://github.com:123'       +
+                                            '/search/deep?q=http&lang=en' +
+                                            '#content'))
       end
 
       it_should_behave_like 'an empty request'
     end
 
-    describe 'the HTTPS scheme, userinfo, a hostname, a port, a path, a ' +
-             'query string, and a fragment' do
+    describe 'the HTTPS scheme, userinfo, a hostname, a port, a path, a query ' +
+             'string, and a fragment' do
       let :request do
         HTTY::Request.new 'https://njonsson@github.com:123' +
                           '/search/deep?q=http&lang=en#content'
@@ -235,16 +234,16 @@ describe HTTY::Request do
 
       describe 'and without a response' do
         it 'should not have a response' do
-          request.response.should be_nil
+          expect(request.response).to be_nil
         end
 
         describe '-- and is untouched --' do
           it 'should have an HTTPS URI for that query string and that '   +
              'fragment of that path on that host on that port with that ' +
              'userinfo' do
-            request.uri.should == URI.parse('https://njonsson@github.com:123' +
-                                            '/search/deep?q=http&lang=en'     +
-                                            '#content')
+            expect(request.uri).to eq(URI.parse('https://njonsson@github.com:123' +
+                                                '/search/deep?q=http&lang=en'     +
+                                                '#content'))
           end
 
           it_should_behave_like 'an empty, authenticated request'
@@ -261,25 +260,26 @@ describe HTTY::Request do
             it 'should have an HTTP URI for the new query string and the new ' +
                'fragment of the new path on the new host on the new port '     +
                'with the new userinfo' do
-              request.uri.should == URI.parse('http://steve@mac.com:456'   +
-                                              '/archives/2010'             +
-                                              '?author=jobs&subject=html5' +
-                                              '#flames')
+              expect(request.uri).to eq(URI.parse('http://steve@mac.com:456'   +
+                                                  '/archives/2010'             +
+                                                  '?author=jobs&subject=html5' +
+                                                  '#flames'))
             end
 
             it 'should the expected Authorization header plus the default ' +
                'headers' do
-              request.headers.should == [['User-Agent',    'htty/' +
-                                                           HTTY::VERSION],
-                                         ['Authorization', 'Basic c3RldmU=']]
+              expect(request.headers).to eq([%W(User-Agent
+                                                htty/#{HTTY::VERSION}),
+                                             ['Authorization',
+                                              'Basic c3RldmU=']])
             end
 
             it 'should have no body' do
-              request.body.should be_nil
+              expect(request.body).to be_nil
             end
 
             it 'should have no response' do
-              request.response.should be_nil
+              expect(request.response).to be_nil
             end
           end
 
@@ -289,7 +289,7 @@ describe HTTY::Request do
             end
 
             it 'should have an HTTP URI for the new host' do
-              request.uri.should == URI.parse('http://mac.com:80/')
+              expect(request.uri).to eq(URI.parse('http://mac.com:80/'))
             end
 
             it_should_behave_like 'an empty request'
@@ -303,10 +303,10 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -318,10 +318,10 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, with the changed scheme' do
-              request.uri.should == URI.parse('http://njonsson@github.com'  +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('http://njonsson@github.com'  +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -335,10 +335,10 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -350,10 +350,10 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, with the changed scheme' do
-              request.uri.should == URI.parse('https://'                     +
-                                              'njonsson@gist.github.com:123' +
-                                              '/search/deep?q=http&lang=en'  +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://'                     +
+                                                  'njonsson@gist.github.com:123' +
+                                                  '/search/deep?q=http&lang=en'  +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -367,10 +367,10 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -382,10 +382,10 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, with the changed scheme' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':8888'                       +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':8888'                       +
+                                                  '/search/deep?q=http&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -399,10 +399,10 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, descending to the expected path' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep/foo'            +
-                                              '?q=http&lang=en#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep/foo'            +
+                                                  '?q=http&lang=en#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -414,9 +414,10 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, ascending to the expected path' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search?q=http&lang=en#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search?q=http&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -428,10 +429,10 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, changing to the expected path' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/foo/bar?q=http&lang=en'     +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/foo/bar?q=http&lang=en'     +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -445,11 +446,11 @@ describe HTTY::Request do
             end
 
             it 'should have a URI including the new query parameter' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                               ':123'                        +
-                                               '/search/deep'                +
-                                               '?q=http&lang=en&foo=bar'     +
-                                               '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep'                +
+                                                  '?q=http&lang=en&foo=bar'     +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -461,10 +462,10 @@ describe HTTY::Request do
             end
 
             it 'should have a URI with the new value of the query parameter' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=ruby&lang=en' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=ruby&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -477,10 +478,10 @@ describe HTTY::Request do
 
             it 'should have a URI with the new value of the second query ' +
                'parameter' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=fr' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http&lang=fr' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -494,10 +495,10 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -509,9 +510,9 @@ describe HTTY::Request do
             end
 
             it 'should have a URI missing the first query parameter' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?lang=en#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?lang=en#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -523,9 +524,9 @@ describe HTTY::Request do
             end
 
             it 'should have a URI missing the second query parameter' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -538,8 +539,9 @@ describe HTTY::Request do
           end
 
           it 'should have a URI having no query string' do
-            request.uri.should == URI.parse('https://njonsson@github.com:123' +
-                                            '/search/deep#content')
+            expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                ':123'                        +
+                                                '/search/deep#content'))
           end
 
           it_should_behave_like 'an empty, authenticated request'
@@ -552,10 +554,10 @@ describe HTTY::Request do
             end
 
             it 'should have an unchanged URI' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#content')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http&lang=en' +
+                                                  '#content'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -567,10 +569,10 @@ describe HTTY::Request do
             end
 
             it 'should have the same URI, with the changed fragment' do
-              request.uri.should == URI.parse('https://njonsson@github.com' +
-                                              ':123'                        +
-                                              '/search/deep?q=http&lang=en' +
-                                              '#details')
+              expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                  ':123'                        +
+                                                  '/search/deep?q=http&lang=en' +
+                                                  '#details'))
             end
 
             it_should_behave_like 'an empty, authenticated request'
@@ -583,8 +585,9 @@ describe HTTY::Request do
           end
 
           it 'should have the same URI, without fragment' do
-            request.uri.should == URI.parse('https://njonsson@github.com:123' +
-                                            '/search/deep?q=http&lang=en')
+            expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                ':123'                        +
+                                                '/search/deep?q=http&lang=en'))
           end
 
           it_should_behave_like 'an empty, authenticated request'
@@ -596,18 +599,19 @@ describe HTTY::Request do
           end
 
           it 'should have an unchanged URI' do
-            request.uri.should == URI.parse('https://njonsson@github.com:123' +
-                                            '/search/deep?q=http&lang=en'     +
-                                            '#content')
+            expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                ':123'                        +
+                                                '/search/deep?q=http&lang=en' +
+                                                '#content'))
           end
 
           describe '--' do
             it 'should have the header, plus the default headers' do
-              request.headers.should == [['User-Agent',    'htty/' +
-                                                           HTTY::VERSION],
-                                         ['Authorization', 'Basic ' +
-                                                           'bmpvbnNzb24='],
-                                         ['foo',           'bar']]
+              expect(request.headers).to eq([%W(User-Agent
+                                                htty/#{HTTY::VERSION}),
+                                             ['Authorization', 'Basic ' +
+                                                               'bmpvbnNzb24='],
+                                             %w(foo bar)])
             end
           end
 
@@ -618,10 +622,10 @@ describe HTTY::Request do
               end
 
               it 'should have only the default headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic ' +
-                                                             'bmpvbnNzb24=']]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                               ['Authorization',
+                                                'Basic bmpvbnNzb24=']])
               end
             end
 
@@ -631,11 +635,11 @@ describe HTTY::Request do
               end
 
               it 'should have the header, plus the default headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic ' +
-                                                             'bmpvbnNzb24='],
-                                           ['foo',           'bar']]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                               ['Authorization',
+                                                'Basic bmpvbnNzb24='],
+                                               %w(foo bar)])
               end
             end
           end
@@ -646,7 +650,7 @@ describe HTTY::Request do
             end
 
             it 'should have no headers' do
-              request.headers.should be_empty
+              expect(request.headers).to be_empty
             end
           end
         end
@@ -657,22 +661,22 @@ describe HTTY::Request do
           end
 
           it 'should have an unchanged URI' do
-            request.uri.should == URI.parse('https://njonsson@github.com:123' +
-                                            '/search/deep?q=http&lang=en'     +
-                                            '#content')
+            expect(request.uri).to eq(URI.parse('https://njonsson@github.com:123' +
+                                                '/search/deep?q=http&lang=en'     +
+                                                '#content'))
           end
 
           describe '--' do
             it 'should have the cookie' do
-              request.cookies.should == [%w(foo bar)]
+              expect(request.cookies).to eq([%w(foo bar)])
             end
 
             it 'should have the cookie header, plus the default headers' do
-              request.headers.should == [['User-Agent',    'htty/' +
-                                                           HTTY::VERSION],
-                                         ['Authorization', 'Basic ' +
-                                                           'bmpvbnNzb24='],
-                                         ['Cookie',        'foo=bar']]
+              expect(request.headers).to eq([%W(User-Agent
+                                                htty/#{HTTY::VERSION}),
+                                             ['Authorization',
+                                              'Basic bmpvbnNzb24='],
+                                             %w(Cookie foo=bar)])
             end
           end
 
@@ -683,17 +687,16 @@ describe HTTY::Request do
               end
 
               it 'should have the new cookie, plus the old cookie' do
-                request.cookies.should == [%w(foo bar), %w(foo qux)]
+                expect(request.cookies).to eq([%w(foo bar), %w(foo qux)])
               end
 
               it 'should have the new cookie header, plus the default ' +
                  'headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic ' +
-                                                             'bmpvbnNzb24='],
-                                           ['Cookie',        'foo=bar; ' +
-                                                             'foo=qux']]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                               ['Authorization',
+                                                'Basic bmpvbnNzb24='],
+                                               ['Cookie', 'foo=bar; foo=qux']])
               end
             end
 
@@ -703,17 +706,16 @@ describe HTTY::Request do
               end
 
               it 'should have the new cookie' do
-                request.cookies.should == [%w(foo bar), %w(baz qux)]
+                expect(request.cookies).to eq([%w(foo bar), %w(baz qux)])
               end
 
               it 'should have the new cookie header, plus the default ' +
                  'headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic ' +
-                                                             'bmpvbnNzb24='],
-                                           ['Cookie',        'foo=bar; ' +
-                                                             'baz=qux']]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                               ['Authorization',
+                                                'Basic bmpvbnNzb24='],
+                                               ['Cookie', 'foo=bar; baz=qux']])
               end
             end
 
@@ -723,16 +725,16 @@ describe HTTY::Request do
               end
 
               it 'should have the new cookie' do
-                request.cookies.should == [['foo', 'bar'], ['baz', nil]]
+                expect(request.cookies).to eq([['foo', 'bar'], ['baz', nil]])
               end
 
               it 'should have the new cookie header, plus the default ' +
                  'headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic ' +
-                                                             'bmpvbnNzb24='],
-                                           ['Cookie',        'foo=bar; baz']]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                               ['Authorization',
+                                                'Basic bmpvbnNzb24='],
+                                               ['Cookie', 'foo=bar; baz']])
               end
             end
           end
@@ -744,14 +746,14 @@ describe HTTY::Request do
               end
 
               it 'should have no cookie' do
-                request.cookies.should be_empty
+                expect(request.cookies).to be_empty
               end
 
               it 'should have only the default headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic ' +
-                                                             'bmpvbnNzb24=']]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                               ['Authorization',
+                                                'Basic bmpvbnNzb24=']])
               end
             end
 
@@ -761,15 +763,15 @@ describe HTTY::Request do
               end
 
               it 'should have the cookie' do
-                request.cookies.should == [%w(foo bar)]
+                expect(request.cookies).to eq([%w(foo bar)])
               end
 
               it 'should have the cookie header, plus the default headers' do
-                request.headers.should == [['User-Agent',    'htty/' +
-                                                             HTTY::VERSION],
-                                           ['Authorization', 'Basic ' +
-                                                             'bmpvbnNzb24='],
-                                           ['Cookie',        'foo=bar']]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                               ['Authorization',
+                                                'Basic bmpvbnNzb24='],
+                                               %w(Cookie foo=bar)])
               end
             end
           end
@@ -780,14 +782,14 @@ describe HTTY::Request do
             end
 
             it 'should have no cookies' do
-              request.cookies.should be_empty
+              expect(request.cookies).to be_empty
             end
 
             it 'should have only the default headers' do
-              request.headers.should == [['User-Agent',    'htty/' +
-                                                           HTTY::VERSION],
-                                         ['Authorization', 'Basic ' +
-                                                           'bmpvbnNzb24=']]
+              expect(request.headers).to eq([%W(User-Agent
+                                                htty/#{HTTY::VERSION}),
+                                             ['Authorization',
+                                              'Basic bmpvbnNzb24=']])
             end
           end
 
@@ -798,13 +800,13 @@ describe HTTY::Request do
               end
 
               it 'should have the cookie' do
-                request.cookies.should == [%w(foo bar)]
+                expect(request.cookies).to eq([%w(foo bar)])
               end
 
               it 'should have the cookie header, plus the default headers' do
-                request.headers.should == [['User-Agent', 'htty/' +
-                                                          HTTY::VERSION],
-                                           ['Cookie',     'foo=bar']]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                               %w(Cookie foo=bar)])
               end
             end
 
@@ -814,13 +816,13 @@ describe HTTY::Request do
               end
 
               it 'should have no cookies' do
-                request.cookies.should == []
-                request.cookies.should be_empty
+                expect(request.cookies).to eq([])
+                expect(request.cookies).to be_empty
               end
 
               it 'should have only the default headers' do
-                request.headers.should == [['User-Agent',
-                                            "htty/#{HTTY::VERSION}"]]
+                expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION})])
               end
             end
           end
@@ -833,15 +835,15 @@ describe HTTY::Request do
 
           describe '--' do
             it 'should have the cookie' do
-              request.cookies.should == [%w(foo bar=baz=qux)]
+              expect(request.cookies).to eq([%w(foo bar=baz=qux)])
             end
 
             it 'should have the cookie header, plus the default headers' do
-              request.headers.should == [['User-Agent',    'htty/' +
-                                                           HTTY::VERSION],
-                                         ['Authorization', 'Basic ' +
-                                                           'bmpvbnNzb24='],
-                                         ['Cookie',        'foo=bar=baz=qux']]
+              expect(request.headers).to eq([%W(User-Agent
+                                                  htty/#{HTTY::VERSION}),
+                                             ['Authorization',
+                                              'Basic bmpvbnNzb24='],
+                                             %w(Cookie foo=bar=baz=qux)])
             end
           end
         end
@@ -852,32 +854,32 @@ describe HTTY::Request do
           end
 
           it 'should have an unchanged URI' do
-            request.uri.should == URI.parse('https://njonsson@github.com:123' +
-                                            '/search/deep?q=http&lang=en'     +
-                                            '#content')
+            expect(request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                ':123'                        +
+                                                '/search/deep?q=http&lang=en' +
+                                                '#content'))
           end
 
           describe '--' do
             it 'should have the body' do
-              request.body.should == 'foo'
+              expect(request.body).to eq('foo')
             end
 
             it 'should have only the default headers' do
-              request.headers.should == [['User-Agent',    'htty/' +
-                                                           HTTY::VERSION],
-                                         ['Authorization', 'Basic ' +
-                                                           'bmpvbnNzb24=']]
+              expect(request.headers).to eq([%W(User-Agent
+                                                htty/#{HTTY::VERSION}),
+                                             ['Authorization',
+                                              'Basic bmpvbnNzb24=']])
             end
 
             it "should have the expected 'Content-Length' header, plus the " +
                "'User-Agent' header if we do not exclude the "               +
                "'Content-Length' header" do
-              request.headers(true).should == [['User-Agent',     'htty/' +
-                                                                  HTTY::VERSION],
-                                               ['Authorization',  'Basic '   +
-                                                                  'bmpvbnNz' +
-                                                                  'b24='],
-                                               ['Content-Length', '3']]
+              expect(request.headers(true)).to eq([%W(User-Agent
+                                                      htty/#{HTTY::VERSION}),
+                                                   ['Authorization',
+                                                    'Basic bmpvbnNzb24='],
+                                                   %w(Content-Length 3)])
             end
           end
 
@@ -887,14 +889,14 @@ describe HTTY::Request do
             end
 
             it 'should have no body' do
-              request.body.should be_nil
+              expect(request.body).to be_nil
             end
 
             it 'should have only the default headers' do
-              request.headers.should == [['User-Agent',    'htty/' +
-                                                           HTTY::VERSION],
-                                         ['Authorization', 'Basic ' +
-                                                           'bmpvbnNzb24=']]
+              expect(request.headers).to eq([%W(User-Agent
+                                                htty/#{HTTY::VERSION}),
+                                             ['Authorization',
+                                              'Basic bmpvbnNzb24=']])
             end
           end
         end
@@ -910,24 +912,24 @@ describe HTTY::Request do
         end
 
         it 'should not affect the URI' do
-          request.uri.should == URI.parse('https://njonsson@github.com:123' +
-                                          '/search/deep?q=http&lang=en'     +
-                                          '#content')
+          expect(request.uri).to eq(URI.parse('https://njonsson@github.com:123' +
+                                              '/search/deep?q=http&lang=en'     +
+                                              '#content'))
         end
 
         it 'should not affect the headers' do
-          request.headers.should == [['User-Agent',    'htty/' +
-                                                       HTTY::VERSION],
-                                     ['Authorization', 'Basic ' +
-                                                       'bmpvbnNzb24=']]
+          expect(request.headers).to eq([%W(User-Agent
+                                            htty/#{HTTY::VERSION}),
+                                         ['Authorization',
+                                          'Basic bmpvbnNzb24=']])
         end
 
         it 'should not affect the body' do
-          request.body.should be_nil
+          expect(request.body).to be_nil
         end
 
         it 'should not affect the response' do
-          request.response.should == response
+          expect(request.response).to eq(response)
         end
 
         describe '-- when sent #address with a different hostname --' do
@@ -936,11 +938,11 @@ describe HTTY::Request do
           end
 
           it 'should return a request with an HTTP URI for the new host' do
-            new_request.uri.should == URI.parse('http://mac.com:80/')
+            expect(new_request.uri).to eq(URI.parse('http://mac.com:80/'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -951,14 +953,14 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'scheme' do
-            new_request.uri.should == URI.parse('http://njonsson@github.com'  +
-                                                ':123'                        +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#content')
+            expect(new_request.uri).to eq(URI.parse('http://njonsson@github.com'  +
+                                                    ':123'                        +
+                                                    '/search/deep?q=http&lang=en' +
+                                                    '#content'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -969,15 +971,15 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'host' do
-            new_request.uri.should == URI.parse('https://'                    +
-                                                'njonsson@gist.github.com'    +
-                                                ':123'                        +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#content')
+            expect(new_request.uri).to eq(URI.parse('https://'                    +
+                                                    'njonsson@gist.github.com'    +
+                                                    ':123'                        +
+                                                    '/search/deep?q=http&lang=en' +
+                                                    '#content'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -988,14 +990,14 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'port' do
-            new_request.uri.should == URI.parse('https://njonsson@github.com' +
-                                                ':8888'                       +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#content')
+            expect(new_request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                    ':8888'                       +
+                                                    '/search/deep?q=http&lang=en' +
+                                                    '#content'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -1006,14 +1008,14 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'path' do
-            new_request.uri.should == URI.parse('https://njonsson@github.com' +
-                                                ':123'                        +
-                                                '/search/deep/foo'            +
-                                                '?q=http&lang=en#content')
+            expect(new_request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                    ':123'                        +
+                                                    '/search/deep/foo'            +
+                                                    '?q=http&lang=en#content'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -1024,15 +1026,15 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the new query ' +
              'parameter' do
-            new_request.uri.should == URI.parse('https://njonsson@github.com' +
-                                                ':123'                        +
-                                                '/search/deep'                +
-                                                '?q=http&lang=en&foo=bar'     +
-                                                '#content')
+            expect(new_request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                    ':123'                        +
+                                                    '/search/deep'                +
+                                                    '?q=http&lang=en&foo=bar'     +
+                                                    '#content'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -1044,13 +1046,13 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI missing the first ' +
              'query parameter' do
-            new_request.uri.should == URI.parse('https://njonsson@github.com' +
-                                                ':123'                        +
-                                                '/search/deep?lang=en#content')
+            expect(new_request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                    ':123'                        +
+                                                    '/search/deep?lang=en#content'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -1061,13 +1063,13 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having no query ' +
              'string' do
-            new_request.uri.should == URI.parse('https://'                +
-                                                'njonsson@github.com:123' +
-                                                '/search/deep#content')
+            expect(new_request.uri).to eq(URI.parse('https://'                +
+                                                    'njonsson@github.com:123' +
+                                                    '/search/deep#content'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -1078,14 +1080,14 @@ describe HTTY::Request do
 
           it 'should return a request with the same URI having the changed ' +
              'fragment' do
-            new_request.uri.should == URI.parse('https://njonsson@github.com' +
-                                                ':123'                        +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#details')
+            expect(new_request.uri).to eq(URI.parse('https://njonsson@github.com' +
+                                                    ':123'                        +
+                                                    '/search/deep?q=http&lang=en' +
+                                                    '#details'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -1095,13 +1097,13 @@ describe HTTY::Request do
           end
 
           it 'should return a request with the same URI missing the fragment' do
-            new_request.uri.should == URI.parse('https://'                +
-                                                'njonsson@github.com:123' +
-                                                '/search/deep?q=http&lang=en')
+            expect(new_request.uri).to eq(URI.parse('https://'                +
+                                                    'njonsson@github.com:123' +
+                                                    '/search/deep?q=http&lang=en'))
           end
 
           it 'should return a request without a response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
         end
 
@@ -1111,28 +1113,28 @@ describe HTTY::Request do
           end
 
           it 'should return a request with an unchanged URI' do
-            new_request.uri.should == URI.parse('https://'                    +
-                                                'njonsson@github.com:123'     +
-                                                '/search/deep?q=http&lang=en' +
-                                                '#content')
+            expect(new_request.uri).to eq(URI.parse('https://'                    +
+                                                    'njonsson@github.com:123'     +
+                                                    '/search/deep?q=http&lang=en' +
+                                                    '#content'))
           end
 
           it 'should return a request with no response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
 
           describe '--' do
             it 'should return a request with the header, plus the default ' +
                'headers' do
-              new_request.headers.should == [['User-Agent',    'htty/' +
-                                                               HTTY::VERSION],
-                                             ['Authorization', 'Basic ' +
-                                                               'bmpvbnNzb24='],
-                                             ['foo',           'bar']]
+              expect(new_request.headers).to eq([%W(User-Agent
+                                                    htty/#{HTTY::VERSION}),
+                                                 ['Authorization',
+                                                  'Basic bmpvbnNzb24='],
+                                                 %w(foo bar)])
             end
 
             it 'should return a request without a response' do
-              new_request.response.should be_nil
+              expect(new_request.response).to be_nil
             end
           end
 
@@ -1143,11 +1145,10 @@ describe HTTY::Request do
               end
 
               it 'should return a request with only the default headers' do
-                new_request.headers.should == [['User-Agent',    'htty/' +
-                                                                 HTTY::VERSION],
-                                               ['Authorization', 'Basic '     +
-                                                                 'bmpvbnNzb2' +
-                                                                 '4=']]
+                expect(new_request.headers).to eq([%W(User-Agent
+                                                      htty/#{HTTY::VERSION}),
+                                                   ['Authorization',
+                                                    'Basic bmpvbnNzb24=']])
               end
             end
           end
@@ -1158,7 +1159,7 @@ describe HTTY::Request do
             end
 
             it 'should return a request with no headers' do
-              new_request.headers.should be_empty
+              expect(new_request.headers).to be_empty
             end
           end
         end
@@ -1169,42 +1170,40 @@ describe HTTY::Request do
           end
 
           it 'should return a request with an unchanged URI' do
-            new_request.uri.should == URI.parse('https://'                    +
+            expect(new_request.uri).to eq(URI.parse('https://'                +
                                                 'njonsson@github.com:123'     +
                                                 '/search/deep?q=http&lang=en' +
-                                                '#content')
+                                                '#content'))
           end
 
           it 'should return a request with no response' do
-            new_request.response.should be_nil
+            expect(new_request.response).to be_nil
           end
 
           describe '--' do
             it 'should return a request with the body' do
-              new_request.body.should == 'foo'
+              expect(new_request.body).to eq('foo')
             end
 
             it 'should return a request with only the default headers' do
-              new_request.headers.should == [['User-Agent',    'htty/' +
-                                                               HTTY::VERSION],
-                                             ['Authorization', 'Basic '     +
-                                                               'bmpvbnNzb2' +
-                                                               '4=']]
+              expect(new_request.headers).to eq([%W(User-Agent
+                                                    htty/#{HTTY::VERSION}),
+                                                 ['Authorization',
+                                                  'Basic bmpvbnNzb24=']])
             end
 
             it "should return a request with the expected 'Content-Length' " +
                "header, plus the 'User-Agent' header if we do not exclude "  +
                "the 'Content-Length' header" do
-              new_request.headers(true).should == [['User-Agent',    'htty/' +
-                                                                     HTTY::VERSION],
-                                                   ['Authorization', 'Basic ' +
-                                                                     'bmpvbn' +
-                                                                     'Nzb24='],
-                                                   ['Content-Length', '3']]
+              expect(new_request.headers(true)).to eq([%W(User-Agent
+                                                          htty/#{HTTY::VERSION}),
+                                                       ['Authorization',
+                                                        'Basic bmpvbnNzb24='],
+                                                       %w(Content-Length 3)])
             end
 
             it 'should return a request without a response' do
-              new_request.response.should be_nil
+              expect(new_request.response).to be_nil
             end
           end
 
@@ -1214,15 +1213,14 @@ describe HTTY::Request do
             end
 
             it 'should return a request with no body' do
-              new_request.body.should be_nil
+              expect(new_request.body).to be_nil
             end
 
             it 'should return a request with only the default headers' do
-              new_request.headers.should == [['User-Agent',    'htty/' +
-                                                               HTTY::VERSION],
-                                             ['Authorization', 'Basic '     +
-                                                               'bmpvbnNzb2' +
-                                                               '4=']]
+              expect(new_request.headers).to eq([%W(User-Agent
+                                                    htty/#{HTTY::VERSION}),
+                                                 ['Authorization',
+                                                  'Basic bmpvbnNzb24=']])
             end
           end
         end

@@ -1,36 +1,34 @@
-# -*- encoding: utf-8 -*-
-$:.push File.expand_path('../lib', __FILE__)
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'htty/version'
 
-Gem::Specification.new do |s|
-  s.name        = 'htty'
-  s.version     = HTTY::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Nils Jonsson']
-  s.email       = ['htty@nilsjonsson.com']
-  s.homepage    = 'http://htty.github.io'
-  s.summary     = 'The HTTP TTY'
-  s.description = <<-end_description.gsub(/^\s+/, '').chomp
-                  htty is a console application for interacting with web servers.
-                  It's a fun way to explore web APIs and to learn the ins and
-                  outs of HTTP.
-                  end_description
-  s.license     = 'MIT'
+Gem::Specification.new do |spec|
+  spec.name        = 'htty'
+  spec.version     = HTTY::VERSION
+  spec.authors     = ['Nils Jonsson']
+  spec.email       = ['nils@alumni.rice.edu']
 
-  s.required_ruby_version = '>= 1.8.7'
+  spec.summary     = 'The HTTP TTY'
+  spec.description = <<-end_description.gsub(/^\s+/, '').chomp
+                       htty is a console application for interacting with web
+                       servers. It's a fun way to explore web APIs and to learn
+                       the ins and outs of HTTP.
+                     end_description
+  spec.homepage    = 'http://htty.github.io'
+  spec.license     = 'MIT'
 
-  s.add_dependency             'mime-types', '~> 1'
+  spec.required_ruby_version = '>= 1.8.7'
 
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec', '~> 2'
+  spec.add_dependency             'mime-types', '~>  1'
+  spec.add_development_dependency 'bundler',    '~>  1'
+  spec.add_development_dependency 'rake',       '~> 10'
+  spec.add_development_dependency 'rspec',      '~>  3'
 
-  s.rubyforge_project = 'htty'
-  s.has_rdoc          = true
-
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map do |f|
-                      File.basename f
-                    end
-  s.require_paths = %w(lib)
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+                         f.match(%r{^(test|spec|features)/})
+                       end
+  spec.bindir        = 'exe'
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename f }
+  spec.require_paths = %w(lib)
 end

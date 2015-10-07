@@ -1,7 +1,6 @@
-require 'spec_helper'
 require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/cli/url_escaping")
 
-describe HTTY::CLI::UrlEscaping do
+RSpec.describe HTTY::CLI::UrlEscaping do
   subject do
     o = Object.new.extend(HTTY::CLI::UrlEscaping)
     o.stub(:say)
@@ -17,7 +16,7 @@ describe HTTY::CLI::UrlEscaping do
       end
 
       it 'should warn the user' do
-        subject.should_receive(:say).once
+        expect(subject).to receive(:say).once
         escape(escaped_string)
       end
     end
@@ -30,7 +29,7 @@ describe HTTY::CLI::UrlEscaping do
       end
 
       it 'should not warn the user' do
-        subject.should_receive(:say).never
+        expect(subject).not_to receive(:say)
         escape(unescaped_string)
       end
     end
@@ -43,7 +42,7 @@ describe HTTY::CLI::UrlEscaping do
       end
 
       it 'should not warn the user' do
-        subject.should_receive(:say).never
+        expect(subject).not_to receive(:say)
         escape(unescaped_string)
       end
     end
@@ -57,11 +56,11 @@ describe HTTY::CLI::UrlEscaping do
   end
 
   def should_escape(s)
-    escape(s).should_not == [s]
+    expect(escape(s)).not_to == [s]
   end
 
   def should_not_escape(s)
-    escape(s).should == [s]
+    expect(escape(s)).to eq([s])
   end
 
   def escape(s)

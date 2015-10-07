@@ -191,6 +191,13 @@ Report defects and feature requests on [GitHub Issues](http://github.com/htty/ht
 
 Your patches are welcome, and you will receive attribution here for good stuff. Fork [the official _htty_ repository](http://github.com/htty/htty "htty’s ‘htty’ repository at GitHub") and send a pull request.
 
+Development
+-----------
+
+After cloning the repository, `bin/setup` to install dependencies. Then `rake` to run the tests. You can also `bin/console` to get an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, `bundle exec rake install`. To release a new version, update the version number in _lib/htty/version.rb_, and then `bundle exec rake release`, which will create a Git tag for the version, push Git commits and tags, and push the _.gem_ file to [RubyGems.org](http://rubygems.org).
+
 News and information
 ====================
 

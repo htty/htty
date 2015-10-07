@@ -21,9 +21,9 @@ module HTTY::CookiesUtil
     cookies = Array(cookies)
     return nil if cookies.empty?
 
-    cookies.collect do |name, value|
+    cookies.collect { |name, value|
       [name, value].compact.join COOKIE_NAME_VALUE_DELIMITER
-    end.join COOKIES_DELIMITER
+    }.join COOKIES_DELIMITER
   end
 
 protected

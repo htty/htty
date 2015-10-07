@@ -54,15 +54,15 @@ private
                            'Inspecting Responses',
                            'Preferences',
                            nil]
-    HTTY::CLI::Commands.select do |c|
+    HTTY::CLI::Commands.select { |c|
       # Filter out commands not yet implemented.
       c.instance_methods.collect(&:to_sym).include?(:perform) ||
       (c.alias_for &&
        c.alias_for.instance_methods.collect(&:to_sym).include?(:perform))
-    end.group_by(&:category).sort_by do |category, commands|
+    }.group_by(&:category).sort_by { |category, commands|
       # Group commands by category and give the categories a custom order.
       categories_in_order.index(category) || 0
-    end.each do |category, commands|
+    }.each do |category, commands|
       category ||= 'Miscellaneous'
       puts
       puts((' ' * ((80 - category.length) / 2)) +
