@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '~> 2'
 
+  spec.add_dependency             'autoloaded',                '~>  2'
   spec.add_dependency             'mime-types',                '~>  2'
   spec.add_development_dependency 'bundler',                   '~>  1'
   spec.add_development_dependency 'codeclimate-test-reporter', '~>  0'

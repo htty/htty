@@ -1,15 +1,12 @@
+require 'autoloaded'
 require 'htty'
 
 # Encapsulates the command-line interface to _htty_.
 class HTTY::CLI
 
-  autoload :BodyOpenCommand,   'htty/cli/body_open_command'
-  autoload :Command,           'htty/cli/command'
-  autoload :Commands,          'htty/cli/commands'
-  autoload :Display,           'htty/cli/display'
-  autoload :HTTPMethodCommand, 'htty/cli/http_method_command'
-  autoload :InputDevice,       'htty/cli/input_device'
-  autoload :UrlEscaping,       'htty/cli/url_escaping'
+  ::Autoloaded.class do |autoloaded|
+    autoloaded.with :HTTPMethodCommand
+  end
 
   include HTTY::CLI::Display
 
