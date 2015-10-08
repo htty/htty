@@ -3,7 +3,11 @@ source 'https://rubygems.org'
 gemspec
 
 group :debug do
-  gem   'pry-byebug',                '~> 3'
+  gem   'pry-byebug',                '~> 3',                    :platforms => [:mri_20,
+                                                                               :mri_21,
+                                                                               :mri_22]
+  gem   'pry-debugger',              '~> 0',                    :platforms => [:mri_18,
+                                                                               :mri_19]
 end
 
 group :development do
@@ -21,8 +25,14 @@ group :doc do
 end
 
 group :tooling do
-  gem   'guard-rspec',               '~> 4', :require => false
+  gem   'guard-rspec',               '~> 4', :require => false, :platforms => [:mri_19,
+                                                                               :mri_20,
+                                                                               :mri_21,
+                                                                               :mri_22]
   if RUBY_PLATFORM =~ /darwin/i
-    gem 'rb-fsevent',                '~> 0', :require => false
+    gem 'rb-fsevent',                '~> 0', :require => false, :platforms => [:mri_19,
+                                                                               :mri_20,
+                                                                               :mri_21,
+                                                                               :mri_22]
   end
 end
