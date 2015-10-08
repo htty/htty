@@ -1,15 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../http_method_command")
-require File.expand_path("#{File.dirname __FILE__}/http_get")
-require File.expand_path("#{File.dirname __FILE__}/http_patch")
-require File.expand_path("#{File.dirname __FILE__}/http_post")
-require File.expand_path("#{File.dirname __FILE__}/http_put")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _http-delete_ command.
 class HTTY::CLI::Commands::HttpDelete < HTTY::CLI::Command

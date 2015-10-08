@@ -1,6 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset")
+require 'htty/cli/commands/query_unset'
+require 'htty/session'
 
 RSpec.describe HTTY::CLI::Commands::QueryUnset do
   let :klass do

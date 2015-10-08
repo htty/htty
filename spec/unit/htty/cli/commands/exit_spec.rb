@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/exit")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/quit")
+require 'htty/cli/commands/exit'
+require 'htty/cli/commands/quit'
 
 RSpec.describe HTTY::CLI::Commands::Exit do
   describe 'class' do

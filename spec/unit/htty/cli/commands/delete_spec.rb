@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/delete")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_delete")
+require 'htty/cli/commands/delete'
+require 'htty/cli/commands/http_delete'
 
 RSpec.describe HTTY::CLI::Commands::Delete do
   describe 'class' do

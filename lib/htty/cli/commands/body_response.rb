@@ -1,15 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../no_response_error")
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/body_request")
-require File.expand_path("#{File.dirname __FILE__}/body_response_open")
-require File.expand_path("#{File.dirname __FILE__}/headers_response")
-require File.expand_path("#{File.dirname __FILE__}/status")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _body-response_ command.
 class HTTY::CLI::Commands::BodyResponse < HTTY::CLI::Command

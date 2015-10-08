@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/host_set")
+require 'htty/cli/commands/host_set'
+require 'htty/cli/commands/address'
 
 RSpec.describe HTTY::CLI::Commands::HostSet do
   describe 'class' do

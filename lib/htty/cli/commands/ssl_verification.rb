@@ -1,12 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../preferences")
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../display")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _ssl-verification_ command.
 class HTTY::CLI::Commands::SslVerification < HTTY::CLI::Command

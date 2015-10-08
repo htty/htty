@@ -1,6 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/request")
-
-module HTTY; end
+require 'htty'
 
 # Encapsulates an _htty_ session.
 class HTTY::Session

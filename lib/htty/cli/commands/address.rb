@@ -1,17 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/fragment_set")
-require File.expand_path("#{File.dirname __FILE__}/host_set")
-require File.expand_path("#{File.dirname __FILE__}/path_set")
-require File.expand_path("#{File.dirname __FILE__}/port_set")
-require File.expand_path("#{File.dirname __FILE__}/query_set")
-require File.expand_path("#{File.dirname __FILE__}/scheme_set")
-require File.expand_path("#{File.dirname __FILE__}/userinfo_set")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _address_ command.
 class HTTY::CLI::Commands::Address < HTTY::CLI::Command

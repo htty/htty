@@ -1,16 +1,11 @@
+require 'htty'
+
 begin
   require 'mime/types'
 rescue LoadError
   require 'rubygems'
   retry
 end
-require File.expand_path("#{File.dirname __FILE__}/../platform")
-require File.expand_path("#{File.dirname __FILE__}/../tempfile_preserving_extname")
-require File.expand_path("#{File.dirname __FILE__}/display")
-
-module HTTY; end
-
-class HTTY::CLI; end
 
 # Encapsulates behavior common to all HTTY::CLI::Command subclasses that open
 # body content in an external viewer program.

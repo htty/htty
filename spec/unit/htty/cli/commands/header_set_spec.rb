@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/header_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_set")
+require 'htty/cli/commands/header_set'
+require 'htty/cli/commands/headers_set'
 
 RSpec.describe HTTY::CLI::Commands::HeaderSet do
   describe 'class' do

@@ -1,6 +1,6 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/fragment_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/fragment_unset")
+require 'htty/cli/commands/fragment_set'
+require 'htty/cli/commands/address'
+require 'htty/cli/commands/fragment_unset'
 
 RSpec.describe HTTY::CLI::Commands::FragmentSet do
   describe 'class' do

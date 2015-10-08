@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_clear")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset_all")
+require 'htty/cli/commands/query_clear'
+require 'htty/cli/commands/query_unset_all'
 
 RSpec.describe HTTY::CLI::Commands::QueryClear do
   describe 'class' do

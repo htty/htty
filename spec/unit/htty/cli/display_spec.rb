@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../lib/htty/headers")
-require File.expand_path("#{File.dirname __FILE__}/../../../../lib/htty/cli/display")
+require 'htty/cli/display'
+require 'htty/headers'
 
 RSpec.describe HTTY::CLI::Display do
   let(:display) {Class.new.new.extend(HTTY::CLI::Display)}

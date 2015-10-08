@@ -1,9 +1,9 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_add")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_remove")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset_all")
+require 'htty/cli/commands/query_remove'
+require 'htty/cli/commands/address'
+require 'htty/cli/commands/query_add'
+require 'htty/cli/commands/query_set'
+require 'htty/cli/commands/query_unset'
+require 'htty/cli/commands/query_unset_all'
 
 RSpec.describe HTTY::CLI::Commands::QueryRemove do
   describe 'class' do

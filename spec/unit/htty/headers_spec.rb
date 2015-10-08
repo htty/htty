@@ -1,4 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/headers")
+require 'htty/headers'
 
 RSpec.describe HTTY::Headers do
   describe 'that is empty' do

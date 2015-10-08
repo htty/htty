@@ -1,10 +1,10 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/follow")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_delete")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_get")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_patch")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_post")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_put")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/patch")
+require 'htty/cli/commands/http_patch'
+require 'htty/cli/commands/follow'
+require 'htty/cli/commands/http_delete'
+require 'htty/cli/commands/http_get'
+require 'htty/cli/commands/http_post'
+require 'htty/cli/commands/http_put'
+require 'htty/cli/commands/patch'
 
 RSpec.describe HTTY::CLI::Commands::HttpPatch do
   describe 'class' do

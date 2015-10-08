@@ -1,17 +1,7 @@
 require 'base64'
+require 'htty'
 require 'pathname'
 require 'uri'
-require File.expand_path("#{File.dirname __FILE__}/../htty/version")
-require File.expand_path("#{File.dirname __FILE__}/cookies_util")
-require File.expand_path("#{File.dirname __FILE__}/no_location_header_error")
-require File.expand_path("#{File.dirname __FILE__}/no_response_error")
-require File.expand_path("#{File.dirname __FILE__}/no_set_cookie_header_error")
-require File.expand_path("#{File.dirname __FILE__}/uri")
-require File.expand_path("#{File.dirname __FILE__}/payload")
-require File.expand_path("#{File.dirname __FILE__}/requests_util")
-require File.expand_path("#{File.dirname __FILE__}/response")
-
-module HTTY; end
 
 # Encapsulates an HTTP(S) request.
 class HTTY::Request < HTTY::Payload

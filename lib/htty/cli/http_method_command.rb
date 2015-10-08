@@ -1,13 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/display")
-# TODO: See if we can avoid circular references without omitting these 'require' statements
-# require File.expand_path("#{File.dirname __FILE__}/../request")
-# require File.expand_path("#{File.dirname __FILE__}/commands/cookies_use")
-# require File.expand_path("#{File.dirname __FILE__}/commands/follow")
-# require File.expand_path("#{File.dirname __FILE__}/commands/ssl_verification_off")
-
-module HTTY; end
-
-class HTTY::CLI; end
+require 'htty'
 
 # Encapsulates behavior common to all HTTP-method-oriented HTTY::CLI::Command
 # subclasses.

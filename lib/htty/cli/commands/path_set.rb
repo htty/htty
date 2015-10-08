@@ -1,12 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../url_escaping")
-require File.expand_path("#{File.dirname __FILE__}/address")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _path-set_ command.
 class HTTY::CLI::Commands::PathSet < HTTY::CLI::Command

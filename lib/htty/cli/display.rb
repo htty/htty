@@ -1,6 +1,4 @@
-module HTTY; end
-
-class HTTY::CLI; end
+require 'htty'
 
 # Encapsulates the display logic of _htty_'s command-line interface.
 module HTTY::CLI::Display

@@ -1,4 +1,4 @@
-module HTTY; end
+require 'htty'
 
 # Provides support for marshaling HTTP cookies to and from strings.
 module HTTY::CookiesUtil

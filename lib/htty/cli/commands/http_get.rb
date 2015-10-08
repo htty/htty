@@ -1,16 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../http_method_command")
-require File.expand_path("#{File.dirname __FILE__}/follow")
-require File.expand_path("#{File.dirname __FILE__}/http_delete")
-require File.expand_path("#{File.dirname __FILE__}/http_patch")
-require File.expand_path("#{File.dirname __FILE__}/http_post")
-require File.expand_path("#{File.dirname __FILE__}/http_put")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _http-get_ command.
 class HTTY::CLI::Commands::HttpGet < HTTY::CLI::Command

@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_clear")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_remove_all")
+require 'htty/cli/commands/cookies_clear'
+require 'htty/cli/commands/cookies_remove_all'
 
 RSpec.describe HTTY::CLI::Commands::CookiesClear do
   describe 'class' do

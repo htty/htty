@@ -1,11 +1,11 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/fragment_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/host_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/path_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/port_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/scheme_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/userinfo_set")
+require 'htty/cli/commands/address'
+require 'htty/cli/commands/fragment_set'
+require 'htty/cli/commands/host_set'
+require 'htty/cli/commands/path_set'
+require 'htty/cli/commands/port_set'
+require 'htty/cli/commands/query_set'
+require 'htty/cli/commands/scheme_set'
+require 'htty/cli/commands/userinfo_set'
 
 RSpec.describe HTTY::CLI::Commands::Address do
   describe 'class' do

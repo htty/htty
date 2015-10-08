@@ -1,4 +1,4 @@
-module HTTY; end
+require 'htty'
 
 # Indicates that an header could not be found in a HTTY::Payload
 class HTTY::NoHeaderError < StandardError

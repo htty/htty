@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/session")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_add")
+require 'htty/cli/commands/query_add'
+require 'htty/session'
 
 RSpec.describe HTTY::CLI::Commands::QueryAdd do
   let :klass do

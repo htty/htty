@@ -1,14 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../response")
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../display")
-require File.expand_path("#{File.dirname __FILE__}/body_response")
-require File.expand_path("#{File.dirname __FILE__}/headers_response")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _status_ command.
 class HTTY::CLI::Commands::Status < HTTY::CLI::Command

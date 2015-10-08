@@ -1,10 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _form-add_ command.
 class HTTY::CLI::Commands::FormAdd < HTTY::CLI::Command

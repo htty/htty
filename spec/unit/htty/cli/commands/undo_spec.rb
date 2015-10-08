@@ -1,4 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/undo")
+require 'htty/cli/commands/undo'
 
 RSpec.describe HTTY::CLI::Commands::Undo do
   describe 'class' do

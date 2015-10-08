@@ -1,6 +1,6 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/follow")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_get")
+require 'htty/cli/commands/follow'
+require 'htty/cli/commands/address'
+require 'htty/cli/commands/http_get'
 
 RSpec.describe HTTY::CLI::Commands::Follow do
   describe 'class' do

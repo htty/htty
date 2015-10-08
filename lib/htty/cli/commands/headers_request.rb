@@ -1,18 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../request")
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../display")
-require File.expand_path("#{File.dirname __FILE__}/body_request")
-require File.expand_path("#{File.dirname __FILE__}/cookies")
-require File.expand_path("#{File.dirname __FILE__}/headers_response")
-require File.expand_path("#{File.dirname __FILE__}/headers_set")
-require File.expand_path("#{File.dirname __FILE__}/headers_unset")
-require File.expand_path("#{File.dirname __FILE__}/headers_unset_all")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _headers-request_ command.
 class HTTY::CLI::Commands::HeadersRequest < HTTY::CLI::Command

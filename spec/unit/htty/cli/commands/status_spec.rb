@@ -1,6 +1,6 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_response")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_response")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/status")
+require 'htty/cli/commands/status'
+require 'htty/cli/commands/body_response'
+require 'htty/cli/commands/headers_response'
 
 RSpec.describe HTTY::CLI::Commands::Status do
   describe 'class' do

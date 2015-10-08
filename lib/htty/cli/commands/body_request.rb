@@ -1,15 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/body_request_open")
-require File.expand_path("#{File.dirname __FILE__}/body_response")
-require File.expand_path("#{File.dirname __FILE__}/body_set")
-require File.expand_path("#{File.dirname __FILE__}/body_unset")
-require File.expand_path("#{File.dirname __FILE__}/headers_request")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _body-request_ command.
 class HTTY::CLI::Commands::BodyRequest < HTTY::CLI::Command

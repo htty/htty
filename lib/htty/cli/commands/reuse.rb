@@ -1,13 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../display")
-require File.expand_path("#{File.dirname __FILE__}/history")
-require File.expand_path("#{File.dirname __FILE__}/history_verbose")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _reuse_ command.
 class HTTY::CLI::Commands::Reuse < HTTY::CLI::Command

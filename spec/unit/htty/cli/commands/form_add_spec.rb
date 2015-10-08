@@ -1,4 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/form_add")
+require 'htty/cli/commands/form_add'
 
 RSpec.describe HTTY::CLI::Commands::FormAdd do
   describe 'class' do

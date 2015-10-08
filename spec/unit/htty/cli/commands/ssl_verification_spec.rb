@@ -1,6 +1,6 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification_off")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/ssl_verification_on")
+require 'htty/cli/commands/ssl_verification'
+require 'htty/cli/commands/ssl_verification_off'
+require 'htty/cli/commands/ssl_verification_on'
 
 RSpec.describe HTTY::CLI::Commands::SslVerification do
   describe 'class' do
