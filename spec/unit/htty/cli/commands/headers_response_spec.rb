@@ -1,9 +1,9 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_response")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_use")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_request")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_response")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/status")
+require 'htty/cli/commands/headers_response'
+require 'htty/cli/commands/body_response'
+require 'htty/cli/commands/cookies'
+require 'htty/cli/commands/cookies_use'
+require 'htty/cli/commands/headers_request'
+require 'htty/cli/commands/status'
 
 RSpec.describe HTTY::CLI::Commands::HeadersResponse do
   describe 'class' do

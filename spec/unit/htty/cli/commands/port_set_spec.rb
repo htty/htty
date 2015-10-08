@@ -1,6 +1,6 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/port_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/scheme_set")
+require 'htty/cli/commands/port_set'
+require 'htty/cli/commands/address'
+require 'htty/cli/commands/scheme_set'
 
 RSpec.describe HTTY::CLI::Commands::PortSet do
   describe 'class' do

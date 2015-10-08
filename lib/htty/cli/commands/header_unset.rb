@@ -1,11 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/headers_unset")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _header-unset_ command.
 class HTTY::CLI::Commands::HeaderUnset < HTTY::CLI::Command

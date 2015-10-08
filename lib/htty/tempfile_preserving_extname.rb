@@ -1,6 +1,5 @@
+require 'htty'
 require 'tempfile'
-
-module HTTY; end
 
 # Adds file-extension-preservation behavior to Tempfile.
 class HTTY::TempfilePreservingExtname < Tempfile

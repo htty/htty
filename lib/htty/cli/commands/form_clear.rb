@@ -1,11 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/form_remove_all")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _form-clear_ command.
 class HTTY::CLI::Commands::FormClear < HTTY::CLI::Command

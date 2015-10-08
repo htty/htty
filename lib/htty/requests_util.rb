@@ -1,11 +1,7 @@
+require 'htty'
 require 'net/http'
 require 'net/https'
 require 'uri'
-require File.expand_path("#{File.dirname __FILE__}/http_patch")
-require File.expand_path("#{File.dirname __FILE__}/preferences")
-require File.expand_path("#{File.dirname __FILE__}/response")
-
-module HTTY; end
 
 # Provides support for making HTTP(S) requests.
 module HTTY::RequestsUtil

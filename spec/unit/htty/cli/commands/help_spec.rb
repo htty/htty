@@ -1,4 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/help")
+require 'htty/cli/commands/help'
 
 RSpec.describe HTTY::CLI::Commands::Help do
   describe 'class' do

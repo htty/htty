@@ -1,14 +1,15 @@
-require File.expand_path("#{File.dirname __FILE__}/cli/commands")
-require File.expand_path("#{File.dirname __FILE__}/cli/commands/help")
-require File.expand_path("#{File.dirname __FILE__}/cli/input_device")
-require File.expand_path("#{File.dirname __FILE__}/cli/display")
-require File.expand_path("#{File.dirname __FILE__}/session")
-require File.expand_path("#{File.dirname __FILE__}/version")
-
-module HTTY; end
+require 'htty'
 
 # Encapsulates the command-line interface to _htty_.
 class HTTY::CLI
+
+  autoload :BodyOpenCommand,   'htty/cli/body_open_command'
+  autoload :Command,           'htty/cli/command'
+  autoload :Commands,          'htty/cli/commands'
+  autoload :Display,           'htty/cli/display'
+  autoload :HTTPMethodCommand, 'htty/cli/http_method_command'
+  autoload :InputDevice,       'htty/cli/input_device'
+  autoload :UrlEscaping,       'htty/cli/url_escaping'
 
   include HTTY::CLI::Display
 
@@ -93,12 +94,4 @@ private
       HTTY::Session.new(everything_but_options.first)
     end
   end
-end
-
-
-
-Dir.glob "#{File.dirname __FILE__}/cli/*.rb" do |f|
-  require File.expand_path(
-    "#{File.dirname __FILE__}/cli/" + File.basename(f, '.rb')
-  )
 end

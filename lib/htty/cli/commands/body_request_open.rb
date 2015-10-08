@@ -1,13 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../body_open_command")
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/body_request")
-require File.expand_path("#{File.dirname __FILE__}/body_response_open")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _body-request-open_ command.
 class HTTY::CLI::Commands::BodyRequestOpen < HTTY::CLI::Command

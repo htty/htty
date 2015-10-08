@@ -1,7 +1,6 @@
-require 'uri'
 require 'base64'
-
-module HTTY; end
+require 'htty'
+require 'uri'
 
 # Represents the Headers of a Request or a Response. Headers preserve the
 # insertion order and are case insensitive. A custom Hash is used because Hash

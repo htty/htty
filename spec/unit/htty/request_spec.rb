@@ -1,8 +1,8 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/version")
-
-require File.expand_path("#{File.dirname __FILE__}/shared_examples_for_requests")
+require 'htty/request'
+require 'htty/response'
+require 'htty/version'
+require 'unit/htty/shared_examples_for_requests'
+require 'uri'
 
 RSpec.describe HTTY::Request do
   let(:username) {'njonsson'}

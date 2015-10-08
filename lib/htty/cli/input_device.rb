@@ -1,8 +1,5 @@
+require 'htty'
 require 'readline'
-
-module HTTY; end
-
-class HTTY::CLI; end
 
 module HTTY::CLI::InputDevice
   def self.new(display)

@@ -1,6 +1,5 @@
+require 'htty'
 require 'uri'
-
-module HTTY; end
 
 class HTTY::URI
   # There's a lot of confusion about this, the default implementation

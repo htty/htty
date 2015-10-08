@@ -1,9 +1,9 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_add")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_remove")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_remove_all")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies_use")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_response")
+require 'htty/cli/commands/cookies_use'
+require 'htty/cli/commands/cookies'
+require 'htty/cli/commands/cookies_add'
+require 'htty/cli/commands/cookies_remove'
+require 'htty/cli/commands/cookies_remove_all'
+require 'htty/cli/commands/headers_response'
 
 RSpec.describe HTTY::CLI::Commands::CookiesUse do
   describe 'class' do

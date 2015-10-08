@@ -1,6 +1,6 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/history")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/history_verbose")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/reuse")
+require 'htty/cli/commands/reuse'
+require 'htty/cli/commands/history'
+require 'htty/cli/commands/history_verbose'
 
 RSpec.describe HTTY::CLI::Commands::Reuse do
   describe 'class' do

@@ -1,10 +1,6 @@
 require 'abbrev'
+require 'htty'
 require 'shellwords'
-require File.expand_path("#{File.dirname __FILE__}/display")
-
-module HTTY; end
-
-class HTTY::CLI; end
 
 # A base class for all HTTY::CLI::Commands.
 class HTTY::CLI::Command

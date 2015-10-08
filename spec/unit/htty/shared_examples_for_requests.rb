@@ -1,3 +1,6 @@
+require 'htty/headers'
+require 'htty/version'
+
 RSpec.shared_examples_for 'an empty request' do
   it 'should have only the default headers' do
     expect(request.headers).to eq([%W(User-Agent htty/#{HTTY::VERSION})])

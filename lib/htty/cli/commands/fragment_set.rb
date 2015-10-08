@@ -1,13 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../url_escaping")
-require File.expand_path("#{File.dirname __FILE__}/address")
-require File.expand_path("#{File.dirname __FILE__}/fragment_unset")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _fragment-set_ command.
 class HTTY::CLI::Commands::FragmentSet < HTTY::CLI::Command

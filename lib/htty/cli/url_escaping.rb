@@ -1,9 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/display")
-require File.expand_path("#{File.dirname __FILE__}/../uri")
-
-module HTTY; end
-
-class HTTY::CLI; end
+require 'htty'
 
 # Encapsulates the URL escaping logic of _htty_'s command-line interface.
 module HTTY::CLI::UrlEscaping

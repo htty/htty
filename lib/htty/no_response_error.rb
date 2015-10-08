@@ -1,4 +1,4 @@
-module HTTY; end
+require 'htty'
 
 # Indicates that HTTY::Request#response was missing.
 class HTTY::NoResponseError < StandardError

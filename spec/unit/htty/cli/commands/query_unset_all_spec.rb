@@ -1,8 +1,8 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_clear")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/query_unset_all")
+require 'htty/cli/commands/query_unset_all'
+require 'htty/cli/commands/address'
+require 'htty/cli/commands/query_clear'
+require 'htty/cli/commands/query_set'
+require 'htty/cli/commands/query_unset'
 
 RSpec.describe HTTY::CLI::Commands::QueryUnsetAll do
   describe 'class' do

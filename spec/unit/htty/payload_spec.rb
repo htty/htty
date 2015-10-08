@@ -1,4 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/payload")
+require 'htty/payload'
+require 'htty/no_header_error'
 
 RSpec.describe HTTY::Payload do
   before(:all) do

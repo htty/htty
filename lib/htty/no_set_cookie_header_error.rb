@@ -1,6 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/response")
-
-module HTTY; end
+require 'htty'
 
 # Indicates that the _Set-Cookie_ header was missing from
 # HTTY::Request#response.

@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/session")
+require 'htty/session'
+require 'htty/request'
 
 RSpec.describe HTTY::Session do
   it 'should have one request with the expected URI' do

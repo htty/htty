@@ -1,14 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/cookies")
-require File.expand_path("#{File.dirname __FILE__}/cookies_remove")
-require File.expand_path("#{File.dirname __FILE__}/cookies_remove_all")
-require File.expand_path("#{File.dirname __FILE__}/cookies_use")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
+require 'htty'
 
 # Encapsulates the _cookies-add_ command.
 class HTTY::CLI::Commands::CookiesAdd < HTTY::CLI::Command

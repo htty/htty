@@ -1,9 +1,9 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/delete")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_delete")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_get")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_patch")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_post")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/http_put")
+require 'htty/cli/commands/http_delete'
+require 'htty/cli/commands/delete'
+require 'htty/cli/commands/http_get'
+require 'htty/cli/commands/http_patch'
+require 'htty/cli/commands/http_post'
+require 'htty/cli/commands/http_put'
 
 RSpec.describe HTTY::CLI::Commands::HttpDelete do
   describe 'class' do

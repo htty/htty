@@ -1,10 +1,10 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_request")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/cookies")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_request")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_response")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_unset")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_unset_all")
+require 'htty/cli/commands/headers_request'
+require 'htty/cli/commands/body_request'
+require 'htty/cli/commands/cookies'
+require 'htty/cli/commands/headers_response'
+require 'htty/cli/commands/headers_set'
+require 'htty/cli/commands/headers_unset'
+require 'htty/cli/commands/headers_unset_all'
 
 RSpec.describe HTTY::CLI::Commands::HeadersRequest do
   describe 'class' do

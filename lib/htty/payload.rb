@@ -1,8 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/headers")
-require File.expand_path("#{File.dirname __FILE__}/no_header_error")
-require File.expand_path("#{File.dirname __FILE__}/cookies_util")
-
-module HTTY; end
+require 'htty'
 
 # Encapsulates the headers and body of an HTTP(S) request or response.
 class HTTY::Payload

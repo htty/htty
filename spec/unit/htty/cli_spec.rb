@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/cli")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
+require 'htty/cli'
+require 'htty/request'
 
 RSpec.describe HTTY::CLI do
   describe 'with empty arguments' do

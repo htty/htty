@@ -1,4 +1,4 @@
-module HTTY; end
+require 'htty'
 
 # Encapsulates _htty_ user preferences.
 class HTTY::Preferences

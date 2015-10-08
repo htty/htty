@@ -1,4 +1,4 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/cli/url_escaping")
+require 'htty/cli/url_escaping'
 
 RSpec.describe HTTY::CLI::UrlEscaping do
   subject do

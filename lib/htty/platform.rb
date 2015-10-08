@@ -1,4 +1,4 @@
-module HTTY; end
+require 'htty'
 
 # Provides methods for ascertaining system characteristics.
 module HTTY::Platform

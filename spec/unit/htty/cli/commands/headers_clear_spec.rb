@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_clear")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_unset_all")
+require 'htty/cli/commands/headers_clear'
+require 'htty/cli/commands/headers_unset_all'
 
 RSpec.describe HTTY::CLI::Commands::HeadersClear do
   describe 'class' do

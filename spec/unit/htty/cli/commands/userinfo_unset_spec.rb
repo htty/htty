@@ -1,7 +1,7 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/address")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/userinfo_clear")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/userinfo_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/userinfo_unset")
+require 'htty/cli/commands/userinfo_unset'
+require 'htty/cli/commands/address'
+require 'htty/cli/commands/userinfo_clear'
+require 'htty/cli/commands/userinfo_set'
 
 RSpec.describe HTTY::CLI::Commands::UserinfoUnset do
   describe 'class' do

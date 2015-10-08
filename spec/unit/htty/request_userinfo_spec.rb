@@ -1,8 +1,9 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/version")
-
-require File.expand_path("#{File.dirname __FILE__}/shared_examples_for_requests")
+require 'htty/request'
+require 'htty/headers'
+require 'htty/response'
+require 'htty/version'
+require 'unit/htty/shared_examples_for_requests'
+require 'uri'
 
 
 RSpec.shared_examples_for 'a request with basic authentication' do

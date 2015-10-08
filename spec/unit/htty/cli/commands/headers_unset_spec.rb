@@ -1,8 +1,8 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/header_unset")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_request")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_unset")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_unset_all")
+require 'htty/cli/commands/headers_unset'
+require 'htty/cli/commands/header_unset'
+require 'htty/cli/commands/headers_request'
+require 'htty/cli/commands/headers_set'
+require 'htty/cli/commands/headers_unset_all'
 
 RSpec.describe HTTY::CLI::Commands::HeadersUnset do
   describe 'class' do

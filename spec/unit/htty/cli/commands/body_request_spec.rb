@@ -1,9 +1,9 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_request")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_request_open")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_response")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_set")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_unset")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/headers_request")
+require 'htty/cli/commands/body_request'
+require 'htty/cli/commands/headers_request'
+require 'htty/cli/commands/body_request_open'
+require 'htty/cli/commands/body_response'
+require 'htty/cli/commands/body_set'
+require 'htty/cli/commands/body_unset'
 
 RSpec.describe HTTY::CLI::Commands::BodyRequest do
   describe 'class' do

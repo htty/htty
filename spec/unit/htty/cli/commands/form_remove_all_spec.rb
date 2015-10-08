@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/form_clear")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/form_remove_all")
+require 'htty/cli/commands/form_remove_all'
+require 'htty/cli/commands/form_clear'
 
 RSpec.describe HTTY::CLI::Commands::FormRemoveAll do
   describe 'class' do

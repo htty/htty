@@ -1,5 +1,5 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_clear")
-require File.expand_path("#{File.dirname __FILE__}/../../../../../lib/htty/cli/commands/body_unset")
+require 'htty/cli/commands/body_clear'
+require 'htty/cli/commands/body_unset'
 
 RSpec.describe HTTY::CLI::Commands::BodyClear do
   describe 'class' do

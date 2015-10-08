@@ -1,5 +1,6 @@
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/request")
-require File.expand_path("#{File.dirname __FILE__}/../../../lib/htty/response")
+require 'htty/request'
+require 'htty/response'
+require 'uri'
 
 
 RSpec.describe HTTY::Request do

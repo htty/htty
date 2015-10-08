@@ -1,15 +1,5 @@
+require 'htty'
 require 'tempfile'
-require File.expand_path("#{File.dirname __FILE__}/../command")
-require File.expand_path("#{File.dirname __FILE__}/../display")
-require File.expand_path("#{File.dirname __FILE__}/body_request")
-require File.expand_path("#{File.dirname __FILE__}/body_unset")
-require File.expand_path("#{File.dirname __FILE__}/body_set")
-
-module HTTY; end
-
-class HTTY::CLI; end
-
-module HTTY::CLI::Commands; end
 
 # Encapsulates the _body-edit_ command.
 class HTTY::CLI::Commands::BodyEdit < HTTY::CLI::Command
