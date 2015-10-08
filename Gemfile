@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 gemspec
 
 group :debug do
-  gem   'pry-byebug', '~> 3'
+  gem   'pry-byebug',  '~> 3'
 end
 
 group :doc do
-  gem   'yard',       '~> 0', require: false
-  gem   'rdiscount',  '~> 2', require: false
+  gem   'yard',        '~> 0', require: false
+  gem   'rdiscount',   '~> 2', require: false
 end
 
 group :tooling do
