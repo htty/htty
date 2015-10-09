@@ -1,1 +1,1 @@
---file History.markdown --file License.markdown --no-private --protected --title "htty, the HTTP TTY"
+--file History.markdown --file License.markdown --file examples.markdown --no-private --protected --title "htty, the HTTP TTY"
