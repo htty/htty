@@ -18,13 +18,13 @@ engines:
   rubocop:
     enabled: true
   golint:
-    enabled: true
+    enabled: false
   gofmt:
-    enabled: true
+    enabled: false
   eslint:
-    enabled: true
+    enabled: false
   csslint:
-    enabled: true
+    enabled: false
 
 # Engines can analyze files and report issues on them, but you can separately
 # decide which files will receive ratings based on those issues. This is
@@ -35,16 +35,18 @@ engines:
 
 # Note: If the ratings key is not specified, this will result in a 0.0 GPA on your dashboard.
 
-# ratings:
-#   paths:
-#   - app/**
-#   - lib/**
-#   - "**.rb"
-#   - "**.go"
+ratings:
+  paths:
+  - exe/htty/**.rb
+  - lib/htty/**.rb
 
 # You can globally exclude files from being analyzed by any engine using the
 # exclude_paths key.
 
-#exclude_paths:
-#- spec/**/*
-#- vendor/**/*
+exclude_paths:
+- Gemfile
+- Guardfile
+- Rakefile
+- bin/**/*
+- *.gemspec
+- spec/**/*
