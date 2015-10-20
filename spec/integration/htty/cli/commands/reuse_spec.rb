@@ -18,8 +18,12 @@ RSpec.describe HTTY::CLI::Commands::Reuse do
     end
 
     it "shouldnt accumulate requests without response in session" do
-      instance(1).perform
-      instance(2).perform
+      expect { instance(1).perform }.to print_on_stdout <<-end_stdout
+*** Using a copy of request #1
+      end_stdout
+      expect { instance(2).perform }.to print_on_stdout <<-end_stdout
+*** Using a copy of request #2
+      end_stdout
 
       expect(session.requests.count).to eq(3)
       expect(session.requests.last.uri).to eq(request.uri)
