@@ -89,7 +89,12 @@ The console prompt shows the address for the current request.
       end
 
       it 'should correctly URL escape multi-part paths containing escaped slashes' do
-        built = klass.build_for('path b@r/b%2Fz', :session => :a_session)
+        built = nil
+        expect {
+          built = klass.build_for('path b@r/b%2Fz', :session => :a_session)
+        }.to print_on_stdout <<-end_stdout
+*** Argument 'b%2Fz' was not URL-escaped because it contains escape sequences
+        end_stdout
         expect(built).to be_instance_of(klass)
         expect(built.arguments).to eq(['b%40r/b%2Fz'])
         expect(built.session).to   eq(:a_session)
