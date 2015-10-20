@@ -5,7 +5,7 @@ RSpec.describe HTTY::CLI::Commands::Reuse do
   let(:session) { HTTY::Session.new "http://google.com" }
 
   def instance(*arguments)
-    described_class.new session: session, arguments: arguments
+    described_class.new :session => session, :arguments => arguments
   end
 
   describe "#perform" do
