@@ -60,8 +60,10 @@ class HTTY::CLI::Commands::Reuse < HTTY::CLI::Command
       end
     end
 
-    add_request_if_new do
-      requests[index - 1].send :dup_without_response
+    add_request_if_new do |request|
+      session.requests.pop if request.response.nil?
+
+      requests[index - 1].send(:dup_without_response)
     end
 
     puts notice("Using a copy of request ##{index}")
