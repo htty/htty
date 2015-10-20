@@ -66,6 +66,39 @@ The console prompt shows the address for the current request.
         built = klass.build_for('x baz', :session => :another_session)
         expect(built).to eq(nil)
       end
+
+      it 'should correctly URL escape simple paths' do
+        built = klass.build_for('path b@r', :session => :a_session)
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['b%40r'])
+        expect(built.session).to   eq(:a_session)
+      end
+
+      it 'should correctly URL escape multi-part paths' do
+        built = klass.build_for('path bar/baz', :session => :a_session)
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['bar/baz'])
+        expect(built.session).to   eq(:a_session)
+      end
+
+      it 'should correctly URL escape multi-part paths containing special characters' do
+        built = klass.build_for('path b@r/ba{', :session => :a_session)
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['b%40r/ba%7B'])
+        expect(built.session).to   eq(:a_session)
+      end
+
+      it 'should correctly URL escape multi-part paths containing escaped slashes' do
+        built = nil
+        expect {
+          built = klass.build_for('path b@r/b%2Fz', :session => :a_session)
+        }.to print_on_stdout <<-end_stdout
+*** Argument 'b%2Fz' was not URL-escaped because it contains escape sequences
+        end_stdout
+        expect(built).to be_instance_of(klass)
+        expect(built.arguments).to eq(['b%40r/b%2Fz'])
+        expect(built.session).to   eq(:a_session)
+      end
     end
   end
 end
