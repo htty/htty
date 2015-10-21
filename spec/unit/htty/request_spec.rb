@@ -32,7 +32,7 @@ RSpec.describe HTTY::Request do
       expect(request.uri).to eq(URI.parse('http://0.0.0.0:80/'))
     end
 
-    it_should_behave_like 'an empty request'
+    it_behaves_like 'an empty request'
   end
 
   describe 'with an empty address' do
@@ -44,7 +44,7 @@ RSpec.describe HTTY::Request do
       expect(request.uri).to eq(URI.parse('http://0.0.0.0:80/'))
     end
 
-    it_should_behave_like 'an empty request'
+    it_behaves_like 'an empty request'
   end
 
   describe 'with an address consisting of' do
@@ -57,7 +57,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('http://127.0.0.1:80/'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'a hostname' do
@@ -69,7 +69,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('http://localhost:80/'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
 
       describe '-- when sent #query_set' do
         describe 'with a query parameter --' do
@@ -81,7 +81,7 @@ RSpec.describe HTTY::Request do
             expect(request.uri).to eq(URI.parse('http://localhost:80/?foo=bar'))
           end
 
-          it_should_behave_like 'an empty request'
+          it_behaves_like 'an empty request'
         end
       end
     end
@@ -95,7 +95,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('http://localhost:8080/'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'the HTTP scheme and a hostname' do
@@ -107,7 +107,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('http://localhost:80/'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'the HTTPS scheme, userinfo, and a hostname' do
@@ -119,7 +119,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('https://njonsson@github.com:443/'))
       end
 
-      it_should_behave_like 'an empty, authenticated request'
+      it_behaves_like 'an empty, authenticated request'
     end
 
     describe 'a hostname and the root path' do
@@ -131,7 +131,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('http://github.com:80/'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'a hostname, port 443, and the root path' do
@@ -143,7 +143,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('https://github.com:443/'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'the HTTP scheme, a hostname, port 443, and the root path' do
@@ -155,7 +155,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('http://github.com:443/'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'a hostname and a path' do
@@ -167,7 +167,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('http://github.com:80/explore'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'a hostname and a query string' do
@@ -180,7 +180,7 @@ RSpec.describe HTTY::Request do
         expect(request.uri).to eq(URI.parse('http://github.com:80/?search=http'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'a hostname, a path, and a query string' do
@@ -194,7 +194,7 @@ RSpec.describe HTTY::Request do
                                             '/search?q=http&lang=en'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'a hostname, a path, and a fragment' do
@@ -207,7 +207,7 @@ RSpec.describe HTTY::Request do
                                             '/explore#trending'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'a hostname, a port, a path, a query string, and a fragment' do
@@ -222,7 +222,7 @@ RSpec.describe HTTY::Request do
                                             '#content'))
       end
 
-      it_should_behave_like 'an empty request'
+      it_behaves_like 'an empty request'
     end
 
     describe 'the HTTPS scheme, userinfo, a hostname, a port, a path, a query ' +
@@ -246,7 +246,7 @@ RSpec.describe HTTY::Request do
                                                 '#content'))
           end
 
-          it_should_behave_like 'an empty, authenticated request'
+          it_behaves_like 'an empty, authenticated request'
         end
 
         describe '-- when sent #address with an address consisting of' do
@@ -292,7 +292,7 @@ RSpec.describe HTTY::Request do
               expect(request.uri).to eq(URI.parse('http://mac.com:80/'))
             end
 
-            it_should_behave_like 'an empty request'
+            it_behaves_like 'an empty request'
           end
         end
 
@@ -309,7 +309,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'a different scheme --' do
@@ -324,7 +324,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
         end
 
@@ -341,7 +341,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'a different host --' do
@@ -356,7 +356,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
         end
 
@@ -373,7 +373,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'a different port --' do
@@ -388,7 +388,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
         end
 
@@ -405,7 +405,7 @@ RSpec.describe HTTY::Request do
                                                   '?q=http&lang=en#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'a parent reference --' do
@@ -420,7 +420,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'an absolute reference --' do
@@ -435,7 +435,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
         end
 
@@ -453,7 +453,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'with a new value for the first query parameter --' do
@@ -468,7 +468,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'with a new value for the second query parameter --' do
@@ -484,7 +484,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
         end
 
@@ -501,7 +501,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'with the first query parameter --' do
@@ -515,7 +515,7 @@ RSpec.describe HTTY::Request do
                                                   '/search/deep?lang=en#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'with the second query parameter --' do
@@ -529,7 +529,7 @@ RSpec.describe HTTY::Request do
                                                   '/search/deep?q=http#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
         end
 
@@ -544,7 +544,7 @@ RSpec.describe HTTY::Request do
                                                 '/search/deep#content'))
           end
 
-          it_should_behave_like 'an empty, authenticated request'
+          it_behaves_like 'an empty, authenticated request'
         end
 
         describe '-- when sent #fragment_set with' do
@@ -560,7 +560,7 @@ RSpec.describe HTTY::Request do
                                                   '#content'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
 
           describe 'different fragment --' do
@@ -575,7 +575,7 @@ RSpec.describe HTTY::Request do
                                                   '#details'))
             end
 
-            it_should_behave_like 'an empty, authenticated request'
+            it_behaves_like 'an empty, authenticated request'
           end
         end
 
@@ -590,7 +590,7 @@ RSpec.describe HTTY::Request do
                                                 '/search/deep?q=http&lang=en'))
           end
 
-          it_should_behave_like 'an empty, authenticated request'
+          it_behaves_like 'an empty, authenticated request'
         end
 
         describe '-- when sent #header_set with a new header' do
