@@ -1,6 +1,12 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.5.5"></a>v1.5.5, Tue 10/20/2015
+-------------------------------------------
+
+* Fixed a bug that added requests to history even if no HTTP request was made \[with help from [presskey](http://github.com/presskey "presskey at GitHub")\]
+* Fixed a bug that URL-escaped slashes in the arguments to the `path-set` command \[with help from [pepijnve](http://github.com/pepijnve "pepijnve at GitHub")\]
+
 <a name="v1.5.4"></a>v1.5.4, Mon 10/05/2015
 -------------------------------------------
 
