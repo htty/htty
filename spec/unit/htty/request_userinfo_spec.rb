@@ -44,15 +44,15 @@ RSpec.describe HTTY::Request do
       "https://github.com:80/search/deep?q=http#content"
     end
 
-    it_should_behave_like 'an empty request'
-    it_should_behave_like 'a request without basic authentication'
+    it_behaves_like 'an empty request'
+    it_behaves_like 'a request without basic authentication'
 
     describe '#userinfo_unset' do
       before :each do
         subject.userinfo_unset
       end
 
-      it_should_behave_like 'a request without basic authentication'
+      it_behaves_like 'a request without basic authentication'
     end
 
     describe '#userinfo_set' do
@@ -63,12 +63,12 @@ RSpec.describe HTTY::Request do
         subject.userinfo_set username, password
       end
 
-      it_should_behave_like 'a request with basic authentication'
+      it_behaves_like 'a request with basic authentication'
 
       context 'with empty password' do
         let(:password) {nil}
 
-        it_should_behave_like 'a request with basic authentication'
+        it_behaves_like 'a request with basic authentication'
       end
     end
 
@@ -81,7 +81,7 @@ RSpec.describe HTTY::Request do
           HTTY::Headers.basic_authentication_for(username, password).last
       end
 
-      it_should_behave_like 'a request with basic authentication'
+      it_behaves_like 'a request with basic authentication'
     end
   end
 
@@ -96,8 +96,8 @@ RSpec.describe HTTY::Request do
       HTTY::Headers.basic_authentication_for(username, password)
     end
 
-    it_should_behave_like 'an empty, authenticated request'
-    it_should_behave_like 'a request with basic authentication'
+    it_behaves_like 'an empty, authenticated request'
+    it_behaves_like 'a request with basic authentication'
 
     describe '#userinfo_unset' do
       before :each do
