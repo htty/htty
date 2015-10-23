@@ -25,12 +25,7 @@ class HTTY::CLI::Commands::Help < HTTY::CLI::Command
   def perform
     return display_help if arguments.empty?
 
-    unless arguments.length == 1
-      raise ArgumentError,
-            "wrong number of arguments (#{arguments.length} for 1)"
-    end
-
-    display_help_for arguments.first
+    display_help_for(*arguments)
   end
 
 private
