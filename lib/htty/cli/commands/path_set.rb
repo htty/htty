@@ -37,18 +37,18 @@ class HTTY::CLI::Commands::PathSet < HTTY::CLI::Command
   end
 
   def self.sanitize_arguments(arguments)
-    path = arguments[0]
-    path_components = path.split('/')
-    escaped_components = escape_or_warn_of_escape_sequences(path_components)
-    escaped_path = escaped_components.join('/')
-    [escaped_path]
+    arguments.collect do |argument|
+      path_components = argument.split('/')
+      escaped_components = escape_or_warn_of_escape_sequences(path_components)
+      escaped_components.join '/'
+    end
   end
 
   # Performs the _path-set_ command.
   def perform
     add_request_if_new do |request|
       self.class.notify_if_cookies_cleared request do
-        request.path_set(arguments[0])
+        request.path_set(*arguments)
       end
     end
   end
