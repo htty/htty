@@ -9,6 +9,8 @@ class HTTY::Response < HTTY::Payload
   # Returns the HTTP status associated with the response.
   attr_reader :status
 
+  attr_reader :time
+
   # Initializes a new HTTY::Response with attribute values specified in the
   # _attributes_ hash.
   #
@@ -20,6 +22,7 @@ class HTTY::Response < HTTY::Payload
   def initialize(attributes={})
     super attributes
     @status = attributes[:status]
+    @time   = attributes[:time]
     @already_followed = false
   end
 
