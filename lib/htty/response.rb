@@ -21,8 +21,8 @@ class HTTY::Response < HTTY::Payload
   # * <tt>:status</tt>
   def initialize(attributes={})
     super attributes
-    @status = attributes[:status]
-    @time   = attributes[:time]
+    @status           = attributes[:status]
+    @time             = attributes[:time]
     @already_followed = false
   end
 
