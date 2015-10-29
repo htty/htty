@@ -9,6 +9,7 @@ class HTTY::Response < HTTY::Payload
   # Returns the HTTP status associated with the response.
   attr_reader :status
 
+  # Returns a benchmark time to receive the response.
   attr_reader :time
 
   # Initializes a new HTTY::Response with attribute values specified in the
