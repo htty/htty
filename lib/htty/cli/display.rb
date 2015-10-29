@@ -155,10 +155,10 @@ module HTTY::CLI::Display
     cookies_asterisk = response.cookies.empty? ? '' : strong('*')
     body_length      = response.body.to_s.length
     body_size        = body_length.zero? ? 'empty' : "#{body_length}-character"
-    response_time    = (response.time * 1000).round(2)
+    response_time_ms = (response.time * 1000).round(2)
     puts([description,
           pluralize('header', response.headers.length) + cookies_asterisk,
-          "#{body_size} body", "#{response_time} ms"].join(' -- '))
+          "#{body_size} body", "#{response_time_ms} ms"].join(' -- '))
   end
 
   def strong(string)

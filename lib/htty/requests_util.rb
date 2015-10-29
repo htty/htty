@@ -1,8 +1,8 @@
+require 'benchmark'
 require 'htty'
 require 'net/http'
 require 'net/https'
 require 'uri'
-require 'benchmark'
 
 # Provides support for making HTTP(S) requests.
 module HTTY::RequestsUtil
@@ -91,7 +91,9 @@ private
 
     http.start do |host|
       http_response = nil
-      response_time = Benchmark.realtime { http_response = yield(host) }
+      response_time = Benchmark.realtime do
+        http_response = yield(host)
+      end
 
       headers = []
       http_response.canonical_each do |*h|
