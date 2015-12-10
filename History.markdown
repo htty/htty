@@ -1,6 +1,13 @@
 Version history for the _htty_ project
 ======================================
 
+<a name="v1.5.7"></a>v1.5.7, Thu 12/10/2015
+-------------------------------------------
+
+* Added response benchmarking [[presskey](http://github.com/presskey "presskey at GitHub")]
+* Fixed bugs in server certificate verification under Ruby v2
+* Fixed a bug in validation of arguments to the `path-set` command
+
 <a name="v1.5.5"></a>v1.5.5, Tue 10/20/2015
 -------------------------------------------
 
