@@ -1,4 +1,5 @@
 require 'htty'
+require 'openssl'
 
 # Encapsulates behavior common to all HTTP-method-oriented HTTY::CLI::Command
 # subclasses.

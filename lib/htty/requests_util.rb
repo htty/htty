@@ -2,6 +2,7 @@ require 'benchmark'
 require 'htty'
 require 'net/http'
 require 'net/https'
+require 'openssl'
 require 'uri'
 
 # Provides support for making HTTP(S) requests.
