@@ -1,4 +1,5 @@
 require 'autoloaded'
+require 'net/http'
 
 # Contains the implementation of _htty_.
 module HTTY
@@ -11,7 +12,7 @@ end
 
 module Net
 
-  class HTTP
+  class HTTP < Protocol
 
     autoload :Patch, 'htty/http_patch'
 
