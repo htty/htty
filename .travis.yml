@@ -1,10 +1,13 @@
 language: ruby
-before_install: gem install bundler -v 1.10.6
+before_install: gem install bundler
 bundler_args: --without debug doc tooling
 rvm:
   - 2.0
   - 2.1
   - 2.2
+  - 2.3
+  - 2.4
+  - 2.5
   - ruby-head
   - jruby-head
   - rbx
