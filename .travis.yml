@@ -1,5 +1,5 @@
 language: ruby
-before_install: gem install bundler -v 1.10.6
+before_install: gem install bundler
 bundler_args: --without debug doc tooling
 rvm:
   - 1.8.7
@@ -8,6 +8,9 @@ rvm:
   - 2.0
   - 2.1
   - 2.2
+  - 2.3
+  - 2.4
+  - 2.5
   - ruby-head
   - ree
   - jruby-18mode
@@ -20,7 +23,11 @@ notifications:
 script: "bundle exec rake test"
 matrix:
   allow_failures:
+    - rvm: 1.8.7
+    - rvm: 1.9.2
+    - rvm: 1.9.3
     - rvm: ruby-head
+    - rvm: ree
     - rvm: jruby-18mode
     - rvm: jruby-19mode
     - rvm: jruby-head
