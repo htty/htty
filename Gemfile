@@ -20,7 +20,8 @@ group :development do
 end
 
 group :doc do
-  gem   'yard',                      '~> 0', :require => false
+  gem   'yard',                      '>= 0.9.11', '< 1',
+                                             :require => false
   gem   'rdiscount',                 '~> 2', :require => false
 end
 
